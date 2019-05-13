@@ -1,0 +1,2567 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DeviceCommunication.API</name>
+    </assembly>
+    <members>
+        <member name="T:Logistics.Services.DeviceCommunication.API.Application.Behaviors.LoggingBehavior">
+            <summary>
+            class LoggingBehavior
+            </summary>
+        </member>
+        <member name="T:Logistics.Services.DeviceCommunication.API.Application.Enum.DeviceType">
+            <summary>
+            Device Type Enum
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunication.API.Application.Enum.DeviceType.Carousel">
+            <summary>
+            enum DeviceTypeEnum constant Carousel
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunication.API.Application.Enum.DeviceType.Display">
+            <summary>
+            enum DeviceTypeEnum constant Display
+            </summary>
+        </member>
+        <member name="T:Logistics.Services.DeviceCommunication.API.Application.Enum.StorageSpaceItem">
+            <summary>
+            Storage Space Items Enum
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunication.API.Application.Enum.StorageSpaceItem.None">
+            <summary> None </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunication.API.Application.Enum.StorageSpaceItem.Rack">
+            <summary> Rack </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunication.API.Application.Enum.StorageSpaceItem.Shelf">
+            <summary> Shelf </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunication.API.Application.Enum.StorageSpaceItem.Bin">
+            <summary> Bin </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunication.API.Application.Enum.StorageSpaceItem.Slot">
+            <summary> Slot </summary>
+        </member>
+        <member name="T:Logistics.Services.DeviceCommunication.API.Application.Interfaces.ICarouselConnection">
+            <summary>
+            Contract for CarouselConnection.
+            </summary>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.Application.Interfaces.ICarouselConnection.Check(System.Collections.Generic.IEnumerable{Logistics.Services.DeviceCommunication.API.Application.Models.CarouselData})">
+            <summary>
+            Checks whether a carousel is connected or not.
+            </summary>
+            <param name="carouselData"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Logistics.Services.DeviceCommunication.API.Application.Interfaces.ICarouselProcess">
+            <summary>
+            ICarouselProcess contract
+            </summary>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.Application.Interfaces.ICarouselProcess.MoveCarousel(Logistics.Services.DeviceCommunication.API.Application.Models.TransactionData)">
+            <summary>
+            method to process carousel move using data coming from transaction queue service
+            </summary>
+            <param name="transactionData"></param>
+        </member>
+        <member name="T:Logistics.Services.DeviceCommunication.API.Application.Interfaces.IMediator">
+            <summary>
+            interface IMediator
+            </summary>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.Application.Interfaces.IMediator.Execute(BD.Core.EventBus.Events.Event)">
+            <summary>
+            process data comming from subscriber
+            </summary>
+            <param name="event"></param>
+        </member>
+        <member name="T:Logistics.Services.DeviceCommunication.API.Application.Interfaces.IUtility">
+            <summary>
+            IUtility interface
+            </summary>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.Application.Interfaces.IUtility.BuildStorageSpaceItem(System.Collections.Generic.List{Logistics.Services.DeviceCommunication.API.Application.Models.StorageSpace})">
+            <summary>
+            creating storage space items
+            </summary>
+            <param name="storageSpaceItems"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Logistics.Services.DeviceCommunication.API.Application.Models.CarouselData">
+            <summary>
+            CaraouselData
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.Application.Models.CarouselData.ISAId">
+            <summary>
+            ISAId
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.Application.Models.CarouselData.IPAddress">
+            <summary>
+            IPAddress
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.Application.Models.CarouselData.Port">
+            <summary>
+            Port
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.Application.Models.CarouselData.isOnlineFlag">
+            <summary>
+            isOnlineFlag
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.Application.Models.CarouselData.Display">
+            <summary>
+            Display
+            </summary>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.Application.Models.CarouselData.Validate(System.ComponentModel.DataAnnotations.ValidationContext)">
+            <summary>
+             Custom Validations
+            </summary>
+        </member>
+        <member name="T:Logistics.Services.DeviceCommunication.API.Application.Models.Display">
+            <summary>
+            Display
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.Application.Models.Display.DisplayAttachedFlag">
+            <summary> DisplayAttachedFlag </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.Application.Models.Display.DisplayIPAddress">
+            <summary> DisplayIPAddress </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.Application.Models.Display.DisplayPort">
+            <summary> DisplayPort </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.Application.Models.Display.isOnlineFlag">
+            <summary> isOnlineFlag </summary>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.Application.Models.Display.Validate(System.ComponentModel.DataAnnotations.ValidationContext)">
+            <summary>
+            Custom Validation
+            </summary>
+            <param name="validationContext"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Logistics.Services.DeviceCommunication.API.Application.Models.Computer">
+            <summary>
+            Computer 
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.Application.Models.Computer.ComputerId">
+            <summary> ComputerId </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.Application.Models.Computer.PrinterId">
+            <summary> PrinterId </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.Application.Models.Computer.IsOutsideComputer">
+            <summary> IsOutsideComputer </summary>
+        </member>
+        <member name="T:Logistics.Services.DeviceCommunication.API.Application.Models.DeviceAttribute">
+            <summary>
+            Storage space  model created to consume data from transaction Queue serivce. 
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.Application.Models.DeviceAttribute.IPAddress">
+            <summary>
+            read-write IPAddress property
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.Application.Models.DeviceAttribute.Port">
+            <summary>
+            read-write Port property
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.Application.Models.DeviceAttribute.LightDisplayType">
+            <summary>
+            read-write LightDisplayType property
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.Application.Models.DeviceAttribute.DeviceNumber">
+            <summary>
+            read-write DeviceNumber property
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.Application.Models.DeviceAttribute.RestrictControl">
+            <summary>
+            read-write RestrictControl property
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.Application.Models.DeviceAttribute.MaxRack">
+            <summary>
+            read-write MaxRack property
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.Application.Models.DeviceAttribute.IsDisplayAttached">
+            <summary>
+            read-write IsDisplayAttached property
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.Application.Models.DeviceAttribute.DeviceClass">
+            <summary>
+            read-write DeviceClass property
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.Application.Models.DeviceAttribute.IsDualAccess">
+            <summary>
+            read-write IsDualAccess property
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.Application.Models.DeviceAttribute.ReturnStatus">
+            <summary>
+            read-write ReturnStatus property
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.Application.Models.DeviceAttribute.BaseLeftOffset">
+            <summary>
+            read-write BaseLeftOffset property
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.Application.Models.DeviceAttribute.ConnectionResetMinutes">
+            <summary>
+            read-write ConnectionResetMinutes property
+            </summary>
+        </member>
+        <member name="T:Logistics.Services.DeviceCommunication.API.Application.Models.StorageSpaceAttribute">
+             <summary>
+            class  type StorageSpaceItemAttr
+             </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.Application.Models.StorageSpaceAttribute.LeftOffset">
+            <summary>
+            read-write LeftOffset property
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.Application.Models.StorageSpaceAttribute.DispenseForm">
+            <summary>
+            read-write DispenseForm property
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.Application.Models.StorageSpaceAttribute.OverideBaseAddress">
+            <summary>
+            read-write OverideBaseAddr property
+            </summary>
+        </member>
+        <member name="T:Logistics.Services.DeviceCommunication.API.Application.Models.StorageSpace">
+            <summary>
+            class type StorageSpaceItem
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.Application.Models.StorageSpace.ItemType">
+            <summary>
+            read-write ItemType property
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.Application.Models.StorageSpace.Number">
+            <summary>
+            read-write Number property
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.Application.Models.StorageSpace.Attribute">
+            <summary>
+            read-write StorageSpaceItemAttr
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.Application.Models.Device.Type">
+            <summary>
+            read-write Type
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.Application.Models.Device.DeviceId">
+            <summary>
+            read-write Id
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.Application.Models.Device.Attribute">
+            <summary>
+            read-write StorageSpaceAttr
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.Application.Models.Device.Computers">
+            <summary>
+            Computers
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.Application.Models.Device.StorageSpaces">
+            <summary>
+            read-write StorageSpaceItems
+            </summary>
+        </member>
+        <member name="T:Logistics.Services.DeviceCommunication.API.Application.Models.TransactionData">
+            <summary>
+            TransactionData
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.Application.Models.TransactionData.Devices">
+            <summary>
+            read-write storagespaces
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.Application.Models.TransactionData.Quantity">
+            <summary>
+            read-write quantity
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.Application.Models.TransactionData.Type">
+            <summary>
+            read-write Transaction  queue type
+            </summary>
+        </member>
+        <member name="T:Logistics.Services.DeviceCommunication.API.Application.Strategy.CarouselManager">
+            <summary>
+            Strategy to create and use carousal
+            </summary>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.Application.Strategy.CarouselManager.#ctor(Microsoft.Extensions.Configuration.IConfiguration,Microsoft.Extensions.Logging.ILogger{Logistics.Services.DeviceCommunication.API.Application.Strategy.CarouselManager},Logistics.Services.DeviceCommunication.API.DeviceInterface.Interfaces.ICarouselFactory,Logistics.Services.DeviceCommunication.API.DeviceInterface.Interfaces.IIPSocket,Logistics.Services.DeviceCommunication.API.DeviceInterface.Interfaces.IDeviceResponse)">
+            <summary>
+            Default Constructor
+            </summary>
+            <param name="config"></param>
+            <param name="logger"></param>
+            <param name="carouselFactory"></param>
+            <param name="socket"></param>
+            <param name="deviceResponse"></param>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.Application.Strategy.CarouselManager.CreateCarousel(Logistics.Services.DeviceCommunication.API.Application.Models.TransactionData)">
+            <summary>
+            Method to create specific type of carousel instance depending upon the data provided
+            </summary>
+            <param name="transactionData"></param>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.Application.Strategy.CarouselManager.MoveCarousel(Logistics.Services.DeviceCommunication.API.Application.Models.TransactionData,Logistics.Services.DeviceCommunication.API.DeviceInterface.Models.Slot)">
+            <summary>
+            Strategy to move carousel
+            </summary>
+            <param name="transactionData"></param>
+            <param name="slot"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Logistics.Services.DeviceCommunication.API.Application.Strategy.ICarouselManager">
+            <summary>
+            Interface to define strategy
+            </summary>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.Application.Strategy.ICarouselManager.CreateCarousel(Logistics.Services.DeviceCommunication.API.Application.Models.TransactionData)">
+            <summary>
+            Strategy to create device object
+            </summary>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.Application.Strategy.ICarouselManager.MoveCarousel(Logistics.Services.DeviceCommunication.API.Application.Models.TransactionData,Logistics.Services.DeviceCommunication.API.DeviceInterface.Models.Slot)">
+            <summary>
+            Strategy to perform an action 
+            </summary>
+        </member>
+        <member name="T:Logistics.Services.DeviceCommunication.API.AutofacModule.ApplicationModule">
+            <summary>
+            class ApplicationModule
+            </summary>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.AutofacModule.ApplicationModule.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.AutofacModule.ApplicationModule.Load(Autofac.ContainerBuilder)">
+            <summary>
+            Load method
+            </summary>
+            <param name="builder"></param>
+        </member>
+        <member name="T:Logistics.Services.DeviceCommunication.API.BusinessLayer.CarouselConnection">
+            <summary>
+            This class checks whether a carousel is connected or not.
+            </summary>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.BusinessLayer.CarouselConnection.#ctor(Microsoft.Extensions.Configuration.IConfiguration,Logistics.Services.DeviceCommunication.API.DeviceInterface.Interfaces.IIPSocket)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="config"></param>
+            <param name="socket"></param>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.BusinessLayer.CarouselConnection.Check(System.Collections.Generic.IEnumerable{Logistics.Services.DeviceCommunication.API.Application.Models.CarouselData})">
+            <summary>
+            Checks whether a carousel is connected or not.
+            </summary>
+            <param name="carouselData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.BusinessLayer.CarouselConnection.CheckConnection(System.String,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="ipAddress"></param>
+            <param name="port"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Logistics.Services.DeviceCommunication.API.BusinessLayer.CarouselProcess">
+            <summary>
+            All Carousel processing implementation 
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunication.API.BusinessLayer.CarouselProcess._logger">
+            <summary>
+            Declare CarouselProcess type logger
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunication.API.BusinessLayer.CarouselProcess._deviceResponse">
+            <summary>
+            Declare deviceResponse field
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunication.API.BusinessLayer.CarouselProcess._carouselManager">
+            <summary>
+            Carousel manager instance
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunication.API.BusinessLayer.CarouselProcess._utility">
+            <summary>
+            Declare utility type 
+            </summary>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.BusinessLayer.CarouselProcess.#ctor(Microsoft.Extensions.Logging.ILogger{Logistics.Services.DeviceCommunication.API.BusinessLayer.CarouselProcess},Logistics.Services.DeviceCommunication.API.DeviceInterface.Interfaces.IDeviceResponse,Logistics.Services.DeviceCommunication.API.Application.Strategy.ICarouselManager,Logistics.Services.DeviceCommunication.API.Application.Interfaces.IUtility)">
+            <summary>
+             Constructor to initialize logger, deviceResponse and carouselManager
+            </summary>
+            <param name="logger"></param>
+            <param name="deviceResponse"></param>
+            <param name="carouselManager"></param>
+            <param name="utility"></param>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.BusinessLayer.CarouselProcess.MoveCarousel(Logistics.Services.DeviceCommunication.API.Application.Models.TransactionData)">
+            <summary>
+            Carousel move implementation
+            </summary>
+            <param name="transactionData"></param>
+        </member>
+        <member name="T:Logistics.Services.DeviceCommunication.API.BusinessLayer.ProcessTransactionMediator">
+            <summary>
+            ProcessTransactionMediator receive data from handler and process business logic
+            </summary>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.BusinessLayer.ProcessTransactionMediator.#ctor(Microsoft.Extensions.Logging.ILogger{Logistics.Services.DeviceCommunication.API.BusinessLayer.ProcessTransactionMediator},Logistics.Services.DeviceCommunication.API.Application.Interfaces.ICarouselProcess)">
+            <summary>
+            Constructor to initialize
+            </summary>
+            <param name="logger"></param>
+            <param name="carouselProcess"></param>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.BusinessLayer.ProcessTransactionMediator.Execute(BD.Core.EventBus.Events.Event)">
+            <summary>
+            Execute event coming from transaction queue service via subscriber
+            </summary>
+            <param name="event">Event of ProcessTransactionQueueIntegrationEvent type coming from subscriber</param>
+        </member>
+        <member name="T:Logistics.Services.DeviceCommunication.API.Configuration.Configuration">
+            <summary>
+            Configuration Class
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.Configuration.Configuration.KafkaTopic">
+            <summary>
+            read-write KafkaTopic property
+            </summary>
+        </member>
+        <member name="T:Logistics.Services.DeviceCommunication.API.Controllers.DeviceCommunicationController">
+            <summary>
+            Device communication controller
+            To mock the publishing of Event for dev and testing purpose
+            </summary>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.Controllers.DeviceCommunicationController.#ctor(Microsoft.Extensions.Configuration.IConfiguration,BD.Core.EventBus.Abstractions.IEventBus,Microsoft.Extensions.Logging.ILogger{Logistics.Services.DeviceCommunication.API.Controllers.DeviceCommunicationController},Logistics.Services.DeviceCommunication.API.Application.Interfaces.IMediator,Logistics.Services.DeviceCommunication.API.Application.Interfaces.ICarouselConnection)">
+            <summary>
+            Constructor to initialize Event bus and logger
+            </summary>
+            <param name="eventBus"></param>
+            <param name="logger"></param>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.Controllers.DeviceCommunicationController.PublishMessageEvent(Logistics.Services.DeviceCommunication.API.IntegrationEvents.Events.ProcessTransactionQueueIntegrationEvent)">
+            <summary>
+            Event publishing method for publishing Transaction Queue data to test subscriber.
+            For development and testing purpose
+            Will be removed
+            Not part of the application
+            </summary>
+            <param name="messageEvent"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.Controllers.DeviceCommunicationController.ConnectionCheck(System.Collections.Generic.IEnumerable{Logistics.Services.DeviceCommunication.API.Application.Models.CarouselData})">
+            <param name="carouselData"></param>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.Controllers.DeviceCommunicationController.Handle(Logistics.Services.DeviceCommunication.API.IntegrationEvents.Events.ProcessTransactionQueueIntegrationEvent)">
+            <summary>
+            Subscribing event from publisher.
+            </summary>
+            <param name="event">This event comming from Transaction Queue</param>
+            <returns></returns>
+        </member>
+        <member name="T:Logistics.Services.DeviceCommunication.API.DeviceInterface.Carousels.Carousel">
+            <summary>
+            Carousel Class
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunication.API.DeviceInterface.Carousels.Carousel._deviceResponse">
+            <summary>
+            declare DeviceResponse
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunication.API.DeviceInterface.Carousels.Carousel.CarAddress">
+            <summary>
+            declare CarAddress
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunication.API.DeviceInterface.Carousels.Carousel.RetryLimit">
+            <summary>
+            declare RetryLimit
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunication.API.DeviceInterface.Carousels.Carousel.isWriteSocket">
+            <summary>
+            declare isWriteSocket
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.DeviceInterface.Carousels.Carousel.Type">
+            <summary>
+            read-write Type property
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.DeviceInterface.Carousels.Carousel.IpAddress">
+            <summary>
+            read-write IpAddress property
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.DeviceInterface.Carousels.Carousel.IpPort">
+            <summary>
+            read-write IpPort property
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.DeviceInterface.Carousels.Carousel.Timeout">
+            <summary>
+            read-write Timeout property
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.DeviceInterface.Carousels.Carousel.TermChars">
+            <summary>
+            read-write TermChars property
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.DeviceInterface.Carousels.Carousel.UseCheckSum">
+            <summary>
+            read-write UseCheckSum property
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.DeviceInterface.Carousels.Carousel.LastErrorText">
+            <summary>
+            read-write LastErrorText property
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.DeviceInterface.Carousels.Carousel.ReturnsStatus">
+            <summary>
+            read-write ReturnsStatus property
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.DeviceInterface.Carousels.Carousel.LastCommandDT">
+            <summary>
+            read-write LastCommandDT property
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.DeviceInterface.Carousels.Carousel.IgnoreDisplayCommands">
+            <summary>
+            read-write IgnoreDisplayCommands property
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.DeviceInterface.Carousels.Carousel.IgnoreMoveCommand">
+            <summary>
+            read-write IgnoreMoveCommand property
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.DeviceInterface.Carousels.Carousel.telegramLog">
+            <summary>
+            read-write telegramLog property
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.DeviceInterface.Carousels.Carousel.response">
+            <summary>
+            read-write response property
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.DeviceInterface.Carousels.Carousel.responseLog">
+            <summary>
+            read-write responseLog property
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.DeviceInterface.Carousels.Carousel.IPSocket">
+            <summary>
+            read-write Sock property
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.DeviceInterface.Carousels.Carousel.TelegramLog">
+            <summary>
+            read-write TelegramLog property
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.DeviceInterface.Carousels.Carousel.Telegram">
+            <summary>
+            read-write Telegram property
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.DeviceInterface.Carousels.Carousel.Response">
+            <summary>
+             read-write Response property
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.DeviceInterface.Carousels.Carousel.ResponseLog">
+            <summary>
+            read-write ResponseLog property
+            </summary>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.DeviceInterface.Carousels.Carousel.#ctor(Logistics.Services.DeviceCommunication.API.Common.DeviceInterface.Enum.ControllerType,System.String,System.String,System.Int32,System.Int32,System.Boolean,Logistics.Services.DeviceCommunication.API.DeviceInterface.Interfaces.IDeviceResponse,Logistics.Services.DeviceCommunication.API.DeviceInterface.Interfaces.IIPSocket)">
+            <summary>
+            Carousel Constructor
+            </summary>
+            <param name="controlType"></param>
+            <param name="carAddr"></param>
+            <param name="ipAddr"></param>
+            <param name="port"></param>
+            <param name="TimeOut"></param>
+            <param name="returnsStatus"></param>
+            <param name="deviceResponse"></param>
+            <param name="socket"></param>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.DeviceInterface.Carousels.Carousel.Flush">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.DeviceInterface.Carousels.Carousel.IsConnected">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.DeviceInterface.Carousels.Carousel.Connect">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.DeviceInterface.Carousels.Carousel.Disconnect">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.DeviceInterface.Carousels.Carousel.SetCharacterAttributes">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.DeviceInterface.Carousels.Carousel.GetCurrentLocation">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.DeviceInterface.Carousels.Carousel.ClearDisplay">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.DeviceInterface.Carousels.Carousel.ClearBuffer">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.DeviceInterface.Carousels.Carousel.GetStatus">
+            <summary>
+            Device Status
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.DeviceInterface.Carousels.Carousel.Move(System.Int32,Logistics.Services.DeviceCommunication.API.DeviceInterface.Models.Slot,Logistics.Services.DeviceCommunication.API.Application.Models.TransactionData,System.String,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            
+            </summary>
+            <param name="shelfNum"></param>
+            <param name="slot"></param>
+            <param name="transactionData"></param>
+            <param name="message"></param>
+            <param name="leftOffset"></param>
+            <param name="positionNum"></param>
+            <param name="isOutsideComputer"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.DeviceInterface.Carousels.Carousel.GetStatus(System.Boolean)">
+            <summary>
+            
+            </summary>
+            <param name="isOutsideComputer"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.DeviceInterface.Carousels.Carousel.WaitForCarouselMoveCompletion(System.Boolean)">
+            <summary>
+            
+            </summary>
+            <param name="isOutsideComputer"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.DeviceInterface.Carousels.Carousel.ResetLog">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.DeviceInterface.Carousels.Carousel.ResetConnection">
+            <summary>
+            Instantiate carousel and check connection
+            </summary>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.DeviceInterface.Carousels.Carousel.MaxValue(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="fieldWidth"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.DeviceInterface.Carousels.Carousel.ParseResponseTelegram(Logistics.Services.DeviceCommunication.API.DeviceInterface.Enum.ItemNeeded)">
+            <summary>
+            
+            </summary>
+            <param name="which"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.DeviceInterface.Carousels.Carousel.TelegramResponse(System.Int32,Logistics.Services.DeviceCommunication.API.DeviceInterface.Enum.ItemNeeded,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="expectedLength"></param>
+            <param name="termChars"></param>
+            <param name="whichItem"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.DeviceInterface.Carousels.Carousel.SendAndReceive(System.String,System.Int32,System.String,System.Boolean)">
+            <summary>
+            Send data to device and read data from device
+            </summary>
+            <param name="Message"></param>
+            <param name="MaxReceive"></param>
+            <param name="TermChars"></param>
+            <param name="ReturnTerm"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.DeviceInterface.Carousels.Carousel.GetAsciiEncodedPosition(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="position"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Logistics.Services.DeviceCommunication.API.DeviceInterface.Carousels.CarWhiteIpcDualAccess">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.DeviceInterface.Carousels.CarWhiteIpcDualAccess.TargetShelf">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.DeviceInterface.Carousels.CarWhiteIpcDualAccess.#ctor(Logistics.Services.DeviceCommunication.API.Common.DeviceInterface.Enum.ControllerType,System.String,System.String,System.Int32,System.Int32,System.Boolean,Logistics.Services.DeviceCommunication.API.DeviceInterface.Interfaces.IDeviceResponse,Logistics.Services.DeviceCommunication.API.DeviceInterface.Interfaces.IIPSocket)">
+            <summary>
+            Default Constructor
+            </summary>
+            <param name="controlType"></param>
+            <param name="carAddr"></param>
+            <param name="ipAddr"></param>
+            <param name="port"></param>
+            <param name="timeOut"></param>
+            <param name="returnsStatus"></param>
+            <param name="deviceResponse"></param>
+            <param name="socket"></param>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.DeviceInterface.Carousels.CarWhiteIpcDualAccess.SetCharacterAttributes">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.DeviceInterface.Carousels.CarWhiteIpcDualAccess.GetCurrentLocation">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.DeviceInterface.Carousels.CarWhiteIpcDualAccess.Move(System.Int32,Logistics.Services.DeviceCommunication.API.DeviceInterface.Models.Slot,Logistics.Services.DeviceCommunication.API.Application.Models.TransactionData,System.String,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            
+            </summary>
+            <param name="shelfNum"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.DeviceInterface.Carousels.CarWhiteIpcDualAccess.ParseResponseTelegram(Logistics.Services.DeviceCommunication.API.DeviceInterface.Enum.ItemNeeded)">
+            <summary>
+            Parses the telegram response to fill the deviceResponse object
+            </summary>
+            <param name="which"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.DeviceInterface.Carousels.CarWhiteIpcDualAccess.GetStatus(System.Boolean)">
+            <summary>
+            Calls the telegramResponse method to send the data to carousel
+            </summary>
+            <param name="isOutsideComputer"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.DeviceInterface.Carousels.CarWhiteIpcDualAccess.WaitForCarouselMoveCompletion(System.Boolean)">
+            <summary>
+            
+            </summary>
+            <param name="isOutsideComputer"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.DeviceInterface.Carousels.CarWhiteIpcDualAccess.MoveCarousel(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="shelfNum"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.DeviceInterface.Carousels.CarWhiteIpcDualAccess.MoveCarousel(Logistics.Services.DeviceCommunication.API.DeviceInterface.Models.Slot,System.Boolean)">
+            <summary>
+            
+            </summary>
+            <param name="slot"></param>
+            <param name="isOutsideComputer"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Logistics.Services.DeviceCommunication.API.DeviceInterface.Carousels.CarWhiteTB1470">
+            <summary>
+            Class CarWhiteTB1470
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.DeviceInterface.Carousels.CarWhiteTB1470.TargetShelf">
+            <summary>
+            read-write TargetShelf property
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.DeviceInterface.Carousels.CarWhiteTB1470.CarFieldLength">
+            <summary>
+            read-write CarFieldLength property
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.DeviceInterface.Carousels.CarWhiteTB1470.PosFieldLength">
+            <summary>
+            read-write PosFieldLength property
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.DeviceInterface.Carousels.CarWhiteTB1470.Pos2FieldLength">
+            <summary>
+            read-write Pos2FieldLength property
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.DeviceInterface.Carousels.CarWhiteTB1470.DepthFieldLength">
+            <summary>
+            /read-write DepthFieldLength property
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.DeviceInterface.Carousels.CarWhiteTB1470.HeightFieldLength">
+            <summary>
+            read-write HeightFieldLength property
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.DeviceInterface.Carousels.CarWhiteTB1470.QtyFieldLength">
+            <summary>
+            read-write QtyFieldLength property
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.DeviceInterface.Carousels.CarWhiteTB1470.AlphaCharCount">
+            <summary>
+            read-write AlphaCharCount property
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.DeviceInterface.Carousels.CarWhiteTB1470.CanConfirm">
+            <summary>
+            read-write CanConfirm property
+            </summary>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.DeviceInterface.Carousels.CarWhiteTB1470.SetCharacterAttributes">
+            <summary>
+            SetCharacterAttributes</summary>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.DeviceInterface.Carousels.CarWhiteTB1470.GetStatus">
+            <summary>
+            GetStatus
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.DeviceInterface.Carousels.CarWhiteTB1470.GetCurrentLocation">
+            <summary>
+            GetCurrentLocation
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.DeviceInterface.Carousels.CarWhiteTB1470.Move(System.Int32,Logistics.Services.DeviceCommunication.API.DeviceInterface.Models.Slot,Logistics.Services.DeviceCommunication.API.Application.Models.TransactionData,System.String,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            move using shelf num
+            </summary>
+            <param name="shelfNum"></param>
+            <param name="slot"></param>
+            <param name="transactionData"></param>
+            <param name="message"></param>
+            <param name="leftOffset"></param>
+            <param name="positionNum"></param>
+            <param name="isOutsideComputer"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Logistics.Services.DeviceCommunication.API.DeviceInterface.Carousels.CarWhiteTb14702300">
+            <summary>
+            class CarWhiteTb14702300
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.DeviceInterface.Carousels.CarWhiteTb14702300.TargetShelf">
+            <summary>
+            read-write TargetShelf property
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.DeviceInterface.Carousels.CarWhiteTb14702300.BinBaseAddr">
+            <summary>
+            read-write BinBaseAddr property
+            </summary>        
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.DeviceInterface.Carousels.CarWhiteTb14702300.AlphaBaseAddr">
+            <summary>
+            read-write AlphaBaseAddr property
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.DeviceInterface.Carousels.CarWhiteTb14702300.IgnoreSendMessage">
+            <summary>
+            read-write IgnoreSendMessage property
+            </summary>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.DeviceInterface.Carousels.CarWhiteTb14702300.#ctor(Logistics.Services.DeviceCommunication.API.Common.DeviceInterface.Enum.ControllerType,System.String,System.String,System.Int32,System.Int32,System.Boolean,Logistics.Services.DeviceCommunication.API.DeviceInterface.Interfaces.IDeviceResponse,Logistics.Services.DeviceCommunication.API.DeviceInterface.Interfaces.IIPSocket)">
+            <summary>
+            CarWhiteTb14702300 constructor to set default value 
+            </summary>
+            <param name="controlType"></param>
+            <param name="carAddr"></param>
+            <param name="ipAddr"></param>
+            <param name="port"></param>
+            <param name="TimeOut"></param>
+            <param name="returnsStatus"></param>
+            <param name="deviceResponse"></param>
+            <param name="socket"></param>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.DeviceInterface.Carousels.CarWhiteTb14702300.SetCharacterAttributes">
+            <summary>
+            SetCharacterAttributes
+            </summary>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.DeviceInterface.Carousels.CarWhiteTb14702300.ClearBuffer">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.DeviceInterface.Carousels.CarWhiteTb14702300.ClearDisplay">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.DeviceInterface.Carousels.CarWhiteTb14702300.Move(System.Int32,Logistics.Services.DeviceCommunication.API.DeviceInterface.Models.Slot,Logistics.Services.DeviceCommunication.API.Application.Models.TransactionData,System.String,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            This method is used move carousel using slot
+            </summary>
+            <param name="shelfNum"></param>
+            <param name="slot"></param>
+            <param name="transactionData"></param>
+            <param name="message"></param>
+            <param name="leftOffset"></param>
+            <param name="positionNum"></param>
+            <param name="isOutsideComputer"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.DeviceInterface.Carousels.CarWhiteTb14702300.GetStatus(System.Boolean)">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.DeviceInterface.Carousels.CarWhiteTb14702300.GetCurrentLocation">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.DeviceInterface.Carousels.CarWhiteTb14702300.MoveCarousel(Logistics.Services.DeviceCommunication.API.DeviceInterface.Models.Slot,System.Nullable{System.Int32},System.String)">
+            <summary>
+            
+            </summary>
+            <param name="slot"></param>
+            <param name="quantity"></param>
+            <param name="message"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.DeviceInterface.Carousels.CarWhiteTb14702300.MoveCarousel(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="shelfNum"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.DeviceInterface.Carousels.CarWhiteTB1470H.TargetShelf">
+            <summary>
+            read-write TargetShelf property
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.DeviceInterface.Carousels.CarWhiteTB1470H.CarFieldLength">
+            <summary>
+            read-write CarFieldLength property
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.DeviceInterface.Carousels.CarWhiteTB1470H.PosFieldLength">
+            <summary>
+             read-write PosFieldLength property
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.DeviceInterface.Carousels.CarWhiteTB1470H.Pos2FieldLength">
+            <summary>
+             read-write Pos2FieldLength property
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.DeviceInterface.Carousels.CarWhiteTB1470H.DepthFieldLength">
+            <summary>
+            read-write DepthFieldLength property
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.DeviceInterface.Carousels.CarWhiteTB1470H.HeightFieldLength">
+            <summary>
+             read-write HeightFieldLength property
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.DeviceInterface.Carousels.CarWhiteTB1470H.QtyFieldLength">
+            <summary>
+             read-write QtyFieldLength property
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.DeviceInterface.Carousels.CarWhiteTB1470H.AlphaCharCount">
+            <summary>
+            read-write AlphaCharCount property
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.DeviceInterface.Carousels.CarWhiteTB1470H.CanConfirm">
+            <summary>
+            read-write CanConfirm property
+            </summary>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.DeviceInterface.Carousels.CarWhiteTB1470H.SetCharacterAttributes">
+            <summary>
+            SetCharacterAttributes
+            </summary>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.DeviceInterface.Carousels.CarWhiteTB1470H.GetStatus">
+            <summary>
+            Get stautus
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.DeviceInterface.Carousels.CarWhiteTB1470H.GetCurrentLocation">
+            <summary>
+            CurrentLocation
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.DeviceInterface.Carousels.CarWhiteTB1470H.Move(System.Int32,Logistics.Services.DeviceCommunication.API.DeviceInterface.Models.Slot,Logistics.Services.DeviceCommunication.API.Application.Models.TransactionData,System.String,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            move device using positionNum
+            </summary>
+            <param name="shelfNum"></param>
+            <param name="slot"></param>
+            <param name="transactionData"></param>
+            <param name="message"></param>
+            <param name="leftOffset"></param>
+            <param name="positionNum"></param>
+            <param name="isOutsideComputer"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Logistics.Services.DeviceCommunication.API.DeviceInterface.Common.IPSocket">
+            <summary>
+            Socket Class
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunication.API.DeviceInterface.Common.IPSocket.buffPos">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunication.API.DeviceInterface.Common.IPSocket.byteBuff">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunication.API.DeviceInterface.Common.IPSocket.ipAddr">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunication.API.DeviceInterface.Common.IPSocket.ipe">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunication.API.DeviceInterface.Common.IPSocket.lastErrorCode">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunication.API.DeviceInterface.Common.IPSocket.lastErrorText">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunication.API.DeviceInterface.Common.IPSocket.lineDelim">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunication.API.DeviceInterface.Common.IPSocket.MAXBACKLOG">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunication.API.DeviceInterface.Common.IPSocket.proto">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunication.API.DeviceInterface.Common.IPSocket.sockBuff">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunication.API.DeviceInterface.Common.IPSocket.sockBuffSIZE">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunication.API.DeviceInterface.Common.IPSocket.sockTimeout">
+            <summary>
+             declare socket Timeout 
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.DeviceInterface.Common.IPSocket.Socket">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.DeviceInterface.Common.IPSocket.IsConnected">
+            <summary>
+            read socket connection property
+            </summary>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.DeviceInterface.Common.IPSocket.#ctor">
+            <summary>
+            IPSocket method
+            </summary>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.DeviceInterface.Common.IPSocket.#ctor(System.Net.Sockets.Socket)">
+            <summary>
+            IPSocket method
+            </summary>
+            <param name="newSock"></param>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.DeviceInterface.Common.IPSocket.ClearReceiveBuffer">
+            <summary>
+            clean up buffer data
+            </summary>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.DeviceInterface.Common.IPSocket.ConnectToServer(System.String,System.Int32,System.UInt32)">
+            <summary>
+            Connect to addr and port
+            </summary>
+            <param name="addr"></param>
+            <param name="port"></param>
+            <param name="timeout"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.DeviceInterface.Common.IPSocket.CreateNewSocketObject">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.DeviceInterface.Common.IPSocket.Disconnect">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.DeviceInterface.Common.IPSocket.GetReceiveBuffer">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.DeviceInterface.Common.IPSocket.ReadSocket">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.DeviceInterface.Common.IPSocket.WaitForSocketData">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.DeviceInterface.Common.IPSocket.WriteSocket(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="sockData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.DeviceInterface.Common.IPSocket.Finalize">
+            <summary>
+            IPSocket Destructor
+            </summary>
+        </member>
+        <member name="T:Logistics.Services.DeviceCommunication.API.DeviceInterface.Common.Telegrams">
+            <summary>
+            class type Telegrams
+            </summary>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.DeviceInterface.Common.Telegrams.GetBytes(System.String)">
+            <summary>
+            Convertion from string to byte array
+            </summary>
+            <param name="s"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.DeviceInterface.Common.Telegrams.GetString(System.Byte[])">
+            <summary>
+             Conversion from byte array to string
+            </summary>
+            <param name="data"> byte array</param>
+            <returns>string</returns>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.DeviceInterface.Common.Telegrams.GetString(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Conversion from byte array to string
+            </summary>
+            <param name="data"></param>
+            <param name="startAt"></param>
+            <param name="count"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Logistics.Services.DeviceCommunication.API.DeviceInterface.DeviceResponse">
+             <summary>
+            It display device status 
+             </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.DeviceInterface.DeviceResponse.HasError">
+            <summary>
+            read-write property HasError
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.DeviceInterface.DeviceResponse.Message">
+            <summary>
+            read-write property Message
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.DeviceInterface.DeviceResponse.CurrentCarrier">
+            <summary>
+            read-write property CurrentCarrier
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.DeviceInterface.DeviceResponse.ErrorCode">
+            <summary>
+            read-write property ErrorCode
+            </summary>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.DeviceInterface.DeviceResponse.#ctor">
+            <summary>
+            deviceResponse constructor
+            </summary>
+        </member>
+        <member name="T:Logistics.Services.DeviceCommunication.API.DeviceInterface.Enum.DevResponse">
+            <summary>
+            DevResponse Enum
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunication.API.DeviceInterface.Enum.DevResponse.OK">
+            <summary>
+             enum DevResponse constant OK
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunication.API.DeviceInterface.Enum.DevResponse.InMotion">
+            <summary>
+             enum DevResponse constant InMotion
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunication.API.DeviceInterface.Enum.DevResponse.SafetyError">
+            <summary>
+             enum DevResponse constant SafetyError
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunication.API.DeviceInterface.Enum.DevResponse.TransactionInProgress">
+            <summary>
+             enum DevResponse constant TransactionInProgress
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunication.API.DeviceInterface.Enum.DevResponse.BufferFull">
+            <summary>
+             enum DevResponse constant BufferFull
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunication.API.DeviceInterface.Enum.DevResponse.NoDataAvailable">
+            <summary>
+             enum DevResponse constant NoDataAvailable
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunication.API.DeviceInterface.Enum.DevResponse.InvalidLocation">
+            <summary>
+             enum DevResponse constant InvalidLocation
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunication.API.DeviceInterface.Enum.DevResponse.SlowMotion">
+            <summary>
+             enum DevResponse constant SlowMotion
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunication.API.DeviceInterface.Enum.DevResponse.NoResponse">
+            <summary>
+             enum DevResponse constant NoResponse
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunication.API.DeviceInterface.Enum.DevResponse.StatusInvalid">
+            <summary>
+             enum DevResponse constant StatusInvalid
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunication.API.DeviceInterface.Enum.DevResponse.InvalidCommand">
+            <summary>
+             enum DevResponse constant InvalidCommand
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunication.API.DeviceInterface.Enum.DevResponse.ControlProgramError">
+            <summary>
+             enum DevResponse constant ControlProgramError
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunication.API.DeviceInterface.Enum.DevResponse.ImbalanceDown">
+            <summary>
+             enum DevResponse constant ImbalanceDown
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunication.API.DeviceInterface.Enum.DevResponse.ImbalanceUp">
+            <summary>
+             enum DevResponse constant ImbalanceUp
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunication.API.DeviceInterface.Enum.DevResponse.ChecksumError">
+            <summary>
+             enum DevResponse constant ChecksumError
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunication.API.DeviceInterface.Enum.DevResponse.CommError">
+            <summary>
+             enum DevResponse constant CommError
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunication.API.DeviceInterface.Enum.DevResponse.DeviceBusy">
+            <summary>
+             enum DevResponse constant DeviceBusy
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunication.API.DeviceInterface.Enum.DevResponse.DeviceNotConnected">
+            <summary>
+             enum DevResponse constant DeviceNotConnected
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunication.API.DeviceInterface.Enum.DevResponse.DeviceNotFound">
+            <summary>
+             enum DevResponse constant DeviceNotFound
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunication.API.DeviceInterface.Enum.DevResponse.InvalidClient">
+            <summary>
+             enum DevResponse constant InvalidClient
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunication.API.DeviceInterface.Enum.DevResponse.InvalidParameter">
+            <summary>
+             enum DevResponse constant InvalidParameter
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunication.API.DeviceInterface.Enum.DevResponse.InternalServerError">
+            <summary>
+             enum DevResponse constant InternalServerError
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunication.API.DeviceInterface.Enum.DevResponse.ExtendedErrorCode">
+            <summary>
+             enum DevResponse constant ExtendedErrorCode
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunication.API.DeviceInterface.Enum.DevResponse.MaxStatusValue">
+            <summary>
+             enum DevResponse constant MaxStatusValue
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunication.API.DeviceInterface.Enum.DevResponse.ManualMode">
+            <summary>
+             enum DevResponse constant ManualMode
+            </summary>
+        </member>
+        <member name="T:Logistics.Services.DeviceCommunication.API.DeviceInterface.Enum.ItemNeeded">
+            <summary>
+            enum ItemNeeded
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunication.API.DeviceInterface.Enum.ItemNeeded.CARRIER">
+            <summary>
+            enum constant CARRIER
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunication.API.DeviceInterface.Enum.ItemNeeded.STATUS">
+            <summary>
+            enum constant STATUS
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunication.API.DeviceInterface.Enum.ItemNeeded.DATARECORD">
+            <summary>
+            enum constant DATARECORD
+            </summary>
+        </member>
+        <member name="T:Logistics.Services.DeviceCommunication.API.DeviceInterface.Factory.CarouselFactory">
+            <summary>
+            Factory class for generating the carousal object
+            </summary>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.DeviceInterface.Factory.CarouselFactory.GetCarouselType(Logistics.Services.DeviceCommunication.API.Application.Models.Device,Logistics.Services.DeviceCommunication.API.DeviceInterface.Interfaces.IDeviceResponse,Logistics.Services.DeviceCommunication.API.DeviceInterface.Interfaces.IIPSocket,System.String)">
+            <summary>
+            Carousel factory method instantiate carousel as per  ControllerType
+            </summary>
+            <param name="carouselData"></param>
+            <param name="deviceResponse"></param>
+            <param name="socket"></param>
+            <param name="timeOut"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Logistics.Services.DeviceCommunication.API.DeviceInterface.Interfaces.ICarousel">
+            <summary>
+            Interface for All Carousel Classes
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.DeviceInterface.Interfaces.ICarousel.LastErrorText">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.DeviceInterface.Interfaces.ICarousel.IPSocket">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.DeviceInterface.Interfaces.ICarousel.IsConnected">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.DeviceInterface.Interfaces.ICarousel.Connect">
+            <summary>
+            Connect to Carousel server
+            </summary>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.DeviceInterface.Interfaces.ICarousel.Disconnect">
+            <summary>
+            Disconnect to Carousel server
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.DeviceInterface.Interfaces.ICarousel.ReturnsStatus">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.DeviceInterface.Interfaces.ICarousel.LastCommandDT">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.DeviceInterface.Interfaces.ICarousel.IgnoreDisplayCommands">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.DeviceInterface.Interfaces.ICarousel.IgnoreMoveCommand">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.DeviceInterface.Interfaces.ICarousel.TelegramLog">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.DeviceInterface.Interfaces.ICarousel.Telegram">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.DeviceInterface.Interfaces.ICarousel.Response">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.DeviceInterface.Interfaces.ICarousel.ResponseLog">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.DeviceInterface.Interfaces.ICarousel.ClearDisplay">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.DeviceInterface.Interfaces.ICarousel.ClearBuffer">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.DeviceInterface.Interfaces.ICarousel.Move(System.Int32,Logistics.Services.DeviceCommunication.API.DeviceInterface.Models.Slot,Logistics.Services.DeviceCommunication.API.Application.Models.TransactionData,System.String,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            
+            </summary>
+            <param name="shelfNum"></param>
+            <param name="slot"></param>
+            <param name="transactionData"></param>
+            <param name="message"></param>
+            <param name="leftOffset"></param>
+            <param name="positionNum"></param>
+            <param name="isOutsideComputer"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.DeviceInterface.Interfaces.ICarousel.GetCurrentLocation">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.DeviceInterface.Interfaces.ICarousel.WaitForCarouselMoveCompletion(System.Boolean)">
+            <summary>
+            
+            </summary>
+            <param name="isOutsideComputer"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.DeviceInterface.Interfaces.ICarousel.SendAndReceive(System.String,System.Int32,System.String,System.Boolean)">
+            <summary>
+            
+            </summary>
+            <param name="Message"></param>
+            <param name="MaxReceive"></param>
+            <param name="TermChars"></param>
+            <param name="ReturnTerm"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Logistics.Services.DeviceCommunication.API.DeviceInterface.Interfaces.ICarouselFactory">
+            <summary>
+            Interface to implement the carousal factory class
+            </summary>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.DeviceInterface.Interfaces.ICarouselFactory.GetCarouselType(Logistics.Services.DeviceCommunication.API.Application.Models.Device,Logistics.Services.DeviceCommunication.API.DeviceInterface.Interfaces.IDeviceResponse,Logistics.Services.DeviceCommunication.API.DeviceInterface.Interfaces.IIPSocket,System.String)">
+            <summary>
+            Instantiate Carousel 
+            </summary>
+            <param name="carouselData"></param>
+            <param name="deviceResponse"></param>
+            <param name="socket"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Logistics.Services.DeviceCommunication.API.DeviceInterface.Interfaces.IDeviceResponse">
+            <summary>
+            Interface to implement device status class
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.DeviceInterface.Interfaces.IDeviceResponse.HasError">
+            <summary>
+            read-write property HasError
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.DeviceInterface.Interfaces.IDeviceResponse.Message">
+            <summary>
+            read-write property Message
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.DeviceInterface.Interfaces.IDeviceResponse.CurrentCarrier">
+            <summary>
+            read-write property CurrentCarrier
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.DeviceInterface.Interfaces.IDeviceResponse.ErrorCode">
+            <summary>
+            read-write property ErrorCode
+            </summary>
+        </member>
+        <member name="T:Logistics.Services.DeviceCommunication.API.DeviceInterface.Interfaces.IIPSocket">
+            <summary>
+            Interface for ip socket
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.DeviceInterface.Interfaces.IIPSocket.Socket">
+            <summary>Socket </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.DeviceInterface.Interfaces.IIPSocket.IsConnected">
+            <summary> Property to check socket is connected or not</summary>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.DeviceInterface.Interfaces.IIPSocket.ReadSocket">
+            <summary> Read available socket </summary>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.DeviceInterface.Interfaces.IIPSocket.ClearReceiveBuffer">
+            <summary> clear the buffer</summary>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.DeviceInterface.Interfaces.IIPSocket.ConnectToServer(System.String,System.Int32,System.UInt32)">
+            <summary> make connect at port and ipaddress</summary>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.DeviceInterface.Interfaces.IIPSocket.Disconnect">
+            <summary>diconnect connection</summary>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.DeviceInterface.Interfaces.IIPSocket.WriteSocket(System.String)">
+            <summary> write on connected socket</summary>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.DeviceInterface.Interfaces.IIPSocket.WaitForSocketData">
+            <summary>write on connected socket</summary>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.DeviceInterface.Interfaces.IIPSocket.GetReceiveBuffer">
+            <summary> Get receive buffer</summary>
+        </member>
+        <member name="T:Logistics.Services.DeviceCommunication.API.DeviceInterface.Models.Isa">
+            <summary>
+            Class Isa
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.DeviceInterface.Models.Isa.ShortDescription">
+            <summary>
+            read-write property ShortDescription
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.DeviceInterface.Models.Isa.DisplayArrowDirection">
+            <summary>
+            read-write property DisplayArrowDirection
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.DeviceInterface.Models.Isa.IsFiniteOffset">
+            <summary>
+            read-write property IsFiniteOffset
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.DeviceInterface.Models.Isa.IsStatic">
+            <summary>
+            read-write property IsStatic
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.DeviceInterface.Models.Isa.MaxShelf">
+            <summary>
+            read-write property MaxShelf
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.DeviceInterface.Models.Isa.MaxRack">
+            <summary>
+            read-write property MaxRack
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.DeviceInterface.Models.Isa.MaxDisplayColumns">
+            <summary>
+            read-write property MaxDisplayColumns
+            </summary>
+        </member>
+        <member name="T:Logistics.Services.DeviceCommunication.API.DeviceInterface.Models.Rack">
+            <summary>
+            Rack class
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.DeviceInterface.Models.Rack.RackNum">
+            <summary>
+            read-write property RackNum
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.DeviceInterface.Models.Rack.ISA">
+            <summary>
+            read-write property RackNum
+            </summary>
+        </member>
+        <member name="T:Logistics.Services.DeviceCommunication.API.DeviceInterface.Models.Shelf">
+            <summary>
+             class Shelf
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.DeviceInterface.Models.Shelf.OverideBaseAddr">
+            <summary>
+            read-write property OverideBaseAddr
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.DeviceInterface.Models.Shelf.ShelfNum">
+            <summary>
+            read-write property ShelfNum
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.DeviceInterface.Models.Shelf.Rack">
+            <summary>
+            read-write property Rack
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.DeviceInterface.Models.Shelf.NextShelf">
+            <summary>
+            read-write property NextShelf
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.DeviceInterface.Models.Shelf.PreviousShelf">
+            <summary>
+            read-write property PreviousShelf
+            </summary>
+        </member>
+        <member name="T:Logistics.Services.DeviceCommunication.API.DeviceInterface.Models.Bin">
+            <summary>
+            class Bin
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.DeviceInterface.Models.Bin.BinNum">
+            <summary>
+            read-write property BinNum
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.DeviceInterface.Models.Bin.LeftOffset">
+            <summary>
+            read-write property LeftOffset
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.DeviceInterface.Models.Bin.Shelf">
+            <summary>
+            read-write property Shelf
+            </summary>
+        </member>
+        <member name="T:Logistics.Services.DeviceCommunication.API.DeviceInterface.Models.Slot">
+            <summary>
+            class Slot
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.DeviceInterface.Models.Slot.SlotNum">
+            <summary>
+            read-write property SlotNum
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.DeviceInterface.Models.Slot.DispenseForm">
+            <summary>
+            read-write property DispenseForm
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.DeviceInterface.Models.Slot.QtyOnHand">
+            <summary>
+            read-write property QtyOnHand
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.DeviceInterface.Models.Slot.QtyMin">
+            <summary>
+            read-write property QtyMin
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.DeviceInterface.Models.Slot.QtyMax">
+            <summary>
+            read-write property QtyMax
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.DeviceInterface.Models.Slot.QtyInPrepack">
+            <summary>
+            read-write property QtyInPrepack
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.DeviceInterface.Models.Slot.QtyPrepackFixed">
+            <summary>
+            read-write property QtyPrepackFixed
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.DeviceInterface.Models.Slot.ReplenishmentSlotId">
+            <summary>
+            read-write property ReplenishmentSlotId
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.DeviceInterface.Models.Slot.OrderFromDistributor">
+            <summary>
+            read-write property OrderFromDistributor
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.DeviceInterface.Models.Slot.Bin">
+            <summary>
+            read-write property Bin
+            </summary>
+        </member>
+        <member name="T:Logistics.Services.DeviceCommunication.API.Common.DeviceInterface.Enum.ControllerType">
+            <summary>
+            enum ControllerType
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunication.API.Common.DeviceInterface.Enum.ControllerType.Undefined">
+            <summary>
+             enum ControllerType member Undefined
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunication.API.Common.DeviceInterface.Enum.ControllerType.RemstarT3">
+            <summary>
+             enum ControllerType member RemstarT3
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunication.API.Common.DeviceInterface.Enum.ControllerType.WhiteTB1470">
+            <summary>
+             enum ControllerType member WhiteTB1470
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunication.API.Common.DeviceInterface.Enum.ControllerType.HanelMP0A">
+            <summary>
+             enum ControllerType member HanelMP0A
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunication.API.Common.DeviceInterface.Enum.ControllerType.HanelMP0N">
+            <summary>
+             enum ControllerType member HanelMP0N
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunication.API.Common.DeviceInterface.Enum.ControllerType.RemstarRCC2">
+            <summary>
+             enum ControllerType member RemstarRCC2
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunication.API.Common.DeviceInterface.Enum.ControllerType.WhiteTB1470H">
+            <summary>
+             enum ControllerType member WhiteTB1470H
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunication.API.Common.DeviceInterface.Enum.ControllerType.WhiteTB1470_2300">
+            <summary>
+             enum ControllerType member WhiteTB1470_2300
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunication.API.Common.DeviceInterface.Enum.ControllerType.WhiteHHuntsville">
+            <summary>
+             enum ControllerType member WhiteHHuntsville
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunication.API.Common.DeviceInterface.Enum.ControllerType.MegaMat">
+            <summary>
+             enum ControllerType member MegaMat
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunication.API.Common.DeviceInterface.Enum.ControllerType.WhiteHCHSpohn">
+            <summary>
+             enum ControllerType member WhiteHCHSpohn
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunication.API.Common.DeviceInterface.Enum.ControllerType.WhiteTB2260">
+            <summary>
+             enum ControllerType member WhiteTB2260
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunication.API.Common.DeviceInterface.Enum.ControllerType.WhiteTB2260_k">
+            <summary>
+             enum ControllerType member WhiteTB2260_k
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunication.API.Common.DeviceInterface.Enum.ControllerType.Sapient_SSCPLC">
+            <summary>
+             enum ControllerType member Sapient_SSCPLC
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunication.API.Common.DeviceInterface.Enum.ControllerType.Sapient_HornerPLC">
+            <summary>
+             enum ControllerType member Sapient_HornerPLC
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunication.API.Common.DeviceInterface.Enum.ControllerType.WhiteIPC">
+            <summary>
+             enum ControllerType member WhiteIPC
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunication.API.Common.DeviceInterface.Enum.ControllerType.WhiteIPCDualAccess">
+            <summary>
+             enum ControllerType member WhiteIPCDualAccess
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunication.API.Common.DeviceInterface.Enum.ControllerType.RemstarC3000">
+            <summary>
+             enum ControllerType member RemstarC3000
+            </summary>
+        </member>
+        <member name="T:Logistics.Services.DeviceCommunication.API.Infrastructure.Exceptions.DeviceCommunicationException">
+            <summary>
+            class DeviceCommunicationException
+            </summary>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.Infrastructure.Exceptions.DeviceCommunicationException.#ctor">
+            <summary>
+            constructor DeviceCommunicationException
+            </summary>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.Infrastructure.Exceptions.DeviceCommunicationException.#ctor(System.String)">
+            <summary>
+            Constructor DeviceCommunicationException 
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.Infrastructure.Exceptions.DeviceCommunicationException.#ctor(System.String,System.String)">
+            <summary>
+             Constructor DeviceCommunicationException 
+            </summary>
+            <param name="message"></param>
+            <param name="responseModel"></param>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.Infrastructure.Exceptions.DeviceCommunicationException.#ctor(System.String,System.Exception)">
+            <summary>
+             Constructor DeviceCommunicationException 
+            </summary>
+            <param name="message"></param>
+            <param name="innerException"></param>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.Infrastructure.Exceptions.DeviceCommunicationException.#ctor(System.String,System.String,System.Exception)">
+            <summary>
+             Constructor DeviceCommunicationException 
+            </summary>
+            <param name="message"></param>
+            <param name="customMessage"></param>
+            <param name="innerException"></param>
+        </member>
+        <member name="T:Logistics.Services.DeviceCommunication.API.Infrastructure.Exceptions.ExceptionConfig">
+            <summary>
+            class ExceptionConfig
+            </summary>
+        </member>
+        <member name="T:Logistics.Services.DeviceCommunication.API.Infrastructure.Exceptions.ExceptionConfig.Exceptions">
+            <summary>  
+            Different types of exceptions.  
+            </summary>  
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunication.API.Infrastructure.Exceptions.ExceptionConfig.Exceptions.NullReferenceException">
+            <summary>
+            enum constant NullReferenceException 
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunication.API.Infrastructure.Exceptions.ExceptionConfig.Exceptions.FileNotFoundException">
+            <summary>
+            enum constant FileNotFoundException 
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunication.API.Infrastructure.Exceptions.ExceptionConfig.Exceptions.OverflowException">
+            <summary>
+            enum constant OverflowException 
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunication.API.Infrastructure.Exceptions.ExceptionConfig.Exceptions.OutOfMemoryException">
+            <summary>
+            enum constant OutOfMemoryException 
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunication.API.Infrastructure.Exceptions.ExceptionConfig.Exceptions.InvalidCastException">
+            <summary>
+            enum constant InvalidCastException 
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunication.API.Infrastructure.Exceptions.ExceptionConfig.Exceptions.ObjectDisposedException">
+            <summary>
+            enum constant ObjectDisposedException 
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunication.API.Infrastructure.Exceptions.ExceptionConfig.Exceptions.UnauthorizedAccessException">
+            <summary>
+            enum constant UnauthorizedAccessException 
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunication.API.Infrastructure.Exceptions.ExceptionConfig.Exceptions.NotImplementedException">
+            <summary>
+            enum constant NotImplementedException 
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunication.API.Infrastructure.Exceptions.ExceptionConfig.Exceptions.NotSupportedException">
+            <summary>
+            enum constant NotSupportedException 
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunication.API.Infrastructure.Exceptions.ExceptionConfig.Exceptions.InvalidOperationException">
+            <summary>
+            enum constant InvalidOperationException 
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunication.API.Infrastructure.Exceptions.ExceptionConfig.Exceptions.TimeoutException">
+            <summary>
+            enum constant TimeoutException 
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunication.API.Infrastructure.Exceptions.ExceptionConfig.Exceptions.ArgumentException">
+            <summary>
+            enum constant ArgumentException 
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunication.API.Infrastructure.Exceptions.ExceptionConfig.Exceptions.FormatException">
+            <summary>
+            enum constant FormatException 
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunication.API.Infrastructure.Exceptions.ExceptionConfig.Exceptions.StackOverflowException">
+            <summary>
+            enum constant StackOverflowException 
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunication.API.Infrastructure.Exceptions.ExceptionConfig.Exceptions.SqlException">
+            <summary>
+            enum constant SqlException 
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunication.API.Infrastructure.Exceptions.ExceptionConfig.Exceptions.IndexOutOfRangeException">
+            <summary>
+            enum constant IndexOutOfRangeException 
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunication.API.Infrastructure.Exceptions.ExceptionConfig.Exceptions.IOException">
+            <summary>
+            enum constant IOException 
+            </summary>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.Infrastructure.Exceptions.ExceptionConfig.GetErrorCode(System.Type)">
+            <summary>  
+            This method will return the status code based on the exception type.  
+            </summary>  
+            <param name="exceptionType"></param>  
+            <returns>HttpStatusCode</returns>  
+        </member>
+        <member name="T:Logistics.Services.DeviceCommunication.API.Infrastructure.Filters.CustomExceptionFilter">
+            <summary>
+            Custom  Exception filter
+            </summary>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.Infrastructure.Filters.CustomExceptionFilter.#ctor(Logistics.Services.DeviceCommunication.API.Infrastructure.Exceptions.ExceptionConfig)">
+            <summary>
+            Parametarized constructor
+            </summary>
+            <param name="exceptionConfig"></param>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.Infrastructure.Filters.CustomExceptionFilter.OnException(Microsoft.AspNetCore.Mvc.Filters.ExceptionContext)">
+            <summary>
+            Exception handler
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="T:Logistics.Services.DeviceCommunication.API.Infrastructure.Services.IdentityService">
+            <summary>
+            class IdentityService
+            </summary>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.Infrastructure.Services.IdentityService.#ctor(System.Net.Http.HttpClient)">
+            <summary>
+            IdentityService constructor
+            </summary>
+            <param name="client"></param>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.Infrastructure.Services.IdentityService.Client">
+            <summary>
+            read HttpClient object
+            </summary>
+        </member>
+        <member name="T:Logistics.Services.DeviceCommunication.API.Infrastructure.Services.IIdentityService">
+            <summary>
+            IIdentityService interface
+            </summary>
+        </member>
+        <member name="T:Logistics.Services.DeviceCommunication.API.IntegrationEvents.EventHandling.ProcessTransactionQueueEventHandler">
+            <summary>
+            EventHandler to process TransactionQueue data comming from transaction Queue service
+            </summary>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.IntegrationEvents.EventHandling.ProcessTransactionQueueEventHandler.#ctor(Logistics.Services.DeviceCommunication.API.Application.Interfaces.IMediator,Microsoft.Extensions.Logging.ILogger{Logistics.Services.DeviceCommunication.API.IntegrationEvents.EventHandling.ProcessTransactionQueueEventHandler})">
+            <summary>
+            constructor to Initialize mediator and logger
+            </summary>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.IntegrationEvents.EventHandling.ProcessTransactionQueueEventHandler.Handle(Logistics.Services.DeviceCommunication.API.IntegrationEvents.Events.ProcessTransactionQueueIntegrationEvent)">
+            <summary>
+            Subscribing event from publisher.
+            </summary>
+            <param name="event">This event comming from Transaction Queue</param>
+            <returns></returns>
+        </member>
+        <member name="T:Logistics.Services.DeviceCommunication.API.IntegrationEvents.Events.ProcessTransactionQueueIntegrationEvent">
+             <summary>
+            ProcessTransactionQueueIntegrationEvent: This is Transaction Queue type event comming from 
+            Transaction Queue service.
+             </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.IntegrationEvents.Events.ProcessTransactionQueueIntegrationEvent.TransactionData">
+            <summary>
+            read write TransactionData
+            </summary>
+        </member>
+        <member name="T:Logistics.Services.DeviceCommunication.API.Program">
+            <summary>
+            Program class
+            </summary>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.Program.Main(System.String[])">
+            <summary>
+            Main method entry point
+            </summary>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.Program.CreateWebHostBuilder(System.String[])">
+            <summary>
+            CreateWebHostBuilder method
+            </summary>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Logistics.Services.DeviceCommunication.API.Registration.RegistrationExtension">
+            <summary> Partial extension class for registration. </summary>
+            NOTE: Please refer all RegistrationExtension classes to get the broader picture
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.Registration.RegistrationExtension.AddSwagger(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary> Register all Swagger dependencies </summary>
+            <param name="services"> Instance of IServiceCollection </param>
+            <returns> services (Instance of IServiceCollection) </returns>
+        </member>
+        <member name="T:Logistics.Services.DeviceCommunication.API.ServiceDependencies">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.ServiceDependencies.AddGlobalServices(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration,Microsoft.AspNetCore.Hosting.IHostingEnvironment,Microsoft.Extensions.Logging.ILogger)">
+            <summary>
+            Adds the required global and common services needed in application
+            </summary>
+            <param name="services"></param>
+            <param name="configuration"></param>
+            <param name="env"></param>
+            <param name="logger"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.ServiceDependencies.AddApplicationServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Adds the required internal services needed in application
+            </summary>
+            <param name="services"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.ServiceDependencies.UseServices(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.Extensions.Configuration.IConfiguration,Microsoft.AspNetCore.Hosting.IHostingEnvironment,Microsoft.Extensions.Logging.ILogger)">
+            <summary>
+            
+            </summary>
+            <param name="app"></param>
+            <param name="configuration"></param>
+            <param name="env"></param>
+            <param name="logger"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.ServiceDependencies.UseEventBusServices(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            
+            </summary>
+            <param name="app"></param>
+            <param name="configuration"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.ServiceDependencies.GetSectionSetting(Microsoft.Extensions.Configuration.IConfiguration,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="configuration"></param>
+            <param name="sectionname"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Logistics.Services.DeviceCommunication.API.Startup">
+            <summary>
+            Main StartUp Class
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.Startup.Configuration">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.Startup.Environment">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.DeviceCommunication.API.Startup.Logger">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration,Microsoft.AspNetCore.Hosting.IHostingEnvironment,Microsoft.Extensions.Logging.ILogger{Logistics.Services.DeviceCommunication.API.Startup})">
+            <summary>
+            
+            </summary>
+            <param name="configuration"></param>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IHostingEnvironment,System.IServiceProvider)">
+            <summary>
+            This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+            </summary>
+            <param name="app"></param>
+            <param name="env"></param>
+            <param name="serviceProvider"></param>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            This method gets called by the runtime. Use this method to add services to the container.
+            For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
+            </summary>
+            <param name="services"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Logistics.Services.DeviceCommunication.API.Utilities.Utility">
+            <summary>
+            This  class is created as an utility class for DeviceCommunication microservice.
+            </summary>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.Utilities.Utility.BuildStorageSpaceItem(System.Collections.Generic.List{Logistics.Services.DeviceCommunication.API.Application.Models.StorageSpace})">
+            <summary>
+            creating storage space items
+            </summary>
+            <param name="storageSpaceItems"></param>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.Utilities.Utility.BuildStorageSpaceSlot(System.Collections.Generic.List{Logistics.Services.DeviceCommunication.API.Application.Models.StorageSpace})">
+            <summary>
+            Creating Slot storage spcae item
+            </summary>
+            <param name="storageSpaceItems"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.Utilities.Utility.BuildStorageSpaceBin(System.Collections.Generic.List{Logistics.Services.DeviceCommunication.API.Application.Models.StorageSpace})">
+            <summary>
+            Creating bin storage space item
+            </summary>
+            <param name="storageSpaceItems"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.Utilities.Utility.BuildStorageSpaceShelf(System.Collections.Generic.List{Logistics.Services.DeviceCommunication.API.Application.Models.StorageSpace})">
+            <summary>
+            Creating shelf storage space item
+            </summary>
+            <param name="storageSpaceItems"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.Utilities.Utility.BuildStorageSpaceShelfShallow(System.Collections.Generic.List{Logistics.Services.DeviceCommunication.API.Application.Models.StorageSpace})">
+            <summary>
+            Creating shelf shallow storage space item
+            </summary>
+            <param name="storageSpaceItems"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Logistics.Services.DeviceCommunication.API.Utilities.Utility.BuildStorageSpaceRack(System.Collections.Generic.List{Logistics.Services.DeviceCommunication.API.Application.Models.StorageSpace})">
+            <summary>
+            Creating rack storage space item
+            </summary>
+            <param name="storageSpaceItems"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Logistics.Services.DeviceCommunicationAPI.Application.Common.Constants">
+            <summary>
+            This class contains all contant messages
+            </summary>
+        </member>
+        <member name="T:Logistics.Services.DeviceCommunicationAPI.Application.Common.Constants.ProcessTransactionMediator">
+            <summary>
+            Class specific constants
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunicationAPI.Application.Common.Constants.ProcessTransactionMediator.EventRecieveFail">
+            <summary>
+            Use In Execute Method/// </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunicationAPI.Application.Common.Constants.ProcessTransactionMediator.EventRecieveSuccess">
+            <summary>
+            Use In Execute Method
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunicationAPI.Application.Common.Constants.ProcessTransactionMediator.EventRecievedAtMediator">
+            <summary>
+            Use In Execute Method
+            </summary>
+        </member>
+        <member name="T:Logistics.Services.DeviceCommunicationAPI.Application.Common.Constants.ProcessTransactionQueueEventHandler">
+            <summary>
+            Class specific constants
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunicationAPI.Application.Common.Constants.ProcessTransactionQueueEventHandler.DataReceivedFromTransactionQueue">
+            <summary>
+            Use In Handle Method
+            </summary>
+        </member>
+        <member name="T:Logistics.Services.DeviceCommunicationAPI.Application.Common.Constants.CarousalProcess">
+            <summary>
+            Class specific constants
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunicationAPI.Application.Common.Constants.CarousalProcess.UnableToConnectToCarousel">
+             <summary>
+            Use In MoveCarousel Method
+             </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunicationAPI.Application.Common.Constants.CarousalProcess.CarouselMoveSucccessfully">
+             <summary>
+            Use In MoveCarousel Method
+             </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunicationAPI.Application.Common.Constants.CarousalProcess.Response">
+             <summary>
+            Use In MoveCarousel Method
+             </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunicationAPI.Application.Common.Constants.CarousalProcess.WhiteTB1470_2300CarouselMoveSucccessfully">
+             <summary>
+            Use In MoveCarousel Method
+             </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunicationAPI.Application.Common.Constants.CarousalProcess.MoveWhiteTB1470_2300">
+             <summary>
+            Use In MoveCarousel Method
+             </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunicationAPI.Application.Common.Constants.CarousalProcess.ClearBuffer">
+             <summary>
+            Use In MoveCarousel Method
+             </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunicationAPI.Application.Common.Constants.CarousalProcess.Move">
+             <summary>
+            Use In MoveCarousel Method
+             </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunicationAPI.Application.Common.Constants.CarousalProcess.CarouselConnected">
+             <summary>
+            Use In MoveCarousel Method
+             </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunicationAPI.Application.Common.Constants.CarousalProcess.SlotObjectCreated">
+             <summary>
+            Use In MoveCarousel Method
+             </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunicationAPI.Application.Common.Constants.CarousalProcess.CarouselCreated">
+            <summary>
+            Use In MoveCarousel Method
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunicationAPI.Application.Common.Constants.CarousalProcess.CarouselMoved">
+            <summary>
+            Use In MoveCarousel Method
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunicationAPI.Application.Common.Constants.CarousalProcess.ConnectionReset">
+             <summary>
+            Use In MoveCarousel Method
+             </summary>
+        </member>
+        <member name="T:Logistics.Services.DeviceCommunicationAPI.Application.Common.Constants.CustomExceptionFilter">
+            <summary>
+            Class specific constants
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunicationAPI.Application.Common.Constants.CustomExceptionFilter.CustomErrorMessage">
+             <summary>
+            Use In OnException Method
+             </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunicationAPI.Application.Common.Constants.CustomExceptionFilter.CustomCode">
+             <summary>
+            Use In OnException Method
+             </summary>
+        </member>
+        <member name="T:Logistics.Services.DeviceCommunicationAPI.Application.Common.Constants.TelegramAppend">
+            <summary>
+            Class specific constants
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunicationAPI.Application.Common.Constants.TelegramAppend.CarWhiteTermChars">
+            <summary>
+            Use in SetCharacterAttributes method
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunicationAPI.Application.Common.Constants.TelegramAppend.CarWhiteBinBaseAddr">
+            <summary>
+            Use in SetCharacterAttributes method
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunicationAPI.Application.Common.Constants.TelegramAppend.CarWhiteAlphaBaseAddr">
+            <summary>
+             Use in SetCharacterAttributes method
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunicationAPI.Application.Common.Constants.TelegramAppend.CarWhiteTelegramAppend1">
+            <summary>
+             Use in ClearBuffer method
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunicationAPI.Application.Common.Constants.TelegramAppend.CarWhiteTelegramAppend2">
+            <summary>
+             Use in ClearDisplay method
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunicationAPI.Application.Common.Constants.TelegramAppend.CarWhiteTelegramAppend0">
+            <summary>
+             Use in ClearDisplay method
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunicationAPI.Application.Common.Constants.TelegramAppend.CarWhiteTelegramAppend3">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunicationAPI.Application.Common.Constants.TelegramAppend.CarWhiteTelegramAppend6">
+            <summary>
+            Use in MoveCarousel method
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunicationAPI.Application.Common.Constants.TelegramAppend.CarWhiteTelegramAppend7">
+            <summary>
+            Use in ClearDisplay method
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunicationAPI.Application.Common.Constants.TelegramAppend.CarWhiteTelegramAppend8">
+            <summary>
+            Use in ClearDisplay method
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunicationAPI.Application.Common.Constants.TelegramAppend.CarWhiteTelegramAppend9">
+            <summary>
+            Use in MoveCarousel method
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunicationAPI.Application.Common.Constants.TelegramAppend.CarWhiteTelegramAppend10">
+            <summary>
+            Use in MoveCarousel method
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunicationAPI.Application.Common.Constants.TelegramAppend.CarWhiteTelegramAppend11">
+            <summary>
+            Use in MoveCarousel method
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunicationAPI.Application.Common.Constants.TelegramAppend.CarWhiteTelegramAppend12">
+            <summary>
+            Use in MoveCarousel method
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunicationAPI.Application.Common.Constants.TelegramAppend.CarWhiteTelegramAppendSS">
+            <summary>
+             Use in CarWhiteTB1470 method
+            </summary>
+        </member>
+        <member name="T:Logistics.Services.DeviceCommunicationAPI.Application.Common.Constants.CarouselManager">
+            <summary>
+            Class specific constants
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunicationAPI.Application.Common.Constants.CarouselManager.ControllerTypeNotFound">
+            <summary>
+            Use in CreateCarousel method
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunicationAPI.Application.Common.Constants.CarouselManager.TransactionQueueCarouselIsCreatedAndCarouselInstantiated">
+             <summary>
+            Use In CreateCarousel Method
+             </summary>
+        </member>
+        <member name="T:Logistics.Services.DeviceCommunicationAPI.Application.Common.Constants.Carousel">
+            <summary>
+            Class specific constants
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunicationAPI.Application.Common.Constants.Carousel.DeviceWriteSuccess">
+            <summary>
+            Use in write telegram message on connected device successfully
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunicationAPI.Application.Common.Constants.Carousel.DeviceWriteFail">
+            <summary>
+            Use in write telegram message on connected device failed
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunicationAPI.Application.Common.Constants.Carousel.DeviceNoResponse">
+            <summary>
+            Use in read response from  connected device
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunicationAPI.Application.Common.Constants.Carousel.DeviceOKResponse">
+            <summary>
+            Use in read response from connected device
+            </summary>
+        </member>
+        <member name="T:Logistics.Services.DeviceCommunicationAPI.Application.Common.Constants.Swagger">
+            <summary>
+            Class specific constants
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunicationAPI.Application.Common.Constants.Swagger.SwaggerEndPoint">
+            <summary> Url for swagger endpoint </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunicationAPI.Application.Common.Constants.Swagger.Title">
+            <summary> Title </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunicationAPI.Application.Common.Constants.Swagger.Version">
+            <summary> Version </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunicationAPI.Application.Common.Constants.Swagger.RouteTemplate">
+            <summary> RouteTemplate </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunicationAPI.Application.Common.Constants.Swagger.RoutePrefix">
+            <summary> RoutePrefix </summary>
+        </member>
+        <member name="T:Logistics.Services.DeviceCommunicationAPI.Application.Common.Constants.Configuration">
+             <summary>
+             Class specific constants
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunicationAPI.Application.Common.Constants.Configuration.CarouselTimeout">
+            <summary> Settings </summary>
+        </member>
+        <member name="T:Logistics.Services.DeviceCommunicationAPI.Application.Common.Constants.LoggingMessage">
+            <summary>
+            Logging Messages
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunicationAPI.Application.Common.Constants.LoggingMessage.RequestReceived">
+            <summary> RequestReceived </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunicationAPI.Application.Common.Constants.LoggingMessage.ResponseGenerated">
+            <summary> ResponseReceived </summary>
+        </member>
+        <member name="T:Logistics.Services.DeviceCommunicationAPI.Application.Common.Constants.ErrorMessage">
+            <summary>
+            Error Messages
+            </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunicationAPI.Application.Common.Constants.ErrorMessage.IPNull">
+            <summary> IPNull </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunicationAPI.Application.Common.Constants.ErrorMessage.InvalidIP">
+            <summary> IPNull </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunicationAPI.Application.Common.Constants.ErrorMessage.InvalidDisplayIP">
+            <summary> InvalidDisplayIP </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunicationAPI.Application.Common.Constants.ErrorMessage.InvalidDisplayPort">
+            <summary> InvalidDisplayPort </summary>
+        </member>
+        <member name="F:Logistics.Services.DeviceCommunicationAPI.Application.Common.Constants.ErrorMessage.PortNull">
+            <summary> PortNull </summary>
+        </member>
+        <member name="T:DeviceCommunication.API.Application.Interfaces.IMapper">
+            <summary>
+            IMapper contract
+            </summary>
+        </member>
+    </members>
+</doc>

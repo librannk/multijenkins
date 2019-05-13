@@ -1,0 +1,84 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <RootNamespace>Logistics.Services.DeviceCommunication.API</RootNamespace>
+    <ProjectGuid>{67C4FAD0-C598-4E96-B889-3F6A20EC37CC}</ProjectGuid>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>Facility.API.XML</DocumentationFile>
+    <NoWarn>1701;1702;1591</NoWarn>
+    <OutputPath></OutputPath>
+    <CodeAnalysisRuleSet>DeviceCommunication.API.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>DeviceCommunication.API.XML</DocumentationFile>
+    <CodeAnalysisRuleSet>DeviceCommunication.API.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Application\Commands\**" />
+    <Compile Remove="Extensions\**" />
+    <Compile Remove="Infrastructure\ActionResults\**" />
+    <Compile Remove="Infrastructure\Middlewares\**" />
+    <Content Remove="Application\Commands\**" />
+    <Content Remove="Extensions\**" />
+    <Content Remove="Infrastructure\ActionResults\**" />
+    <Content Remove="Infrastructure\Middlewares\**" />
+    <EmbeddedResource Remove="Application\Commands\**" />
+    <EmbeddedResource Remove="Extensions\**" />
+    <EmbeddedResource Remove="Infrastructure\ActionResults\**" />
+    <EmbeddedResource Remove="Infrastructure\Middlewares\**" />
+    <None Remove="Application\Commands\**" />
+    <None Remove="Extensions\**" />
+    <None Remove="Infrastructure\ActionResults\**" />
+    <None Remove="Infrastructure\Middlewares\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Application\Interfaces\ITransactionQueueLightDisplay.cs" />
+    <Compile Remove="Application\Models\TransactionQueueLightDisplay.cs" />
+    <Compile Remove="DeviceInterface\LDWhiteArrowBin.cs" />
+    <Compile Remove="DeviceInterface\LDWhiteLightTree.cs" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="4.4.0" />
+    <PackageReference Include="BD.Core" Version="1.0.0" />
+    <PackageReference Include="BD.Core.Caching" Version="1.0.0" />
+    <PackageReference Include="BD.Core.EventBus" Version="1.0.0" />
+    <PackageReference Include="BD.Core.EventBusKafka" Version="1.0.0" />
+    <PackageReference Include="BD.Core.ExceptionHandling" Version="1.0.0" />
+    <PackageReference Include="BD.Core.Extension" Version="1.0.3" />
+    <PackageReference Include="BD.Core.HealthCheck" Version="1.0.0" />
+    <PackageReference Include="BD.Core.ResiliencePolicy" Version="1.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.HealthChecks" Version="1.0.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.1" />
+    <PackageReference Include="Serilog.AspNetCore" Version="2.1.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="4.0.1" />
+    <PackageReference Include="SwashBuckle.AspNetCore.MicrosoftExtensions" Version="0.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="appsettings.Development.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="cacert.pem">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="DeviceCommunication.API.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

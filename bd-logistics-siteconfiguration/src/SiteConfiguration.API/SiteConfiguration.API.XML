@@ -1,0 +1,1952 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SiteConfiguration.API</name>
+    </assembly>
+    <members>
+        <member name="M:SiteConfiguration.API.AutofacModule.ApplicationModule.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:SiteConfiguration.API.AutofacModule.ApplicationModule.Load(Autofac.ContainerBuilder)">
+            <summary>
+            This method is used to register the types using autofac
+            </summary>
+            <param name="builder"></param>
+        </member>
+        <member name="T:SiteConfiguration.API.AutoMapper.MapProfile">
+            <summary>
+            This class contains mappings
+            </summary>
+        </member>
+        <member name="M:SiteConfiguration.API.AutoMapper.MapProfile.#ctor">
+            <summary>
+            Initializes a new instance of the MapProfile class.
+            </summary>
+        </member>
+        <member name="T:SiteConfiguration.API.AutoMapper.MapRoutingRule">
+            <summary>
+            This class contains mappings
+            </summary>
+        </member>
+        <member name="M:SiteConfiguration.API.AutoMapper.MapRoutingRule.#ctor">
+            <summary>
+            Initializes a new instance of the MapProfile class.
+            </summary>
+        </member>
+        <member name="T:SiteConfiguration.API.AutoMapper.MapFacilityConfiguration">
+            <summary>
+            mapper class for facility configuration
+            </summary>
+        </member>
+        <member name="M:SiteConfiguration.API.AutoMapper.MapFacilityConfiguration.#ctor">
+            <summary>
+             initialization taken place
+            </summary>
+        </member>
+        <member name="M:SiteConfiguration.API.Common.Utility.GetNewGuid">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SiteConfiguration.API.Common.Utility.ValidateGUID(System.Collections.Generic.List{System.String})">
+            <summary>
+            to validate the input string is in GUID format or not..
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SiteConfiguration.API.Common.Utility.ParseStringToGuid(System.String)">
+            <summary>
+            to convert the input string in GUID format..
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="T:SiteConfiguration.API.Configuration.Configuration">
+            <summary> Configuration </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.Configuration.Configuration.RoutingRule">
+            <summary>
+            RoutingRule Topic
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.Configuration.Configuration.TransactionPriority">
+            <summary>
+            TransactionPriority Topic
+            </summary>
+        </member>
+        <member name="T:SiteConfiguration.API.Configuration.SwaggerDefaultValues">
+            <summary>  
+            Represents the Swagger/Swashbuckle operation filter used to document the implicit API version parameter.  
+            </summary>  
+            <remarks>This <see cref="T:Swashbuckle.AspNetCore.SwaggerGen.IOperationFilter"/> is only required due to bugs in the <see cref="T:Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator"/>.  
+            Once they are fixed and published, this class can be removed.</remarks>  
+        </member>
+        <member name="M:SiteConfiguration.API.Configuration.SwaggerDefaultValues.Apply(Swashbuckle.AspNetCore.Swagger.Operation,Swashbuckle.AspNetCore.SwaggerGen.OperationFilterContext)">
+            <summary>  
+            Applies the filter to the specified operation using the given context.  
+            </summary>  
+            <param name="operation">The operation to apply the filter to.</param>  
+            <param name="context">The current operation filter context.</param>  
+        </member>
+        <member name="T:SiteConfiguration.API.FacilityConfiguration.Abstractions.IFacilityLogisticsConfiguration">
+            <summary>
+            interface defining Facility Logistic abstraction
+            </summary>
+        </member>
+        <member name="M:SiteConfiguration.API.FacilityConfiguration.Abstractions.IFacilityLogisticsConfiguration.CreateFacilitySpecificConfigurationAsync(SiteConfiguration.API.FacilityConfiguration.RequestResponseModel.TransactionQueueConfigurationRequest)">
+            <summary>
+            defining inetrface for facility Configuration
+            </summary>
+            <param name="facilityConfiguration"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SiteConfiguration.API.FacilityConfiguration.Abstractions.IFacilityLogisticsConfiguration.CreateFacilityExtensionAsync(SiteConfiguration.API.FacilityConfiguration.RequestResponseModel.FacilityLogisticsConfigurationExtension)">
+            <summary>
+            defining inetrface for facility Extension
+            </summary>
+            <param name="facilityLogisticsConfigurationExtension"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SiteConfiguration.API.FacilityConfiguration.Abstractions.IFacilityLogisticsConfiguration.UpdateFacilityConfigAsync(SiteConfiguration.API.FacilityConfiguration.RequestResponseModel.TransactionQueueConfigurationRequest)">
+            <summary>
+            defining inetrface for updating existing facility Configuration
+            </summary>
+            <param name="facilityConfiguration"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SiteConfiguration.API.FacilityConfiguration.Abstractions.IFacilityLogisticsConfiguration.UpdateFacilityExtensionAsync(SiteConfiguration.API.FacilityConfiguration.RequestResponseModel.FacilityLogisticsConfigurationExtension)">
+            <summary>
+            defining interface for for updating existing facility Extension
+            </summary>
+            <param name="facilityLogisticsConfigurationExtension"></param>
+            <returns></returns>
+        </member>
+        <member name="T:SiteConfiguration.API.FacilityConfiguration.Abstractions.IFacilityLogisticsConfigurationRepository">
+            <summary>
+            base interface for facility logistic configuration
+            </summary>
+        </member>
+        <member name="M:SiteConfiguration.API.FacilityConfiguration.Abstractions.IFacilityLogisticsConfigurationRepository.GetAsync(System.Guid)">
+            <summary>
+            async call to validate facility key
+            </summary>
+            <param name="facilityKey"></param>
+            <returns></returns>
+        </member>
+        <member name="T:SiteConfiguration.API.FacilityConfiguration.Business.FacilityLogisticsConfiguration">
+            <summary>
+            FacilityLogisticsConfiguration business layer
+            </summary>
+        </member>
+        <member name="M:SiteConfiguration.API.FacilityConfiguration.Business.FacilityLogisticsConfiguration.#ctor(SiteConfiguration.API.FacilityConfiguration.Abstractions.IFacilityLogisticsConfigurationRepository,AutoMapper.IMapper,SiteConfiguration.API.Infrastructure.DataAccess.SQL.DBContextEntities.UnitOfWork.IUnitOfWork)">
+            <summary>
+            FacilityLogisticsConfiguration initialisation goes here
+            </summary>
+            <param name="repository"></param>
+            <param name="mapper"></param>
+            <param name="unitOfWork"></param>
+        </member>
+        <member name="M:SiteConfiguration.API.FacilityConfiguration.Business.FacilityLogisticsConfiguration.CreateFacilitySpecificConfigurationAsync(SiteConfiguration.API.FacilityConfiguration.RequestResponseModel.TransactionQueueConfigurationRequest)">
+            <summary>
+            CreateFacilitySpecificConfigurationAsync
+            </summary>
+            <param name="facilityConfiguration"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SiteConfiguration.API.FacilityConfiguration.Business.FacilityLogisticsConfiguration.CreateFacilityExtensionAsync(SiteConfiguration.API.FacilityConfiguration.RequestResponseModel.FacilityLogisticsConfigurationExtension)">
+            <summary>
+            Business layer for create request of Facility Extension
+            </summary>
+            <param name="facilityLogisticsConfigurationExtension"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SiteConfiguration.API.FacilityConfiguration.Business.FacilityLogisticsConfiguration.UpdateFacilityConfigAsync(SiteConfiguration.API.FacilityConfiguration.RequestResponseModel.TransactionQueueConfigurationRequest)">
+            <summary>
+            Business object for updating existing facility configuration
+            </summary>
+            <param name="facilityConfiguration"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SiteConfiguration.API.FacilityConfiguration.Business.FacilityLogisticsConfiguration.UpdateFacilityExtensionAsync(SiteConfiguration.API.FacilityConfiguration.RequestResponseModel.FacilityLogisticsConfigurationExtension)">
+            <summary>
+            Business layer for updating facility extension on db
+            </summary>
+            <param name="facilityLogisticsConfigurationExtension"></param>
+            <returns></returns>
+        </member>
+        <member name="T:SiteConfiguration.API.FacilityConfiguration.Constants.BusinessError">
+            <summary>
+            Error messages
+            </summary>
+        </member>
+        <member name="F:SiteConfiguration.API.FacilityConfiguration.Constants.BusinessError.FacilityConfigurationExists">
+            <summary>
+            FacilityConfigurationExists
+            </summary>
+        </member>
+        <member name="F:SiteConfiguration.API.FacilityConfiguration.Constants.BusinessError.InvalidInput">
+            <summary>
+            InvalidInput
+            </summary>
+        </member>
+        <member name="F:SiteConfiguration.API.FacilityConfiguration.Constants.BusinessError.RecordNotFound">
+            <summary>
+            RecordNotFound
+            </summary>
+        </member>
+        <member name="F:SiteConfiguration.API.FacilityConfiguration.Constants.BusinessError.ServerError">
+            <summary>
+            ServerError
+            </summary>
+        </member>
+        <member name="T:SiteConfiguration.API.FacilityConfiguration.Constants.BusinessResponseMessages">
+            <summary>
+            response messages 
+            </summary>
+        </member>
+        <member name="F:SiteConfiguration.API.FacilityConfiguration.Constants.BusinessResponseMessages.LogisticsConfigurationCreated">
+            <summary>
+            LogisticsConfigurationCreated Key
+            </summary>
+        </member>
+        <member name="F:SiteConfiguration.API.FacilityConfiguration.Constants.BusinessResponseMessages.LogisticsConfigurationUpdated">
+            <summary>
+            LogisticsConfigurationUpdated Key
+            </summary>
+        </member>
+        <member name="T:SiteConfiguration.API.FacilityConfiguration.Controllers.FacilityLogisticsBaseController">
+            <summary>
+            base controller for facility    /// </summary>
+        </member>
+        <member name="T:SiteConfiguration.API.FacilityConfiguration.Controllers.FacilityLogisticsConfigurationController">
+            <summary>
+            FacilityLogisticsConfigurationController
+            </summary>
+        </member>
+        <member name="F:SiteConfiguration.API.FacilityConfiguration.Controllers.FacilityLogisticsConfigurationController._logger">
+            <summary>
+            logger key
+            </summary>
+        </member>
+        <member name="M:SiteConfiguration.API.FacilityConfiguration.Controllers.FacilityLogisticsConfigurationController.#ctor(SiteConfiguration.API.FacilityConfiguration.Abstractions.IFacilityLogisticsConfiguration,BD.Core.Context.IExecutionContextAccessor,Microsoft.Extensions.Logging.ILogger{SiteConfiguration.API.FacilityConfiguration.Controllers.FacilityLogisticsConfigurationController})">
+            <summary>
+            FacilityLogisticsConfigurationController 
+            </summary>
+            <param name="business"></param>
+            <param name="accessor"></param>
+            <param name="logger"></param>
+        </member>
+        <member name="M:SiteConfiguration.API.FacilityConfiguration.Controllers.FacilityLogisticsConfigurationController.CreateAsync(SiteConfiguration.API.FacilityConfiguration.RequestResponseModel.TransactionQueueConfigurationRequest)">
+            <summary>
+            HttpPost method to save facility configuration info
+            </summary>
+            <param name="facilityConfiguration"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SiteConfiguration.API.FacilityConfiguration.Controllers.FacilityLogisticsConfigurationController.PostFacilityExtensionAsync(SiteConfiguration.API.FacilityConfiguration.RequestResponseModel.FacilityLogisticsConfigurationExtension)">
+            <summary>
+            HttpPost method to save facility extension info
+            </summary>
+            <param name="facilityLogisticsConfigurationExtension"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SiteConfiguration.API.FacilityConfiguration.Controllers.FacilityLogisticsConfigurationController.PutfacilityConfigurationAsync(SiteConfiguration.API.FacilityConfiguration.RequestResponseModel.TransactionQueueConfigurationRequest)">
+            <summary>
+            Http Put method for updating existing facility configuration
+            </summary>
+            <param name="transactionQueueConfigurationRequest"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SiteConfiguration.API.FacilityConfiguration.Controllers.FacilityLogisticsConfigurationController.PutFacilityExtensionAsync(SiteConfiguration.API.FacilityConfiguration.RequestResponseModel.FacilityLogisticsConfigurationExtension)">
+            <summary>
+            facilityLogisticsConfigurationExtension
+            </summary>
+            <param name="facilityLogisticsConfigurationExtension"></param>
+            <returns></returns>
+        </member>
+        <member name="T:SiteConfiguration.API.FacilityConfiguration.Exceptions.FacilityLogisticsConfigurationApiException">
+            <summary>
+             class map for API exception
+            </summary>
+        </member>
+        <member name="M:SiteConfiguration.API.FacilityConfiguration.Exceptions.FacilityLogisticsConfigurationApiException.#ctor(System.String,System.String)">
+            <summary>
+            Constructor for auto initialization
+            </summary>
+            <param name="errorMessage"></param>
+            <param name="errorCode"></param>
+        </member>
+        <member name="P:SiteConfiguration.API.FacilityConfiguration.Exceptions.FacilityLogisticsConfigurationApiException.ErrorCode">
+            <summary>
+            Error Code Key
+            </summary>
+        </member>
+        <member name="T:SiteConfiguration.API.FacilityConfiguration.Models.FacilityLogisticsConfig">
+            <summary>
+            FacilityLogisticsConfig model entity
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.FacilityConfiguration.Models.FacilityLogisticsConfig.ReqRestockDestFlag">
+            <summary>
+            Request Destination selection for returns
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.FacilityConfiguration.Models.FacilityLogisticsConfig.SendCheckStationPickInfoFlag">
+            <summary>
+            Send Pyxis Check Pick Info
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.FacilityConfiguration.Models.FacilityLogisticsConfig.ScanVerifyFlag">
+            <summary>
+            Require final scan validation of all components (Only enable final scan validation if all  components are in same ISA)
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.FacilityConfiguration.Models.FacilityLogisticsConfig.CalcPrepackWithPOFlag">
+            <summary>
+            Create Fast mover prepack orders when Distributor POs are created
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.FacilityConfiguration.Models.FacilityLogisticsConfig.AutoCalcSlowPrepackFlag">
+            <summary>
+            Old Screen Mapped To : Auto create slow mover prepack orders
+            </summary>
+        </member>
+        <member name="T:SiteConfiguration.API.FacilityConfiguration.ModelValidator.FacilityLogisticsConfigurationValidator">
+            <summary>
+            FacilityLogisticsConfigurationValidator validation business layer
+            </summary>
+        </member>
+        <member name="T:SiteConfiguration.API.FacilityConfiguration.Repository.FacilityLogisticsConfigurationRepository">
+            <summary>
+            Repository for facility configuration
+            </summary>
+        </member>
+        <member name="M:SiteConfiguration.API.FacilityConfiguration.Repository.FacilityLogisticsConfigurationRepository.#ctor(SiteConfiguration.API.Infrastructure.DataAccess.SQL.DBContextEntities.ApplicationDbContext)">
+            <summary>
+            constructor for auto initialization
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="M:SiteConfiguration.API.FacilityConfiguration.Repository.FacilityLogisticsConfigurationRepository.GetAsync(System.Guid)">
+            <summary>
+            method to validate facility key
+            </summary>
+            <param name="facilityKey"></param>
+            <returns></returns>
+        </member>
+        <member name="T:SiteConfiguration.API.FacilityConfiguration.RequestResponseModel.BusinessResponse">
+            <summary>
+            BusinessResponse entity
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.FacilityConfiguration.RequestResponseModel.BusinessResponse.Id">
+            <summary>
+            Key for GUID
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.FacilityConfiguration.RequestResponseModel.BusinessResponse.IsSuccess">
+            <summary>
+            IsSuccess
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.FacilityConfiguration.RequestResponseModel.BusinessResponse.Message">
+            <summary>
+            Message key
+            </summary>
+        </member>
+        <member name="T:SiteConfiguration.API.FacilityConfiguration.RequestResponseModel.ErrorMessage">
+            <summary>
+            class for handling error
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.FacilityConfiguration.RequestResponseModel.ErrorMessage.ErrorCode">
+            <summary>
+            ErrorCode
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.FacilityConfiguration.RequestResponseModel.ErrorMessage.ErrorDescription">
+            <summary>
+            ErrorDescription
+            </summary>
+        </member>
+        <member name="T:SiteConfiguration.API.FacilityConfiguration.RequestResponseModel.FacilityLogisticsConfigurationExtension">
+            <summary>
+            PostFacilityExtensions Entity
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.FacilityConfiguration.RequestResponseModel.FacilityLogisticsConfigurationExtension.AutoCalcSlowPrepackFlag">
+            <summary>
+            Gets or Sets AutoCalcSlowPrepackFlag
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.FacilityConfiguration.RequestResponseModel.FacilityLogisticsConfigurationExtension.ADMQuantityRoundingFlag">
+            <summary>
+            Gets or Sets ADMQuantityRoundingFlag
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.FacilityConfiguration.RequestResponseModel.FacilityLogisticsConfigurationExtension.ADMIgnoreStockOutFlag">
+            <summary>
+            Gets or Sets ADMIgnoreStockOutFlag
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.FacilityConfiguration.RequestResponseModel.FacilityLogisticsConfigurationExtension.ADMIgnoreCritLowFlag">
+            <summary>
+            Gets or Sets ADMIgnoreCritLowFlag
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.FacilityConfiguration.RequestResponseModel.FacilityLogisticsConfigurationExtension.CalcPrepackWithPOFlag">
+            <summary>
+            Gets or Sets CalcPrepackWithPOFlag
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.FacilityConfiguration.RequestResponseModel.FacilityLogisticsConfigurationExtension.ReceiveAndSendRemoteOrdersFlag">
+            <summary>
+            Gets or Sets ReceiveAndSendRemoteOrdersFlag
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.FacilityConfiguration.RequestResponseModel.FacilityLogisticsConfigurationExtension.SmartOrderRoutingFlag">
+            <summary>
+            Gets or Sets SmartOrderRoutingFlag
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.FacilityConfiguration.RequestResponseModel.FacilityLogisticsConfigurationExtension.SubmitMedListInfoFlag">
+            <summary>
+            Gets or Sets SubmitMedListInfoFlag
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.FacilityConfiguration.RequestResponseModel.FacilityLogisticsConfigurationExtension.ProcessInactiveAsExceptionFlag">
+            <summary>
+            Gets or Sets ProcessInactiveAsExceptionFlag
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.FacilityConfiguration.RequestResponseModel.FacilityLogisticsConfigurationExtension.SendCheckStationPickInfoFlag">
+            <summary>
+            Gets or Sets SendCheckStationPickInfoFlag
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.FacilityConfiguration.RequestResponseModel.FacilityLogisticsConfigurationExtension.PrintCompositLabelFlag">
+            <summary>
+            Gets or Sets PrintCompositLabelFlag
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.FacilityConfiguration.RequestResponseModel.FacilityLogisticsConfigurationExtension.ScanVerifyFlag">
+            <summary>
+            Gets or Sets ScanVerify
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.FacilityConfiguration.RequestResponseModel.FacilityLogisticsConfigurationExtension.RequireHoldReasonFlag">
+            <summary>
+            get or set RequireHoldReasonFlag key
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.FacilityConfiguration.RequestResponseModel.FacilityLogisticsConfigurationExtension.ReturnsOnHoldDefFlag">
+            <summary>
+            get or set ReturnsOnHoldDefFlag
+            </summary>
+        </member>
+        <member name="T:SiteConfiguration.API.FacilityConfiguration.RequestResponseModel.TransactionQueueConfigurationRequest">
+            <summary>
+            TransactionQueueConfigurationRequest model
+            </summary>
+        </member>
+        <member name="T:SiteConfiguration.API.Infrastructure.DataAccess.SQL.DBContextEntities.ApplicationDbContext">
+            <summary>
+            ApplicationDBContext is class  which represent DB in memory.
+            </summary>
+        </member>
+        <member name="M:SiteConfiguration.API.Infrastructure.DataAccess.SQL.DBContextEntities.ApplicationDbContext.#ctor(System.IServiceProvider,Microsoft.EntityFrameworkCore.DbContextOptions)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:SiteConfiguration.API.Infrastructure.DataAccess.SQL.DBContextEntities.UnitOfWork.IUnitOfWork">
+            <summary>
+            IUnitOfWork is an interface.Provide a abstract method to perform multiple operation in single unit.
+            </summary>
+        </member>
+        <member name="M:SiteConfiguration.API.Infrastructure.DataAccess.SQL.DBContextEntities.UnitOfWork.IUnitOfWork.CommitChanges">
+            <summary>
+            An abstract method to perform multiple operation in single commit.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:SiteConfiguration.API.Infrastructure.DataAccess.SQL.DBContextEntities.UnitOfWork.UnitOfWork">
+            <summary>
+            UnitOfWork is class has functionality to commit the changes to DB.
+            </summary>
+        </member>
+        <member name="M:SiteConfiguration.API.Infrastructure.DataAccess.SQL.DBContextEntities.UnitOfWork.UnitOfWork.#ctor(SiteConfiguration.API.Infrastructure.DataAccess.SQL.DBContextEntities.ApplicationDbContext)">
+            <summary>
+            
+            </summary>
+            <param name="appDbContext"></param>
+        </member>
+        <member name="M:SiteConfiguration.API.Infrastructure.DataAccess.SQL.DBContextEntities.UnitOfWork.UnitOfWork.CommitChanges">
+            <summary>
+            Implementation to perform multiple operation in single commit.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SiteConfiguration.API.Infrastructure.DataAccess.SQL.DBContextEntities.UnitOfWork.UnitOfWork.CommitChangesAsync">
+            <summary>
+            Use for Async oprtaions.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SiteConfiguration.API.Infrastructure.DataAccess.SQL.DBContextEntities.UnitOfWork.UnitOfWork.Dispose(System.Boolean)">
+            <summary>
+            
+            </summary>
+            <param name="disposing"></param>
+        </member>
+        <member name="M:SiteConfiguration.API.Infrastructure.DataAccess.SQL.DBContextEntities.UnitOfWork.UnitOfWork.Dispose">
+            <summary>
+            Dispose the ApplicationDBContext object.
+            </summary>
+        </member>
+        <member name="T:SiteConfiguration.API.Infrastructure.DataAccess.SQL.EFRepository.BaseEntity">
+            <summary>
+            Base Entity is a class has Id property for all Entities.All Entities class has are inherited from BaseEntity 
+            </summary>
+        </member>
+        <member name="T:SiteConfiguration.API.Infrastructure.DataAccess.SQL.EFRepository.BaseRepository`1">
+            <summary>
+            It's  abstract class which implements all the methods of IRepository
+            </summary>
+            <typeparam name="TEntity"> For any type of class which is inherited from BaseEntity</typeparam>
+        </member>
+        <member name="P:SiteConfiguration.API.Infrastructure.DataAccess.SQL.EFRepository.BaseRepository`1.Context">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:SiteConfiguration.API.Infrastructure.DataAccess.SQL.EFRepository.BaseRepository`1.#ctor(Microsoft.EntityFrameworkCore.DbContext)">
+            <summary>
+            
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="M:SiteConfiguration.API.Infrastructure.DataAccess.SQL.EFRepository.BaseRepository`1.Add(`0)">
+            <summary>
+            Add new entity to DB.
+            </summary>
+            <param name="entity">Entity to Add in DB</param>
+        </member>
+        <member name="M:SiteConfiguration.API.Infrastructure.DataAccess.SQL.EFRepository.BaseRepository`1.AddAsync(`0)">
+            <summary>
+            Add new entity Async to DB .
+            </summary>
+            <param name="entity">Entity to Add in DB</param>
+        </member>
+        <member name="M:SiteConfiguration.API.Infrastructure.DataAccess.SQL.EFRepository.BaseRepository`1.Get(System.Guid)">
+            <summary>
+            Get Entity by the Id of Entity which is previously stored on DB.
+            </summary>
+            <param name="id">Id field of any Entity</param>
+            <returns></returns>
+        </member>
+        <member name="M:SiteConfiguration.API.Infrastructure.DataAccess.SQL.EFRepository.BaseRepository`1.GetAsync(System.Guid)">
+            <summary>
+            Get Entity by the Key of Entity which is previously stored on DB.
+            </summary>
+            <param name="key">Key field of any Entity</param>
+            <returns></returns>
+        </member>
+        <member name="M:SiteConfiguration.API.Infrastructure.DataAccess.SQL.EFRepository.BaseRepository`1.Delete(`0)">
+            <summary>
+            To delete a particular entity on DB.
+            </summary>
+            <param name="entity">Entity to Delete</param>
+        </member>
+        <member name="M:SiteConfiguration.API.Infrastructure.DataAccess.SQL.EFRepository.BaseRepository`1.GetAll">
+            <summary>
+            Get all entity from DB
+            </summary>
+            <returns>Retruns List of Entities.</returns>
+        </member>
+        <member name="M:SiteConfiguration.API.Infrastructure.DataAccess.SQL.EFRepository.BaseRepository`1.GetAllAsync">
+            <summary>
+            Get all entity from DB
+            </summary>
+            <returns>Retruns List of Entities.</returns>
+        </member>
+        <member name="M:SiteConfiguration.API.Infrastructure.DataAccess.SQL.EFRepository.BaseRepository`1.Update(`0)">
+            <summary>
+            Update Entity to DB 
+            </summary>
+            <param name="entity">Entity to Update</param>
+        </member>
+        <member name="T:SiteConfiguration.API.Infrastructure.DataAccess.SQL.EFRepository.IRepository`1">
+            <summary>
+            Interface creating contract between different Entities.
+            </summary>
+            <typeparam name="TEntity"> For any type of Class</typeparam>
+        </member>
+        <member name="M:SiteConfiguration.API.Infrastructure.DataAccess.SQL.EFRepository.IRepository`1.Get(System.Guid)">
+            <summary>
+            Get Entity by the Id of Entity which is previously stored on DB.
+            </summary>
+            <param name="id">Id field of any Entity</param>
+            <returns></returns>
+        </member>
+        <member name="M:SiteConfiguration.API.Infrastructure.DataAccess.SQL.EFRepository.IRepository`1.GetAsync(System.Guid)">
+            <summary>
+            Get Entity asynchonously by the key of Entity which is previously stored on DB.
+            </summary>
+            <param name="key">key field of any Entity</param>
+            <returns></returns>
+        </member>
+        <member name="M:SiteConfiguration.API.Infrastructure.DataAccess.SQL.EFRepository.IRepository`1.AddAsync(`0)">
+            <summary>
+            Add new entity Async to DB .
+            </summary>
+            <param name="entity">Entity to Add in DB</param>
+        </member>
+        <member name="M:SiteConfiguration.API.Infrastructure.DataAccess.SQL.EFRepository.IRepository`1.Add(`0)">
+            <summary>
+            Add new entity to DB.
+            </summary>
+            <param name="entity">Entity to Add in DB</param>
+        </member>
+        <member name="M:SiteConfiguration.API.Infrastructure.DataAccess.SQL.EFRepository.IRepository`1.Update(`0)">
+            <summary>
+            Update Entity to DB 
+            </summary>
+            <param name="entity">Entity to Update</param>
+        </member>
+        <member name="M:SiteConfiguration.API.Infrastructure.DataAccess.SQL.EFRepository.IRepository`1.Delete(`0)">
+            <summary>
+            To delete a particular entity on DB.
+            </summary>
+            <param name="entity">Entity to Delete</param>
+        </member>
+        <member name="M:SiteConfiguration.API.Infrastructure.DataAccess.SQL.EFRepository.IRepository`1.GetAll">
+            <summary>
+            Get all entity from DB
+            </summary>
+            <returns>Retruns List of Entities.</returns>
+        </member>
+        <member name="M:SiteConfiguration.API.Infrastructure.DataAccess.SQL.EFRepository.IRepository`1.GetAllAsync">
+            <summary>
+            Get all entity from DB
+            </summary>
+            <returns>Retruns List of Entities.</returns>
+        </member>
+        <member name="T:SiteConfiguration.API.Printers.Abstractions.IPrinterBusiness">
+            <summary>
+            Printer Service interface
+            </summary>
+        </member>
+        <member name="M:SiteConfiguration.API.Printers.Abstractions.IPrinterBusiness.GetPrintersByFacility(System.Guid)">
+            <summary>
+            Get printers from database as per facility id.
+            </summary>
+            <param name="facilityKey"></param>
+        </member>
+        <member name="M:SiteConfiguration.API.Printers.Abstractions.IPrinterBusiness.GetPrinterModels">
+            <summary>
+            Get printerModels from database
+            </summary>
+        </member>
+        <member name="M:SiteConfiguration.API.Printers.Abstractions.IPrinterBusiness.GetPrinterByKey(System.Guid)">
+            <summary>
+            Get Printer by the printerKey.
+            </summary>
+            <param name="key">key</param>
+            <returns></returns>
+        </member>
+        <member name="M:SiteConfiguration.API.Printers.Abstractions.IPrinterBusiness.AddPrinter(SiteConfiguration.API.Printers.Models.BuisnessContract.PrinterRequest,System.Guid)">
+            <summary>
+            Add printer with given FacilityId
+            </summary>
+            <param name="printerRequest">printerRequest</param>
+            <param name="facilityKey">facilityKey</param>
+            <returns></returns>
+        </member>
+        <member name="M:SiteConfiguration.API.Printers.Abstractions.IPrinterBusiness.UpdatePrinter(System.Guid,System.Guid,SiteConfiguration.API.Printers.Models.BuisnessContract.PrinterRequest)">
+            <summary>
+            Updates Printer
+            </summary>
+            <param name="key"></param>
+            <param name="facilityKey"></param>
+            <param name="printer"></param>
+            <returns></returns>
+        </member>
+        <member name="T:SiteConfiguration.API.Printers.Abstractions.IPrinterModelRepository">
+            <summary>
+            Contract for PrinterModelRepository
+            </summary>
+        </member>
+        <member name="T:SiteConfiguration.API.Printers.Abstractions.IPrinterRepository">
+            <summary>
+            Printer repository
+            </summary>
+        </member>
+        <member name="M:SiteConfiguration.API.Printers.Abstractions.IPrinterRepository.GetPrintersByFacility(System.Guid)">
+            <summary>
+            Get Printers by the facilityId.
+            </summary>
+            <param name="facilityKey">facilityKey</param>
+            <returns></returns>
+        </member>
+        <member name="T:SiteConfiguration.API.Printers.Business.PrinterBusiness">
+            <summary>
+            Printer business logic layer.
+            </summary>
+        </member>
+        <member name="M:SiteConfiguration.API.Printers.Business.PrinterBusiness.#ctor(SiteConfiguration.API.Printers.Abstractions.IPrinterRepository,SiteConfiguration.API.Printers.Abstractions.IPrinterModelRepository,AutoMapper.IMapper,SiteConfiguration.API.Infrastructure.DataAccess.SQL.DBContextEntities.UnitOfWork.IUnitOfWork)">
+            <summary>
+            Creates instance of <see cref="T:SiteConfiguration.API.Printers.Business.PrinterBusiness"/>.
+            </summary>
+            <param name="printerRepository"></param>
+            <param name="printerModelRepository"></param>
+            <param name="mapper"></param>
+        </member>
+        <member name="M:SiteConfiguration.API.Printers.Business.PrinterBusiness.GetPrintersByFacility(System.Guid)">
+            <summary>
+            Get list of printer from database.
+            </summary>
+            <param name="facilityKey"></param>
+        </member>
+        <member name="M:SiteConfiguration.API.Printers.Business.PrinterBusiness.GetPrinterModels">
+            <summary>
+            Get list of printerModel from database.
+            </summary>
+        </member>
+        <member name="M:SiteConfiguration.API.Printers.Business.PrinterBusiness.GetPrinterByKey(System.Guid)">
+            <summary>
+            Get printer from database.
+            </summary>
+            <param name="printerKey"></param>
+        </member>
+        <member name="M:SiteConfiguration.API.Printers.Business.PrinterBusiness.AddPrinter(SiteConfiguration.API.Printers.Models.BuisnessContract.PrinterRequest,System.Guid)">
+            <summary>
+            Adds a printer
+            </summary>
+            <param name="printerRequest"></param>
+            <param name="facilityKey"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SiteConfiguration.API.Printers.Business.PrinterBusiness.UpdatePrinter(System.Guid,System.Guid,SiteConfiguration.API.Printers.Models.BuisnessContract.PrinterRequest)">
+            <summary>
+            update printer database
+            </summary>
+            <param name="key"></param>
+            <param name="facilityKey"></param>
+            <param name="printer"></param>
+            <returns></returns>
+        </member>
+        <member name="T:SiteConfiguration.API.Printers.Controllers.PrinterController">
+            <summary>
+            Controller for printers
+            </summary>
+        </member>
+        <member name="M:SiteConfiguration.API.Printers.Controllers.PrinterController.#ctor(SiteConfiguration.API.Printers.Abstractions.IPrinterBusiness,Microsoft.Extensions.Logging.ILogger{SiteConfiguration.API.Printers.Controllers.PrinterController},BD.Core.Context.IExecutionContextAccessor)">
+            <summary>
+            Only constructor, params are automatically injected
+            </summary>
+            <param name="printerBusiness"></param>
+            <param name="logger"></param>
+        </member>
+        <member name="M:SiteConfiguration.API.Printers.Controllers.PrinterController.GetAllPrinters">
+            <summary>
+            HttpGet method to fetch printers specific to a facility
+            </summary>
+            <returns>List of Printers</returns>
+        </member>
+        <member name="M:SiteConfiguration.API.Printers.Controllers.PrinterController.GetPrinterByKey">
+            <summary>
+            HttpGet method to fetch a printer
+            </summary>
+            <returns>Printer</returns>
+        </member>
+        <member name="M:SiteConfiguration.API.Printers.Controllers.PrinterController.AddPrinter(SiteConfiguration.API.Printers.Models.BuisnessContract.PrinterRequest)">
+            <summary>
+            HttpPost method to add a printer
+            </summary>
+            <returns>PrinterId</returns>
+        </member>
+        <member name="M:SiteConfiguration.API.Printers.Controllers.PrinterController.UpdatePrinter(SiteConfiguration.API.Printers.Models.BuisnessContract.PrinterRequest)">
+            <summary>
+            HttpPut method to Update existing printers
+            </summary>
+            <returns>httpstatuscode</returns>
+        </member>
+        <member name="T:SiteConfiguration.API.Printers.Controllers.PrinterModelController">
+            <summary>
+            PrinterModelController
+            </summary>
+        </member>
+        <member name="M:SiteConfiguration.API.Printers.Controllers.PrinterModelController.#ctor(SiteConfiguration.API.Printers.Abstractions.IPrinterBusiness,Microsoft.Extensions.Logging.ILogger{SiteConfiguration.API.Printers.Controllers.PrinterModelController})">
+            <summary>
+            Constructor
+            </summary>
+            <param name="printerBusiness"></param>
+            <param name="logger"></param>
+        </member>
+        <member name="M:SiteConfiguration.API.Printers.Controllers.PrinterModelController.GetAllPrinterModels">
+            <summary>
+            HttpGet method to fetch printermodels
+            </summary>
+            <returns>List of PrinterModels</returns>
+        </member>
+        <member name="T:SiteConfiguration.API.Printers.Exceptions.InvalidPrinterException">
+            <summary>
+            Custom exception for printers.
+            </summary>
+        </member>
+        <member name="M:SiteConfiguration.API.Printers.Exceptions.InvalidPrinterException.#ctor(System.String,System.Int32)">
+            <summary>
+            Only constructor, params are automatically injected
+            </summary>
+            <param name="errorMessage"></param>
+            <param name="errorCode"></param>
+        </member>
+        <member name="T:SiteConfiguration.API.Printers.Models.BuisnessContract.Printer">
+            <summary>
+            Printer
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.Printers.Models.BuisnessContract.Printer.Key">
+            <summary>
+            The Key property represents the printer's id/key.
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.Printers.Models.BuisnessContract.Printer.Name">
+            <summary>
+            The Name property represents the printer's name.
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.Printers.Models.BuisnessContract.Printer.Description">
+            <summary>
+            The Description property represents the printer's description.
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.Printers.Models.BuisnessContract.Printer.IsActive">
+            <summary>
+            The IsActive property represents if printer is active or not.
+            </summary>
+            <value>True if active.</value>
+        </member>
+        <member name="T:SiteConfiguration.API.Printers.Models.BuisnessContract.PrinterModel">
+            <summary>
+            PrinterModel
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.Printers.Models.BuisnessContract.PrinterModel.Id">
+            <summary>
+            Id
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.Printers.Models.BuisnessContract.PrinterModel.Label">
+            <summary>
+            Label
+            </summary>
+        </member>
+        <member name="T:SiteConfiguration.API.Printers.Models.BuisnessContract.PrinterRequest">
+            <summary>
+            PrinterRequest
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.Printers.Models.BuisnessContract.PrinterRequest.PrinterModelKey">
+            <summary>
+            ModelKey
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.Printers.Models.BuisnessContract.PrinterRequest.PrinterName">
+            <summary>
+            The Name property represents the printer's name.
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.Printers.Models.BuisnessContract.PrinterRequest.Description">
+            <summary>
+            The Description property represents the printer's description.
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.Printers.Models.BuisnessContract.PrinterRequest.IpAddress">
+            <summary>
+            IPAddress
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.Printers.Models.BuisnessContract.PrinterRequest.IpPort">
+            <summary>
+            Port
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.Printers.Models.BuisnessContract.PrinterRequest.MacAddress">
+            <summary>
+            MacAddress
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.Printers.Models.BuisnessContract.PrinterRequest.PrintableAreaHeight">
+            <summary>
+            PrintableAreaHeight
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.Printers.Models.BuisnessContract.PrinterRequest.PrintableAreaWidth">
+            <summary>
+            PrintableAreaWidth
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.Printers.Models.BuisnessContract.PrinterRequest.LabelBarcode">
+            <summary>
+            LabelBarcode
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.Printers.Models.BuisnessContract.PrinterRequest.LabelPrinterFlag">
+            <summary>
+            isLabelPrinter
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.Printers.Models.BuisnessContract.PrinterRequest.AppendFormFeedFlag">
+            <summary>
+            isAppendFormFeed
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.Printers.Models.BuisnessContract.PrinterRequest.ActiveFlag">
+            <summary>
+            The IsActive property represents if printer is active or not.
+            </summary>
+            <value>True if active.</value>
+        </member>
+        <member name="P:SiteConfiguration.API.Printers.Models.BuisnessContract.PrinterRequest.RotateLabelOrderFlag">
+            <summary>
+            IsRotateLabelOrder
+            </summary>
+        </member>
+        <member name="T:SiteConfiguration.API.Printers.Models.BuisnessContract.PrinterResponse">
+            <summary>
+            PrinterResponse
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.Printers.Models.BuisnessContract.PrinterResponse.Key">
+            <summary>
+            PrinterModelKey
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.Printers.Models.BuisnessContract.PrinterResponse.PrinterModelKey">
+            <summary>
+            ModelKey
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.Printers.Models.BuisnessContract.PrinterResponse.Name">
+            <summary>
+            The Name property represents the printer's name.
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.Printers.Models.BuisnessContract.PrinterResponse.Description">
+            <summary>
+            The Description property represents the printer's description.
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.Printers.Models.BuisnessContract.PrinterResponse.IpAddress">
+            <summary>
+            IPAddress
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.Printers.Models.BuisnessContract.PrinterResponse.IpPort">
+            <summary>
+            Port
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.Printers.Models.BuisnessContract.PrinterResponse.MacAddress">
+            <summary>
+            MacAddress
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.Printers.Models.BuisnessContract.PrinterResponse.PrintableAreaHeight">
+            <summary>
+            PrintableAreaHeight
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.Printers.Models.BuisnessContract.PrinterResponse.PrintableAreaWidth">
+            <summary>
+            PrintableAreaWidth
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.Printers.Models.BuisnessContract.PrinterResponse.LabelBarcode">
+            <summary>
+            LabelBarcode
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.Printers.Models.BuisnessContract.PrinterResponse.LabelPrinterFlag">
+            <summary>
+            LabelPrinterFlag
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.Printers.Models.BuisnessContract.PrinterResponse.AppendFormFeedFlag">
+            <summary>
+            AppendFormFeedFlag
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.Printers.Models.BuisnessContract.PrinterResponse.IsActive">
+            <summary>
+            The IsActive property represents if printer is active or not.
+            </summary>
+            <value>True if active.</value>
+        </member>
+        <member name="P:SiteConfiguration.API.Printers.Models.BuisnessContract.PrinterResponse.RotateLabelOrderFlag">
+            <summary>
+            RotateLabelOrderFlag
+            </summary>
+        </member>
+        <member name="T:SiteConfiguration.API.Printers.Models.Data.Printer">
+            <summary>
+            Printer entity.
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.Printers.Models.Data.Printer.PrinterKey">
+            <summary>
+            Printer Key
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.Printers.Models.Data.Printer.PrinterModelKey">
+            <summary>
+            ModelKey
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.Printers.Models.Data.Printer.FacilityKey">
+            <summary>
+            Facility Key
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.Printers.Models.Data.Printer.PrinterName">
+            <summary>
+            Printer Name
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.Printers.Models.Data.Printer.DescriptionText">
+            <summary>
+            Description
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.Printers.Models.Data.Printer.IPAddressText">
+            <summary>
+            IPAddress
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.Printers.Models.Data.Printer.IPPortNumber">
+            <summary>
+            Port
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.Printers.Models.Data.Printer.MacAddressText">
+            <summary>
+            MacAddress
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.Printers.Models.Data.Printer.PrintableAreaHeightValue">
+            <summary>
+            PrintableAreaHeight
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.Printers.Models.Data.Printer.PrintableAreaWidthValue">
+            <summary>
+            PrintableAreaWidth
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.Printers.Models.Data.Printer.LabelBarcodeText">
+            <summary>
+            LabelBarcode
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.Printers.Models.Data.Printer.LabelPrinterFlag">
+            <summary>
+            isLabelPrinter
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.Printers.Models.Data.Printer.AppendFormFeedFlag">
+            <summary>
+            isAppendFormFeed
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.Printers.Models.Data.Printer.ActiveFlag">
+            <summary>
+            Active Flag
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.Printers.Models.Data.Printer.RotateLabelOrderFlag">
+            <summary>
+            IsRotateLabelOrder
+            </summary>
+        </member>
+        <member name="T:SiteConfiguration.API.Printers.Models.Data.PrinterModel">
+            <summary>
+            PrinterModel
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.Printers.Models.Data.PrinterModel.PrinterModelKey">
+            <summary>
+            PrinterModelKey
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.Printers.Models.Data.PrinterModel.DescriptionText">
+            <summary>
+            DescriptionText
+            </summary>
+        </member>
+        <member name="T:SiteConfiguration.API.Printers.Repository.PrinterModelRepository">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:SiteConfiguration.API.Printers.Repository.PrinterModelRepository.#ctor(SiteConfiguration.API.Infrastructure.DataAccess.SQL.DBContextEntities.ApplicationDbContext)">
+            <summary>
+            PrinterModelRepository
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="T:SiteConfiguration.API.Printers.Repository.PrinterRepository">
+            <summary>
+            PrinterRepository class implements the all member of IScheduleRepository of type ScheduleTiming.
+            </summary>
+        </member>
+        <member name="M:SiteConfiguration.API.Printers.Repository.PrinterRepository.#ctor(SiteConfiguration.API.Infrastructure.DataAccess.SQL.DBContextEntities.ApplicationDbContext)">
+            <summary>
+            Printer repository.
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="M:SiteConfiguration.API.Printers.Repository.PrinterRepository.GetPrintersByFacility(System.Guid)">
+            <summary>
+            Get Printers by the facilityKey.
+            </summary>
+            <param name="facilityKey">facilityKey field of schedule</param>
+            <returns></returns>
+        </member>
+        <member name="T:SiteConfiguration.API.Program">
+            <summary> Program file </summary>
+        </member>
+        <member name="M:SiteConfiguration.API.Program.Main(System.String[])">
+            <summary>
+            Main
+            </summary>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="T:SiteConfiguration.API.Registration.RegistrationExtension">
+            <summary> Partial extension class for registration. </summary>
+            NOTE: Please refer all RegistrationExtension classes to get the broader picture
+            <summary>
+            To Register all entity for DI for SQL EF repository
+            </summary>
+            <summary> Partial extension class for registration. </summary>
+            NOTE: Please refer all RegistrationExtension classes to get the broader picture
+        </member>
+        <member name="M:SiteConfiguration.API.Registration.RegistrationExtension.RegisterDependency(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary> Register all Swagger dependencies </summary>
+            <param name="services"> Instance of IServiceCollection </param>
+            <returns> services (Instance of IServiceCollection) </returns>
+        </member>
+        <member name="M:SiteConfiguration.API.Registration.RegistrationExtension.RegisterSqlRepository(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Register all entity for DI.
+            Register DB Context and pass connection string.
+            </summary>
+            <param name="services"></param>
+            <param name="configuration"> To get the all configured data appsettings.json file </param>
+            <returns></returns>
+        </member>
+        <member name="M:SiteConfiguration.API.Registration.RegistrationExtension.RegisterSwagger(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary> Register all Swagger dependencies </summary>
+            <param name="services"> Instance of IServiceCollection </param>
+            <returns> services (Instance of IServiceCollection) </returns>
+        </member>
+        <member name="T:SiteConfiguration.API.Resource">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.Resource.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.Resource.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.Resource.E4000">
+            <summary>
+              Looks up a localized string similar to Schedule already exists..
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.Resource.E4001">
+            <summary>
+              Looks up a localized string similar to Schedule can not be deleted as it&apos;s associated with routing rule.
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.Resource.E4002">
+            <summary>
+              Looks up a localized string similar to Schedule not found.
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.Resource.E4003">
+            <summary>
+              Looks up a localized string similar to Duplicate schedule name exist.
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.Resource.E4004">
+            <summary>
+              Looks up a localized string similar to  Invalid input request.
+            </summary>
+        </member>
+        <member name="M:SiteConfiguration.API.RoutingRules.Abstractions.IRoutingRuleManager.AddRoutingRule(SiteConfiguration.API.RoutingRules.RequestReponceModel.RoutingRuleRequest,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Add Routing Rule
+            </summary>
+            <param name="routingRule"></param>
+            <param name="facilityID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SiteConfiguration.API.RoutingRules.Abstractions.IRoutingRuleManager.UpdateRoutingRule(SiteConfiguration.API.RoutingRules.RequestReponceModel.RoutingRuleRequest,System.Guid,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Update Routing Rule
+            </summary>
+            <param name="routingRule"></param>
+            <param name="facilityID"></param>
+            <param name="ruleId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SiteConfiguration.API.RoutingRules.Abstractions.IRoutingRuleManager.DeleteRoutingRule(System.Guid,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Delete Routing Rule
+            </summary>
+            <param name="ruleId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SiteConfiguration.API.RoutingRules.Abstractions.IRoutingRuleManager.GetByID(System.Guid)">
+            <summary>
+            Get Routing Rule by ID
+            </summary>
+            <param name="ruleId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SiteConfiguration.API.RoutingRules.Abstractions.IRoutingRuleManager.GetAllRoutingRule(System.Int32,System.Int32,System.String)">
+            <summary>
+            Get All Routing Rule
+            </summary>
+            <param name="facilityID"></param>
+            <param name="page"></param>
+            <param name="pageSize"></param>
+            <param name="searchString"></param>
+            <returns></returns>
+        </member>
+        <member name="T:SiteConfiguration.API.RoutingRules.Abstractions.IRoutingRuleRepository">
+            <summary>
+            Routing Rule Interface
+            </summary>
+        </member>
+        <member name="M:SiteConfiguration.API.RoutingRules.Abstractions.IRoutingRuleRepository.GetRoutingRules(System.Guid,System.Int32,System.Int32,System.String)">
+            <summary>
+            Get routing rules from database
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SiteConfiguration.API.RoutingRules.Abstractions.IRoutingRuleRepository.GetRoutingRule(System.Guid,System.Guid)">
+            <summary>
+            get routing rule by id 
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SiteConfiguration.API.RoutingRules.Abstractions.IRoutingRuleRepository.GetRoutingRule(System.String,System.Guid)">
+            <summary>
+            
+            </summary>
+            <param name="name"></param>
+            <param name="facilityId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SiteConfiguration.API.RoutingRules.Abstractions.IRoutingRuleRepository.AddRoutingRule(SiteConfiguration.API.RoutingRules.Models.RoutingRule)">
+            <summary>
+            add new routing rule to database
+            </summary>
+            <param name="routingRule"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SiteConfiguration.API.RoutingRules.Abstractions.IRoutingRuleRepository.UpdateRoutingRule(SiteConfiguration.API.RoutingRules.Models.RoutingRule)">
+            <summary>
+            update existing routing rule in database
+            </summary>
+            <param name="Id"></param>
+            <param name="routingRule"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SiteConfiguration.API.RoutingRules.Abstractions.IRoutingRuleRepository.DeleteRoutingRule(SiteConfiguration.API.RoutingRules.Models.RoutingRule)">
+            <summary>
+            delete routing rule from database
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SiteConfiguration.API.RoutingRules.Business.RoutingRuleManager.AddRoutingRule(SiteConfiguration.API.RoutingRules.RequestReponceModel.RoutingRuleRequest,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            to add routing rule in database
+            </summary>
+            <param name="routingRule"></param>
+            <param name="facilityID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SiteConfiguration.API.RoutingRules.Business.RoutingRuleManager.UpdateRoutingRule(SiteConfiguration.API.RoutingRules.RequestReponceModel.RoutingRuleRequest,System.Guid,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            to update routing rule in database
+            </summary>
+            <param name="routingRule"></param>
+            <param name="facilityID"></param>
+            <param name="ruleId"></param>
+            <param name="headers"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SiteConfiguration.API.RoutingRules.Business.RoutingRuleManager.DeleteRoutingRule(System.Guid,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            to delete routing rule from database..
+            </summary>
+            <param name="ruleId"></param>
+            <param name="facilityID"></param>
+            <param name="headers"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SiteConfiguration.API.RoutingRules.Business.RoutingRuleManager.GetByID(System.Guid)">
+            <summary>
+            to get routing rule by Id.
+            </summary>
+            <param name="ruleId"></param>
+            <param name="facilityID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SiteConfiguration.API.RoutingRules.Business.RoutingRuleManager.GetAllRoutingRule(System.Int32,System.Int32,System.String)">
+            <summary>
+            to get all routing rule from database..
+            </summary>
+            <param name="facilityID"></param>
+            <param name="page"></param>
+            <param name="pageSize"></param>
+            <param name="searchString"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SiteConfiguration.API.RoutingRules.Controllers.RoutingRuleController.#ctor(Microsoft.Extensions.Logging.ILogger{SiteConfiguration.API.RoutingRules.Controllers.RoutingRuleController},SiteConfiguration.API.RoutingRules.Abstractions.IRoutingRuleManager)">
+            <summary>
+            
+            </summary>
+            <param name="routingRulesRepository"></param>
+        </member>
+        <member name="M:SiteConfiguration.API.RoutingRules.Controllers.RoutingRuleController.GetRoutingRules(System.Int32,System.Int32,System.String)">
+            <summary>
+            HttpGET method processingg the incoming request
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SiteConfiguration.API.RoutingRules.Controllers.RoutingRuleController.GetRoutingRule">
+            <summary>
+            to get routing rule by id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SiteConfiguration.API.RoutingRules.Controllers.RoutingRuleController.Post(SiteConfiguration.API.RoutingRules.RequestReponceModel.RoutingRuleRequest)">
+            <summary>
+            to add a new routing rule in database
+            </summary>
+            <param name="routingRule"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SiteConfiguration.API.RoutingRules.Controllers.RoutingRuleController.Put(SiteConfiguration.API.RoutingRules.RequestReponceModel.RoutingRuleRequest)">
+            <summary>
+            this method will update an exsiting rule in database..
+            </summary>
+            <param name="id"></param>
+            <param name="routingRule"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SiteConfiguration.API.RoutingRules.Controllers.RoutingRuleController.Delete">
+            <summary>
+            to delete routing rule from database..
+            </summary>        
+            <returns></returns>
+        </member>
+        <member name="M:SiteConfiguration.API.RoutingRules.Repository.RoutingRuleRepository.#ctor(SiteConfiguration.API.Infrastructure.DataAccess.SQL.DBContextEntities.ApplicationDbContext)">
+            <summary>
+            
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="M:SiteConfiguration.API.RoutingRules.Repository.RoutingRuleRepository.GetRoutingRules(System.Guid,System.Int32,System.Int32,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="facilityId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SiteConfiguration.API.RoutingRules.Repository.RoutingRuleRepository.GetRoutingRule(System.Guid,System.Guid)">
+            <summary>
+            
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SiteConfiguration.API.RoutingRules.Repository.RoutingRuleRepository.GetRoutingRule(System.String,System.Guid)">
+            <summary>
+            
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SiteConfiguration.API.RoutingRules.Repository.RoutingRuleRepository.AddRoutingRule(SiteConfiguration.API.RoutingRules.Models.RoutingRule)">
+            <summary>
+            
+            </summary>
+            <param name="routingRule"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SiteConfiguration.API.RoutingRules.Repository.RoutingRuleRepository.UpdateRoutingRule(SiteConfiguration.API.RoutingRules.Models.RoutingRule)">
+            <summary>
+            
+            </summary>
+            <param name="routingRule"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SiteConfiguration.API.RoutingRules.Repository.RoutingRuleRepository.DeleteRoutingRule(SiteConfiguration.API.RoutingRules.Models.RoutingRule)">
+            <summary>
+            
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:SiteConfiguration.API.Schedule.Abstractions.IScheduleBusiness">
+            <summary>
+            Schedule Business interface
+            </summary>
+        </member>
+        <member name="M:SiteConfiguration.API.Schedule.Abstractions.IScheduleBusiness.GetSchedules(System.Guid)">
+            <summary>
+            Get Schedules from database
+            </summary>
+            <param name="facilityKey"></param>
+        </member>
+        <member name="M:SiteConfiguration.API.Schedule.Abstractions.IScheduleBusiness.GetScheduleByKey(System.Guid)">
+            <summary>
+            Get Schedule from database
+            </summary>
+            <param name="key"></param>
+        </member>
+        <member name="M:SiteConfiguration.API.Schedule.Abstractions.IScheduleBusiness.AddSchedule(System.Guid,SiteConfiguration.API.Schedule.Models.ScheduleRequest)">
+            <summary>
+            Add Schedule to the database
+            </summary>
+            <param name="facilityKey"></param>
+            <param name="schedule"></param>
+        </member>
+        <member name="M:SiteConfiguration.API.Schedule.Abstractions.IScheduleBusiness.UpdateSchedule(System.Guid,System.Guid,SiteConfiguration.API.Schedule.Models.ScheduleRequest)">
+            <summary>
+            Add Schedule to the database
+            </summary>
+            <param name="key"></param>
+            <param name="facilityKey"></param>
+            <param name="schedule"></param>
+        </member>
+        <member name="M:SiteConfiguration.API.Schedule.Abstractions.IScheduleBusiness.DeleteSchedule(System.Guid)">
+            <summary>
+            Delete Schedule from database
+            </summary>
+            <param name="key"></param>
+        </member>
+        <member name="T:SiteConfiguration.API.Schedule.Abstractions.IScheduleRepository">
+            <summary>
+            Schedule Repository interface
+            </summary>
+        </member>
+        <member name="M:SiteConfiguration.API.Schedule.Abstractions.IScheduleRepository.GetSchedules(System.Guid)">
+            <summary>
+            Get Schedules from database
+            </summary>
+            <param name="facilityId"></param>
+        </member>
+        <member name="M:SiteConfiguration.API.Schedule.Abstractions.IScheduleRepository.GetScheduleByName(System.Guid,System.String)">
+            <summary>
+            check wether schedule with the same namee exist in the database or not
+            </summary>
+            <param name="facilityId"></param>
+            <param name="ScheduleTimingName"></param>
+        </member>
+        <member name="M:SiteConfiguration.API.Schedule.Abstractions.IScheduleRepository.GetScheduleByName(System.String)">
+            <summary>
+            check wether schedule with the same namee exist in the database or not
+            </summary>
+            <param name="ScheduleTimingName"></param>
+        </member>
+        <member name="T:SiteConfiguration.API.Schedule.Business.ScheduleBusiness">
+            <summary>
+            Business Layer for schedules
+            </summary>
+        </member>
+        <member name="M:SiteConfiguration.API.Schedule.Business.ScheduleBusiness.#ctor(SiteConfiguration.API.Schedule.Abstractions.IScheduleRepository,SiteConfiguration.API.Schedule.Abstractions.IRoutingRuleScheduleTimingRepository,SiteConfiguration.API.Infrastructure.DataAccess.SQL.DBContextEntities.UnitOfWork.IUnitOfWork,AutoMapper.IMapper)">
+            <summary>
+            Only constructor, params are automatically injected
+            </summary>
+            <param name="scheduleRepository"></param>
+            <param name="unitOfWork"></param>
+            <param name="mapper"></param>
+        </member>
+        <member name="M:SiteConfiguration.API.Schedule.Business.ScheduleBusiness.GetSchedules(System.Guid)">
+            <summary>
+            get list of schedule from database
+            </summary>
+            <param name="facilityKey"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SiteConfiguration.API.Schedule.Business.ScheduleBusiness.GetScheduleByKey(System.Guid)">
+            <summary>
+            get schedule by Key from database 
+            </summary>
+            <param name="key"></param>
+            <returns>Schedule</returns>
+        </member>
+        <member name="M:SiteConfiguration.API.Schedule.Business.ScheduleBusiness.AddSchedule(System.Guid,SiteConfiguration.API.Schedule.Models.ScheduleRequest)">
+            <summary>
+            add a schedule to database
+            </summary>
+            <param name="facilityKey"></param>
+            <param name="schedule"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SiteConfiguration.API.Schedule.Business.ScheduleBusiness.UpdateSchedule(System.Guid,System.Guid,SiteConfiguration.API.Schedule.Models.ScheduleRequest)">
+            <summary>
+            add a schedule to database
+            </summary>
+            <param name="key"></param>
+            <param name="facilityKey"></param>
+            <param name="schedule"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SiteConfiguration.API.Schedule.Business.ScheduleBusiness.DeleteSchedule(System.Guid)">
+            <summary>
+            delete schedule from database
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="T:SiteConfiguration.API.Schedule.Controllers.ScheduleController">
+            <summary>
+            Controller for schedules
+            </summary>
+        </member>
+        <member name="M:SiteConfiguration.API.Schedule.Controllers.ScheduleController.#ctor(SiteConfiguration.API.Schedule.Abstractions.IScheduleBusiness,Microsoft.Extensions.Logging.ILogger{SiteConfiguration.API.Schedule.Controllers.ScheduleController},BD.Core.ResiliencePolicy.HttpClientFactory)">
+            <summary>
+            Only constructor, params are automatically injected
+            </summary>
+            <param name="scheduleBusiness"></param>
+            <param name="logger"></param>
+            <param name="factory"></param>
+        </member>
+        <member name="M:SiteConfiguration.API.Schedule.Controllers.ScheduleController.GetAllSchedules">
+            <summary>
+            HttpGet method to fetch schedules specific to a facility
+            </summary>
+            <returns>List of Schedules</returns>
+        </member>
+        <member name="M:SiteConfiguration.API.Schedule.Controllers.ScheduleController.GetScheduleByKey">
+            <summary>
+            HttpGet method to fetch schedules by its Id
+            </summary>
+            <returns>Schedule</returns>
+        </member>
+        <member name="M:SiteConfiguration.API.Schedule.Controllers.ScheduleController.AddSchedule(SiteConfiguration.API.Schedule.Models.ScheduleRequest)">
+            <summary>
+            HttpPost method to enter a new schedule
+            </summary>
+            <param name="schedule"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SiteConfiguration.API.Schedule.Controllers.ScheduleController.UpdateSchedule(SiteConfiguration.API.Schedule.Models.ScheduleRequest)">
+            <summary>
+            HttpPut method to Update existing schedules
+            </summary>
+            <returns>httpstatuscode</returns>
+        </member>
+        <member name="M:SiteConfiguration.API.Schedule.Controllers.ScheduleController.DeleteSchedule">
+            <summary>
+            HttpDelete method to delete schedules specific to a facility
+            </summary>
+            <returns>httpstatuscode</returns>
+        </member>
+        <member name="M:SiteConfiguration.API.Schedule.Controllers.ScheduleController.DemoSyncTracing">
+            <summary>
+            HttpGet method to test sync flow for tracing.
+            </summary>
+            <returns>List of Printers</returns>
+        </member>
+        <member name="T:SiteConfiguration.API.Schedule.Exceptions.InvalidScheduleException">
+            <summary>
+            Custom exception for schedules
+            </summary>
+        </member>
+        <member name="M:SiteConfiguration.API.Schedule.Exceptions.InvalidScheduleException.#ctor(System.String,System.Int32)">
+            <summary>
+            Only constructor, params are automatically injected
+            </summary>
+        </member>
+        <member name="T:SiteConfiguration.API.Schedule.Repository.RoutingRuleScheduleTimingRepository">
+            <summary>
+            RoutingRuleScheduleTimingRepository class implements the all member of IRoutingRuleScheduleTimingRepository of type RoutingRuleScheduleTiming.
+            </summary>
+        </member>
+        <member name="M:SiteConfiguration.API.Schedule.Repository.RoutingRuleScheduleTimingRepository.#ctor(SiteConfiguration.API.Infrastructure.DataAccess.SQL.DBContextEntities.ApplicationDbContext)">
+            <param name="context"></param>
+        </member>
+        <member name="M:SiteConfiguration.API.Schedule.Repository.RoutingRuleScheduleTimingRepository.GetRoutingRuleScheduleTiming(System.Guid)">
+            <summary>
+            Get RoutingRuleScheduleTiming by the scheduletimingkey which is previously stored on DB.
+            </summary>
+            <param name="key">facilityId field of schedule</param>
+            <returns></returns>
+        </member>
+        <member name="T:SiteConfiguration.API.Schedule.Repository.ScheduleRepository">
+            <summary>
+            ScheduleRepository class implements the all member of IScheduleRepository of type ScheduleTiming.
+            </summary>
+        </member>
+        <member name="M:SiteConfiguration.API.Schedule.Repository.ScheduleRepository.#ctor(SiteConfiguration.API.Infrastructure.DataAccess.SQL.DBContextEntities.ApplicationDbContext)">
+            <param name="context"></param>
+        </member>
+        <member name="M:SiteConfiguration.API.Schedule.Repository.ScheduleRepository.GetSchedules(System.Guid)">
+            <summary>
+            Get Schedule by the facilityKey and tenantKey which is previously stored on DB.
+            </summary>
+            <param name="facilityKey">facilityKey field of schedule</param>
+            <returns></returns>
+        </member>
+        <member name="M:SiteConfiguration.API.Schedule.Repository.ScheduleRepository.GetScheduleByName(System.Guid,System.String)">
+            <summary>
+            Get Schedule by the facilityKey, tenantKey and ScheduleTimingName which is previously stored on DB.
+            </summary>
+            <param name="facilityKey">facilityKey field of schedule</param>
+            <param name="ScheduleTimingName">name of the schedule</param>
+            <returns></returns>
+        </member>
+        <member name="M:SiteConfiguration.API.Schedule.Repository.ScheduleRepository.GetScheduleByName(System.String)">
+            <summary>
+            Get Schedule by the facilityKey, tenantId and ScheduleTimingName which is previously stored on DB.
+            </summary>
+            <param name="ScheduleTimingName">name of the schedule</param>
+            <returns></returns>
+        </member>
+        <member name="T:SiteConfiguration.API.ServiceDependencies">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:SiteConfiguration.API.ServiceDependencies.AddServices(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration,Microsoft.AspNetCore.Hosting.IHostingEnvironment,Microsoft.Extensions.Logging.ILogger)">
+            <summary> Add services to the IServiceCollection instance </summary>
+            <param name="services">IServiceCollection</param>
+            <param name="configuration">IConfiguration</param>
+            <param name="env">IHostingEnvironment</param>
+            <param name="logger">ILogger</param>
+            <returns>IServiceCollection</returns>
+        </member>
+        <member name="M:SiteConfiguration.API.ServiceDependencies.UseServices(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.Extensions.Configuration.IConfiguration,Microsoft.AspNetCore.Hosting.IHostingEnvironment,Microsoft.Extensions.Logging.ILogger)">
+            <summary> Configures services </summary>
+            <param name="app">IApplicationBuilder</param>
+            <param name="configuration">IConfiguration</param>
+            <param name="env">IHostingEnvironment</param>
+            <param name="logger">ILogger</param>
+            <returns>IApplicationBuilder</returns>
+        </member>
+        <member name="P:SiteConfiguration.API.Startup.Configuration">
+            <summary> Configuration of type IConfiguration </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.Startup.Environment">
+            <summary> IHostingEnvironment </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.Startup.Logger">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:SiteConfiguration.API.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration,Microsoft.AspNetCore.Hosting.IHostingEnvironment,Microsoft.Extensions.Logging.ILogger{SiteConfiguration.API.Startup})">
+            <summary>
+            
+            </summary>
+            <param name="configuration"></param>
+            <param name="env"></param>
+            <param name="logger"></param>
+        </member>
+        <member name="M:SiteConfiguration.API.TransactionPriority.Controllers.SmartSortController.#ctor(Microsoft.Extensions.Logging.ILogger{SiteConfiguration.API.TransactionPriority.Controllers.SmartSortController},SiteConfiguration.API.TransactionPriority.Abstractions.ISmartSortManager)">
+            <summary>
+            
+            </summary>
+            <param name="routingRulesRepository"></param>
+        </member>
+        <member name="M:SiteConfiguration.API.TransactionPriority.Controllers.TransactionPriorityController.#ctor(Microsoft.Extensions.Logging.ILogger{SiteConfiguration.API.TransactionPriority.Controllers.TransactionPriorityController},SiteConfiguration.API.TransactionPriority.Abstractions.ITransactionPriorityManager,FluentValidation.IValidator{SiteConfiguration.API.TransactionPriority.RequestResponseModel.TransactionPriorityPost})">
+            <summary>
+            
+            </summary>
+            <param name="routingRulesRepository"></param>
+        </member>
+        <member name="M:SiteConfiguration.API.TransactionPriority.Controllers.TransactionPriorityController.PostTransactionPriority(SiteConfiguration.API.TransactionPriority.RequestResponseModel.TransactionPriorityPost)">
+            <summary>
+            To Post Transaction Priority
+            </summary>
+            <param name="transactionPriorityPost">TransactionPriorityPost Object</param>
+            <returns></returns>
+        </member>
+        <member name="M:SiteConfiguration.API.TransactionPriority.Controllers.TransactionPriorityController.GetTransactionPriority(System.String)">
+            <summary>
+            Get TransactionPriority by TransactionPriorityId
+            </summary>
+            <param name="tranPriorityKey">tranPriorityKey</param>
+            <returns></returns>
+        </member>
+        <member name="M:SiteConfiguration.API.TransactionPriority.Controllers.TransactionPriorityController.PutTransactionPriority(System.String,SiteConfiguration.API.TransactionPriority.RequestResponseModel.TransactionPriorityPut)">
+            <summary>
+            To Update Transaction Priority
+            </summary>
+            <param name="tranPriorityKey"></param>
+            <param name="transactionPriorityPut">TransactionPriorityPut Object</param>
+            <returns></returns>
+        </member>
+        <member name="M:SiteConfiguration.API.TransactionPriority.Controllers.TransactionPriorityController.GetTransactionPriority(System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            Get Active In-Active Transaction Priorities
+            </summary>
+            <param name="offset">Leave the offset Count</param>
+            <param name="limit">Expected Transaction Priorities</param>
+            <param name="isActive">Active and In-Active Transaction Priority.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SiteConfiguration.API.TransactionPriority.Controllers.TransactionPriorityController.GetTransactionPrioritySearch(System.String,System.Int32,System.Int32)">
+            <summary>
+            Get Searched Transaction Priority 
+            </summary>
+            <param name="priorityName">Transaction Priority description(name)</param>
+            <param name="offset">Leave the offset Count</param>
+            <param name="limit">Expected Transaction Priorities</param>
+            <returns></returns>
+        </member>
+        <member name="M:SiteConfiguration.API.TransactionPriority.Controllers.TransactionPriorityController.GetTransactionPrioritySmartSorts(System.String)">
+            <summary>
+            Get Smart Sorts Related to Transaction Priority
+            </summary>
+            <param name="tranPriorityKey">Transaction Priority Key</param>
+            <returns></returns>
+        </member>
+        <member name="M:SiteConfiguration.API.TransactionPriority.Controllers.TransactionPriorityController.UpdateTransactionPrioritySmartSorts(System.String,System.Collections.Generic.List{SiteConfiguration.API.TransactionPriority.RequestResponseModel.TransactionPrioritySmartSortPut})">
+            <summary>
+            Update Transaction Priority with respect to transaction Priority Id 
+            </summary>
+            <param name="tranPriorityKey">Transaction Priority key</param>
+            <param name="listTransactionPrioritySmartSortPut">Transaction Priority SmartSorts to Update</param>
+            <returns></returns>
+        </member>
+        <member name="M:SiteConfiguration.API.TransactionPriority.Controllers.TransactionPriorityController.InsertTransactionPrioritySmartSorts(System.String,System.Collections.Generic.List{SiteConfiguration.API.TransactionPriority.RequestResponseModel.TransactionPrioritySmartSortPut})">
+            <summary>
+            Insert new SmartSort to Transaction Priority
+            </summary>
+            <param name="tranPriorityKey">Transaction PriorityId</param>
+            <param name="listTransactionPrioritySmartSortPost">List of SmartSort to Post</param>
+            <returns></returns>
+        </member>
+        <member name="P:SiteConfiguration.API.TransactionPriority.RequestResponseModel.TransactionPriorityGet.TranPriorityKey">
+            <summary>
+            Gets or Sets Id
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.TransactionPriority.RequestResponseModel.TransactionPriorityGet.PriorityCode">
+            <summary>
+            Gets or Sets Code
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.TransactionPriority.RequestResponseModel.TransactionPriorityGet.PriorityName">
+            <summary>
+            Gets or Sets Description
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.TransactionPriority.RequestResponseModel.TransactionPriorityGet.ForManualPickFlag">
+            <summary>
+            Gets or Sets ManualPick
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.TransactionPriority.RequestResponseModel.TransactionPriorityGet.UseInterfaceMedNameFlag">
+            <summary>
+            Gets or Sets UseInterfaceMedName
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.TransactionPriority.RequestResponseModel.TransactionPriorityGet.ADUFlag">
+            <summary>
+            Gets or Sets IsADU
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.TransactionPriority.RequestResponseModel.TransactionPriorityGet.LegendForeColor">
+            <summary>
+            Foreground Color
+            </summary>
+            <value>Foreground Color</value>
+        </member>
+        <member name="P:SiteConfiguration.API.TransactionPriority.RequestResponseModel.TransactionPriorityGet.LegendBackColor">
+            <summary>
+            Background Color
+            </summary>
+            <value>Background Color</value>
+        </member>
+        <member name="P:SiteConfiguration.API.TransactionPriority.RequestResponseModel.TransactionPriorityGet.ActiveFlag">
+            <summary>
+            Gets or Sets IsActive
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.TransactionPriority.RequestResponseModel.TransactionPriorityGet.MaxOnHoldLength">
+            <summary>
+            Gets or Sets MaxHoldLength
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.TransactionPriority.RequestResponseModel.TransactionPriorityGet.SystemFlag">
+            <summary>
+            Gets or Sets System
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.TransactionPriority.RequestResponseModel.TransactionPriorityGet.PriorityOrder">
+            <summary>
+            Gets or Sets PriorityOrder
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.TransactionPriority.RequestResponseModel.TransactionPriorityGet.SmartSorts">
+            <summary>
+            Gets or Sets SmartSorts
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.TransactionPriority.RequestResponseModel.TransactionPriorityPost.PriorityCode">
+            <summary>
+            Gets or Sets Code
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.TransactionPriority.RequestResponseModel.TransactionPriorityPost.PriorityName">
+            <summary>
+            Gets or Sets Description
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.TransactionPriority.RequestResponseModel.TransactionPriorityPost.ForManualPickFlag">
+            <summary>
+            Gets or Sets ManualPick
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.TransactionPriority.RequestResponseModel.TransactionPriorityPost.ForManualRestockFlag">
+            <summary>
+            Gets or Sets ManualRestock
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.TransactionPriority.RequestResponseModel.TransactionPriorityPost.UseInterfaceMedNameFlag">
+            <summary>
+            Gets or Sets UseInterfaceMedName
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.TransactionPriority.RequestResponseModel.TransactionPriorityPost.ADUFlag">
+            <summary>
+            Gets or Sets IsADU
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.TransactionPriority.RequestResponseModel.TransactionPriorityPost.LegendForeColor">
+            <summary>
+            Foreground Color
+            </summary>
+            <value>Foreground Color</value>
+        </member>
+        <member name="P:SiteConfiguration.API.TransactionPriority.RequestResponseModel.TransactionPriorityPost.LegendBackColor">
+            <summary>
+            Background Color
+            </summary>
+            <value>Background Color</value>
+        </member>
+        <member name="P:SiteConfiguration.API.TransactionPriority.RequestResponseModel.TransactionPriorityPost.ActiveFlag">
+            <summary>
+            Gets or Sets IsActive
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.TransactionPriority.RequestResponseModel.TransactionPriorityPut.PriorityName">
+            <summary>
+            Gets or Sets Description
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.TransactionPriority.RequestResponseModel.TransactionPriorityPut.ForManualPickFlag">
+            <summary>
+            Gets or Sets ManualPick
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.TransactionPriority.RequestResponseModel.TransactionPriorityPut.ForManualRestockFlag">
+            <summary>
+            Gets or Sets ManualRestock
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.TransactionPriority.RequestResponseModel.TransactionPriorityPut.UseInterfaceMedNameFlag">
+            <summary>
+            Gets or Sets UseInterfaceMedName
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.TransactionPriority.RequestResponseModel.TransactionPriorityPut.ADUFlag">
+            <summary>
+            Gets or Sets IsADU
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.TransactionPriority.RequestResponseModel.TransactionPriorityPut.LegendForeColor">
+            <summary>
+            Foreground Color
+            </summary>
+            <value>Foreground Color</value>
+        </member>
+        <member name="P:SiteConfiguration.API.TransactionPriority.RequestResponseModel.TransactionPriorityPut.LegendBackColor">
+            <summary>
+            Background Color
+            </summary>
+            <value>Background Color</value>
+        </member>
+        <member name="P:SiteConfiguration.API.TransactionPriority.RequestResponseModel.TransactionPriorityPut.ActiveFlag">
+            <summary>
+            Gets or Sets IsActive
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.TransactionPriority.RequestResponseModel.TransactionPriorityPut.MaxOnHoldLength">
+            <summary>
+            Gets or Sets MaxHoldLength
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.TransactionPriority.RequestResponseModel.TransactionPriorityPut.SystemFlag">
+            <summary>
+            Gets or Sets System
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.TransactionPriority.RequestResponseModel.TransactionPriorityPut.PriorityOrder">
+            <summary>
+            Gets or Sets PriorityOrder
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.TransactionPriority.RequestResponseModel.TransactionPrioritySmartSort.SmartSortName">
+            <summary>
+            Gets or Sets SmartSortName
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.TransactionPriority.RequestResponseModel.TransactionPrioritySmartSort.SmartSortColumnKey">
+            <summary>
+            Gets or Sets SmartSortId
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.TransactionPriority.RequestResponseModel.TransactionPrioritySmartSort.SmartSortOrder">
+            <summary>
+            Gets or Sets TPSortOrder
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.TransactionPriority.RequestResponseModel.TransactionPrioritySmartSortPut.SmartSortColumnKey">
+            <summary>
+            Gets or Sets SmartSortId
+            </summary>
+        </member>
+        <member name="P:SiteConfiguration.API.TransactionPriority.RequestResponseModel.TransactionPrioritySmartSortPut.SmartSortOrder">
+            <summary>
+            Gets or Sets TPSortOrder
+            </summary>
+        </member>
+    </members>
+</doc>

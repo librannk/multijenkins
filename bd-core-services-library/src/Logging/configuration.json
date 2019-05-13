@@ -1,0 +1,21 @@
+﻿{
+  "Serilog": {
+    "Using": [ "Serilog.Sinks.Console" ],    
+    "Enrich": [ "FromLogContext" ],    
+    "OutputTemplate": "{CustomProperties}{Properties}{Message}{Exception}",
+    "Properties": {},
+    "CustomProperties": {
+      "levelName": null,
+      "level": null,
+      "dateTime": null,
+      "epochTimestampNS": null,
+      "user": null      
+    },
+    "ContainerProperties": {},
+    "MaskingProperties": {
+      "Exclude": [ "Header1", "CorrelationId", "RequestId", "ActionId", "ConnectionId", "Authorization" ],
+      "Mask": [ "Header3", "test" ],
+      "RegEx": "\\d+"
+    }
+  }
+}

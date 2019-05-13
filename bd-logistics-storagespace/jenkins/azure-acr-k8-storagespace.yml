@@ -1,0 +1,125 @@
+# Build Docker image for this app using Azure Pipelines
+# Created by : Nikhil Kanotra
+pool:
+  name: Hosted Ubuntu 1604
+
+variables:
+  buildConfiguration: 'Release'
+  imageName: 'formularyloc:$(Build.BuildId)'
+  dockerId: 'dockerbd'
+  dockerPassword: 'iRsdmZO2/3aEeYT82PVb16CXXgVf932d'  
+  # define two more variables dockerId and dockerPassword in the build pipeline in UI
+  
+steps:
+#- script: |
+#    cd bd-logistics-template
+#    dotnet restore src/Template/Template.API.csproj --configfile NuGet.config --configuration $(buildConfiguration)
+#    dotnet build --configuration $(buildConfiguration)
+#    dotnet publish --configuration $(buildConfiguration) --output out
+#    ls -LR
+
+#    docker build -f Dockerfile -t $(dockerId).azurecr.io/$(imageName) .
+#    docker login -u $(dockerId) -p $pswd $(dockerid).azurecr.io
+#    docker push $(dockerId).azurecr.io/$(imageName) 
+#    echo "kubectl set image deployment/template-deployment template=dockerbd.azurecr.io/$(imageName)" > image.sh
+
+#    docker build -f Dockerfile_tq -t $(dockerId).azurecr.io/$(imageName) .
+#    docker login -u $(dockerId) -p $pswd $(dockerid).azurecr.io
+#    docker push $(dockerId).azurecr.io/$(imageName)
+#    echo " build directory" $(build.artifactstagingdirectory)
+#    cd $(build.artifactstagingdirectory)
+#    ls -ltrg 
+   # echo "kubectl set image deployment/dotnet-deployment dotnetcore=dockerbd.azurecr.io/$(imageName)" > image.sh
+#  env:
+#    pswd: $(dockerPassword)
+
+- task: DotNetCoreCLI@2
+  displayName: Restore
+  inputs:
+    command: restore
+    feedsToUse: config
+    nugetConfigPath: 'bd-logistics-storagespace/NuGet.config'
+    workingDirectory: 'bd-logistics-storagespace'
+
+
+- task: SonarSource.sonarqube.15B84CA1-B62F-4A2A-A403-89B77A063157.SonarQubePrepare@4
+  displayName: 'Prepare analysis on SonarQube'
+  inputs:
+    SonarQube: 'logistics-storagespace'
+    projectKey: logistics-storagespace
+   # extraProperties: 'sonar.cs.opencover.reportsPaths=$(Build.SourcesDirectory)/coverage/coverage.opencover.xml'
+   #  'sonar.exclusions=**/*Infrastructure/Repository*/**/*'
+    extraProperties: |
+     sonar.coverage.exclusions=**/*AutofacModule*/**/*,**/*AutoMapper*/**/*,**/*Common/Constants*/**/*,**/*Configuration*/**/*,**/*DataLayer*/**/*,**/*Entity*/**/*,**/*Infrastructure/DataAccess*/**/*,**/*Infrastructure/Exceptions*/**/*,**/*Infrastructure/Events*/**/*,**/*Registration*/**/*,**/*UnitTests*/**/*,**/*Migrations*/**/*,**/*Program.cs,**/*ServiceDependencies.cs,**/*Startup.cs
+     sonar.cs.opencover.reportsPaths=$(Build.SourcesDirectory)/coverage/coverage.opencover.xml
+
+- task: DotNetCoreCLI@2
+  displayName: Build
+  inputs:
+    arguments: '--configuration $(BuildConfiguration)'
+    workingDirectory: 'bd-logistics-storagespace'
+
+- script: |
+    dotnet test --logger trx /p:Exclude="[xunit*]*" /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput=$(Build.SourcesDirectory)/coverage/ "bd-logistics-storagespace/src/Unit Test/StorageSpace.API.Tests"
+  displayName: 'dotnet test'
+
+- script: |
+    dotnet tool install dotnet-reportgenerator-globaltool --tool-path . 
+    ./reportgenerator "-reports:$(Build.SourcesDirectory)/coverage/coverage.opencover.xml" "-targetdir:coverage/Cobertura" "-reporttypes:Cobertura;HTMLInline;HTMLChart"
+  condition: eq( variables['Agent.OS'], 'Linux' )
+  displayName: Run Reportgenerator on Linux
+
+
+- task: SonarSource.sonarqube.6D01813A-9589-4B15-8491-8164AEB38055.SonarQubeAnalyze@4
+  displayName: 'Run Code Analysis'
+
+- task: SonarSource.sonarqube.291ed61f-1ee4-45d3-b1b0-bf822d9095ef.SonarQubePublish@4
+  displayName: 'Publish Quality Gate Result'
+
+- task: PublishCodeCoverageResults@1
+  inputs:
+    summaryFileLocation: $(Build.SourcesDirectory)/coverage/Cobertura/Cobertura.xml
+    reportDirectory: $(Build.SourcesDirectory)/coverage/Cobertura
+    codecoverageTool: cobertura
+
+#- task: DotNetCoreCLI@2
+#  displayName: Test
+#  inputs:
+#    command: test
+#    projects: '**/*[Tt]ests/cceproxy.API.csproj'                      
+#    arguments: '--configuration $(BuildConfiguration)'
+#
+- task: DotNetCoreCLI@2
+  displayName: Publishing
+  inputs:
+    command: publish
+    zipAfterPublish: false
+    publishWebProjects: false
+    projects: 'bd-logistics-storagespace/src/StorageSpace/StorageSpace.API.csproj'
+    arguments: '--output out'
+    configuration: $(BuildConfiguration) 
+    workingDirectory: 'bd-logistics-storagespace/src/StorageSpace'
+
+- script: |
+    ls bd-logistics-storagespace -LR 
+    docker build -f bd-logistics-storagespace/Dockerfile -t $(dockerId).azurecr.io/$(imageName) .
+    docker login -u $(dockerId) -p $pswd $(dockerid).azurecr.io
+    docker push $(dockerId).azurecr.io/$(imageName) 
+    echo "kubectl set image deployment/floc-deployment formularyloc=dockerbd.azurecr.io/$(imageName)" > image.sh
+  env:
+    pswd: $(dockerPassword) 
+
+- task: CopyFiles@2
+  inputs:
+    contents: image.sh
+    targetFolder: $(Build.ArtifactStagingDirectory)
+- task: PublishBuildArtifacts@1
+  inputs:
+    pathtoPublish: $(Build.ArtifactStagingDirectory)
+    artifactName: ImageName
+
+#- task: PublishTestResults@2
+#  condition: succeededOrFailed()
+#  inputs:
+#    testRunner: VSTest
+#    testResultsFiles: '**/*.trx'

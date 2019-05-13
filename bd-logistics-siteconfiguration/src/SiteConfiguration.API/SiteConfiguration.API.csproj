@@ -1,0 +1,90 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+    <RootNamespace>SiteConfiguration.API</RootNamespace>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>SiteConfiguration.API.XML</DocumentationFile>
+    <CodeAnalysisRuleSet>SiteConfiguration.API.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <CodeAnalysisRuleSet>SiteConfiguration.API.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac" Version="4.9.2" />
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="4.4.0" />
+    <PackageReference Include="AutoMapper" Version="8.0.0" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="6.0.0" />
+    <PackageReference Include="BD.Core" Version="1.0.0" />
+    <PackageReference Include="BD.Core.Caching" Version="1.0.0" />
+    <PackageReference Include="BD.Core.Context.Http" Version="1.0.0" />
+    <PackageReference Include="BD.Core.ElasticClient.Extensions" Version="1.0.0" />
+    <PackageReference Include="BD.Core.ElasticClient.SQL" Version="1.0.0" />
+    <PackageReference Include="BD.Core.EventBus" Version="1.0.0" />
+    <PackageReference Include="BD.Core.EventBusKafka" Version="1.0.0" />
+    <PackageReference Include="BD.Core.ExceptionHandling" Version="1.0.0" />
+    <PackageReference Include="BD.Core.Extension" Version="1.0.3" />
+    <PackageReference Include="BD.Core.HateoasFilter" Version="1.0.0" />
+    <PackageReference Include="BD.Core.HealthCheck" Version="1.0.0" />
+    <PackageReference Include="BD.Core.ResiliencePolicy" Version="1.0.0" />
+    <PackageReference Include="BD.Core.Security" Version="1.0.0" />
+    <PackageReference Include="FluentValidation.AspNetCore" Version="8.3.0" />
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="4.0.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="4.0.1" />
+    <PackageReference Include="SwashBuckle.AspNetCore.MicrosoftExtensions" Version="0.5.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="4.0.1" />
+    <PackageReference Include="WindowsAzure.Storage" Version="9.3.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="cacert.pem">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="SiteConfiguration.API.XML">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="FacilityConfiguration\Abstractions\" />
+    <Folder Include="FacilityConfiguration\Business\" />
+    <Folder Include="FacilityConfiguration\Controllers\" />
+    <Folder Include="FacilityConfiguration\Models\" />
+    <Folder Include="FacilityConfiguration\ModelValidator\" />
+    <Folder Include="FacilityConfiguration\RequestResponseModel\" />
+    <Folder Include="FacilityConfiguration\Repository\" />
+    <Folder Include="IntegrationEvents\EventHandling\" />
+    <Folder Include="Schedule\Business\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Resource.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resource.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="appsettings.development.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Resource.resx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,1430 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Facility.API</name>
+    </assembly>
+    <members>
+        <member name="T:Facility.API.AutofacModule.ApplicationModule">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Facility.API.AutofacModule.ApplicationModule.Load(Autofac.ContainerBuilder)">
+            <summary>
+            This method is used to register the types using autofac
+            </summary>
+            <param name="builder"></param>
+        </member>
+        <member name="T:Facility.API.Automapper.AutomapperRegistrations">
+            <summary>
+            Helper Class for Automapper.
+            </summary>
+        </member>
+        <member name="M:Facility.API.Automapper.AutomapperRegistrations.ConfigureFacilityMapping">
+            <summary>
+            Configures the facility mapping.
+            </summary>
+        </member>
+        <member name="T:Facility.API.Automapper.FacilityMapProfile">
+            <summary>
+            Map profile for facility models.
+            Implements the <see cref="T:AutoMapper.Profile" />
+            </summary>
+            <seealso cref="T:AutoMapper.Profile" />
+        </member>
+        <member name="M:Facility.API.Automapper.FacilityMapProfile.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Facility.API.Automapper.FacilityMapProfile"/> class.
+            </summary>
+        </member>
+        <member name="T:Facility.API.BusinessLayer.Concrete.FacilityManager">
+            <summary>
+            Business Logic for Facility API.
+            Implements the <see cref="T:Facility.API.BusinessLayer.Contracts.IFacilityManager" />
+            </summary>
+            <seealso cref="T:Facility.API.BusinessLayer.Contracts.IFacilityManager" />
+        </member>
+        <member name="M:Facility.API.BusinessLayer.Concrete.FacilityManager.#ctor(Facility.API.Infrastructure.DataAccess.SQL.DBContextEntities.EntityRepositoryContracts.IFacilityRepository,Microsoft.Extensions.Logging.ILogger{Facility.API.BusinessLayer.Concrete.FacilityManager},AutoMapper.IMapper)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Facility.API.BusinessLayer.Concrete.FacilityManager"/> class.
+            </summary>
+            <param name="facilityRepository">The facility repository.</param>
+            <param name="logger">The logger.</param>
+            <param name="mapper">Automapper</param>
+        </member>
+        <member name="M:Facility.API.BusinessLayer.Concrete.FacilityManager.Add(Facility.API.Model.NewFacilityRequest)">
+            <summary>
+            Sends facility to Facility Repository for insertion into database.
+            </summary>
+            <param name="facilityRequest">The facility request.</param>
+            <returns>Task&lt;FacilityEntity&gt;.</returns>
+        </member>
+        <member name="M:Facility.API.BusinessLayer.Concrete.FacilityManager.Update(System.Guid,Facility.API.Model.UpdateFacilityRequest)">
+            <summary>
+            Send Updates  to Facility Repository.
+            </summary>
+            <param name="facilityKey">Facility Identifier.</param>
+            <param name="updateFacilityRequest">The update Facility Request.</param>
+            <returns>Task&lt;FacilityEntity&gt;.</returns>
+        </member>
+        <member name="M:Facility.API.BusinessLayer.Concrete.FacilityManager.GetAllFacilities(System.Boolean,System.String,System.Int32,System.Int32)">
+            <summary>
+            Provides the list of all facilities.
+            Optionally provides support to filter Inactive Facilities, Search facilities partially by facility name,
+            and support for pagination options.
+            </summary>
+            <param name="showInactive">true if inactive facilities needs to be selected. Default is false.</param>
+            <param name="searchTerm">The search term.</param>
+            <param name="offset">The offset.</param>
+            <param name="limit">The limit.</param>
+            <returns>List of Facilities</returns>
+        </member>
+        <member name="M:Facility.API.BusinessLayer.Concrete.FacilityManager.SearchFacility(System.String,System.Boolean)">
+            <summary>
+            Searches the facilities by facility name and flag if search should be done in inactive facilities as well.
+            </summary>
+            <param name="facilityName">Name of the facility.</param>
+            <param name="showInactive">if set to <c>true</c> include inactive in result.</param>
+            <returns>Task&lt;IList&lt;FacilityList&gt;&gt;.</returns>
+        </member>
+        <member name="M:Facility.API.BusinessLayer.Concrete.FacilityManager.GetFacilityByKeyAsync(System.Guid)">
+            <summary>
+            Gets the facility by key asynchronously.
+            </summary>
+            <param name="facilityKey">The facility key.</param>
+            <returns>Facility</returns>
+        </member>
+        <member name="T:Facility.API.BusinessLayer.Contracts.IFacilityManager">
+            <summary>
+            Business Logic for Facility API.
+            </summary>
+        </member>
+        <member name="M:Facility.API.BusinessLayer.Contracts.IFacilityManager.Add(Facility.API.Model.NewFacilityRequest)">
+            <summary>
+            Sends facility to Facility Repository for insertion into database.
+            </summary>
+            <param name="facilityRequest">The facility request.</param>
+            <returns>Task&lt;FacilityEntity&gt;.</returns>
+        </member>
+        <member name="M:Facility.API.BusinessLayer.Contracts.IFacilityManager.Update(System.Guid,Facility.API.Model.UpdateFacilityRequest)">
+            <summary>
+            Send Updates  to Facility Repository.
+            </summary>
+            <param name="facilityKey">Facility Identifier.</param>
+            <param name="updateFacilityRequest">The update Facility request.</param>
+            <returns>Task&lt;FacilityEntity&gt;.</returns>
+        </member>
+        <member name="M:Facility.API.BusinessLayer.Contracts.IFacilityManager.GetAllFacilities(System.Boolean,System.String,System.Int32,System.Int32)">
+            <summary>
+            Provides the list of all facilities.
+            Optionally provides support to filter Inactive Facilities, Search facilities partially by facility name,
+            and support for pagination options.
+            </summary>
+            <param name="showInactive">true if inactive facilities needs to be selected. Default is false.</param>
+            <param name="searchTerm">The search term.</param>
+            <param name="offset">The offset.</param>
+            <param name="limit">The limit.</param>
+            <returns>List of Facilities</returns>
+        </member>
+        <member name="M:Facility.API.BusinessLayer.Contracts.IFacilityManager.SearchFacility(System.String,System.Boolean)">
+            <summary>
+            Searches the facility by facility name and flag if search should be done in inactive facilities as well.
+            </summary>
+            <param name="facilityName">Name of the facility.</param>
+            <param name="showInactive">if set to <c>true</c> include inactive in result.</param>
+            <returns>Task&lt;IList&lt;FacilityList&gt;&gt;.</returns>
+        </member>
+        <member name="M:Facility.API.BusinessLayer.Contracts.IFacilityManager.GetFacilityByKeyAsync(System.Guid)">
+            <summary>
+            Gets the facility by key asynchronously.
+            </summary>
+            <param name="facilityKey">The facility key.</param>
+            <returns>Facility</returns>
+        </member>
+        <member name="T:Facility.API.Configuration.MessageBusTopics">
+            <summary>
+            Kafka Configuration settings for facility.
+            </summary>
+        </member>
+        <member name="P:Facility.API.Configuration.MessageBusTopics.KafkaFacilityDetailsTopic">
+            <summary>
+            Topic to sent facility update details
+            </summary>
+            <value>Topic to sent facility update details.</value>
+        </member>
+        <member name="T:Facility.API.Configuration.SwaggerDefaultValues">
+            <summary>  
+            Represents the Swagger/Swashbuckle operation filter used to document the implicit API version parameter.  
+            </summary>  
+            <remarks>This <see cref="T:Swashbuckle.AspNetCore.SwaggerGen.IOperationFilter"/> is only required due to bugs in the <see cref="T:Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator"/>.  
+            Once they are fixed and published, this class can be removed.</remarks>  
+        </member>
+        <member name="M:Facility.API.Configuration.SwaggerDefaultValues.Apply(Swashbuckle.AspNetCore.Swagger.Operation,Swashbuckle.AspNetCore.SwaggerGen.OperationFilterContext)">
+            <summary>  
+            Applies the filter to the specified operation using the given context.  
+            </summary>  
+            <param name="operation">The operation to apply the filter to.</param>  
+            <param name="context">The current operation filter context.</param>  
+        </member>
+        <member name="T:Facility.API.Constants.ConfigurationConstants">
+            <summary>
+            Constants for configurations
+            </summary>
+        </member>
+        <member name="F:Facility.API.Constants.ConfigurationConstants.EventbusConfigurationSectionName">
+            <summary>
+            The EventBus configuration section name
+            </summary>
+        </member>
+        <member name="F:Facility.API.Constants.ConfigurationConstants.FacilityKafkaConfiguration">
+            <summary>
+            The facility kafka configuration section name
+            </summary>
+        </member>
+        <member name="T:Facility.API.Constants.DbConstants">
+            <summary>
+            Constants pertaining to Database
+            </summary>
+        </member>
+        <member name="F:Facility.API.Constants.DbConstants.DefaultDboSchema">
+            <summary>
+            Constant for default Schema Name
+            </summary>
+        </member>
+        <member name="T:Facility.API.Constants.DbConstants.TableNames">
+            <summary>
+            Constants for Table Names
+            </summary>
+        </member>
+        <member name="F:Facility.API.Constants.DbConstants.TableNames.Facilities">
+            <summary>
+            Facilities Table
+            </summary>
+        </member>
+        <member name="F:Facility.API.Constants.DbConstants.TableNames.ControlledSubstanceLicenses">
+            <summary>
+            ControlledSubstanceLicenses table
+            </summary>
+        </member>
+        <member name="F:Facility.API.Constants.DbConstants.TableNames.ControlledSubstanceLicenseFacilities">
+            <summary>
+            ControlledSubstanceLicenseFacilities mapping table
+            </summary>
+        </member>
+        <member name="T:Facility.API.Constants.CreateUpdateResultEnum">
+            <summary>
+            Enum for Data Creation
+            </summary>
+        </member>
+        <member name="F:Facility.API.Constants.CreateUpdateResultEnum.None">
+            <summary>
+            None (Default)
+            </summary>
+        </member>
+        <member name="F:Facility.API.Constants.CreateUpdateResultEnum.Success">
+            <summary>
+            Success Result.
+            </summary>
+        </member>
+        <member name="F:Facility.API.Constants.CreateUpdateResultEnum.ErrorAlreadyExists">
+            <summary>
+            Object Already exists.
+            </summary>
+        </member>
+        <member name="F:Facility.API.Constants.CreateUpdateResultEnum.ValidationFailed">
+            <summary>
+            Not created due to validation failure.
+            </summary>
+        </member>
+        <member name="F:Facility.API.Constants.CreateUpdateResultEnum.UnknownError">
+            <summary>
+            Unknown Error
+            </summary>
+        </member>
+        <member name="F:Facility.API.Constants.CreateUpdateResultEnum.NotFound">
+            <summary>
+            Object not found
+            </summary>
+        </member>
+        <member name="T:Facility.API.Controllers.FacilityController">
+            <summary>
+            Facility controller is used to save facility details in the database and for pushing these details to event bus
+            </summary>
+        </member>
+        <member name="M:Facility.API.Controllers.FacilityController.#ctor(Microsoft.Extensions.Logging.ILogger{Facility.API.Controllers.FacilityController},BD.Core.EventBus.Abstractions.IEventBus,Facility.API.BusinessLayer.Contracts.IFacilityManager,Microsoft.Extensions.Options.IOptions{Facility.API.Configuration.MessageBusTopics},Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Facility.API.Controllers.FacilityController"/> class.
+            </summary>
+            <param name="logger">The logger.</param>
+            <param name="eventBus">The event bus.</param>
+            <param name="facilityManager">The facility manager.</param>
+            <param name="messageBusTopicsConfiguration">The message bus topics configuration.</param>
+            <param name="httpContextAccessor">The HTTP context accessor.</param>
+        </member>
+        <member name="M:Facility.API.Controllers.FacilityController.GetFacilitiesList(System.Boolean,System.Int32,System.Int32,System.String)">
+            <summary>
+            Gets list of Facilities.
+            </summary>
+            <remarks>Provides the list of all facilities.
+            Optionally provides support to filter Inactive Facilities, Search facilities partially by facility name,
+            and support for pagination options.</remarks>
+            <param name="showInactive">Should the result include inactive results. Default value is false</param>
+            <param name="offset">Start index or number of records to skip.</param>
+            <param name="limit">Page size or number of records to be returned.</param>
+            <param name="searchTerm">Facility name that should be searched. Partial string can be entered</param>
+            <response code="200">OK</response>
+            <response code="400">Bad Request</response>
+            <response code="401">Unauthorized</response>
+            <response code="500">Internal Server Error</response>
+        </member>
+        <member name="M:Facility.API.Controllers.FacilityController.GetFacilityByKey(System.Guid)">
+            <summary>
+            Gets the Facility by facilityKey
+            </summary>
+            <remarks>Gets the complete Facility by the Facility Id.</remarks>
+            <param name="facilityKey">Facility Id for which system for which data should be fetched.</param>
+            <response code="200">successful operation</response>
+            <response code="400">Bad Request</response>
+            <response code="401">Unauthorized</response>
+            <response code="404">Not Found.</response>
+            <response code="500">Internal Server Error</response>
+        </member>
+        <member name="M:Facility.API.Controllers.FacilityController.AddFacility(Facility.API.Model.NewFacilityRequest)">
+            <summary>
+             Method to save facility details in to SQL database and for the publishing messages to Event Bus
+            </summary>
+            <param name="request">Any String message</param>
+            <response code="201">Created</response>
+            <response code="400">Bad Request</response>
+            <response code="401">Unauthorized</response>
+            <response code="500">Internal Server Error</response>
+        </member>
+        <member name="M:Facility.API.Controllers.FacilityController.UpdateFacility(System.Guid,Facility.API.Model.UpdateFacilityRequest)">
+            <summary>
+            Updates the facility.
+            </summary>
+            <param name="facilitykey"></param>
+            <param name="request">Any String message</param>
+            <response code="200">successful operation</response>
+            <response code="400">Bad Request</response>
+            <response code="401">Unauthorized</response>
+            <response code="500">Internal Server Error</response>
+        </member>
+        <member name="T:Facility.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.ControlledSubstanceLicenseEntity">
+            <summary>
+            Controlled Substance License Entity
+            Implements the <see cref="T:Facility.API.Infrastructure.DataAccess.SQL.EFRepository.BaseEntity" />
+            </summary>
+            <seealso cref="T:Facility.API.Infrastructure.DataAccess.SQL.EFRepository.BaseEntity" />
+        </member>
+        <member name="P:Facility.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.ControlledSubstanceLicenseEntity.ControlledSubstanceLicenseKey">
+            <summary>
+            Gets or sets the controlled substance license primary key.
+            </summary>
+            <value>The controlled substance license key.</value>
+        </member>
+        <member name="P:Facility.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.ControlledSubstanceLicenseEntity.TenantKey">
+            <summary>
+            Gets or sets the tenant key.
+            </summary>
+            <value>The tenant key.</value>
+        </member>
+        <member name="P:Facility.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.ControlledSubstanceLicenseEntity.LicenseId">
+            <summary>
+            Gets or sets the description.
+            </summary>
+            <value>The description.</value>
+        </member>
+        <member name="P:Facility.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.ControlledSubstanceLicenseEntity.ExternalFlag">
+            <summary>
+            Gets or sets a value indicating whether [external flag].
+            </summary>
+            <value><c>true</c> if [external flag]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Facility.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.ControlledSubstanceLicenseEntity.StreetAddressText">
+            <summary>
+            Gets or sets the street address text.
+            </summary>
+            <value>The street address text.</value>
+        </member>
+        <member name="P:Facility.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.ControlledSubstanceLicenseEntity.CityName">
+            <summary>
+            Gets or sets the name of the city.
+            </summary>
+            <value>The name of the city.</value>
+        </member>
+        <member name="P:Facility.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.ControlledSubstanceLicenseEntity.SubdivisionName">
+            <summary>
+            Gets or sets the name of the subdivision.
+            </summary>
+            <value>The name of the subdivision.</value>
+        </member>
+        <member name="P:Facility.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.ControlledSubstanceLicenseEntity.PostalCode">
+            <summary>
+            Gets or sets the postal code.
+            </summary>
+            <value>The postal code.</value>
+        </member>
+        <member name="P:Facility.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.ControlledSubstanceLicenseEntity.CountryName">
+            <summary>
+            Gets or sets the name of the country.
+            </summary>
+            <value>The name of the country.</value>
+        </member>
+        <member name="P:Facility.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.ControlledSubstanceLicenseEntity.ControlledSubstanceLicenseFacilities">
+            <summary>
+            Gets or sets the controlled substance license facilities.
+            </summary>
+            <value>The controlled substance license facilities.</value>
+        </member>
+        <member name="T:Facility.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.ControlledSubstanceLicenseFacilityEntity">
+            <summary>
+            It's an entity,which is going to manipulate in DB with its properties as fields.
+            </summary>
+        </member>
+        <member name="P:Facility.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.ControlledSubstanceLicenseFacilityEntity.ControlledSubstanceLicenseFacilityKey">
+            <summary>
+            Gets or sets the controlled substance license facility key.
+            </summary>
+            <value>The controlled substance license facility key.</value>
+        </member>
+        <member name="P:Facility.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.ControlledSubstanceLicenseFacilityEntity.TenantKey">
+            <summary>
+            Gets or sets the tenant key.
+            </summary>
+            <value>The tenant key.</value>
+        </member>
+        <member name="P:Facility.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.ControlledSubstanceLicenseFacilityEntity.FacilityKey">
+            <summary>
+            Gets or sets the facility key.
+            </summary>
+            <value>The facility key.</value>
+        </member>
+        <member name="P:Facility.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.ControlledSubstanceLicenseFacilityEntity.ControlledSubstanceLicenseKey">
+            <summary>
+            Gets or sets the controlled substance license key.
+            </summary>
+            <value>The controlled substance license key.</value>
+        </member>
+        <member name="P:Facility.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.ControlledSubstanceLicenseFacilityEntity.Facility">
+            <summary>
+            Gets or sets the facility.
+            </summary>
+            <value>The facility.</value>
+        </member>
+        <member name="P:Facility.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.ControlledSubstanceLicenseFacilityEntity.ControlledSubstanceLicenseEntity">
+            <summary>
+            Gets or sets the controlled substance license.
+            </summary>
+            <value>The controlled substance license.</value>
+        </member>
+        <member name="T:Facility.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.FacilityEntity">
+            <summary>
+            Facility Entity
+            Implements the <see cref="T:Facility.API.Infrastructure.DataAccess.SQL.EFRepository.BaseEntity" />
+            </summary>
+            <seealso cref="T:Facility.API.Infrastructure.DataAccess.SQL.EFRepository.BaseEntity" />
+        </member>
+        <member name="P:Facility.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.FacilityEntity.FacilityKey">
+            <summary>
+            Gets or sets the facility key.
+            </summary>
+            <value>The facility key.</value>
+        </member>
+        <member name="P:Facility.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.FacilityEntity.TenantKey">
+            <summary>
+            Gets or sets the tenant key.
+            </summary>
+            <value>The tenant key.</value>
+        </member>
+        <member name="P:Facility.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.FacilityEntity.PharmacyInformationSystemKey">
+            <summary>
+            Gets or sets the pharmacy information system key.
+            </summary>
+            <value>The pharmacy information system key.</value>
+        </member>
+        <member name="P:Facility.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.FacilityEntity.FacilityName">
+            <summary>
+            Gets or sets the name of the facility.
+            </summary>
+            <value>The name of the facility.</value>
+        </member>
+        <member name="P:Facility.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.FacilityEntity.FacilityCode">
+            <summary>
+            Gets or sets the facility code.
+            </summary>
+            <value>The facility code.</value>
+        </member>
+        <member name="P:Facility.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.FacilityEntity.TimeZoneId">
+            <summary>
+            Gets or sets the time zone identifier.
+            </summary>
+            <value>The time zone identifier.</value>
+        </member>
+        <member name="P:Facility.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.FacilityEntity.SiteId">
+            <summary>
+            Gets or sets the site identifier.
+            </summary>
+            <value>The site identifier.</value>
+        </member>
+        <member name="P:Facility.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.FacilityEntity.DescriptionText">
+            <summary>
+            Gets or sets the description.
+            </summary>
+            <value>The description.</value>
+        </member>
+        <member name="P:Facility.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.FacilityEntity.CustomerContactName">
+            <summary>
+            Gets or sets the name of the customer contact.
+            </summary>
+            <value>The name of the customer contact.</value>
+        </member>
+        <member name="P:Facility.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.FacilityEntity.CustomerContactPhoneNumberText">
+            <summary>
+            Gets or sets the customer contact phone number text.
+            </summary>
+            <value>The customer contact phone number text.</value>
+        </member>
+        <member name="P:Facility.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.FacilityEntity.CustomerContactFaxNumberText">
+            <summary>
+            Gets or sets the customer contact fax number text.
+            </summary>
+            <value>The customer contact fax number text.</value>
+        </member>
+        <member name="P:Facility.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.FacilityEntity.CustomerContactEmailAddressValue">
+            <summary>
+            Gets or sets the customer contact email address value.
+            </summary>
+            <value>The customer contact email address value.</value>
+        </member>
+        <member name="P:Facility.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.FacilityEntity.StreetAddressText">
+            <summary>
+            Gets or sets the street address text.
+            </summary>
+            <value>The street address text.</value>
+        </member>
+        <member name="P:Facility.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.FacilityEntity.StreetAddress2Text">
+            <summary>
+            Gets or sets the street address2 text.
+            </summary>
+            <value>The street address2 text.</value>
+        </member>
+        <member name="P:Facility.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.FacilityEntity.CityName">
+            <summary>
+            Gets or sets the name of the city.
+            </summary>
+            <value>The name of the city.</value>
+        </member>
+        <member name="P:Facility.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.FacilityEntity.SubDivisionName">
+            <summary>
+            Gets or sets the name of the sub division.
+            </summary>
+            <value>The name of the sub division.</value>
+        </member>
+        <member name="P:Facility.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.FacilityEntity.PostalCode">
+            <summary>
+            Gets or sets the postal code.
+            </summary>
+            <value>The postal code.</value>
+        </member>
+        <member name="P:Facility.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.FacilityEntity.CountryName">
+            <summary>
+            Gets or sets the name of the country.
+            </summary>
+            <value>The name of the country.</value>
+        </member>
+        <member name="P:Facility.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.FacilityEntity.RxLicenseId">
+            <summary>
+            Gets or sets the RX license identifier.
+            </summary>
+            <value>The RX license identifier.</value>
+        </member>
+        <member name="P:Facility.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.FacilityEntity.ActiveFlag">
+            <summary>
+            Gets or sets a value indicating whether [active flag].
+            </summary>
+            <value><c>true</c> if [active flag]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Facility.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.FacilityEntity.ControlledSubstanceLicenseFacilities">
+            <summary>
+            Gets or sets the controlled substance license facilities.
+            </summary>
+            <value>The controlled substance license facilities.</value>
+        </member>
+        <member name="T:Facility.API.Infrastructure.DataAccess.SQL.DBContextEntities.EntityRepositoryContracts.IFacilityRepository">
+            <summary>
+            IFacilityRepository interface represent the all member of IRepository of type Facility.
+            IFacilityRepository provide the extensibility for new operation other than IRepository.
+            </summary> 
+        </member>
+        <member name="M:Facility.API.Infrastructure.DataAccess.SQL.DBContextEntities.EntityRepositoryContracts.IFacilityRepository.GetAllFacilitiesAsync(System.Boolean,System.String)">
+            <summary>
+            Gets all facilities asynchronous.
+            </summary>
+            <param name="showInactive">if set to <c>true</c> [show inactive].</param>
+            <param name="searchTerm">Search term for facility</param>
+            <returns>Task&lt;List&lt;FacilityEntity&gt;&gt;.</returns>
+        </member>
+        <member name="M:Facility.API.Infrastructure.DataAccess.SQL.DBContextEntities.EntityRepositoryContracts.IFacilityRepository.AddFacility(Facility.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.FacilityEntity)">
+            <summary>
+            Adds the facility.
+            </summary>
+            <param name="facilityEntity">The facility entity.</param>
+            <returns>Task&lt;System.Boolean&gt;. if facility is inserted</returns>
+        </member>
+        <member name="M:Facility.API.Infrastructure.DataAccess.SQL.DBContextEntities.EntityRepositoryContracts.IFacilityRepository.SearchFacilitiesByNameAsync(System.String,System.Boolean)">
+            <summary>
+            Searches the facilities by name asynchronously.
+            </summary>
+            <param name="facilityName">Name of the facility.</param>
+            <param name="showInactive">if set to <c>true</c> [show inactive].</param>
+            <returns>Task&lt;List&lt;FacilityEntity&gt;&gt;.</returns>
+        </member>
+        <member name="M:Facility.API.Infrastructure.DataAccess.SQL.DBContextEntities.EntityRepositoryContracts.IFacilityRepository.GetFacilityByCode(System.String)">
+            <summary>
+            Finds facility by facility code asynchronously.
+            </summary>
+            <param name="facilityCode">The facility code.</param>
+            <returns>Task&lt;System.Boolean&gt;.</returns>
+        </member>
+        <member name="M:Facility.API.Infrastructure.DataAccess.SQL.DBContextEntities.EntityRepositoryContracts.IFacilityRepository.UpdateFacility(Facility.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.FacilityEntity)">
+            <summary>
+            Updates the facility.
+            </summary>
+            <param name="facilityEntity">The facility entity to be updated.</param>
+            <returns>Updation Result</returns>
+        </member>
+        <member name="M:Facility.API.Infrastructure.DataAccess.SQL.DBContextEntities.EntityRepositoryContracts.IFacilityRepository.GetAllFacilitiesWithPaginationAsync(System.Boolean,System.String,System.Int32,System.Int32)">
+            <summary>
+            Gets all facilities asynchronously.
+            </summary>
+            <param name="showInactive">if set to <c>true</c> returns inactive facilities.</param>
+            <param name="searchTerm">Search term for facility</param>
+            <param name="offset">Number of records to skip</param>
+            <param name="limit">Number of records to include in page result.</param>
+            <returns>Task&lt;List&lt;FacilityEntity&gt;&gt;.</returns>
+        </member>
+        <member name="T:Facility.API.Infrastructure.DataAccess.SQL.DBContextEntities.EntityRepositoryImplementation.FacilityRepository">
+            <summary>
+            CustomerRepository class implements the all member of IFacilityRepository of type Facility.
+            </summary> 
+        </member>
+        <member name="M:Facility.API.Infrastructure.DataAccess.SQL.DBContextEntities.EntityRepositoryImplementation.FacilityRepository.#ctor(Facility.API.Infrastructure.DataAccess.SQL.DBContextEntities.FacilityDbContext,Facility.API.Infrastructure.DataAccess.SQL.DBContextEntities.UnitOfWork.IUnitOfWork)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Facility.API.Infrastructure.DataAccess.SQL.DBContextEntities.EntityRepositoryImplementation.FacilityRepository" /> class.
+            </summary>
+            <param name="context">The context.</param>
+            <param name="unitOfWork">The unit of work.</param>
+        </member>
+        <member name="M:Facility.API.Infrastructure.DataAccess.SQL.DBContextEntities.EntityRepositoryImplementation.FacilityRepository.GetAllFacilitiesAsync(System.Boolean,System.String)">
+            <summary>
+            Gets all facilities asynchronously.
+            </summary>
+            <param name="showInactive">if set to <c>true</c> returns inactive facilities.</param>
+            <param name="searchTerm">Search term for facility</param>
+            <returns>Task&lt;List&lt;FacilityEntity&gt;&gt;.</returns>
+        </member>
+        <member name="M:Facility.API.Infrastructure.DataAccess.SQL.DBContextEntities.EntityRepositoryImplementation.FacilityRepository.GetAllFacilitiesWithPaginationAsync(System.Boolean,System.String,System.Int32,System.Int32)">
+            <summary>
+            Gets all facilities asynchronously.
+            </summary>
+            <param name="showInactive">if set to <c>true</c> returns inactive facilities.</param>
+            <param name="searchTerm">Search term for facility</param>
+            <param name="offset">Number of records to skip</param>
+            <param name="limit">Number of records to include in page result.</param>
+            <returns>Task&lt;List&lt;FacilityEntity&gt;&gt;.</returns>
+        </member>
+        <member name="M:Facility.API.Infrastructure.DataAccess.SQL.DBContextEntities.EntityRepositoryImplementation.FacilityRepository.SearchFacilitiesByNameAsync(System.String,System.Boolean)">
+            <summary>
+            Searches the facilities by name asynchronously.
+            </summary>
+            <param name="facilityName">Name of the facility to be searched.</param>
+            <param name="showInactive">if set to <c>true</c> includes inactive in result.</param>
+            <returns>Task&lt;List&lt;FacilityEntity&gt;&gt;.</returns>
+        </member>
+        <member name="M:Facility.API.Infrastructure.DataAccess.SQL.DBContextEntities.EntityRepositoryImplementation.FacilityRepository.GetFacilityByCode(System.String)">
+            <summary>
+            Finds facility by facility code asynchronously.
+            </summary>
+            <param name="facilityCode">The facility code.</param>
+            <returns>Facility</returns>
+        </member>
+        <member name="M:Facility.API.Infrastructure.DataAccess.SQL.DBContextEntities.EntityRepositoryImplementation.FacilityRepository.AddFacility(Facility.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.FacilityEntity)">
+            <summary>
+            Adds the facility.
+            </summary>
+            <param name="facilityEntity">The facility entity.</param>
+            <returns>Task&lt;System.Boolean&gt;. if facility is inserted</returns>
+        </member>
+        <member name="M:Facility.API.Infrastructure.DataAccess.SQL.DBContextEntities.EntityRepositoryImplementation.FacilityRepository.UpdateFacility(Facility.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.FacilityEntity)">
+            <summary>
+            Updates the facility.
+            </summary>
+            <param name="facilityEntity">The facility entity to be updated.</param>
+            <returns>Updation Result</returns>
+        </member>
+        <member name="M:Facility.API.Infrastructure.DataAccess.SQL.DBContextEntities.EntityRepositoryImplementation.FacilityRepository.GetFacilitiesWithInactiveOptionQueryable(System.Boolean)">
+            <summary>
+            Gets the facilities dataset as Queryable.
+            </summary>
+            <param name="getInactive">if set to <c>true</c> if filter should include inactive option.</param>
+            <returns>IQueryable of FacilityEntities</returns>
+        </member>
+        <member name="T:Facility.API.Infrastructure.DataAccess.SQL.DBContextEntities.FacilityDbContext">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Facility.API.Infrastructure.DataAccess.SQL.DBContextEntities.FacilityDbContext.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Facility.API.Infrastructure.DataAccess.SQL.DBContextEntities.FacilityDbContext"/> class.
+            </summary>
+        </member>
+        <member name="M:Facility.API.Infrastructure.DataAccess.SQL.DBContextEntities.FacilityDbContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions{Facility.API.Infrastructure.DataAccess.SQL.DBContextEntities.FacilityDbContext})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Facility.API.Infrastructure.DataAccess.SQL.DBContextEntities.FacilityDbContext"/> class.
+            </summary>
+            <param name="options">The options.</param>
+        </member>
+        <member name="P:Facility.API.Infrastructure.DataAccess.SQL.DBContextEntities.FacilityDbContext.Facilities">
+            <summary>
+            Gets or sets the facilities Table.
+            </summary>
+            <value>The facilities.</value>
+        </member>
+        <member name="P:Facility.API.Infrastructure.DataAccess.SQL.DBContextEntities.FacilityDbContext.ControlledSubstanceLicenses">
+            <summary>
+            Gets or sets the ControlledSubstanceLicenses Table.
+            </summary>
+            <value>The controlled substance licenses.</value>
+        </member>
+        <member name="P:Facility.API.Infrastructure.DataAccess.SQL.DBContextEntities.FacilityDbContext.ControlledSubstanceLicenseFacilities">
+            <summary>
+            Gets or sets the ControlledSubstanceLicenseFacilities  Table.
+            </summary>
+            <value>The controlled substance license facilities.</value>
+        </member>
+        <member name="M:Facility.API.Infrastructure.DataAccess.SQL.DBContextEntities.FacilityDbContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <summary>
+            Override this method to further configure the model that was discovered by convention from the entity types
+            exposed in <see cref="T:Microsoft.EntityFrameworkCore.DbSet`1" /> properties on your derived context. The resulting model may be cached
+            and re-used for subsequent instances of your derived context.
+            </summary>
+            <param name="modelBuilder">The builder being used to construct the model for this context. Databases (and other extensions) typically
+            define extension methods on this object that allow you to configure aspects of the model that are specific
+            to a given database.</param>
+            <remarks>If a model is explicitly set on the options for this context (via <see cref="M:Microsoft.EntityFrameworkCore.DbContextOptionsBuilder.UseModel(Microsoft.EntityFrameworkCore.Metadata.IModel)" />)
+            then this method will not be run.</remarks>
+        </member>
+        <member name="T:Facility.API.Infrastructure.DataAccess.SQL.DBContextEntities.UnitOfWork.IUnitOfWork">
+            <summary>
+            IUnitOfWork is an interface.Provide a abstract method to perform multiple operation in single unit.
+            </summary>
+        </member>
+        <member name="M:Facility.API.Infrastructure.DataAccess.SQL.DBContextEntities.UnitOfWork.IUnitOfWork.CommitChangesAsync">
+            <summary>
+            An abstract method to perform multiple operation in single commit.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Facility.API.Infrastructure.DataAccess.SQL.DBContextEntities.UnitOfWork.UnitOfWork">
+            <summary>
+            UnitOfWork is class has functionality to commit the changes to DB.
+            </summary>
+        </member>
+        <member name="M:Facility.API.Infrastructure.DataAccess.SQL.DBContextEntities.UnitOfWork.UnitOfWork.#ctor(Facility.API.Infrastructure.DataAccess.SQL.DBContextEntities.FacilityDbContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Facility.API.Infrastructure.DataAccess.SQL.DBContextEntities.UnitOfWork.UnitOfWork"/> class.
+            </summary>
+            <param name="appDbContext">The application database context.</param>
+        </member>
+        <member name="M:Facility.API.Infrastructure.DataAccess.SQL.DBContextEntities.UnitOfWork.UnitOfWork.CommitChangesAsync">
+            <summary>
+            Implementation to perform multiple operation in single commit.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Facility.API.Infrastructure.DataAccess.SQL.DBContextEntities.UnitOfWork.UnitOfWork.Dispose(System.Boolean)">
+            <summary>
+            
+            </summary>
+            <param name="disposing"></param>
+        </member>
+        <member name="M:Facility.API.Infrastructure.DataAccess.SQL.DBContextEntities.UnitOfWork.UnitOfWork.Dispose">
+            <summary>
+            Dispose the ApplicationDBContext object.
+            </summary>
+        </member>
+        <member name="T:Facility.API.Infrastructure.DataAccess.SQL.EFRepository.BaseEntity">
+            <summary>
+            Base Entity is a class has common properties for all Entities.
+            All Entities class has are inherited from BaseEntity 
+            </summary>
+        </member>
+        <member name="P:Facility.API.Infrastructure.DataAccess.SQL.EFRepository.BaseEntity.CreatedByActorKey">
+            <summary>
+            Gets or sets the created by actor.
+            </summary>
+            <value>The created by actor.</value>
+        </member>
+        <member name="P:Facility.API.Infrastructure.DataAccess.SQL.EFRepository.BaseEntity.CreatedDateTime">
+            <summary>
+            Gets or sets the created date time.
+            </summary>
+            <value>The created date time.</value>
+        </member>
+        <member name="P:Facility.API.Infrastructure.DataAccess.SQL.EFRepository.BaseEntity.LastModifiedByActorKey">
+            <summary>
+            Gets or sets the last modified by actor.
+            </summary>
+            <value>The last modified by actor.</value>
+        </member>
+        <member name="P:Facility.API.Infrastructure.DataAccess.SQL.EFRepository.BaseEntity.LastModifiedDateTime">
+            <summary>
+            Gets or sets the last modified date time.
+            </summary>
+            <value>The last modified date time.</value>
+        </member>
+        <member name="T:Facility.API.Infrastructure.DataAccess.SQL.EFRepository.BaseRepository`1">
+            <summary>
+            It's  abstract class which implements all the methods of IRepository
+            </summary>
+            <typeparam name="TEntity"> For any type of class which is inherited from BaseEntity</typeparam>
+        </member>
+        <member name="P:Facility.API.Infrastructure.DataAccess.SQL.EFRepository.BaseRepository`1.Context">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Facility.API.Infrastructure.DataAccess.SQL.EFRepository.BaseRepository`1.#ctor(Microsoft.EntityFrameworkCore.DbContext)">
+            <summary>
+            
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="M:Facility.API.Infrastructure.DataAccess.SQL.EFRepository.BaseRepository`1.AddAsync(`0)">
+            <summary>
+            Add new entity to DB.
+            </summary>
+            <param name="entity">Entity to Add in DB</param>
+        </member>
+        <member name="M:Facility.API.Infrastructure.DataAccess.SQL.EFRepository.BaseRepository`1.GetAsync(System.Guid)">
+            <summary>
+            Get Entity by the Id of Entity which is previously stored on DB.
+            </summary>
+            <param name="id">Id field of any Entity</param>
+            <returns></returns>
+        </member>
+        <member name="M:Facility.API.Infrastructure.DataAccess.SQL.EFRepository.BaseRepository`1.Delete(`0)">
+            <summary>
+            To delete a particular entity on DB.
+            </summary>
+            <param name="entity">Entity to Delete</param>
+        </member>
+        <member name="M:Facility.API.Infrastructure.DataAccess.SQL.EFRepository.BaseRepository`1.GetAllAsync">
+            <summary>
+            Get all entity from DB
+            </summary>
+            <returns>Returns List of Entities.</returns>
+        </member>
+        <member name="M:Facility.API.Infrastructure.DataAccess.SQL.EFRepository.BaseRepository`1.Update(`0)">
+            <summary>
+            Update Entity to DB 
+            </summary>
+            <param name="entity">Entity to Update</param>
+        </member>
+        <member name="T:Facility.API.Infrastructure.DataAccess.SQL.EFRepository.IRepository`1">
+            <summary>
+            Interface creating contract between different Entities.
+            </summary>
+            <typeparam name="TEntity"> For any type of Class</typeparam>
+        </member>
+        <member name="M:Facility.API.Infrastructure.DataAccess.SQL.EFRepository.IRepository`1.GetAsync(System.Guid)">
+            <summary>
+            Get Entity by the Id of Entity which is previously stored on DB.
+            </summary>
+            <param name="id">Id field of any Entity</param>
+            <returns></returns>
+        </member>
+        <member name="M:Facility.API.Infrastructure.DataAccess.SQL.EFRepository.IRepository`1.AddAsync(`0)">
+            <summary>
+            Add new entity to DB.
+            </summary>
+            <param name="entity">Entity to Add in DB</param>
+        </member>
+        <member name="M:Facility.API.Infrastructure.DataAccess.SQL.EFRepository.IRepository`1.Update(`0)">
+            <summary>
+            Update Entity to DB 
+            </summary>
+            <param name="entity">Entity to Update</param>
+        </member>
+        <member name="M:Facility.API.Infrastructure.DataAccess.SQL.EFRepository.IRepository`1.Delete(`0)">
+            <summary>
+            To delete a particular entity on DB.
+            </summary>
+            <param name="entity">Entity to Delete</param>
+        </member>
+        <member name="M:Facility.API.Infrastructure.DataAccess.SQL.EFRepository.IRepository`1.GetAllAsync">
+            <summary>
+            Get all entity from DB
+            </summary>
+            <returns>Returns List of Entities.</returns>
+        </member>
+        <member name="T:Facility.API.Infrastructure.Exceptions.ExceptionConfig">
+            <summary>
+            ExceptionConfig
+            </summary>
+        </member>
+        <member name="T:Facility.API.Infrastructure.Exceptions.ExceptionConfig.Exceptions">
+            <summary>  
+            Different types of exceptions.  
+            </summary>  
+        </member>
+        <member name="F:Facility.API.Infrastructure.Exceptions.ExceptionConfig.Exceptions.NullReferenceException">
+            <summary>
+            NullReferenceException
+            </summary>
+        </member>
+        <member name="F:Facility.API.Infrastructure.Exceptions.ExceptionConfig.Exceptions.FileNotFoundException">
+            <summary>
+            FileNotFoundException
+            </summary>
+        </member>
+        <member name="F:Facility.API.Infrastructure.Exceptions.ExceptionConfig.Exceptions.OverflowException">
+            <summary>
+            OverflowException
+            </summary>
+        </member>
+        <member name="F:Facility.API.Infrastructure.Exceptions.ExceptionConfig.Exceptions.OutOfMemoryException">
+            <summary>
+            OutOfMemoryException
+            </summary>
+        </member>
+        <member name="F:Facility.API.Infrastructure.Exceptions.ExceptionConfig.Exceptions.InvalidCastException">
+            <summary>
+            InvalidCastException
+            </summary>
+        </member>
+        <member name="F:Facility.API.Infrastructure.Exceptions.ExceptionConfig.Exceptions.ObjectDisposedException">
+            <summary>
+            ObjectDisposedException
+            </summary>
+        </member>
+        <member name="F:Facility.API.Infrastructure.Exceptions.ExceptionConfig.Exceptions.UnauthorizedAccessException">
+            <summary>
+            UnauthorizedAccessException
+            </summary>
+        </member>
+        <member name="F:Facility.API.Infrastructure.Exceptions.ExceptionConfig.Exceptions.NotImplementedException">
+            <summary>
+            NotImplementedException
+            </summary>
+        </member>
+        <member name="F:Facility.API.Infrastructure.Exceptions.ExceptionConfig.Exceptions.NotSupportedException">
+            <summary>
+            NotSupportedException
+            </summary>
+        </member>
+        <member name="F:Facility.API.Infrastructure.Exceptions.ExceptionConfig.Exceptions.InvalidOperationException">
+            <summary>
+            InvalidOperationException
+            </summary>
+        </member>
+        <member name="F:Facility.API.Infrastructure.Exceptions.ExceptionConfig.Exceptions.TimeoutException">
+            <summary>
+            TimeoutException
+            </summary>
+        </member>
+        <member name="F:Facility.API.Infrastructure.Exceptions.ExceptionConfig.Exceptions.ArgumentException">
+            <summary>
+            ArgumentException
+            </summary>
+        </member>
+        <member name="F:Facility.API.Infrastructure.Exceptions.ExceptionConfig.Exceptions.FormatException">
+            <summary>
+            FormatException
+            </summary>
+        </member>
+        <member name="F:Facility.API.Infrastructure.Exceptions.ExceptionConfig.Exceptions.StackOverflowException">
+            <summary>
+            StackOverflowException
+            </summary>
+        </member>
+        <member name="F:Facility.API.Infrastructure.Exceptions.ExceptionConfig.Exceptions.SqlException">
+            <summary>
+            SqlException
+            </summary>
+        </member>
+        <member name="F:Facility.API.Infrastructure.Exceptions.ExceptionConfig.Exceptions.IndexOutOfRangeException">
+            <summary>
+            IndexOutOfRangeException
+            </summary>
+        </member>
+        <member name="F:Facility.API.Infrastructure.Exceptions.ExceptionConfig.Exceptions.IoException">
+            <summary>
+            IoException
+            </summary>
+        </member>
+        <member name="M:Facility.API.Infrastructure.Exceptions.ExceptionConfig.GetErrorCode(System.Type)">
+            <summary>  
+            This method will return the status code based on the exception type.  
+            </summary>  
+            <param name="exceptionType"></param>  
+            <returns>HttpStatusCode</returns>  
+        </member>
+        <member name="T:Facility.API.Infrastructure.Extensions.HttpContextExtensions">
+            <summary>
+            Extension methods for current HttpContext 
+            </summary>
+        </member>
+        <member name="F:Facility.API.Infrastructure.Extensions.HttpContextExtensions.CountKey">
+            <summary>
+            The count key to be used for maintaining the total result count.
+            </summary>
+        </member>
+        <member name="M:Facility.API.Infrastructure.Extensions.HttpContextExtensions.SetTotalCount(Microsoft.AspNetCore.Http.HttpContext,System.Int32)">
+            <summary>
+            Sets the total count in the items dictionary in current HTTP context.
+            </summary>
+            <param name="currentHttpContext">The current HTTP context.</param>
+            <param name="count">The count.</param>
+        </member>
+        <member name="M:Facility.API.Infrastructure.Extensions.HttpContextExtensions.TrySetHeaderValue(Microsoft.AspNetCore.Http.HttpContext,System.String)">
+            <summary>
+            Tries to set the header value for current count. If not set, ignores request.
+            </summary>
+            <param name="currentHttpContext">The current HTTP context.</param>
+            <param name="headerKey">The header key.</param>
+        </member>
+        <member name="T:Facility.API.Infrastructure.Filters.CustomExceptionFilter">
+            <summary>
+            Custom  Exception filter
+            </summary>
+        </member>
+        <member name="M:Facility.API.Infrastructure.Filters.CustomExceptionFilter.#ctor(Facility.API.Infrastructure.Exceptions.ExceptionConfig)">
+            <summary>
+            CustomExceptionFilter
+            </summary>
+            <param name="exceptionConfig"></param>
+        </member>
+        <member name="M:Facility.API.Infrastructure.Filters.CustomExceptionFilter.OnException(Microsoft.AspNetCore.Mvc.Filters.ExceptionContext)">
+            <summary>
+            OnException
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="T:Facility.API.Infrastructure.Filters.TotalCountFilterAttribute">
+            <summary>
+            Class TotalCountFilterAttribute.
+            Implements the <see cref="T:Microsoft.AspNetCore.Mvc.Filters.ActionFilterAttribute" />
+            </summary>
+            <seealso cref="T:Microsoft.AspNetCore.Mvc.Filters.ActionFilterAttribute" />
+        </member>
+        <member name="P:Facility.API.Infrastructure.Filters.TotalCountFilterAttribute.HeaderKeyName">
+            <summary>
+            Gets the name of the header key that should be used for providing the result count in headers.
+            </summary>
+            <value>The name of the header key.</value>
+        </member>
+        <member name="M:Facility.API.Infrastructure.Filters.TotalCountFilterAttribute.OnActionExecuted(Microsoft.AspNetCore.Mvc.Filters.ActionExecutedContext)">
+            <summary>
+            Called when action is executed and sets the count header.
+            </summary>
+            <param name="context">The context.</param>
+            <inheritdoc />
+        </member>
+        <member name="T:Facility.API.IntegrationEvents.Events.FacilityAddedIntegrationEvent">
+             <summary>
+            FacilityAddedIntegrationEvent: This is Facility type event 
+            </summary> 
+        </member>
+        <member name="P:Facility.API.IntegrationEvents.Events.FacilityAddedIntegrationEvent.FacilityId">
+            <summary>
+            Facility Identifier
+            </summary>
+        </member>
+        <member name="P:Facility.API.IntegrationEvents.Events.FacilityAddedIntegrationEvent.IsActive">
+            <summary>
+            Facility IsActive
+            </summary>
+        </member>
+        <member name="P:Facility.API.IntegrationEvents.Events.FacilityAddedIntegrationEvent.ProcessInactiveAsException">
+            <summary>
+            Facility Is Process Inactive As Exception
+            </summary>
+        </member>
+        <member name="P:Facility.API.IntegrationEvents.Events.FacilityAddedIntegrationEvent.FacilityCode">
+            <summary>
+            Facility Code
+            </summary>
+        </member>
+        <member name="P:Facility.API.IntegrationEvents.Events.FacilityAddedIntegrationEvent.ADUIgnoreStockOut">
+            <summary>
+            ADUIgnoreStockOut
+            </summary>
+        </member>
+        <member name="P:Facility.API.IntegrationEvents.Events.FacilityAddedIntegrationEvent.AduIgnoreCritLow">
+            <summary>
+            AduIgnoreCritLow
+            </summary>
+        </member>
+        <member name="T:Facility.API.Model.BaseFacility">
+            <summary>
+            Base Facility with default attributes
+            </summary>
+        </member>
+        <member name="P:Facility.API.Model.BaseFacility.PharmacyInformationSystemKey">
+            <summary>
+            Pharmacy information system key.
+            </summary>
+            <value>Pharmacy information system key.</value>
+        </member>
+        <member name="P:Facility.API.Model.BaseFacility.FacilityName">
+            <summary>
+            Facility Name.
+            </summary>
+            <value>Facility Name.</value>
+        </member>
+        <member name="P:Facility.API.Model.BaseFacility.TimeZoneId">
+            <summary>
+            Time zone id.
+            </summary>
+            <value>Time zone id.</value>
+        </member>
+        <member name="P:Facility.API.Model.BaseFacility.SiteId">
+            <summary>
+            Site id of facility.
+            </summary>
+            <value>Site id of facility.</value>
+        </member>
+        <member name="P:Facility.API.Model.BaseFacility.DescriptionText">
+            <summary>
+            Description of facility.
+            </summary>
+            <value>Description of facility.</value>
+        </member>
+        <member name="P:Facility.API.Model.BaseFacility.CustomerContactName">
+            <summary>
+            Customer Contact Name
+            </summary>
+            <value>Customer Contact Name.</value>
+        </member>
+        <member name="P:Facility.API.Model.BaseFacility.CustomerContactPhoneNumberText">
+            <summary>
+            Customer Phone Number.
+            </summary>
+            <value>Customer Phone Number.</value>
+        </member>
+        <member name="P:Facility.API.Model.BaseFacility.CustomerContactFaxNumberText">
+            <summary>
+            Customer Number Fax.
+            </summary>
+            <value>Customer Number Fax.</value>
+        </member>
+        <member name="P:Facility.API.Model.BaseFacility.CustomerContactEmailAddressValue">
+            <summary>
+            Customer Email.
+            </summary>
+            <value>Customer Email.</value>
+        </member>
+        <member name="P:Facility.API.Model.BaseFacility.StreetAddressText">
+            <summary>
+            Street Address.
+            </summary>
+            <value>Street Address.</value>
+        </member>
+        <member name="P:Facility.API.Model.BaseFacility.StreetAddress2Text">
+            <summary>
+            Street Address Line 2.
+            </summary>
+            <value>Street Address Line 2.</value>
+        </member>
+        <member name="P:Facility.API.Model.BaseFacility.CityName">
+            <summary>
+            Name of city for customer address.
+            </summary>
+            <value>Name of city for customer address.</value>
+        </member>
+        <member name="P:Facility.API.Model.BaseFacility.SubDivisionName">
+            <summary>
+            Address Sub divison name.
+            </summary>
+            <value>Address Sub divison name.</value>
+        </member>
+        <member name="P:Facility.API.Model.BaseFacility.PostalCode">
+            <summary>
+            Postal Code.
+            </summary>
+            <value>Postal Code.</value>
+        </member>
+        <member name="P:Facility.API.Model.BaseFacility.CountryName">
+            <summary>
+            Country Name.
+            </summary>
+            <value>Country Name.</value>
+        </member>
+        <member name="P:Facility.API.Model.BaseFacility.RxLicenseId">
+            <summary>
+            Rx  License Id.
+            </summary>
+            <value>Rx  License Id.</value>
+        </member>
+        <member name="T:Facility.API.Model.Facility">
+            <summary>
+            Facility 
+            </summary>
+        </member>
+        <member name="P:Facility.API.Model.Facility.FacilityKey">
+            <summary>
+            Facility system primary Id.
+            </summary>
+            <value>Facility system primary Id.</value>
+        </member>
+        <member name="P:Facility.API.Model.Facility.ActiveFlag">
+            <summary>
+            Facility Active Status
+            </summary>
+            <value><c>true</c> if facility is active; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="T:Facility.API.Model.FacilityList">
+            <summary>
+            Facility List Model
+            </summary>
+        </member>
+        <member name="P:Facility.API.Model.FacilityList.FacilityKey">
+            <summary>
+            Facility system primary Id.
+            </summary>
+            <value>Facility system primary Id.</value>
+        </member>
+        <member name="P:Facility.API.Model.FacilityList.FacilityName">
+            <summary>
+            Name of the Facility
+            </summary>
+            <value>Name of the Facility</value>
+        </member>
+        <member name="P:Facility.API.Model.FacilityList.FacilityCode">
+            <summary>
+            Facility Code
+            </summary>
+            <value>Facility Code</value>
+        </member>
+        <member name="P:Facility.API.Model.FacilityList.Description">
+            <summary>
+            Description of the facility.
+            </summary>
+            <value>Description of the facility.</value>
+        </member>
+        <member name="P:Facility.API.Model.FacilityList.Active">
+            <summary>
+            Indicates Active status for the facility.
+            </summary>
+            <value>Indicates Active status for the facility.</value>
+        </member>
+        <member name="T:Facility.API.Model.FacilitySearchRequest">
+            <summary>
+            Model for searching Facility
+            </summary>
+        </member>
+        <member name="P:Facility.API.Model.FacilitySearchRequest.SearchTerm">
+            <summary>
+            Search Term that should be searched.
+            </summary>
+            <value>The search term.</value>
+        </member>
+        <member name="P:Facility.API.Model.FacilitySearchRequest.SearchInInactive">
+            <summary>
+            Gets or sets a value indicating whether search should be done in in-active facilities.
+            </summary>
+            <value><c>true</c> if search should be done in in-active facilities; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="T:Facility.API.Model.InternalModels.BusinessResult`1">
+            <summary>
+            Wrapper class for creation result with creation result and created object.
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:Facility.API.Model.InternalModels.BusinessResult`1.Object">
+            <summary>
+            Gets or sets the created object.
+            </summary>
+            <value>The object.</value>
+        </member>
+        <member name="P:Facility.API.Model.InternalModels.BusinessResult`1.OperationResult">
+            <summary>
+            Gets or sets the creation result.
+            </summary>
+            <value>The creation result.</value>
+        </member>
+        <member name="P:Facility.API.Model.InternalModels.BusinessResult`1.ResultCount">
+            <summary>
+            Gets the result count.
+            </summary>
+            <value>The result count.</value>
+        </member>
+        <member name="P:Facility.API.Model.InternalModels.BusinessResult`1.ErrorMessage">
+            <summary>
+            Gets or sets the error message if any.
+            </summary>
+            <value>The error message.</value>
+        </member>
+        <member name="M:Facility.API.Model.InternalModels.BusinessResult`1.#ctor(`0,Facility.API.Constants.CreateUpdateResultEnum,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Facility.API.Model.InternalModels.BusinessResult`1"/> class.
+            </summary>
+            <param name="obj">The created object.</param>
+            <param name="operationResult">The creation result.</param>
+            <param name="errorMessage">The error message.</param>
+        </member>
+        <member name="M:Facility.API.Model.InternalModels.BusinessResult`1.#ctor(`0,Facility.API.Constants.CreateUpdateResultEnum,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Facility.API.Model.InternalModels.BusinessResult`1"/> class.
+            </summary>
+            <param name="obj">The created object.</param>
+            <param name="operationResult">The creation result.</param>
+            <param name="resultCount">Number of total results in result-set.</param>
+        </member>
+        <member name="T:Facility.API.Model.NewFacilityRequest">
+            <summary>
+            New Facility Request.
+            </summary>
+        </member>
+        <member name="P:Facility.API.Model.NewFacilityRequest.FacilityCode">
+            <summary>
+            Facility Code.
+            </summary>
+            <value>Facility Code.</value>
+        </member>
+        <member name="T:Facility.API.Model.UpdateFacilityRequest">
+            <summary>
+            Update Facility request model.
+            Implements the <see>
+                <cref>Facility.API.Model.BaseFacility</cref>
+            </see>
+            </summary>
+            <seealso>
+                <cref>Facility.API.Model.BaseFacility</cref>
+            </seealso>
+        </member>
+        <member name="P:Facility.API.Model.UpdateFacilityRequest.ActiveFlag">
+            <summary>
+            Facility Active Status
+            </summary>
+            <value><c>true</c> if facility is active; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="T:Facility.API.Program">
+            <summary> Program file </summary>
+        </member>
+        <member name="M:Facility.API.Program.Main(System.String[])">
+            <summary>
+            Main
+            </summary>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Facility.API.Program.CreateWebHostBuilder(System.String[])">
+            <summary>
+            CreateWebHostBuilder
+            </summary>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Facility.API.Registration.RegistrationExtension">
+            <summary> Partial extension class for registration. </summary>
+            NOTE: Please refer all RegistrationExtension classes to get the broader picture
+            <summary>
+            To Register all entity for DI for SQL EF repository
+            </summary>
+            <summary> Partial extension class for registration. </summary>
+            NOTE: Please refer all RegistrationExtension classes to get the broader picture
+        </member>
+        <member name="M:Facility.API.Registration.RegistrationExtension.RegisterManager(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary> Register all the handlers </summary>
+            <param name="services"> Instance of IServiceCollection </param>
+            <returns> services (Instance of IServiceCollection) </returns>
+        </member>
+        <member name="M:Facility.API.Registration.RegistrationExtension.RegisterSqlRepository(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Register all entity for DI.
+            Register DB Context and pass connection string.
+            </summary>
+            <param name="services"></param>
+            <param name="configuration"> To get the all configured data appsettings.json file </param>
+            <returns></returns>
+        </member>
+        <member name="M:Facility.API.Registration.RegistrationExtension.RegisterSwagger(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary> Register all Swagger dependencies </summary>
+            <param name="services"> Instance of IServiceCollection </param>
+            <returns> services (Instance of IServiceCollection) </returns>
+        </member>
+        <member name="T:Facility.API.ServiceDependencies">
+            <summary> Adds and configures all the service, which are specific to the API. </summary>
+        </member>
+        <member name="M:Facility.API.ServiceDependencies.AddServices(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration,Microsoft.AspNetCore.Hosting.IHostingEnvironment,Microsoft.Extensions.Logging.ILogger)">
+            <summary> Add services to the IServiceCollection instance </summary>
+            <param name="services">IServiceCollection</param>
+            <param name="configuration">IConfiguration</param>
+            <param name="env">IHostingEnvironment</param>
+            <param name="logger">ILogger</param>
+            <returns>IServiceCollection</returns>
+        </member>
+        <member name="M:Facility.API.ServiceDependencies.UseServices(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.Extensions.Configuration.IConfiguration,Microsoft.AspNetCore.Hosting.IHostingEnvironment,Microsoft.Extensions.Logging.ILogger)">
+            <summary> Configures services </summary>
+            <param name="app">IApplicationBuilder</param>
+            <param name="configuration">IConfiguration</param>
+            <param name="env">IHostingEnvironment</param>
+            <param name="logger">ILogger</param>
+            <returns>IApplicationBuilder</returns>
+        </member>
+        <member name="M:Facility.API.ServiceDependencies.UseEventBusServices(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+            <summary> Adds event bus subscriptions </summary>
+            <param name="app">IApplicationBuilder</param>
+            <returns>Instance of type IApplicationBuilder</returns>
+        </member>
+        <member name="M:Facility.API.ServiceDependencies.RegisterAutoMapperProfiles(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Registers the automatic mapper profiles.
+            </summary>
+            <param name="services">Registraion Service Collection</param>
+        </member>
+        <member name="T:Facility.API.Startup">
+            <summary>
+            Startup file for template
+            </summary>
+        </member>
+        <member name="P:Facility.API.Startup.Configuration">
+            <summary> Configuration of type IConfiguration </summary>
+        </member>
+        <member name="P:Facility.API.Startup.Environment">
+            <summary> IHostingEnvironment </summary>
+        </member>
+        <member name="P:Facility.API.Startup.Logger">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Facility.API.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration,Microsoft.AspNetCore.Hosting.IHostingEnvironment,Microsoft.Extensions.Logging.ILogger{Facility.API.Startup})">
+            <summary>
+            
+            </summary>
+            <param name="configuration"></param>
+            <param name="env"></param>
+            <param name="logger"></param>
+        </member>
+        <member name="M:Facility.API.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            this method is used 
+            </summary>
+            <param name="services"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Facility.API.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IHostingEnvironment,Microsoft.AspNetCore.Mvc.ApiExplorer.IApiVersionDescriptionProvider)">
+            <summary>
+            This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+            </summary>
+            <param name="app">IApplicationBuilder</param>
+            <param name="env">IHostingEnvironment</param>
+            <param name="provider">IApiVersionDescriptionProvider</param>
+        </member>
+    </members>
+</doc>

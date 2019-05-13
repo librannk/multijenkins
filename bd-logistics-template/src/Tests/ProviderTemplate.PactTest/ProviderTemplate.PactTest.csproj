@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <ProjectGuid>{7224c484-3e45-4f06-a750-195c1e478210}</ProjectGuid>  
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+  <PackageReference Include="coverlet.msbuild" Version="2.6.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.3" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.9.0" />
+    <PackageReference Include="PactNet.Linux.x64" Version="2.2.1" />
+    <PackageReference Include="PactNet.Linux.x86" Version="2.2.1" />
+    <PackageReference Include="PactNet.OSX" Version="2.2.1" />
+    <PackageReference Include="PactNet.Windows" Version="2.2.1" />
+    <PackageReference Include="xunit" Version="2.4.0" />
+    <PackageReference Include="OpenCover" Version="4.7.922" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Template\Template.API.csproj" />
+  </ItemGroup>
+
+</Project>

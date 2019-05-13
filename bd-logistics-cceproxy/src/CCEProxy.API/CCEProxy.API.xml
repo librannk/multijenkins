@@ -1,0 +1,1560 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CCEProxy.API</name>
+    </assembly>
+    <members>
+        <member name="T:CCEProxy.API.AutofacModule.ApplicationModule">
+            <summary>
+            This class is used for registering event handler dependencies
+            </summary>
+        </member>
+        <member name="M:CCEProxy.API.AutofacModule.ApplicationModule.Load(Autofac.ContainerBuilder)">
+            <summary>
+            Register dependencies
+            </summary>
+            <param name="builder"></param>
+        </member>
+        <member name="T:CCEProxy.API.AutoMapper.MapProfile">
+            <summary>
+            This class contains mappings
+            </summary>
+        </member>
+        <member name="M:CCEProxy.API.AutoMapper.MapProfile.#ctor">
+            <summary>
+            Initializes a new instance of the MapProfile class.
+            </summary>
+        </member>
+        <member name="T:CCEProxy.API.BusinessLayer.Concrete.FacilityManager">
+            <summary> This class is responsible for handling the Transaction Queue operations </summary>
+        </member>
+        <member name="M:CCEProxy.API.BusinessLayer.Concrete.FacilityManager.#ctor(CCEProxy.Repository.Contracts.IRequestRepository,Microsoft.Extensions.Logging.ILogger{CCEProxy.API.BusinessLayer.Concrete.FacilityManager})">
+            <summary> Initialize the private fields </summary>
+        </member>
+        <member name="M:CCEProxy.API.BusinessLayer.Concrete.FacilityManager.ProcessFacilityRequest(CCEProxy.API.Entity.Facility)">
+            <summary>
+            This method processes the facility request from Facility Service and insert the data into database.
+            <param name="facilityRequest">facilityRequest</param>
+            </summary>
+        </member>
+        <member name="T:CCEProxy.API.BusinessLayer.Concrete.RequestManager">
+            <summary>
+            This class is responsible for handling Incoming request.
+            </summary>
+        </member>
+        <member name="M:CCEProxy.API.BusinessLayer.Concrete.RequestManager.#ctor(Microsoft.Extensions.Options.IOptions{CCEProxy.API.Configuration.Configuration},BD.Core.EventBus.Abstractions.IEventBus,CCEProxy.Repository.Contracts.IRequestRepository,Microsoft.Extensions.Logging.ILogger{CCEProxy.API.BusinessLayer.Concrete.RequestManager})">
+            <summary>
+            Constructor to inject the repository object
+            </summary>
+            <param name="requestRepository"></param>
+            <param name="eventBus"></param>
+            <param name="options"></param>
+            <param name="logger"></param>
+        </member>
+        <member name="M:CCEProxy.API.BusinessLayer.Concrete.RequestManager.ProcessIncomingRequest(CCEProxy.API.Entity.IncomingRequest,System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Apply validations on the incoming object.
+            If validation passes, return aggregated object of incoming request 
+            </summary>
+            <param name="incomingRequest"></param>
+            <param name="incomingRequestId"></param>
+            <param name="headers"></param>
+        </member>
+        <member name="M:CCEProxy.API.BusinessLayer.Concrete.RequestManager.CheckFacility(CCEProxy.API.Entity.Facility,System.String)">
+            <summary>
+            Check for Facility.
+            If validation fails, return response message
+            </summary>
+            <param name="facility"></param>
+            <param name="incomingRequestId"></param>
+        </member>
+        <member name="M:CCEProxy.API.BusinessLayer.Concrete.RequestManager.CheckTransactionPriority(System.String,CCEProxy.API.Entity.TransactionPriority,System.String)">
+            <summary>
+            Check for TransactionPriority.
+            If validation fails, return response message
+            </summary>
+            <param name="transactionPriority"></param>
+            <param name="incomingRequestId"></param>
+            <param name="priorityCode"></param>
+        </member>
+        <member name="M:CCEProxy.API.BusinessLayer.Concrete.RequestManager.PublishIncomingRequestData(CCEProxy.API.Entity.IncomingRequest,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Publishing the incoming request data
+            </summary>
+        </member>
+        <member name="M:CCEProxy.API.BusinessLayer.Concrete.RequestManager.InsertIncomingRequest(CCEProxy.API.Entity.IncomingRequest)">
+            <summary>
+            Insert the incoming request data with the incoming status and status Message
+            </summary>
+        </member>
+        <member name="T:CCEProxy.API.BusinessLayer.Concrete.TransactionPriorityManager">
+            <summary> TransactionPriorityManager </summary>
+        </member>
+        <member name="M:CCEProxy.API.BusinessLayer.Concrete.TransactionPriorityManager.#ctor(CCEProxy.Repository.Contracts.IRequestRepository,Microsoft.Extensions.Logging.ILogger{CCEProxy.API.BusinessLayer.Concrete.TransactionPriorityManager})">
+            <summary> Initialize the private fields </summary>
+        </member>
+        <member name="M:CCEProxy.API.BusinessLayer.Concrete.TransactionPriorityManager.ProcessTransactionPriorityRequest(CCEProxy.API.Entity.TransactionPriority)">
+            <summary>
+            This method processes the facility request from Facility Service and insert the data into database.
+            <param name="transactionPriorityRequest">facilityRequest</param>
+            </summary>
+        </member>
+        <member name="T:CCEProxy.API.BusinessLayer.Contracts.IFacilityManager">
+            <summary> This interface is responsible for handling the Facility Queue operation </summary>
+        </member>
+        <member name="M:CCEProxy.API.BusinessLayer.Contracts.IFacilityManager.ProcessFacilityRequest(CCEProxy.API.Entity.Facility)">
+            <summary> This method is used for filtering the request and save the data into database </summary>
+            <param name="facilityRequest"> Request</param>
+        </member>
+        <member name="T:CCEProxy.API.BusinessLayer.Contracts.IRequestManager">
+            <summary>
+            This interface is responsible for handling incoming object and inserting it in DB.
+            </summary>
+        </member>
+        <member name="M:CCEProxy.API.BusinessLayer.Contracts.IRequestManager.ProcessIncomingRequest(CCEProxy.API.Entity.IncomingRequest,System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Apply validations on the incoming object.
+            If validation passes, create an aggregated object based on facility, formulary and incoming request and return it.
+            </summary>
+        </member>
+        <member name="M:CCEProxy.API.BusinessLayer.Contracts.IRequestManager.InsertIncomingRequest(CCEProxy.API.Entity.IncomingRequest)">
+            <summary>
+            Insert the incoming request when the model state fails and update the status
+            </summary>
+        </member>
+        <member name="T:CCEProxy.API.BusinessLayer.Contracts.ITransactionPriorityManager">
+            <summary> This interface is responsible for handling the TransactionPriority Queue operation </summary>
+        </member>
+        <member name="M:CCEProxy.API.BusinessLayer.Contracts.ITransactionPriorityManager.ProcessTransactionPriorityRequest(CCEProxy.API.Entity.TransactionPriority)">
+            <summary> This method is used for filtering the request and save the data into database </summary>
+            <param name="transactionPriorityRequest"> Request</param>
+        </member>
+        <member name="T:CCEProxy.API.Common.Constants.Constants">
+            <summary>
+            This class contains messages
+            </summary>
+        </member>
+        <member name="T:CCEProxy.API.Common.Constants.Constants.IncomingRequestStatus">
+            <summary>
+            This class contains IncomingRequestStatus messages
+            </summary>
+        </member>
+        <member name="F:CCEProxy.API.Common.Constants.Constants.IncomingRequestStatus.Rejected">
+            <summary>
+            constant for Rejected
+            </summary>
+        </member>
+        <member name="F:CCEProxy.API.Common.Constants.Constants.IncomingRequestStatus.Received">
+            <summary>
+            constant for Received
+            </summary>
+        </member>
+        <member name="F:CCEProxy.API.Common.Constants.Constants.IncomingRequestStatus.Accepted">
+            <summary>
+            constant for Accepted
+            </summary>
+        </member>
+        <member name="F:CCEProxy.API.Common.Constants.Constants.IncomingRequestStatus.Exception">
+            <summary>
+            constant for Exception
+            </summary>
+        </member>
+        <member name="F:CCEProxy.API.Common.Constants.Constants.IncomingRequestStatus.Ignored">
+            <summary>
+            constant for Ignored
+            </summary>
+        </member>
+        <member name="T:CCEProxy.API.Common.Constants.Constants.IncomingRequestStatusMessage">
+            <summary>
+            This class contains IncomingRequestStatusMessage
+            </summary>
+        </member>
+        <member name="F:CCEProxy.API.Common.Constants.Constants.IncomingRequestStatusMessage.NoItemPresent">
+            <summary>
+            constant for NoItemPresent
+            </summary>
+        </member>
+        <member name="T:CCEProxy.API.Common.Constants.Constants.RequestPriority">
+            <summary>
+            This class contains RequestPriority Messages
+            </summary>
+        </member>
+        <member name="F:CCEProxy.API.Common.Constants.Constants.RequestPriority.PyxisCritLow">
+            <summary>
+            constant for PyxisCritLow
+            </summary>
+        </member>
+        <member name="F:CCEProxy.API.Common.Constants.Constants.RequestPriority.PyxisStockOut">
+            <summary>
+            constant for PyxisStockOut
+            </summary>
+        </member>
+        <member name="F:CCEProxy.API.Common.Constants.Constants.RequestPriority.PyxisStckOut">
+            <summary>
+            constant for PyxisStckOut
+            </summary>
+        </member>
+        <member name="F:CCEProxy.API.Common.Constants.Constants.RequestPriority.PyxisRefill">
+            <summary>
+            constant for PyxisRefill
+            </summary>
+        </member>
+        <member name="T:CCEProxy.API.Common.Constants.Constants.LoggingMessage">
+            <summary>
+            This class contains LoggingMessage Messages
+            </summary>
+        </member>
+        <member name="F:CCEProxy.API.Common.Constants.Constants.LoggingMessage.Facility">
+            <summary>
+            constant for Facility
+            </summary>
+        </member>
+        <member name="F:CCEProxy.API.Common.Constants.Constants.LoggingMessage.RequestReceived">
+            <summary>
+            constant for RequestReceived
+            </summary>
+        </member>
+        <member name="F:CCEProxy.API.Common.Constants.Constants.LoggingMessage.ModelStateInvalid">
+            <summary>
+            constant for ModelStateInvalid
+            </summary>
+        </member>
+        <member name="F:CCEProxy.API.Common.Constants.Constants.LoggingMessage.ModelStateValid">
+            <summary>
+            constant for ModelStateValid
+            </summary>
+        </member>
+        <member name="F:CCEProxy.API.Common.Constants.Constants.LoggingMessage.PriorityInvalid">
+            <summary>
+            constant for PriorityInvalid
+            </summary>
+        </member>
+        <member name="F:CCEProxy.API.Common.Constants.Constants.LoggingMessage.PriorityIgnored">
+            <summary>
+            constant for PriorityIgnored
+            </summary>
+        </member>
+        <member name="F:CCEProxy.API.Common.Constants.Constants.LoggingMessage.FacilityInvalid">
+            <summary>
+            constant for FacilityInvalid
+            </summary>
+        </member>
+        <member name="F:CCEProxy.API.Common.Constants.Constants.LoggingMessage.DataPublished">
+            <summary>
+            constant for DataPublished
+            </summary>
+        </member>
+        <member name="F:CCEProxy.API.Common.Constants.Constants.LoggingMessage.RejectedId">
+            <summary>
+            constant for RejectedId
+            </summary>
+        </member>
+        <member name="F:CCEProxy.API.Common.Constants.Constants.LoggingMessage.Priority">
+            <summary>
+            constant for Priority
+            </summary>
+        </member>
+        <member name="F:CCEProxy.API.Common.Constants.Constants.LoggingMessage.DataValid">
+            <summary>
+            constant for DataValid
+            </summary>
+        </member>
+        <member name="F:CCEProxy.API.Common.Constants.Constants.LoggingMessage.NoItemPresent">
+            <summary>
+            constant for NoItemPresent
+            </summary>
+        </member>
+        <member name="F:CCEProxy.API.Common.Constants.Constants.LoggingMessage.ItemIdNull">
+            <summary>
+            constant for ItemIdNull
+            </summary>
+        </member>
+        <member name="F:CCEProxy.API.Common.Constants.Constants.LoggingMessage.DataReceivedFromFacility">
+            <summary>
+            constant for DataReceivedFromFacility
+            </summary>
+        </member>
+        <member name="F:CCEProxy.API.Common.Constants.Constants.LoggingMessage.InvalidRequest">
+            <summary>
+            constant for InvalidRequest
+            </summary>
+        </member>
+        <member name="F:CCEProxy.API.Common.Constants.Constants.LoggingMessage.ErrorWhileProcessingRequest">
+            <summary>
+            constant for ErrorWhileProcessingRequest
+            </summary>
+        </member>
+        <member name="F:CCEProxy.API.Common.Constants.Constants.LoggingMessage.ProcessFacilityRequest">
+            <summary>
+            constant for ProcessFacilityRequest
+            </summary>
+        </member>
+        <member name="F:CCEProxy.API.Common.Constants.Constants.LoggingMessage.DataReceivedFromTransactionPriority">
+            <summary>
+            constant for DataReceivedFromTransactionPriority
+            </summary>
+        </member>
+        <member name="F:CCEProxy.API.Common.Constants.Constants.LoggingMessage.ProcessTransactionPriorityRequest">
+            <summary>
+            constant for ProcessTransactionPriorityRequest
+            </summary>
+        </member>
+        <member name="T:CCEProxy.API.Common.Constants.Constants.User">
+            <summary>
+            This class contains User details
+            </summary>
+        </member>
+        <member name="F:CCEProxy.API.Common.Constants.Constants.User.CreatedBy">
+            <summary>
+            constant for CreatedBy
+            </summary>
+        </member>
+        <member name="F:CCEProxy.API.Common.Constants.Constants.User.ModifiedBy">
+            <summary>
+            constant for ModifiedBy
+            </summary>
+        </member>
+        <member name="T:CCEProxy.API.Common.Constants.Constants.SwaggerMessage">
+            <summary>
+            This class contains Swagger Messages
+            </summary>
+        </member>
+        <member name="F:CCEProxy.API.Common.Constants.Constants.SwaggerMessage.SwaggerEndpointUrl">
+            <summary> Url for swagger endpoint </summary>
+        </member>
+        <member name="F:CCEProxy.API.Common.Constants.Constants.SwaggerMessage.RoutePrefix">
+            <summary> RoutePrefix </summary>
+        </member>
+        <member name="F:CCEProxy.API.Common.Constants.Constants.SwaggerMessage.RouteTemplate">
+            <summary> RouteTemplate </summary>
+        </member>
+        <member name="T:CCEProxy.API.Common.Constants.Constants.HealthMessage">
+            <summary>
+            This class contains Health Messages
+            </summary>
+        </member>
+        <member name="F:CCEProxy.API.Common.Constants.Constants.HealthMessage.HealthCheckReady">
+            <summary> HealthCheckReady </summary>
+        </member>
+        <member name="F:CCEProxy.API.Common.Constants.Constants.HealthMessage.HealthCheckLive">
+            <summary> HealthCheckLive </summary>
+        </member>
+        <member name="T:CCEProxy.API.Configuration.Configuration">
+            <summary> Configuration </summary>
+        </member>
+        <member name="P:CCEProxy.API.Configuration.Configuration.KafkaCCEProxyTopic">
+            <summary>
+            To hold the value for KafkaCCEProxyTopic
+            </summary>
+        </member>
+        <member name="T:CCEProxy.API.Configuration.SwaggerDefaultValues">
+            <summary>  
+            Represents the Swagger/Swashbuckle operation filter used to document the implicit API version parameter.  
+            </summary>  
+            <remarks>This <see cref="T:Swashbuckle.AspNetCore.SwaggerGen.IOperationFilter"/> is only required due to bugs in the <see cref="T:Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator"/>.  
+            Once they are fixed and published, this class can be removed.</remarks>  
+        </member>
+        <member name="M:CCEProxy.API.Configuration.SwaggerDefaultValues.Apply(Swashbuckle.AspNetCore.Swagger.Operation,Swashbuckle.AspNetCore.SwaggerGen.OperationFilterContext)">
+            <summary>  
+            Applies the filter to the specified operation using the given context.  
+            </summary>  
+            <param name="operation">The operation to apply the filter to.</param>  
+            <param name="context">The current operation filter context.</param>  
+        </member>
+        <member name="T:CCEProxy.API.Controllers.IncomingRequestController">
+            <summary>
+            Handling Incoming Request into ProcessRequestController
+            </summary>
+        </member>
+        <member name="M:CCEProxy.API.Controllers.IncomingRequestController.#ctor(CCEProxy.API.BusinessLayer.Contracts.IRequestManager,Microsoft.Extensions.Logging.ILogger{CCEProxy.API.Controllers.IncomingRequestController})">
+            <param name="logger"></param>
+            <param name="requestManager"></param>
+        </member>
+        <member name="M:CCEProxy.API.Controllers.IncomingRequestController.ProcessIncomingRequest(CCEProxy.API.Entity.IncomingRequest)">
+            <summary>
+            HttpPost method processing the incoming request
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:CCEProxy.API.DataLayer.Concrete.RequestRepository">
+            <summary> Implementation of interface. Handles incoming object data operations. </summary>
+        </member>
+        <member name="M:CCEProxy.API.DataLayer.Concrete.RequestRepository.#ctor(CCEProxy.API.Infrastructure.DataAccess.Repository.Interfaces.IIncomingRequestRepository,CCEProxy.API.Infrastructure.DataAccess.Repository.Interfaces.ITransactionPriorityRepository,CCEProxy.API.Infrastructure.DataAccess.Repository.Interfaces.IFacilityRepository,AutoMapper.IMapper)">
+            <param name="incomingRequestRepository"></param>
+            <param name="facilityRepository"></param>
+            <param name="transactionPriorityRepository"></param>
+            <param name="mapper"></param>
+        </member>
+        <member name="M:CCEProxy.API.DataLayer.Concrete.RequestRepository.AddIncomingRequest(CCEProxy.API.Entity.IncomingRequest)">
+            <summary>
+            Insert IncomingRequest to db.
+            </summary>
+            <param name="incomingRequest"></param>
+            <returns>IncomingRequestId</returns>
+        </member>
+        <member name="M:CCEProxy.API.DataLayer.Concrete.RequestRepository.UpdateIncomingRequest(System.String,System.String,System.String)">
+            <summary>
+            Update IncomingRequestStatus in db.
+            </summary>
+            <param name="incomingRequestId"></param>
+            <param name="status"></param>
+            <param name="statusMessage"></param>
+            <returns>true/false</returns>
+        </member>
+        <member name="M:CCEProxy.API.DataLayer.Concrete.RequestRepository.GetTransactionPriority(System.Int32,System.String)">
+            <summary>
+            Get TransactionPriority by FacilityId and PriorityCode.
+            This will include TransactionPriorityDetails
+            </summary>
+            <param name="facilityId"></param>
+            <param name="priorityCode"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CCEProxy.API.DataLayer.Concrete.RequestRepository.GetFacility(System.String)">
+            <summary>
+            Get Facility by FacilityCode This will include Facility Details
+            </summary>
+            <param name="facilityCode"> </param>
+            <returns></returns>
+        </member>
+        <member name="M:CCEProxy.API.DataLayer.Concrete.RequestRepository.AddFacilityRequest(CCEProxy.API.Entity.Facility)">
+            <summary>
+            Insert FacilityRequest to db.
+            </summary>
+            <param name="facility"></param>
+        </member>
+        <member name="M:CCEProxy.API.DataLayer.Concrete.RequestRepository.AddTransactionPriorityRequest(CCEProxy.API.Entity.TransactionPriority)">
+            <summary>
+            Insert TransactionPriority to db.
+            </summary>
+            <param name="transactionPriority"></param>
+        </member>
+        <member name="T:CCEProxy.API.Entity.ADM">
+            <summary>
+            Class ADU
+            </summary>
+        </member>
+        <member name="P:CCEProxy.API.Entity.ADM.AdmTransId">
+            <summary>
+            To hold the value for AduTransId
+            </summary>
+        </member>
+        <member name="P:CCEProxy.API.Entity.ADM.StationName">
+            <summary>
+            To hold the value for StationName
+            </summary>
+        </member>
+        <member name="P:CCEProxy.API.Entity.ADM.Drawer">
+            <summary>
+            To hold the value for Drawer
+            </summary>
+        </member>
+        <member name="P:CCEProxy.API.Entity.ADM.Subdrawer">
+            <summary>
+            To hold the value for Subdrawer
+            </summary>
+        </member>
+        <member name="P:CCEProxy.API.Entity.ADM.Pocket">
+            <summary>
+            To hold the value for Pocket
+            </summary>
+        </member>
+        <member name="T:CCEProxy.API.Entity.Facility">
+            <summary> This model contains detail of Facility</summary>
+        </member>
+        <member name="P:CCEProxy.API.Entity.Facility.Id">
+            <summary>
+            To hold the Id
+            </summary>
+        </member>
+        <member name="P:CCEProxy.API.Entity.Facility.FacilityCode">
+            <summary>
+            To hold the FacilityCode
+            </summary>
+        </member>
+        <member name="T:CCEProxy.API.Entity.IncomingFacility">
+            <summary>
+            Class Incoming Facility
+            </summary>
+        </member>
+        <member name="P:CCEProxy.API.Entity.IncomingFacility.FacilityCode">
+            <summary>
+            To hold the FacilityCode
+            </summary>
+        </member>
+        <member name="P:CCEProxy.API.Entity.IncomingFacility.OrderingFacility">
+            <summary>
+            To hold the OrderingFacility
+            </summary>
+        </member>
+        <member name="P:CCEProxy.API.Entity.IncomingFacility.FacilityId">
+            <summary>
+            To hold the FacilityId
+            </summary>
+        </member>
+        <member name="T:CCEProxy.API.Entity.IncomingRequest">
+            <summary> This model contains detail of IncomingRequest</summary>
+        </member>
+        <member name="P:CCEProxy.API.Entity.IncomingRequest.RequestId">
+            Request id
+        </member>
+        <member name="P:CCEProxy.API.Entity.IncomingRequest.Status">
+            Status
+        </member>
+        <member name="P:CCEProxy.API.Entity.IncomingRequest.StatusMessage">
+            <summary>
+            Status Message
+            </summary>
+        </member>
+        <member name="P:CCEProxy.API.Entity.IncomingRequest.Priority">
+            Priority
+        </member>
+        <member name="P:CCEProxy.API.Entity.IncomingRequest.Facility">
+            <summary>
+            FacilityDetails
+            </summary>
+        </member>
+        <member name="P:CCEProxy.API.Entity.IncomingRequest.Patient">
+            <summary>
+            PatientDetails
+            </summary>
+        </member>
+        <member name="P:CCEProxy.API.Entity.IncomingRequest.Order">
+            <summary>
+            OrderDetails
+            </summary>
+        </member>
+        <member name="P:CCEProxy.API.Entity.IncomingRequest.ADM">
+            <summary>
+            AduDetails
+            </summary>
+        </member>
+        <member name="P:CCEProxy.API.Entity.IncomingRequest.UserDef">
+            <summary>
+            UserDef
+            </summary>
+        </member>
+        <member name="P:CCEProxy.API.Entity.IncomingRequest.Items">
+            Items
+        </member>
+        <member name="M:CCEProxy.API.Entity.IncomingRequest.Validate(System.ComponentModel.DataAnnotations.ValidationContext)">
+            <summary>
+             Method Validating the Model
+            </summary>
+        </member>
+        <member name="T:CCEProxy.API.Entity.Item">
+            <summary>
+            This model contains Item details.
+            </summary>
+        </member>
+        <member name="P:CCEProxy.API.Entity.Item.ComponentType">
+            <summary>
+            Type of component
+            </summary>
+        </member>
+        <member name="P:CCEProxy.API.Entity.Item.ItemId">
+            <summary>
+            ID of Item
+            </summary>
+        </member>
+        <member name="P:CCEProxy.API.Entity.Item.ItemName">
+            <summary>
+            Name of Item
+            </summary>
+        </member>
+        <member name="P:CCEProxy.API.Entity.Item.ComponentAmount">
+            <summary>
+            ComponentAmount
+            </summary>
+        </member>
+        <member name="P:CCEProxy.API.Entity.Item.OrderAmount">
+            <summary>
+            Order Amount of that Item
+            </summary>
+        </member>
+        <member name="P:CCEProxy.API.Entity.Item.DispenseUnits">
+            <summary>
+            Dispense units of Item
+            </summary>
+        </member>
+        <member name="P:CCEProxy.API.Entity.Item.ComponentStrength">
+            <summary>
+            Component Strength of Item
+            </summary>
+        </member>
+        <member name="P:CCEProxy.API.Entity.Item.ComponentStrengthUnits">
+             <summary>
+            Component Strength Units of Item
+             </summary>
+        </member>
+        <member name="P:CCEProxy.API.Entity.Item.SupplementaryCode">
+            <summary>
+            Supplementary Code of Item
+            </summary>
+        </member>
+        <member name="P:CCEProxy.API.Entity.Item.TotalDose">
+            <summary>
+            Total Dose of item
+            </summary>
+        </member>
+        <member name="P:CCEProxy.API.Entity.Item.Strength">
+            Strength
+        </member>
+        <member name="P:CCEProxy.API.Entity.Item.Volume">
+            Volume
+        </member>
+        <member name="P:CCEProxy.API.Entity.Item.Concentration">
+            Concentration
+        </member>
+        <member name="P:CCEProxy.API.Entity.Item.PharmacySpecialDispInstructions">
+            PharmacySpecialDispInstructions
+        </member>
+        <member name="P:CCEProxy.API.Entity.Item.DispenseAmount">
+            DispenseAmount
+        </member>
+        <member name="T:CCEProxy.API.Entity.Order">
+            <summary>
+            Public class Order
+            </summary>
+        </member>
+        <member name="P:CCEProxy.API.Entity.Order.OrderNo">
+            <summary>
+            To hold the OrderNo
+            </summary>
+        </member>
+        <member name="P:CCEProxy.API.Entity.Order.CopeOrderNo">
+            <summary>
+            To hold the CopeOrderNo
+            </summary>
+        </member>
+        <member name="P:CCEProxy.API.Entity.Order.OrderControlId">
+            <summary>
+            To hold the OrderControlId
+            </summary>
+        </member>
+        <member name="P:CCEProxy.API.Entity.Order.IsStatOrder">
+            <summary>
+            To hold the IsStatOrder
+            </summary>
+        </member>
+        <member name="P:CCEProxy.API.Entity.Order.OrderingPriority">
+            <summary>
+            To hold the OrderingPriority
+            </summary>
+        </member>
+        <member name="P:CCEProxy.API.Entity.Order.OrderingDueTime">
+            <summary>
+            To hold the OrderingDueTime
+            </summary>
+        </member>
+        <member name="P:CCEProxy.API.Entity.Order.OrderingDrInstructions">
+            <summary>
+            To hold the OrderingDrInstructions
+            </summary>
+        </member>
+        <member name="T:CCEProxy.API.Entity.Patient">
+            <summary>
+            Public class patient
+            </summary>
+        </member>
+        <member name="P:CCEProxy.API.Entity.Patient.Mrn">
+            <summary>
+            To hold the Mrn
+            </summary>
+        </member>
+        <member name="P:CCEProxy.API.Entity.Patient.Lastname">
+            <summary>
+            To hold the Lastname
+            </summary>
+        </member>
+        <member name="P:CCEProxy.API.Entity.Patient.Firstname">
+            <summary>
+            To hold the Firstname
+            </summary>
+        </member>
+        <member name="P:CCEProxy.API.Entity.Patient.MiddleName">
+            <summary>
+            To hold the MiddleName
+            </summary>
+        </member>
+        <member name="P:CCEProxy.API.Entity.Patient.Suffix">
+            <summary>
+            To hold the Suffix
+            </summary>
+        </member>
+        <member name="P:CCEProxy.API.Entity.Patient.Gender">
+            <summary>
+            To hold the Gender
+            </summary>
+        </member>
+        <member name="P:CCEProxy.API.Entity.Patient.DateOfBirth">
+            <summary>
+            To hold the DateOfBirth
+            </summary>
+        </member>
+        <member name="P:CCEProxy.API.Entity.Patient.AccountNumber">
+            <summary>
+            To hold the AccountNumber
+            </summary>
+        </member>
+        <member name="P:CCEProxy.API.Entity.Patient.Weight">
+            <summary>
+            To hold the Weight
+            </summary>
+        </member>
+        <member name="P:CCEProxy.API.Entity.Patient.Height">
+            <summary>
+            To hold the Height
+            </summary>
+        </member>
+        <member name="P:CCEProxy.API.Entity.Patient.ContactNo">
+            <summary>
+            To hold the ContactNo
+            </summary>
+        </member>
+        <member name="P:CCEProxy.API.Entity.Patient.Room">
+            <summary>
+            To hold the Room
+            </summary>
+        </member>
+        <member name="P:CCEProxy.API.Entity.Patient.Bed">
+            <summary>
+            To hold the Bed
+            </summary>
+        </member>
+        <member name="P:CCEProxy.API.Entity.Patient.VisitId">
+            <summary>
+            To hold the VisitId
+            </summary>
+        </member>
+        <member name="P:CCEProxy.API.Entity.Patient.Dept">
+            <summary>
+            To hold the Dept
+            </summary>
+        </member>
+        <member name="P:CCEProxy.API.Entity.Patient.PrescriptionNo">
+            <summary>
+            To hold the PrescriptionNo
+            </summary>
+        </member>
+        <member name="P:CCEProxy.API.Entity.Patient.DeliverToLocation">
+            <summary>
+            To hold the DeliverToLocation
+            </summary>
+        </member>
+        <member name="T:CCEProxy.API.Entity.TransactionPriority">
+            <summary> This model contains Transaction Priority of Items</summary>
+        </member>
+        <member name="P:CCEProxy.API.Entity.TransactionPriority.Id">
+            <summary>
+            To hold the Id field
+            </summary>
+        </member>
+        <member name="P:CCEProxy.API.Entity.TransactionPriority.PriorityCode">
+            <summary>
+            To hold the Priority Code
+            </summary>
+        </member>
+        <member name="P:CCEProxy.API.Entity.TransactionPriority.IsActive">
+            <summary>
+            To hold the IsActive
+            </summary>
+        </member>
+        <member name="P:CCEProxy.API.Entity.TransactionPriority.FacilityId">
+            <summary>
+            To hold the FacilityId
+            </summary>
+        </member>
+        <member name="T:CCEProxy.API.Entity.UserDef">
+            <summary>
+            User def class
+            </summary>
+        </member>
+        <member name="P:CCEProxy.API.Entity.UserDef.UsrDef1">
+            <summary>
+            To hold UsrDef1 value
+            </summary>
+        </member>
+        <member name="P:CCEProxy.API.Entity.UserDef.UsrDef2">
+            <summary>
+            To hold UsrDef2 value
+            </summary>
+        </member>
+        <member name="P:CCEProxy.API.Entity.UserDef.UsrDef3">
+            <summary>
+            To hold UsrDef3 value
+            </summary>
+        </member>
+        <member name="P:CCEProxy.API.Entity.UserDef.UsrDef4">
+            <summary>
+            To hold UsrDef4 value
+            </summary>
+        </member>
+        <member name="P:CCEProxy.API.Entity.UserDef.UsrDef5">
+            <summary>
+            To hold UsrDef5 value
+            </summary>
+        </member>
+        <member name="T:CCEProxy.API.Infrastructure.DataAccess.BaseRepository`1">
+            <summary>
+            Base repository for CRUD operations
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="F:CCEProxy.API.Infrastructure.DataAccess.BaseRepository`1._Context">
+            <summary>
+            Context variable
+            </summary>
+        </member>
+        <member name="M:CCEProxy.API.Infrastructure.DataAccess.BaseRepository`1.#ctor(BD.Core.ElasticClient.Mongo.ElasticDbContext)">
+            <summary>
+            
+            </summary>
+            <param name="dataContext"></param>
+        </member>
+        <member name="M:CCEProxy.API.Infrastructure.DataAccess.BaseRepository`1.CollectionName``1">
+            <summary>
+            Function to get the collection name
+            </summary>
+            <typeparam name="TDoc"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:CCEProxy.API.Infrastructure.DataAccess.BaseRepository`1.CCEProxy#API#Infrastructure#DataAccess#Mongo#Contracts#IBaseRepository{T}#GetById(System.String)">
+            <summary>
+            To get the document by id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CCEProxy.API.Infrastructure.DataAccess.BaseRepository`1.CCEProxy#API#Infrastructure#DataAccess#Mongo#Contracts#IBaseRepository{T}#GetAll">
+            <summary>
+            To get all the documents from a collection
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CCEProxy.API.Infrastructure.DataAccess.BaseRepository`1.CCEProxy#API#Infrastructure#DataAccess#Mongo#Contracts#IBaseRepository{T}#Insert(`0)">
+            <summary>
+            To insert the document in a specific collection
+            </summary>
+            <param name="entity"></param>
+        </member>
+        <member name="M:CCEProxy.API.Infrastructure.DataAccess.BaseRepository`1.CCEProxy#API#Infrastructure#DataAccess#Mongo#Contracts#IBaseRepository{T}#Update(`0)">
+            <summary>
+            To update the document
+            </summary>
+            <param name="entity"></param>
+        </member>
+        <member name="M:CCEProxy.API.Infrastructure.DataAccess.BaseRepository`1.CCEProxy#API#Infrastructure#DataAccess#Mongo#Contracts#IBaseRepository{T}#Delete(`0)">
+            <summary>
+            To delete the document
+            </summary>
+            <param name="entity"></param>
+        </member>
+        <member name="M:CCEProxy.API.Infrastructure.DataAccess.BaseRepository`1.CCEProxy#API#Infrastructure#DataAccess#Mongo#Contracts#IBaseRepository{T}#DeleteAll">
+            <summary>
+            To delete the document
+            </summary>
+        </member>
+        <member name="M:CCEProxy.API.Infrastructure.DataAccess.BaseRepository`1.CCEProxy#API#Infrastructure#DataAccess#Mongo#Contracts#IBaseRepository{T}#GetByIdAsync(System.String)">
+            <summary>
+            Async method to get the document by id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CCEProxy.API.Infrastructure.DataAccess.BaseRepository`1.CCEProxy#API#Infrastructure#DataAccess#Mongo#Contracts#IBaseRepository{T}#GetAllAsync">
+            <summary>
+            Async method to get all the document from a collection
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CCEProxy.API.Infrastructure.DataAccess.BaseRepository`1.CCEProxy#API#Infrastructure#DataAccess#Mongo#Contracts#IBaseRepository{T}#InsertAsync(`0)">
+            <summary>
+            To async insert the document
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CCEProxy.API.Infrastructure.DataAccess.BaseRepository`1.CCEProxy#API#Infrastructure#DataAccess#Mongo#Contracts#IBaseRepository{T}#UpdateAsync(`0)">
+            <summary>
+            To async update the document
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CCEProxy.API.Infrastructure.DataAccess.BaseRepository`1.CCEProxy#API#Infrastructure#DataAccess#Mongo#Contracts#IBaseRepository{T}#DeleteAsync(`0)">
+            <summary>
+            To async delete the document from a collection
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CCEProxy.API.Infrastructure.DataAccess.BaseRepository`1.CCEProxy#API#Infrastructure#DataAccess#Mongo#Contracts#IBaseRepository{T}#DeleteAllAsync">
+            <summary>
+            To async delete all the document from a collection
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:CCEProxy.API.Infrastructure.DataAccess.DBModel.Facility">
+            <summary>
+            DB model containing detail of Facility
+            </summary>
+        </member>
+        <member name="P:CCEProxy.API.Infrastructure.DataAccess.DBModel.Facility.FacilityCode">
+            <summary>
+            FacilityCode
+            </summary>
+        </member>
+        <member name="P:CCEProxy.API.Infrastructure.DataAccess.DBModel.Facility.FacilityId">
+            <summary>
+            FacilityId
+            </summary>
+        </member>
+        <member name="T:CCEProxy.API.Infrastructure.DataAccess.DBModel.IncomingRequest">
+            <summary> DB model containing detail of IncomingRequest</summary>
+        </member>
+        <member name="P:CCEProxy.API.Infrastructure.DataAccess.DBModel.IncomingRequest.Status">
+            Status
+        </member>
+        <member name="P:CCEProxy.API.Infrastructure.DataAccess.DBModel.IncomingRequest.StatusMessage">
+            <summary>
+            Status Message
+            </summary>
+        </member>
+        <member name="P:CCEProxy.API.Infrastructure.DataAccess.DBModel.IncomingRequest.Priority">
+            Priority
+        </member>
+        <member name="P:CCEProxy.API.Infrastructure.DataAccess.DBModel.IncomingRequest.Facility">
+            <summary>
+            FacilityDetails
+            </summary>
+        </member>
+        <member name="P:CCEProxy.API.Infrastructure.DataAccess.DBModel.IncomingRequest.Patient">
+            <summary>
+            PatientDetails
+            </summary>
+        </member>
+        <member name="P:CCEProxy.API.Infrastructure.DataAccess.DBModel.IncomingRequest.Order">
+            <summary>
+            OrderDetails
+            </summary>
+        </member>
+        <member name="P:CCEProxy.API.Infrastructure.DataAccess.DBModel.IncomingRequest.ADM">
+            <summary>
+            AduDetails
+            </summary>
+        </member>
+        <member name="P:CCEProxy.API.Infrastructure.DataAccess.DBModel.IncomingRequest.UserDef">
+            <summary>
+            UserDef
+            </summary>
+        </member>
+        <member name="P:CCEProxy.API.Infrastructure.DataAccess.DBModel.IncomingRequest.Items">
+            Items
+        </member>
+        <member name="T:CCEProxy.API.Infrastructure.DataAccess.DBModel.TransactionPriority">
+            <summary>
+            DB model containing detail of TransactionPriority
+            </summary>
+        </member>
+        <member name="P:CCEProxy.API.Infrastructure.DataAccess.DBModel.TransactionPriority.PriorityCode">
+            <summary>
+            PriorityCode
+            </summary>
+        </member>
+        <member name="P:CCEProxy.API.Infrastructure.DataAccess.DBModel.TransactionPriority.IsActive">
+            <summary>
+            IsActive
+            </summary>
+        </member>
+        <member name="P:CCEProxy.API.Infrastructure.DataAccess.DBModel.TransactionPriority.FacilityId">
+            <summary>
+            FacilityId
+            </summary>
+        </member>
+        <member name="P:CCEProxy.API.Infrastructure.DataAccess.DBModel.TransactionPriority.TransactionPriorityId">
+            <summary>
+            TransactionPriorityId
+            </summary>
+        </member>
+        <member name="T:CCEProxy.API.Infrastructure.DataAccess.Mongo.Clients.MongoDbClient">
+            <summary>
+            Wrapper class for the MongoClient
+            </summary>
+        </member>
+        <member name="F:CCEProxy.API.Infrastructure.DataAccess.Mongo.Clients.MongoDbClient.DatabaseName">
+            <summary>
+            Name of the Database we want data from
+            </summary>
+        </member>
+        <member name="F:CCEProxy.API.Infrastructure.DataAccess.Mongo.Clients.MongoDbClient.ConnectionString">
+            <summary>
+            The connection string (IP-Adress + Port)
+            </summary>
+        </member>
+        <member name="F:CCEProxy.API.Infrastructure.DataAccess.Mongo.Clients.MongoDbClient.Client">
+            <summary>
+            Threadsafe (According to the documentation)
+            </summary>
+        </member>
+        <member name="M:CCEProxy.API.Infrastructure.DataAccess.Mongo.Clients.MongoDbClient.#ctor(System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="databaseName"></param>
+            <param name="connectionString"></param>
+        </member>
+        <member name="M:CCEProxy.API.Infrastructure.DataAccess.Mongo.Clients.MongoDbClient.CreateClient">
+            <summary>
+            Wrapper for creating client, so in the future when we want to make a more complex client, we just edit here.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CCEProxy.API.Infrastructure.DataAccess.Mongo.Clients.MongoDbClient.GetContext">
+            <summary>
+            Returns the Database with the given name in the configuration.
+            </summary>
+            <returns>IMongoDatabase instance</returns>
+        </member>
+        <member name="M:CCEProxy.API.Infrastructure.DataAccess.Mongo.Clients.MongoDbClient.DropContext">
+            <summary>
+            To drop the database
+            </summary>
+        </member>
+        <member name="T:CCEProxy.API.Infrastructure.DataAccess.Mongo.Constants.ErrorConstants">
+            <summary>
+            Error constants class
+            </summary>
+        </member>
+        <member name="F:CCEProxy.API.Infrastructure.DataAccess.Mongo.Constants.ErrorConstants.ClientNotInstantiated">
+            <summary>
+            Error message for client not instantiated
+            </summary>
+        </member>
+        <member name="T:CCEProxy.API.Infrastructure.DataAccess.Mongo.Contracts.IBaseRepository`1">
+            <summary>
+            Base repository for CRUD operations
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:CCEProxy.API.Infrastructure.DataAccess.Mongo.Contracts.IBaseRepository`1.GetById(System.String)">
+            <summary>
+            To get the document with id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CCEProxy.API.Infrastructure.DataAccess.Mongo.Contracts.IBaseRepository`1.GetAll">
+            <summary>
+            To get all the documents
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CCEProxy.API.Infrastructure.DataAccess.Mongo.Contracts.IBaseRepository`1.Insert(`0)">
+            <summary>
+            To insert the new document
+            </summary>
+            <param name="entity"></param>
+        </member>
+        <member name="M:CCEProxy.API.Infrastructure.DataAccess.Mongo.Contracts.IBaseRepository`1.Update(`0)">
+            <summary>
+            To update the document
+            </summary>
+            <param name="entity"></param>
+        </member>
+        <member name="M:CCEProxy.API.Infrastructure.DataAccess.Mongo.Contracts.IBaseRepository`1.Delete(`0)">
+            <summary>
+            To delete the document
+            </summary>
+            <param name="entity"></param>
+        </member>
+        <member name="M:CCEProxy.API.Infrastructure.DataAccess.Mongo.Contracts.IBaseRepository`1.DeleteAll">
+            <summary>
+            To delete all the documents
+            </summary>
+        </member>
+        <member name="M:CCEProxy.API.Infrastructure.DataAccess.Mongo.Contracts.IBaseRepository`1.GetByIdAsync(System.String)">
+            <summary>
+            To get the document with id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CCEProxy.API.Infrastructure.DataAccess.Mongo.Contracts.IBaseRepository`1.GetAllAsync">
+            <summary>
+            Async method to get all the documents from a collection
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CCEProxy.API.Infrastructure.DataAccess.Mongo.Contracts.IBaseRepository`1.InsertAsync(`0)">
+            <summary>
+            Async method to insert the documents
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CCEProxy.API.Infrastructure.DataAccess.Mongo.Contracts.IBaseRepository`1.UpdateAsync(`0)">
+            <summary>
+            Async method to update the document
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CCEProxy.API.Infrastructure.DataAccess.Mongo.Contracts.IBaseRepository`1.DeleteAsync(`0)">
+            <summary>
+            To delete a single document from a collection
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CCEProxy.API.Infrastructure.DataAccess.Mongo.Contracts.IBaseRepository`1.DeleteAllAsync">
+            <summary>
+            To async delete all the documents from a collection
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:CCEProxy.API.Infrastructure.DataAccess.Mongo.Entities.Entity">
+            <summary>
+            Base Entity for Mongo Object
+            </summary>
+        </member>
+        <member name="P:CCEProxy.API.Infrastructure.DataAccess.Mongo.Entities.Entity.Id">
+            <summary>
+            To hold the Bson Id
+            </summary>
+        </member>
+        <member name="P:CCEProxy.API.Infrastructure.DataAccess.Mongo.Entities.Entity.CreatedBy">
+            <summary>
+            To hold the Created by
+            </summary>
+        </member>
+        <member name="P:CCEProxy.API.Infrastructure.DataAccess.Mongo.Entities.Entity.CreatedDate">
+            <summary>
+            To hold created date
+            </summary>
+        </member>
+        <member name="P:CCEProxy.API.Infrastructure.DataAccess.Mongo.Entities.Entity.ModifiedBy">
+            <summary>
+            To hold the modified by
+            </summary>
+        </member>
+        <member name="P:CCEProxy.API.Infrastructure.DataAccess.Mongo.Entities.Entity.ModifiedDate">
+            <summary>
+            To hold modified date
+            </summary>
+        </member>
+        <member name="T:CCEProxy.API.Infrastructure.DataAccess.Repository.FacilityRepository">
+            <summary>
+            This class handles the Facility db operations
+            </summary>
+        </member>
+        <member name="M:CCEProxy.API.Infrastructure.DataAccess.Repository.FacilityRepository.#ctor(BD.Core.ElasticClient.Mongo.ElasticDbContext)">
+            <summary> Initializes instances </summary>
+            <param name="dataContext"></param>
+        </member>
+        <member name="M:CCEProxy.API.Infrastructure.DataAccess.Repository.FacilityRepository.GetFacilityByCode(System.String)">
+            <summary>
+            Get Facility record from DB based on FacilityCode.
+            </summary>
+            <param name="facilityCode">FacilityCode</param>
+            <returns></returns>
+        </member>
+        <member name="T:CCEProxy.API.Infrastructure.DataAccess.Repository.IncomingRequestRepository">
+            <summary>
+            This class handles the IncomingRequest db operations
+            </summary>
+        </member>
+        <member name="M:CCEProxy.API.Infrastructure.DataAccess.Repository.IncomingRequestRepository.#ctor(BD.Core.ElasticClient.Mongo.ElasticDbContext)">
+            <summary> Initializes instances </summary>
+            <param name="dataContext"></param>
+        </member>
+        <member name="T:CCEProxy.API.Infrastructure.DataAccess.Repository.Interfaces.IFacilityRepository">
+            <summary>
+            This interface handles the Facility db operations
+            </summary>
+        </member>
+        <member name="M:CCEProxy.API.Infrastructure.DataAccess.Repository.Interfaces.IFacilityRepository.GetFacilityByCode(System.String)">
+            <summary>
+            Get Facility record from DB based on FacilityId.
+            </summary>
+            <param name="facilityCode">facilityCode</param>
+            <returns></returns>
+        </member>
+        <member name="T:CCEProxy.API.Infrastructure.DataAccess.Repository.Interfaces.IIncomingRequestRepository">
+            <summary>
+            Incoming Request Repository
+            </summary>
+        </member>
+        <member name="T:CCEProxy.API.Infrastructure.DataAccess.Repository.Interfaces.ITransactionPriorityRepository">
+            <summary>
+            This interface handles the TransactionPriority db operations
+            </summary>
+        </member>
+        <member name="M:CCEProxy.API.Infrastructure.DataAccess.Repository.Interfaces.ITransactionPriorityRepository.GetTransactionPriority(System.Int32,System.String)">
+            <summary>
+            Get Facility record from DB based on FacilityId.
+            </summary>
+            <param name="facilityId">facilityId</param>
+            <param name="priorityCode">priorityCode</param>
+            <returns></returns>
+        </member>
+        <member name="T:CCEProxy.API.Infrastructure.DataAccess.Repository.TransactionPriorityRepository">
+            <summary>
+            This class handles the TransactionPriority db operations
+            </summary>
+        </member>
+        <member name="M:CCEProxy.API.Infrastructure.DataAccess.Repository.TransactionPriorityRepository.#ctor(BD.Core.ElasticClient.Mongo.ElasticDbContext)">
+            <summary> Initializes instances </summary>
+            <param name="dataContext"></param>
+        </member>
+        <member name="M:CCEProxy.API.Infrastructure.DataAccess.Repository.TransactionPriorityRepository.GetTransactionPriority(System.Int32,System.String)">
+            <summary>
+            Get TransactionPriority record from DB based on FacilityId and PriorityCode.
+            </summary>
+            <param name="facilityId">FacilityId</param>
+            <param name="priorityCode">PriorityCode</param>
+            <returns></returns>
+        </member>
+        <member name="T:CCEProxy.API.Infrastructure.Exceptions.ExceptionConfig">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:CCEProxy.API.Infrastructure.Exceptions.ExceptionConfig.Exceptions">
+            <summary>
+            Exception enum class
+            </summary>
+        </member>
+        <member name="F:CCEProxy.API.Infrastructure.Exceptions.ExceptionConfig.Exceptions.NullReferenceException">
+            <summary>
+            Enum for NullReferenceException
+            </summary>
+        </member>
+        <member name="F:CCEProxy.API.Infrastructure.Exceptions.ExceptionConfig.Exceptions.FileNotFoundException">
+            <summary>
+            Enum for FileNotFoundException
+            </summary>
+        </member>
+        <member name="F:CCEProxy.API.Infrastructure.Exceptions.ExceptionConfig.Exceptions.OverflowException">
+            <summary>
+            Enum for OverflowException
+            </summary>
+        </member>
+        <member name="F:CCEProxy.API.Infrastructure.Exceptions.ExceptionConfig.Exceptions.OutOfMemoryException">
+            <summary>
+            Enum for OutOfMemoryException
+            </summary>
+        </member>
+        <member name="F:CCEProxy.API.Infrastructure.Exceptions.ExceptionConfig.Exceptions.InvalidCastException">
+            <summary>
+            Enum for InvalidCastException
+            </summary>
+        </member>
+        <member name="F:CCEProxy.API.Infrastructure.Exceptions.ExceptionConfig.Exceptions.ObjectDisposedException">
+            <summary>
+            Enum for ObjectDisposedException
+            </summary>
+        </member>
+        <member name="F:CCEProxy.API.Infrastructure.Exceptions.ExceptionConfig.Exceptions.UnauthorizedAccessException">
+            <summary>
+            Enum for UnauthorizedAccessException
+            </summary>
+        </member>
+        <member name="F:CCEProxy.API.Infrastructure.Exceptions.ExceptionConfig.Exceptions.NotImplementedException">
+            <summary>
+            Enum for NotImplementedException
+            </summary>
+        </member>
+        <member name="F:CCEProxy.API.Infrastructure.Exceptions.ExceptionConfig.Exceptions.NotSupportedException">
+            <summary>
+            Enum for NotSupportedException
+            </summary>
+        </member>
+        <member name="F:CCEProxy.API.Infrastructure.Exceptions.ExceptionConfig.Exceptions.InvalidOperationException">
+            <summary>
+            Enum for InvalidOperationException
+            </summary>
+        </member>
+        <member name="F:CCEProxy.API.Infrastructure.Exceptions.ExceptionConfig.Exceptions.TimeoutException">
+            <summary>
+            Enum for TimeoutException
+            </summary>
+        </member>
+        <member name="F:CCEProxy.API.Infrastructure.Exceptions.ExceptionConfig.Exceptions.ArgumentException">
+            <summary>
+            Enum for ArgumentException
+            </summary>
+        </member>
+        <member name="F:CCEProxy.API.Infrastructure.Exceptions.ExceptionConfig.Exceptions.FormatException">
+            <summary>
+            Enum for FormatException
+            </summary>
+        </member>
+        <member name="F:CCEProxy.API.Infrastructure.Exceptions.ExceptionConfig.Exceptions.StackOverflowException">
+            <summary>
+            Enum for StackOverflowException
+            </summary>
+        </member>
+        <member name="F:CCEProxy.API.Infrastructure.Exceptions.ExceptionConfig.Exceptions.SqlException">
+            <summary>
+            Enum for SqlException
+            </summary>
+        </member>
+        <member name="F:CCEProxy.API.Infrastructure.Exceptions.ExceptionConfig.Exceptions.IndexOutOfRangeException">
+            <summary>
+            Enum for IndexOutOfRangeException
+            </summary>
+        </member>
+        <member name="F:CCEProxy.API.Infrastructure.Exceptions.ExceptionConfig.Exceptions.IOException">
+            <summary>
+            Enum for IOException
+            </summary>
+        </member>
+        <member name="M:CCEProxy.API.Infrastructure.Exceptions.ExceptionConfig.getErrorCode(System.Type)">
+            <summary>  
+            This method will return the status code based on the exception type.  
+            </summary>  
+            <param name="exceptionType"></param>  
+            <returns>HttpStatusCode</returns>  
+        </member>
+        <member name="T:CCEProxy.API.Infrastructure.Filters.CustomExceptionFilter">
+            <summary>
+            Custom exception filter class
+            </summary>
+        </member>
+        <member name="M:CCEProxy.API.Infrastructure.Filters.CustomExceptionFilter.#ctor(CCEProxy.API.Infrastructure.Exceptions.ExceptionConfig)">
+            <summary>
+            Constructor 
+            </summary>
+            <param name="exceptionConfig"></param>
+        </member>
+        <member name="M:CCEProxy.API.Infrastructure.Filters.CustomExceptionFilter.OnException(Microsoft.AspNetCore.Mvc.Filters.ExceptionContext)">
+            <summary>
+            OnException
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="T:CCEProxy.API.Infrastructure.Services.IdentityService">
+            <summary>
+            Identity Service class
+            </summary>
+        </member>
+        <member name="M:CCEProxy.API.Infrastructure.Services.IdentityService.#ctor(System.Net.Http.HttpClient)">
+            <summary>
+            Constructor class
+            </summary>
+            <param name="client"></param>
+        </member>
+        <member name="P:CCEProxy.API.Infrastructure.Services.IdentityService.Client">
+            <summary>
+            HttpClient property
+            </summary>
+        </member>
+        <member name="T:CCEProxy.API.IntegrationEvents.EventHandling.FacilityIntegrationEventHandler">
+            <summary> Event handler to pass request to IFacilityManager to process facility request. </summary>
+        </member>
+        <member name="M:CCEProxy.API.IntegrationEvents.EventHandling.FacilityIntegrationEventHandler.#ctor">
+            <summary>
+            Initializes an instance 
+            </summary>
+        </member>
+        <member name="M:CCEProxy.API.IntegrationEvents.EventHandling.FacilityIntegrationEventHandler.#ctor(CCEProxy.API.BusinessLayer.Contracts.IFacilityManager,Microsoft.Extensions.Logging.ILogger{CCEProxy.API.IntegrationEvents.EventHandling.FacilityIntegrationEventHandler},AutoMapper.IMapper)">
+            <summary>
+            Initialize the private fields
+            </summary>
+            <param name="facilityManager"></param>
+            <param name="logger"></param>
+            <param name="mapper"></param>
+        </member>
+        <member name="M:CCEProxy.API.IntegrationEvents.EventHandling.FacilityIntegrationEventHandler.Handle(CCEProxy.API.IntegrationEvents.Events.FacilityAddedIntegrationEvent)">
+            <summary> Subscribes to Event-Bus</summary>
+            <param name="event"> data received from Event-Bus </param>
+            <returns></returns>
+        </member>
+        <member name="T:CCEProxy.API.IntegrationEvents.EventHandling.TransactionPriorityIntegrationEventHandler">
+            <summary> Event handler to pass request to ITransactionPriorityManager to process TransactionPriority request. </summary>
+        </member>
+        <member name="M:CCEProxy.API.IntegrationEvents.EventHandling.TransactionPriorityIntegrationEventHandler.#ctor">
+            <summary> Initializes an instance </summary>
+        </member>
+        <member name="M:CCEProxy.API.IntegrationEvents.EventHandling.TransactionPriorityIntegrationEventHandler.#ctor(CCEProxy.API.BusinessLayer.Contracts.ITransactionPriorityManager,Microsoft.Extensions.Logging.ILogger{CCEProxy.API.IntegrationEvents.EventHandling.TransactionPriorityIntegrationEventHandler},AutoMapper.IMapper)">
+            <summary>
+            Initializes an instances - ITransactionPriorityManager and logger
+            </summary>
+            <param name="transactionPriorityManager"></param>
+            <param name="logger"></param>
+            <param name="mapper"></param>
+        </member>
+        <member name="M:CCEProxy.API.IntegrationEvents.EventHandling.TransactionPriorityIntegrationEventHandler.Handle(CCEProxy.API.IntegrationEvents.Events.TransactionPriorityAddedIntegrationEvent)">
+            <summary> Subscribes to Event-Bus</summary>
+            <param name="event"> data received from Event-Bus </param>
+            <returns></returns>
+        </member>
+        <member name="T:CCEProxy.API.IntegrationEvents.Events.FacilityAddedIntegrationEvent">
+             <summary>
+            FacilityAddedIntegrationEvent: This is Facility type event 
+            </summary> 
+        </member>
+        <member name="P:CCEProxy.API.IntegrationEvents.Events.FacilityAddedIntegrationEvent.FacilityId">
+            <summary>
+            Facility Identifier
+            </summary>
+        </member>
+        <member name="P:CCEProxy.API.IntegrationEvents.Events.FacilityAddedIntegrationEvent.FacilityCode">
+            <summary>
+            FacilityCode
+            </summary>
+        </member>
+        <member name="T:CCEProxy.API.IntegrationEvents.Events.TransactionPriorityAddedIntegrationEvent">
+             <summary>
+            TransactionPriorityAddedIntegrationEvent: This is Transaction Priority type event 
+            </summary>
+        </member>
+        <member name="P:CCEProxy.API.IntegrationEvents.Events.TransactionPriorityAddedIntegrationEvent.FacilityId">
+            <summary>
+            FacilityId
+            </summary>
+        </member>
+        <member name="P:CCEProxy.API.IntegrationEvents.Events.TransactionPriorityAddedIntegrationEvent.TransactionPriorityId">
+            <summary>
+            TransactionPriorityId
+            </summary>
+        </member>
+        <member name="P:CCEProxy.API.IntegrationEvents.Events.TransactionPriorityAddedIntegrationEvent.Active">
+            <summary>
+            Active
+            </summary>
+        </member>
+        <member name="P:CCEProxy.API.IntegrationEvents.Events.TransactionPriorityAddedIntegrationEvent.PriorityCode">
+            <summary>
+            Priority
+            </summary>
+        </member>
+        <member name="T:CCEProxy.API.IntegrationEvents.Events.TransactionQueueAddedIntegrationEvent">
+             <summary>
+            TransactionQueueAddedIntegrationEvent: This is Transaction Queue type event 
+            to pass the Aggregator Model to Transaction Queue.
+             </summary>
+        </member>
+        <member name="P:CCEProxy.API.IntegrationEvents.Events.TransactionQueueAddedIntegrationEvent.Message">
+            <summary>
+            Message property
+            </summary>
+        </member>
+        <member name="T:CCEProxy.API.Program">
+            <summary>
+            This class is entry point of our console .net core app
+            </summary>
+        </member>
+        <member name="M:CCEProxy.API.Program.Main(System.String[])">
+            <summary>
+            Main Method for the console .net core app
+            </summary>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CCEProxy.API.Program.CreateWebHostBuilder(System.String[])">
+            <summary>
+            WebHostBuilderMethod
+            </summary>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CCEProxy.API.Registration.RegistrationExtension.RegisterSwagger(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary> Register all Swagger dependencies </summary>
+            <param name="services"> Instance of IServiceCollection </param>
+            <returns> services (Instance of IServiceCollection) </returns>
+        </member>
+        <member name="T:CCEProxy.API.ServiceDependencies">
+            <summary> Adds and Configure all Services for the Startup.cs file </summary>
+        </member>
+        <member name="M:CCEProxy.API.ServiceDependencies.AddServices(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration,Microsoft.AspNetCore.Hosting.IHostingEnvironment,Microsoft.Extensions.Logging.ILogger)">
+            <summary> Adds services required in the Startup.cs file by the API </summary>
+            <param name="services">IServiceCollection</param>
+            <param name="configuration">IConfiguration</param>
+            <param name="env">IHostingEnvironment</param>
+            <param name="logger">ILogger</param>
+            <returns></returns>
+        </member>
+        <member name="M:CCEProxy.API.ServiceDependencies.UseServices(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.Extensions.Configuration.IConfiguration,Microsoft.AspNetCore.Hosting.IHostingEnvironment,Microsoft.Extensions.Logging.ILogger)">
+            <summary> Configure Services added in the AddServices method </summary>
+            <param name="app">IApplicationBuilderparam></param>
+            <param name="configuration">IConfiguration</param>
+            <param name="env">IHostingEnvironment</param>
+            <param name="logger">ILogger</param>
+            <returns>Instance of type IApplicationBuilder</returns>
+        </member>
+        <member name="M:CCEProxy.API.ServiceDependencies.UseEventBusServices(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary> Adds event bus subscriptions </summary>
+            <param name="app">IApplicationBuilder</param>
+            <param name="configuration">IConfiguration</param>
+            <returns>Instance of type IApplicationBuilder</returns>
+        </member>
+        <member name="T:CCEProxy.API.Startup">
+            <summary>
+            Startup Class for the application
+            </summary>
+        </member>
+        <member name="P:CCEProxy.API.Startup.Configuration">
+            <summary> Configuration of type IConfiguration </summary>
+        </member>
+        <member name="P:CCEProxy.API.Startup.Environment">
+            <summary> IHostingEnvironment </summary>
+        </member>
+        <member name="P:CCEProxy.API.Startup.Logger">
+            <summary> ILogger </summary>
+        </member>
+        <member name="M:CCEProxy.API.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration,Microsoft.AspNetCore.Hosting.IHostingEnvironment,Microsoft.Extensions.Logging.ILogger{CCEProxy.API.Startup})">
+            <summary> Startup constructor </summary>
+            <param name="configuration">IConfiguration</param>
+            <param name="env">IHostingEnvironment</param>
+            <param name="logger">ILogger</param>
+        </member>
+        <member name="M:CCEProxy.API.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary> This method gets called by the runtime. Use this method to add services to the container. </summary>
+            <param name="services"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CCEProxy.API.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IHostingEnvironment,Microsoft.AspNetCore.Mvc.ApiExplorer.IApiVersionDescriptionProvider)">
+            <summary> Gets called by the runtime. Use this method to configure the HTTP request pipeline. </summary>
+            <param name="app"></param>
+            <param name="env"></param>
+            <param name="provider"></param>
+        </member>
+        <member name="T:CCEProxy.Repository.Contracts.IRequestRepository">
+            <summary> This interface is responsible for handling the incoming object data operations 
+            </summary>
+        </member>
+        <member name="M:CCEProxy.Repository.Contracts.IRequestRepository.AddIncomingRequest(CCEProxy.API.Entity.IncomingRequest)">
+            <summary>
+            Insert IncomingRequest to db.
+            </summary>
+        </member>
+        <member name="M:CCEProxy.Repository.Contracts.IRequestRepository.UpdateIncomingRequest(System.String,System.String,System.String)">
+            <summary>
+            Update IncomingRequestStatus in db.
+            </summary>
+        </member>
+        <member name="M:CCEProxy.Repository.Contracts.IRequestRepository.GetTransactionPriority(System.Int32,System.String)">
+            <summary>
+            Get TransactionPriority by FacilityId and PriorityCode.
+            This will include Transaction priority information
+            </summary>
+        </member>
+        <member name="M:CCEProxy.Repository.Contracts.IRequestRepository.GetFacility(System.String)">
+            <summary>
+            Get Facility by FacilityCode 
+            </summary>
+        </member>
+        <member name="M:CCEProxy.Repository.Contracts.IRequestRepository.AddFacilityRequest(CCEProxy.API.Entity.Facility)">
+            <summary>
+            Add Facility in database
+            </summary>
+        </member>
+        <member name="M:CCEProxy.Repository.Contracts.IRequestRepository.AddTransactionPriorityRequest(CCEProxy.API.Entity.TransactionPriority)">
+            <summary>
+            Add Transaction Prioirty in database
+            </summary>
+        </member>
+    </members>
+</doc>

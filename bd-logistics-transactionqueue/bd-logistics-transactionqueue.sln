@@ -1,0 +1,79 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.421
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TransactionQueue.API", "src\TransactionQueue.API\TransactionQueue.API.csproj", "{3E9B6021-D34E-46AB-B38D-D1C9C10F81B9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TransactionQueue.SocketManager", "src\WebSocketManager\TransactionQueue.SocketManager.csproj", "{31744059-1996-4EEC-AEFE-BF6D2D957F31}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TransactionQueue.UnitTest", "tests\TransactionQueue.UnitTest\TransactionQueue.UnitTest.csproj", "{7224C484-3E23-4F06-A749-195C4E478210}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TransactionQueue.ManageQueues", "src\TransactionQueue.ManageQueues\TransactionQueue.ManageQueues.csproj", "{4334E17A-D1B8-41F3-82D0-53680C2AAB98}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TransactionQueue.ExternalDependencies", "src\TransactionQueue.ExternalDependencies\TransactionQueue.ExternalDependencies.csproj", "{0B80A8BD-8003-4728-8DA7-07F3BF4557EA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TransactionQueue.Ingestion", "src\TransactionQueue.Ingestion\TransactionQueue.Ingestion.csproj", "{C417675D-8A9E-4DAF-89FD-FD1E504D9DC4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TransactionQueue.Shared", "src\TransactionQueue.Shared\TransactionQueue.Shared.csproj", "{7BFE2D5C-55DA-4F23-8882-C51FBA4AF973}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TransactionQueue.Ingestion.UnitTest", "tests\TransactionQueue.Ingestion.UnitTest\TransactionQueue.Ingestion.UnitTest.csproj", "{07F64053-44A9-4F49-946B-8F50F9B94421}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TransactionQueue.ExternalDependencies.UnitTest", "tests\TransactionQueue.ExternalDependencies.UnitTest\TransactionQueue.ExternalDependencies.UnitTest.csproj", "{00A7011F-84B1-455D-BE40-A0B15EC7DDE2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransactionQueue.ManageQueues.UnitTest", "tests\TransactionQueue.ManageQueues.UnitTest\TransactionQueue.ManageQueues.UnitTest.csproj", "{31CF77F9-D648-4BE3-B804-548CCF2E2DA6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3E9B6021-D34E-46AB-B38D-D1C9C10F81B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E9B6021-D34E-46AB-B38D-D1C9C10F81B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E9B6021-D34E-46AB-B38D-D1C9C10F81B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E9B6021-D34E-46AB-B38D-D1C9C10F81B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31744059-1996-4EEC-AEFE-BF6D2D957F31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31744059-1996-4EEC-AEFE-BF6D2D957F31}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31744059-1996-4EEC-AEFE-BF6D2D957F31}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31744059-1996-4EEC-AEFE-BF6D2D957F31}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7224C484-3E23-4F06-A749-195C4E478210}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7224C484-3E23-4F06-A749-195C4E478210}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7224C484-3E23-4F06-A749-195C4E478210}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7224C484-3E23-4F06-A749-195C4E478210}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4334E17A-D1B8-41F3-82D0-53680C2AAB98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4334E17A-D1B8-41F3-82D0-53680C2AAB98}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4334E17A-D1B8-41F3-82D0-53680C2AAB98}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4334E17A-D1B8-41F3-82D0-53680C2AAB98}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B80A8BD-8003-4728-8DA7-07F3BF4557EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B80A8BD-8003-4728-8DA7-07F3BF4557EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B80A8BD-8003-4728-8DA7-07F3BF4557EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B80A8BD-8003-4728-8DA7-07F3BF4557EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C417675D-8A9E-4DAF-89FD-FD1E504D9DC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C417675D-8A9E-4DAF-89FD-FD1E504D9DC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C417675D-8A9E-4DAF-89FD-FD1E504D9DC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C417675D-8A9E-4DAF-89FD-FD1E504D9DC4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7BFE2D5C-55DA-4F23-8882-C51FBA4AF973}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BFE2D5C-55DA-4F23-8882-C51FBA4AF973}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BFE2D5C-55DA-4F23-8882-C51FBA4AF973}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BFE2D5C-55DA-4F23-8882-C51FBA4AF973}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07F64053-44A9-4F49-946B-8F50F9B94421}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07F64053-44A9-4F49-946B-8F50F9B94421}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07F64053-44A9-4F49-946B-8F50F9B94421}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07F64053-44A9-4F49-946B-8F50F9B94421}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00A7011F-84B1-455D-BE40-A0B15EC7DDE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00A7011F-84B1-455D-BE40-A0B15EC7DDE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00A7011F-84B1-455D-BE40-A0B15EC7DDE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00A7011F-84B1-455D-BE40-A0B15EC7DDE2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31CF77F9-D648-4BE3-B804-548CCF2E2DA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31CF77F9-D648-4BE3-B804-548CCF2E2DA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31CF77F9-D648-4BE3-B804-548CCF2E2DA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31CF77F9-D648-4BE3-B804-548CCF2E2DA6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AA0FAC9E-BB2E-42E5-96B3-D329FF13058C}
+	EndGlobalSection
+EndGlobal

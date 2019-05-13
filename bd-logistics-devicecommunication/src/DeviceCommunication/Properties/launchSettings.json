@@ -1,0 +1,41 @@
+{
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:49982",
+      "sslPort": 44307
+    }
+  },
+  "profiles": {
+    "IIS Express": {
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    },
+    "source": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "JAEGER_SAMPLER_PARAM": "1",
+        "JAEGER_SAMPLER_TYPE": "const",
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:5001;http://localhost:5000"
+    },
+    "DeviceCom": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "launchUrl": "devicecommunication/index.html",
+      "environmentVariables": {
+        "JAEGER_SAMPLER_PARAM": "1",
+        "JAEGER_SAMPLER_TYPE": "const",
+        "JAEGER_REPORTER_LOG_SPANS": "false",
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "http://localhost:50005"
+    }
+  }
+}

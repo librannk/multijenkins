@@ -1,0 +1,19 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities;
+using Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.EntityRepositoryContracts;
+using Formulary.API.Infrastructure.DataAccess.SQL.EFRepository;
+
+
+namespace Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.EntityRepositoryImplementation
+{
+    public class DispensingUnitLookupRepository : BaseRepository<DispensingUnitLookupEntity>, IDispensingUnitLookupRepository
+    {
+        public DispensingUnitLookupRepository(ApplicationDBContext context) : base(context)
+        {
+
+        }
+    }
+}

@@ -1,0 +1,68 @@
+ node('vanguard') {
+   
+   script {
+          if(currentBuild.rawBuild.project.displayName != 'Perfomance Env') {
+            currentBuild.rawBuild.project.description = 'Perfomance Env'
+            currentBuild.rawBuild.project.setDisplayName('Perfomance Env')
+        }
+        else {
+            echo 'Name change not required'
+        }
+    }
+
+    stage('Checkout') {
+        cleanWs()
+        checkout scm
+    }
+    sh "rm -rf .terraform/"
+
+ /*   stage('Build TerraForm') {
+        withCredentials([azureServicePrincipal(credentialsId: 'sp-jenkins-vanguard', clientSecretVariable: 'CLIENT_SECRET')]) {     
+            withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'sa-devops-jenkins', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD']]) {
+                dir('infra-azure-pf') {               
+                    sh "/snap/bin/terraform init -input=false"
+                    sh "/snap/bin/terraform plan -var=\"client_secret=${env.CLIENT_SECRET}\" -out=tfplan -input=false"
+                    sh "/snap/bin/terraform apply -input=false tfplan"
+                }
+            }
+        }
+    }
+}
+*/
+
+    stage('TerraForm Init') {
+        withCredentials([azureServicePrincipal(credentialsId: 'sp-jenkins-vanguard', clientSecretVariable: 'CLIENT_SECRET')]) {     
+            withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'sa-devops-jenkins', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD']]) {
+                dir('infra-azure-pf') {    
+                    sh "/snap/bin/terraform init -input=false"
+                }
+            }
+        }
+    }
+
+    stage('TerraForm Plan') {
+        withCredentials([azureServicePrincipal(credentialsId: 'sp-jenkins-vanguard', clientSecretVariable: 'CLIENT_SECRET')]) {     
+            withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'sa-devops-jenkins', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD']]) {
+                dir('infra-azure-pf') {           
+                      sh "/snap/bin/terraform plan -var=\"client_secret=${env.CLIENT_SECRET}\" -out=tfplan -input=false"
+                }                
+            }
+        }
+    }
+    
+    stage('Review Plan'){
+        script{
+           input "Continue with Plan?"
+        }
+    }
+    
+    stage('Build TerraForm') {
+        withCredentials([azureServicePrincipal(credentialsId: 'sp-jenkins-vanguard', clientSecretVariable: 'CLIENT_SECRET')]) {     
+            withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'sa-devops-jenkins', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD']]) {
+                dir('infra-azure-pf') {          
+                     sh "/snap/bin/terraform apply -input=false tfplan"
+                }
+            }
+        }
+    }
+}

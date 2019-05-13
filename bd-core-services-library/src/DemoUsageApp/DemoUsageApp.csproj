@@ -1,0 +1,37 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.2.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.0" />
+    <PackageReference Include="MongoDB.Driver" Version="2.8.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Caching\BD.Core.Caching.csproj" />
+    <ProjectReference Include="..\Core\BD.Core.csproj" />
+    <ProjectReference Include="..\ElasticClient\Extensions\Mongo\BD.Core.ElasticClient.Extensions.Mongo.csproj" />
+    <ProjectReference Include="..\ElasticClient\Extensions\SQL\BD.Core.ElasticClient.Extensions.SQL.csproj" />
+    <ProjectReference Include="..\ElasticClient\Mongo\BD.Core.ElasticClient.Mongo.csproj" />
+    <ProjectReference Include="..\ElasticClient\SQL\BD.Core.ElasticClient.SQL.csproj" />
+    <ProjectReference Include="..\Extension\BD.Core.Extension.csproj" />
+    <ProjectReference Include="..\Logging\BD.Core.Logging.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+</Project>

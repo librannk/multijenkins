@@ -1,0 +1,1127 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Template.API</name>
+    </assembly>
+    <members>
+        <member name="T:Template.API.AccessBlob.AccessBlobFiles">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Template.API.AccessBlob.AccessBlobFiles.dictBlobFiles">
+            <summary>
+            assigned value to be used globally in a service
+            </summary>
+        </member>
+        <member name="T:Template.API.Controllers.InternationalizationController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Template.API.Controllers.InternationalizationController.#ctor(Microsoft.Extensions.Localization.IStringLocalizer{Template.API.Controllers.InternationalizationController},BD.Core.Context.IExecutionContextAccessor)">
+            <summary>
+            
+            </summary>
+            <param name="localizer"></param>
+        </member>
+        <member name="M:Template.API.Controllers.InternationalizationController.GetLocalizedFormatedContents">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Template.API.Controllers.ModelSchemaController">
+            <summary>
+            controller ModelSchemaController
+            </summary>
+        </member>
+        <member name="F:Template.API.Controllers.ModelSchemaController.errors">
+            <summary>
+            validation errors
+            </summary>
+        </member>
+        <member name="M:Template.API.Controllers.ModelSchemaController.ValidateModel(Template.API.Infrastructure.DBModel.SampleProducts)">
+            <summary>
+            action method ValidateModel
+            </summary>
+            <param name="product"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Template.API.Infrastructure.DBModel.SampleProductDetails">
+            <summary>
+            model class SampleProductDetails
+            </summary>
+        </member>
+        <member name="P:Template.API.Infrastructure.DBModel.SampleProductDetails.Make">
+            <summary>
+            Make is json property
+            </summary>
+        </member>
+        <member name="P:Template.API.Infrastructure.DBModel.SampleProductDetails.Model">
+            <summary>
+            Model is json property
+            </summary>
+        </member>
+        <member name="T:Template.API.Infrastructure.DBModel.SampleProducts">
+            <summary>
+            Model class SampleProducts
+            </summary>
+        </member>
+        <member name="P:Template.API.Infrastructure.DBModel.SampleProducts.ID">
+            <summary>
+            ID is json property
+            </summary>
+        </member>
+        <member name="P:Template.API.Infrastructure.DBModel.SampleProducts.Name">
+            <summary>
+            Name is json property
+            </summary>
+        </member>
+        <member name="P:Template.API.Infrastructure.DBModel.SampleProducts.Feature">
+            <summary>
+            Feature is json property
+            </summary>
+        </member>
+        <member name="P:Template.API.Infrastructure.DBModel.SampleProducts.Price">
+            <summary>
+            Price is json property
+            </summary>
+        </member>
+        <member name="P:Template.API.Infrastructure.DBModel.SampleProducts.Location1">
+            <summary>
+            Location1 is json property
+            </summary>
+        </member>
+        <member name="P:Template.API.Infrastructure.DBModel.SampleProducts.Location2">
+            <summary>
+            Location2 is json property
+            </summary>
+        </member>
+        <member name="P:Template.API.Infrastructure.DBModel.SampleProducts.Details">
+            <summary>
+            Details is json property
+            </summary>
+        </member>
+        <member name="T:Template.API.Infrastructure.Filters.ValidateJson">
+            <summary>
+            ValidateJson is an internal class
+            </summary>
+        </member>
+        <member name="M:Template.API.Infrastructure.Filters.ValidateJson.IsValid(System.Object,System.Collections.Generic.IList{Newtonsoft.Json.Schema.ValidationError}@)">
+            <summary>
+            IsValid is a method to validate model with schema validation
+            </summary>
+            <param name="obj"></param>
+            <param name="errors"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Template.API.Program">
+            <summary> Program file </summary>
+        </member>
+        <member name="M:Template.API.Program.Main(System.String[])">
+            <summary>
+            Main
+            </summary>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Template.API.Program.CreateWebHostBuilder(System.String[])">
+            <summary>
+            CreateWebHostBuilder
+            </summary>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Template.API.Registration.RegistrationExtension">
+            <summary>
+            Creating a RegistrationExtension method for blob stoarge
+            </summary>
+        </member>
+        <member name="M:Template.API.Registration.RegistrationExtension.BlobFiles(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration,Microsoft.Extensions.Logging.ILogger)">
+            <summary>
+            extension method BlobFiles to fetch schema files from the Blob
+            </summary>
+            <param name="services"></param>
+            <param name="configuration"></param>
+            <param name="logger"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Template.API.ServiceDependencies">
+            <summary> Adds and configures all the service, which are specific to the API. </summary>
+        </member>
+        <member name="M:Template.API.ServiceDependencies.AddServices(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration,Microsoft.AspNetCore.Hosting.IHostingEnvironment,Microsoft.Extensions.Logging.ILogger)">
+            <summary> Add services to the IServiceCollection instance </summary>
+            <param name="services">IServiceCollection</param>
+            <param name="configuration">IConfiguration</param>
+            <param name="env">IHostingEnvironment</param>
+            <param name="logger">ILogger</param>
+            <returns>IServiceCollection</returns>
+        </member>
+        <member name="M:Template.API.ServiceDependencies.UseServices(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.Extensions.Configuration.IConfiguration,Microsoft.AspNetCore.Hosting.IHostingEnvironment,Microsoft.Extensions.Logging.ILogger)">
+            <summary> Configures services </summary>
+            <param name="app">IApplicationBuilder</param>
+            <param name="configuration">IConfiguration</param>
+            <param name="env">IHostingEnvironment</param>
+            <param name="logger">ILogger</param>
+            <returns>IApplicationBuilder</returns>
+        </member>
+        <member name="T:Template.API.Startup">
+            <summary>
+            Startup file for template
+            </summary>
+        </member>
+        <member name="P:Template.API.Startup.Configuration">
+            <summary> Configuration of type IConfiguration </summary>
+        </member>
+        <member name="P:Template.API.Startup.Environment">
+            <summary> IHostingEnvironment </summary>
+        </member>
+        <member name="P:Template.API.Startup.Logger">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Template.API.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration,Microsoft.AspNetCore.Hosting.IHostingEnvironment,Microsoft.Extensions.Logging.ILogger{Template.API.Startup})">
+            <summary>
+            
+            </summary>
+            <param name="configuration"></param>
+            <param name="env"></param>
+            <param name="logger"></param>
+        </member>
+        <member name="M:Template.API.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            this method is used 
+            </summary>
+            <param name="services"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Template.API.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IHostingEnvironment,Microsoft.AspNetCore.Mvc.ApiExplorer.IApiVersionDescriptionProvider)">
+            <summary>
+            This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+            </summary>
+            <param name="app">IApplicationBuilder</param>
+            <param name="env">IHostingEnvironment</param>
+            <param name="provider">IApiVersionDescriptionProvider</param>
+        </member>
+        <member name="T:BD.Template.API.Application.Commands.LoggingBehavior">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:BD.Template.API.Application.Commands.AddTemplateCommand">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:BD.Template.API.AutofacModule.ApplicationModule">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:BD.Template.API.AutofacModule.ApplicationModule.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:BD.Template.API.AutofacModule.ApplicationModule.Load(Autofac.ContainerBuilder)">
+            <summary>
+            This method is used to register the types using autofac
+            </summary>
+            <param name="builder"></param>
+        </member>
+        <member name="P:BD.Template.API.Configuration.Configuration.KafkaRequestTopic">
+            <summary> KafkaRequestTopic </summary>
+        </member>
+        <member name="P:BD.Template.API.Configuration.Configuration.KafkaResponseTopic">
+            <summary> KafkaResponseTopic </summary>
+        </member>
+        <member name="T:BD.Template.API.Configuration.SwaggerDefaultValues">
+            <summary>  
+            Represents the Swagger/Swashbuckle operation filter used to document the implicit API version parameter.  
+            </summary>  
+            <remarks>This <see cref="T:Swashbuckle.AspNetCore.SwaggerGen.IOperationFilter"/> is only required due to bugs in the <see cref="T:Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator"/>.  
+            Once they are fixed and published, this class can be removed.</remarks>  
+        </member>
+        <member name="M:BD.Template.API.Configuration.SwaggerDefaultValues.Apply(Swashbuckle.AspNetCore.Swagger.Operation,Swashbuckle.AspNetCore.SwaggerGen.OperationFilterContext)">
+            <summary>  
+            Applies the filter to the specified operation using the given context.  
+            </summary>  
+            <param name="operation">The operation to apply the filter to.</param>  
+            <param name="context">The current operation filter context.</param>  
+        </member>
+        <member name="T:BD.Template.API.Controllers.SampleMongoController">
+            <summary>
+            Mongo controller
+            </summary>
+        </member>
+        <member name="M:BD.Template.API.Controllers.SampleMongoController.#ctor(BD.Template.API.Infrastructure.Repository.Interfaces.IMongoRepository)">
+            <summary>
+            Constructor with IMongoRepository DI
+            </summary>
+            <param name="mongoRepository"></param>
+        </member>
+        <member name="M:BD.Template.API.Controllers.SampleMongoController.GetUser(System.String)">
+            <summary>
+            To get the user
+            </summary>
+            <param name="userId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BD.Template.API.Controllers.SampleMongoController.GetAllUsers">
+            <summary>
+            To get all the user
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:BD.Template.API.Controllers.SampleMongoController.InsertUser(BD.Template.API.Infrastructure.DBModel.User)">
+            <summary>
+            To insert the user
+            </summary>
+            <param name="user"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BD.Template.API.Controllers.SampleMongoController.UpdateUser(BD.Template.API.Infrastructure.DBModel.User)">
+            <summary>
+            To update the user
+            </summary>
+            <param name="user"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BD.Template.API.Controllers.SampleMongoController.DeleteUser(BD.Template.API.Infrastructure.DBModel.User)">
+            <summary>
+            To delete the user
+            </summary>
+            <param name="user"></param>
+            <returns></returns>
+        </member>
+        <member name="T:BD.Template.API.Controllers.MultiVersionController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:BD.Template.API.Controllers.MultiVersionController.Get">
+            <summary>
+            
+            </summary>
+            <returns></returns>]
+        </member>
+        <member name="M:BD.Template.API.Controllers.MultiVersionController.GetData">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:BD.Template.API.Controllers.SampleSqlController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:BD.Template.API.Controllers.SampleSqlController._customerRepository">
+            <summary>
+            _customerRepository property represents the Customer Repository.
+            </summary>
+        </member>
+        <member name="F:BD.Template.API.Controllers.SampleSqlController._unitOfWork">
+            <summary>
+            _unitOfWork represents IUnitOfWork object to commit multiple or single operation as single unit.
+            </summary>
+        </member>
+        <member name="F:BD.Template.API.Controllers.SampleSqlController._cache">
+            <summary>
+            represents the IDistributed cache object to get/set cache
+            </summary>
+        </member>
+        <member name="M:BD.Template.API.Controllers.SampleSqlController.#ctor(BD.Template.API.Infrastructure.DataAccess.SQL.DBContextEntities.EntityRepositoryContracts.ICustomerRepository,BD.Template.API.Infrastructure.DataAccess.SQL.DBContextEntities.UnitOfWork.IUnitOfWork,Microsoft.Extensions.Caching.Distributed.IDistributedCache)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="customer"></param>
+            <param name="unitOfWork"></param>
+            <param name="cache"></param>
+        </member>
+        <member name="M:BD.Template.API.Controllers.SampleSqlController.Get">
+            <summary>
+            Get all Customers
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:BD.Template.API.Controllers.SampleSqlController.Get(System.Int32)">
+            <summary>
+            Get a particular customer by their object.
+            </summary>
+            <param name="customerid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BD.Template.API.Controllers.SampleSqlController.Post(BD.Template.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.Customer)">
+            <summary>
+            Create new customer in DB
+            </summary>
+            <param name="customer"></param>
+        </member>
+        <member name="M:BD.Template.API.Controllers.SampleSqlController.Put(BD.Template.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.Customer)">
+            <summary>
+            Update a customer in DB.
+            </summary>
+            <param name="customer"></param>
+        </member>
+        <member name="M:BD.Template.API.Controllers.SampleSqlController.Delete(System.Int32)">
+            <summary>
+            Delete a particular customer by their Id in DB.
+            </summary>
+            <param name="customerid"></param>
+        </member>
+        <member name="T:BD.Template.API.Controllers.TemplateController">
+            <summary>
+            Creating a controller for Template
+            </summary>
+        </member>
+        <member name="M:BD.Template.API.Controllers.TemplateController.#ctor(BD.Core.EventBus.Abstractions.IEventBus,BD.Core.ResiliencePolicy.HttpClientFactory,BD.Template.API.Infrastructure.Repository.Interfaces.IKafkaResponseRepository,Microsoft.Extensions.Logging.ILogger{BD.Template.API.Controllers.TemplateController})">
+            <summary>
+            
+            </summary>
+            <param name="eventBus"></param>
+            <param name="identityService"></param>
+            <param name="kafkaResponseRepository"></param>
+            <param name="logger"></param>
+        </member>
+        <member name="M:BD.Template.API.Controllers.TemplateController.Post(System.String)">
+            <summary>
+            Sample Method for the publishing messages to Event Bus
+            </summary>
+            <param name="value">Any String message</param>
+        </member>
+        <member name="M:BD.Template.API.Controllers.TemplateController.GetPolly">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:BD.Template.API.Infrastructure.DataAccess.Mongo.BaseRepository`1">
+            <summary>
+            Base repository for CRUD operations
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="F:BD.Template.API.Infrastructure.DataAccess.Mongo.BaseRepository`1._context">
+            <summary>
+            Context variable
+            </summary>
+        </member>
+        <member name="M:BD.Template.API.Infrastructure.DataAccess.Mongo.BaseRepository`1.#ctor(BD.Template.API.Infrastructure.DataAccess.Mongo.Clients.MongoDbClient)">
+            <summary>
+            
+            </summary>
+            <param name="mongoClient"></param>
+        </member>
+        <member name="M:BD.Template.API.Infrastructure.DataAccess.Mongo.BaseRepository`1.CollectionName``1">
+            <summary>
+            Function to get the collection name
+            </summary>
+            <typeparam name="TDoc"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:BD.Template.API.Infrastructure.DataAccess.Mongo.BaseRepository`1.BD#Template#API#Infrastructure#DataAccess#Mongo#Contracts#IBaseRepository{T}#GetById(System.String)">
+            <summary>
+            To get the document by id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BD.Template.API.Infrastructure.DataAccess.Mongo.BaseRepository`1.BD#Template#API#Infrastructure#DataAccess#Mongo#Contracts#IBaseRepository{T}#GetAll">
+            <summary>
+            To get all the documents from a collection
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:BD.Template.API.Infrastructure.DataAccess.Mongo.BaseRepository`1.BD#Template#API#Infrastructure#DataAccess#Mongo#Contracts#IBaseRepository{T}#Insert(`0)">
+            <summary>
+            To insert the document in a specific collection
+            </summary>
+            <param name="entity"></param>
+        </member>
+        <member name="M:BD.Template.API.Infrastructure.DataAccess.Mongo.BaseRepository`1.BD#Template#API#Infrastructure#DataAccess#Mongo#Contracts#IBaseRepository{T}#Update(`0)">
+            <summary>
+            To update the document
+            </summary>
+            <param name="entity"></param>
+        </member>
+        <member name="M:BD.Template.API.Infrastructure.DataAccess.Mongo.BaseRepository`1.BD#Template#API#Infrastructure#DataAccess#Mongo#Contracts#IBaseRepository{T}#Delete(`0)">
+            <summary>
+            To delete the document
+            </summary>
+            <param name="entity"></param>
+        </member>
+        <member name="M:BD.Template.API.Infrastructure.DataAccess.Mongo.BaseRepository`1.BD#Template#API#Infrastructure#DataAccess#Mongo#Contracts#IBaseRepository{T}#DeleteAll">
+            <summary>
+            To delete the document
+            </summary>
+        </member>
+        <member name="M:BD.Template.API.Infrastructure.DataAccess.Mongo.BaseRepository`1.BD#Template#API#Infrastructure#DataAccess#Mongo#Contracts#IBaseRepository{T}#GetAllAsync">
+            <summary>
+            Async method to get all the document from a collection
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:BD.Template.API.Infrastructure.DataAccess.Mongo.BaseRepository`1.BD#Template#API#Infrastructure#DataAccess#Mongo#Contracts#IBaseRepository{T}#InsertAsync(`0)">
+            <summary>
+            To async insert the document
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BD.Template.API.Infrastructure.DataAccess.Mongo.BaseRepository`1.BD#Template#API#Infrastructure#DataAccess#Mongo#Contracts#IBaseRepository{T}#UpdateAsync(`0)">
+            <summary>
+            To async update the document
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BD.Template.API.Infrastructure.DataAccess.Mongo.BaseRepository`1.BD#Template#API#Infrastructure#DataAccess#Mongo#Contracts#IBaseRepository{T}#DeleteAsync(`0)">
+            <summary>
+            To async delete the document from a collection
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BD.Template.API.Infrastructure.DataAccess.Mongo.BaseRepository`1.BD#Template#API#Infrastructure#DataAccess#Mongo#Contracts#IBaseRepository{T}#DeleteAllAsync">
+            <summary>
+            To async delete all the document from a collection
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:BD.Template.API.Infrastructure.DataAccess.Mongo.Clients.MongoDbClient">
+            <summary>
+            Wrapper class for the MongoClient
+            </summary>
+        </member>
+        <member name="F:BD.Template.API.Infrastructure.DataAccess.Mongo.Clients.MongoDbClient._databaseName">
+            <summary>
+            Name of the Database we want data from
+            </summary>
+        </member>
+        <member name="F:BD.Template.API.Infrastructure.DataAccess.Mongo.Clients.MongoDbClient._connectionString">
+            <summary>
+            The connection string (IP-Adress + Port)
+            </summary>
+        </member>
+        <member name="F:BD.Template.API.Infrastructure.DataAccess.Mongo.Clients.MongoDbClient._client">
+            <summary>
+            Threadsafe (According to the documentation)
+            </summary>
+        </member>
+        <member name="M:BD.Template.API.Infrastructure.DataAccess.Mongo.Clients.MongoDbClient.#ctor(System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="databaseName"></param>
+            <param name="connectionString"></param>
+        </member>
+        <member name="M:BD.Template.API.Infrastructure.DataAccess.Mongo.Clients.MongoDbClient.CreateClient">
+            <summary>
+            Wrapper for creating client, so in the future when we want to make a more complex client, we just edit here.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:BD.Template.API.Infrastructure.DataAccess.Mongo.Clients.MongoDbClient.GetContext">
+            <summary>
+            Returns the Database with the given name in the configuration.
+            </summary>
+            <returns>IMongoDatabase instance</returns>
+        </member>
+        <member name="M:BD.Template.API.Infrastructure.DataAccess.Mongo.Clients.MongoDbClient.DropContext">
+            <summary>
+            To drop the database
+            </summary>
+        </member>
+        <member name="T:BD.Template.API.Infrastructure.DataAccess.Mongo.Constants.ErrorConstants">
+            <summary>
+            Error constants class
+            </summary>
+        </member>
+        <member name="F:BD.Template.API.Infrastructure.DataAccess.Mongo.Constants.ErrorConstants.ClientNotInstantiated">
+            <summary>
+            Error message for client not instantiated
+            </summary>
+        </member>
+        <member name="T:BD.Template.API.Infrastructure.DataAccess.Mongo.Contracts.IBaseRepository`1">
+            <summary>
+            
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:BD.Template.API.Infrastructure.DataAccess.Mongo.Contracts.IBaseRepository`1.GetById(System.String)">
+            <summary>
+            To get the document with id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BD.Template.API.Infrastructure.DataAccess.Mongo.Contracts.IBaseRepository`1.GetAll">
+            <summary>
+            To get all the documents
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:BD.Template.API.Infrastructure.DataAccess.Mongo.Contracts.IBaseRepository`1.Insert(`0)">
+            <summary>
+            To insert the new document
+            </summary>
+            <param name="entity"></param>
+        </member>
+        <member name="M:BD.Template.API.Infrastructure.DataAccess.Mongo.Contracts.IBaseRepository`1.Update(`0)">
+            <summary>
+            To update the document
+            </summary>
+            <param name="entity"></param>
+        </member>
+        <member name="M:BD.Template.API.Infrastructure.DataAccess.Mongo.Contracts.IBaseRepository`1.Delete(`0)">
+            <summary>
+            To delete the document
+            </summary>
+            <param name="entity"></param>
+        </member>
+        <member name="M:BD.Template.API.Infrastructure.DataAccess.Mongo.Contracts.IBaseRepository`1.DeleteAll">
+            <summary>
+            To delete all the documents
+            </summary>
+        </member>
+        <member name="M:BD.Template.API.Infrastructure.DataAccess.Mongo.Contracts.IBaseRepository`1.GetAllAsync">
+            <summary>
+            Async method to get all the documents from a collection
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:BD.Template.API.Infrastructure.DataAccess.Mongo.Contracts.IBaseRepository`1.InsertAsync(`0)">
+            <summary>
+            Async method to insert the documents
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BD.Template.API.Infrastructure.DataAccess.Mongo.Contracts.IBaseRepository`1.UpdateAsync(`0)">
+            <summary>
+            Async method to update the document
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BD.Template.API.Infrastructure.DataAccess.Mongo.Contracts.IBaseRepository`1.DeleteAsync(`0)">
+            <summary>
+            To delete a single document from a collection
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BD.Template.API.Infrastructure.DataAccess.Mongo.Contracts.IBaseRepository`1.DeleteAllAsync">
+            <summary>
+            To async delete all the documents from a collection
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:BD.Template.API.Infrastructure.DataAccess.Mongo.Entities.Entity">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BD.Template.API.Infrastructure.DataAccess.Mongo.Entities.Entity.Id">
+            <summary>
+            To hold the Bson Id
+            </summary>
+        </member>
+        <member name="P:BD.Template.API.Infrastructure.DataAccess.Mongo.Entities.Entity.ModifiedBy">
+            <summary>
+            To hold the modified by
+            </summary>
+        </member>
+        <member name="P:BD.Template.API.Infrastructure.DataAccess.Mongo.Entities.Entity.ModifiedDate">
+            <summary>
+            To hold modified date
+            </summary>
+        </member>
+        <member name="T:BD.Template.API.Infrastructure.DataAccess.SQL.DBContextEntities.ApplicationDbContext">
+            <summary>
+            ApplicationDBContext is class  which represent DB in memory.
+            </summary>
+        </member>
+        <member name="M:BD.Template.API.Infrastructure.DataAccess.SQL.DBContextEntities.ApplicationDbContext.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:BD.Template.API.Infrastructure.DataAccess.SQL.DBContextEntities.ApplicationDbContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions{BD.Template.API.Infrastructure.DataAccess.SQL.DBContextEntities.ApplicationDbContext})">
+            <summary>
+            
+            </summary>
+            <param name="options"></param>
+        </member>
+        <member name="P:BD.Template.API.Infrastructure.DataAccess.SQL.DBContextEntities.ApplicationDbContext.Customers">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:BD.Template.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.Customer">
+            <summary>
+            It's an entity,which is going to manipulate in DB with its properties as fields.
+            </summary>
+        </member>
+        <member name="P:BD.Template.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.Customer.Name">
+            <summary>
+            It's a property whcih represent a field in DB.
+            </summary>
+        </member>
+        <member name="T:BD.Template.API.Infrastructure.DataAccess.SQL.DBContextEntities.EntityRepositoryContracts.ICustomerRepository">
+            <summary>
+            ICustomerRepository interface represent the all member of IRepository of type Customer.
+            ICustomerRepository provide the extensibility for new operation other than IRepository.
+            </summary> 
+        </member>
+        <member name="T:BD.Template.API.Infrastructure.DataAccess.SQL.DBContextEntities.EntityRepositoryImplementation.CustomerRepository">
+            <summary>
+            CustomerRepository class implements the all member of ICustomerRepository of type Customer.
+            </summary> 
+        </member>
+        <member name="M:BD.Template.API.Infrastructure.DataAccess.SQL.DBContextEntities.EntityRepositoryImplementation.CustomerRepository.#ctor(BD.Template.API.Infrastructure.DataAccess.SQL.DBContextEntities.ApplicationDbContext)">
+            <summary>
+            
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="T:BD.Template.API.Infrastructure.DataAccess.SQL.DBContextEntities.UnitOfWork.IUnitOfWork">
+            <summary>
+            IUnitOfWork is an interface.Provide a abstract method to perform multiple operation in single unit.
+            </summary>
+        </member>
+        <member name="M:BD.Template.API.Infrastructure.DataAccess.SQL.DBContextEntities.UnitOfWork.IUnitOfWork.CommitChanges">
+            <summary>
+            An abstract method to perform multiple operation in single commit.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:BD.Template.API.Infrastructure.DataAccess.SQL.DBContextEntities.UnitOfWork.UnitOfWork">
+            <summary>
+            UnitOfWork is class has functionality to commit the changes to DB.
+            </summary>
+        </member>
+        <member name="M:BD.Template.API.Infrastructure.DataAccess.SQL.DBContextEntities.UnitOfWork.UnitOfWork.#ctor(BD.Template.API.Infrastructure.DataAccess.SQL.DBContextEntities.ApplicationDbContext)">
+            <summary>
+            
+            </summary>
+            <param name="appDbContext"></param>
+        </member>
+        <member name="M:BD.Template.API.Infrastructure.DataAccess.SQL.DBContextEntities.UnitOfWork.UnitOfWork.CommitChanges">
+            <summary>
+            Implementation to perform multiple operation in single commit.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:BD.Template.API.Infrastructure.DataAccess.SQL.DBContextEntities.UnitOfWork.UnitOfWork.Dispose(System.Boolean)">
+            <summary>
+            
+            </summary>
+            <param name="disposing"></param>
+        </member>
+        <member name="M:BD.Template.API.Infrastructure.DataAccess.SQL.DBContextEntities.UnitOfWork.UnitOfWork.Dispose">
+            <summary>
+            Dispose the ApplicationDBContext object.
+            </summary>
+        </member>
+        <member name="T:BD.Template.API.Infrastructure.DataAccess.SQL.EFRepository.BaseEntity">
+            <summary>
+            Base Entity is a class has Id property for all Entities.All Entities class has are inherited from BaseEntity 
+            </summary>
+        </member>
+        <member name="P:BD.Template.API.Infrastructure.DataAccess.SQL.EFRepository.BaseEntity.Id">
+            <summary>
+            Id property is used by all entities to create Id field in DB as primary key.
+            </summary>
+        </member>
+        <member name="T:BD.Template.API.Infrastructure.DataAccess.SQL.EFRepository.BaseRepository`1">
+            <summary>
+            It's  abstract class which implements all the methods of IRepository
+            </summary>
+            <typeparam name="TEntity"> For any type of class which is inherited from BaseEntity</typeparam>
+        </member>
+        <member name="P:BD.Template.API.Infrastructure.DataAccess.SQL.EFRepository.BaseRepository`1.Context">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:BD.Template.API.Infrastructure.DataAccess.SQL.EFRepository.BaseRepository`1.#ctor(Microsoft.EntityFrameworkCore.DbContext)">
+            <summary>
+            
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="M:BD.Template.API.Infrastructure.DataAccess.SQL.EFRepository.BaseRepository`1.Add(`0)">
+            <summary>
+            Add new entity to DB.
+            </summary>
+            <param name="entity">Entity to Add in DB</param>
+        </member>
+        <member name="M:BD.Template.API.Infrastructure.DataAccess.SQL.EFRepository.BaseRepository`1.Get(System.Int32)">
+            <summary>
+            Get Entity by the Id of Entity which is previously stored on DB.
+            </summary>
+            <param name="id">Id field of any Entity</param>
+            <returns></returns>
+        </member>
+        <member name="M:BD.Template.API.Infrastructure.DataAccess.SQL.EFRepository.BaseRepository`1.Delete(`0)">
+            <summary>
+            To delete a particular entity on DB.
+            </summary>
+            <param name="entity">Entity to Delete</param>
+        </member>
+        <member name="M:BD.Template.API.Infrastructure.DataAccess.SQL.EFRepository.BaseRepository`1.GetAll">
+            <summary>
+            Get all entity from DB
+            </summary>
+            <returns>Retruns List of Entities.</returns>
+        </member>
+        <member name="M:BD.Template.API.Infrastructure.DataAccess.SQL.EFRepository.BaseRepository`1.Update(`0)">
+            <summary>
+            Update Entity to DB 
+            </summary>
+            <param name="entity">Entity to Update</param>
+        </member>
+        <member name="T:BD.Template.API.Infrastructure.DataAccess.SQL.EFRepository.IRepository`1">
+            <summary>
+            Interface creating contract between different Entities.
+            </summary>
+            <typeparam name="TEntity"> For any type of Class</typeparam>
+        </member>
+        <member name="M:BD.Template.API.Infrastructure.DataAccess.SQL.EFRepository.IRepository`1.Get(System.Int32)">
+            <summary>
+            Get Entity by the Id of Entity which is previously stored on DB.
+            </summary>
+            <param name="id">Id field of any Entity</param>
+            <returns></returns>
+        </member>
+        <member name="M:BD.Template.API.Infrastructure.DataAccess.SQL.EFRepository.IRepository`1.Add(`0)">
+            <summary>
+            Add new entity to DB.
+            </summary>
+            <param name="entity">Entity to Add in DB</param>
+        </member>
+        <member name="M:BD.Template.API.Infrastructure.DataAccess.SQL.EFRepository.IRepository`1.Update(`0)">
+            <summary>
+            Update Entity to DB 
+            </summary>
+            <param name="entity">Entity to Update</param>
+        </member>
+        <member name="M:BD.Template.API.Infrastructure.DataAccess.SQL.EFRepository.IRepository`1.Delete(`0)">
+            <summary>
+            To delete a particular entity on DB.
+            </summary>
+            <param name="entity">Entity to Delete</param>
+        </member>
+        <member name="M:BD.Template.API.Infrastructure.DataAccess.SQL.EFRepository.IRepository`1.GetAll">
+            <summary>
+            Get all entity from DB
+            </summary>
+            <returns>Retruns List of Entities.</returns>
+        </member>
+        <member name="T:BD.Template.API.Infrastructure.DBModel.KafkaResponse">
+            <summary>
+            Class for KafkaResponse properties to save into mongodb
+            </summary>
+        </member>
+        <member name="P:BD.Template.API.Infrastructure.DBModel.KafkaResponse.EventMessage">
+            <summary>
+            kafkak EventMessage
+            </summary>
+        </member>
+        <member name="P:BD.Template.API.Infrastructure.DBModel.KafkaResponse.Names">
+            <summary>
+            kafka User Names
+            </summary>
+        </member>
+        <member name="P:BD.Template.API.Infrastructure.DBModel.KafkaResponse.Quantity">
+            <summary>
+            kafka event Quantity
+            </summary>
+        </member>
+        <member name="P:BD.Template.API.Infrastructure.DBModel.KafkaResponse.TranQType">
+            <summary>
+            kafka TranQType
+            </summary>
+        </member>
+        <member name="P:BD.Template.API.Infrastructure.DBModel.KafkaResponse.ConnectionResetMinutes">
+            <summary>
+            kafka ConnectionResetMinutes
+            </summary>
+        </member>
+        <member name="P:BD.Template.API.Infrastructure.DBModel.KafkaResponse.CreationDate">
+            <summary>
+            kafka event CreationDate
+            </summary>
+        </member>
+        <member name="P:BD.Template.API.Infrastructure.DBModel.KafkaResponse.Topic">
+            <summary>
+            kafka Topic
+            </summary>
+        </member>
+        <member name="P:BD.Template.API.Infrastructure.DBModel.KafkaResponse.ResponseType">
+            <summary>
+            Type of response like Publisher or Subscriber
+            </summary>
+        </member>
+        <member name="T:BD.Template.API.Infrastructure.DBModel.User">
+            <summary>
+            User model class
+            </summary>
+        </member>
+        <member name="P:BD.Template.API.Infrastructure.DBModel.User.FirstName">
+            <summary>
+            To hold the first name
+            </summary>
+        </member>
+        <member name="P:BD.Template.API.Infrastructure.DBModel.User.LastName">
+            <summary>
+            To hold the last name
+            </summary>
+        </member>
+        <member name="P:BD.Template.API.Infrastructure.DBModel.User.Age">
+            <summary>
+            To hold the age
+            </summary>
+        </member>
+        <member name="T:BD.Template.API.Infrastructure.Exceptions.ExceptionConfig">
+            <summary>
+            ExceptionConfig
+            </summary>
+        </member>
+        <member name="T:BD.Template.API.Infrastructure.Exceptions.ExceptionConfig.Exceptions">
+            <summary>  
+            Different types of exceptions.  
+            </summary>  
+        </member>
+        <member name="F:BD.Template.API.Infrastructure.Exceptions.ExceptionConfig.Exceptions.NullReferenceException">
+            <summary>
+            NullReferenceException
+            </summary>
+        </member>
+        <member name="F:BD.Template.API.Infrastructure.Exceptions.ExceptionConfig.Exceptions.FileNotFoundException">
+            <summary>
+            FileNotFoundException
+            </summary>
+        </member>
+        <member name="F:BD.Template.API.Infrastructure.Exceptions.ExceptionConfig.Exceptions.OverflowException">
+            <summary>
+            OverflowException
+            </summary>
+        </member>
+        <member name="F:BD.Template.API.Infrastructure.Exceptions.ExceptionConfig.Exceptions.OutOfMemoryException">
+            <summary>
+            OutOfMemoryException
+            </summary>
+        </member>
+        <member name="F:BD.Template.API.Infrastructure.Exceptions.ExceptionConfig.Exceptions.InvalidCastException">
+            <summary>
+            InvalidCastException
+            </summary>
+        </member>
+        <member name="F:BD.Template.API.Infrastructure.Exceptions.ExceptionConfig.Exceptions.ObjectDisposedException">
+            <summary>
+            ObjectDisposedException
+            </summary>
+        </member>
+        <member name="F:BD.Template.API.Infrastructure.Exceptions.ExceptionConfig.Exceptions.UnauthorizedAccessException">
+            <summary>
+            UnauthorizedAccessException
+            </summary>
+        </member>
+        <member name="F:BD.Template.API.Infrastructure.Exceptions.ExceptionConfig.Exceptions.NotImplementedException">
+            <summary>
+            NotImplementedException
+            </summary>
+        </member>
+        <member name="F:BD.Template.API.Infrastructure.Exceptions.ExceptionConfig.Exceptions.NotSupportedException">
+            <summary>
+            NotSupportedException
+            </summary>
+        </member>
+        <member name="F:BD.Template.API.Infrastructure.Exceptions.ExceptionConfig.Exceptions.InvalidOperationException">
+            <summary>
+            InvalidOperationException
+            </summary>
+        </member>
+        <member name="F:BD.Template.API.Infrastructure.Exceptions.ExceptionConfig.Exceptions.TimeoutException">
+            <summary>
+            TimeoutException
+            </summary>
+        </member>
+        <member name="F:BD.Template.API.Infrastructure.Exceptions.ExceptionConfig.Exceptions.ArgumentException">
+            <summary>
+            ArgumentException
+            </summary>
+        </member>
+        <member name="F:BD.Template.API.Infrastructure.Exceptions.ExceptionConfig.Exceptions.FormatException">
+            <summary>
+            FormatException
+            </summary>
+        </member>
+        <member name="F:BD.Template.API.Infrastructure.Exceptions.ExceptionConfig.Exceptions.StackOverflowException">
+            <summary>
+            StackOverflowException
+            </summary>
+        </member>
+        <member name="F:BD.Template.API.Infrastructure.Exceptions.ExceptionConfig.Exceptions.SqlException">
+            <summary>
+            SqlException
+            </summary>
+        </member>
+        <member name="F:BD.Template.API.Infrastructure.Exceptions.ExceptionConfig.Exceptions.IndexOutOfRangeException">
+            <summary>
+            IndexOutOfRangeException
+            </summary>
+        </member>
+        <member name="F:BD.Template.API.Infrastructure.Exceptions.ExceptionConfig.Exceptions.IoException">
+            <summary>
+            IoException
+            </summary>
+        </member>
+        <member name="M:BD.Template.API.Infrastructure.Exceptions.ExceptionConfig.GetErrorCode(System.Type)">
+            <summary>  
+            This method will return the status code based on the exception type.  
+            </summary>  
+            <param name="exceptionType"></param>  
+            <returns>HttpStatusCode</returns>  
+        </member>
+        <member name="T:BD.Template.API.Infrastructure.Exceptions.TemplateException">
+            <summary>
+            TemplateException
+            </summary>
+        </member>
+        <member name="M:BD.Template.API.Infrastructure.Exceptions.TemplateException.#ctor">
+            <summary>
+            TemplateException
+            </summary>
+        </member>
+        <member name="M:BD.Template.API.Infrastructure.Exceptions.TemplateException.#ctor(System.String)">
+            <summary>
+            TemplateException
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="T:BD.Template.API.Infrastructure.Filters.CustomExceptionFilter">
+            <summary>
+            Custom  Exception filter
+            </summary>
+        </member>
+        <member name="M:BD.Template.API.Infrastructure.Filters.CustomExceptionFilter.#ctor(BD.Template.API.Infrastructure.Exceptions.ExceptionConfig)">
+            <summary>
+            CustomExceptionFilter
+            </summary>
+            <param name="exceptionConfig"></param>
+        </member>
+        <member name="M:BD.Template.API.Infrastructure.Filters.CustomExceptionFilter.OnException(Microsoft.AspNetCore.Mvc.Filters.ExceptionContext)">
+            <summary>
+            OnException
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="T:BD.Template.API.Infrastructure.Repository.Interfaces.IKafkaResponseRepository">
+            <summary>
+            Separate Kafka response repository which is responsible to create mongo connection
+            </summary>
+        </member>
+        <member name="T:BD.Template.API.Infrastructure.Repository.Interfaces.IMongoRepository">
+            <summary>
+            IMongoRepository interface
+            </summary>
+        </member>
+        <member name="T:BD.Template.API.Infrastructure.Repository.KafkaResponseRepository">
+            <summary>
+            base class of Kafka Response Repository
+            </summary>
+        </member>
+        <member name="M:BD.Template.API.Infrastructure.Repository.KafkaResponseRepository.#ctor(BD.Template.API.Infrastructure.DataAccess.Mongo.Clients.MongoDbClient)">
+            <summary>
+            KafkaResponseRepository
+            </summary>
+            <param name="dataContext"></param>
+        </member>
+        <member name="T:BD.Template.API.IntegrationEvents.Events.TemplateAddedIntegrationEvent">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BD.Template.API.IntegrationEvents.Events.TemplateAddedIntegrationEvent.Message">
+            <summary>
+            property to read and write the message
+            </summary>
+        </member>
+        <member name="P:BD.Template.API.IntegrationEvents.Events.TemplateAddedIntegrationEvent.Quantity">
+            <summary>
+            property to read and write the quantity
+            </summary>
+        </member>
+        <member name="P:BD.Template.API.IntegrationEvents.Events.TemplateAddedIntegrationEvent.PrePosition">
+            <summary>
+            property to read and write the proposition
+            </summary>
+        </member>
+        <member name="P:BD.Template.API.IntegrationEvents.Events.TemplateAddedIntegrationEvent.TranQType">
+            <summary>
+            property to read and write the TranQType
+            </summary>
+        </member>
+        <member name="P:BD.Template.API.IntegrationEvents.Events.TemplateAddedIntegrationEvent.ConnectionResetMinutes">
+            <summary>
+            property to read and write the ConnectionResetMinutes
+            </summary>
+        </member>
+        <member name="P:BD.Template.API.IntegrationEvents.Events.TemplateAddedIntegrationEvent.Names">
+            <summary>
+            property to read and write the Names
+            </summary>
+        </member>
+        <member name="T:BD.Template.API.Registration.RegistrationExtension">
+            <summary> Partial extension class for registration. </summary>
+            NOTE: Please refer all RegistrationExtension classes to get the broader picture
+        </member>
+        <member name="M:BD.Template.API.Registration.RegistrationExtension.RegisterSwagger(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary> Register all Swagger dependencies </summary>
+            <param name="services"> Instance of IServiceCollection </param>
+            <returns> services (Instance of IServiceCollection) </returns>
+        </member>
+        <member name="T:Logistics.Services.Template.API.Infrastructure.Repository.MongoRepository">
+            <summary>
+            mongo repository class
+            </summary>
+        </member>
+        <member name="M:Logistics.Services.Template.API.Infrastructure.Repository.MongoRepository.#ctor(BD.Template.API.Infrastructure.DataAccess.Mongo.Clients.MongoDbClient)">
+            <summary>
+            MongoRepository
+            </summary>
+            <param name="dataContext"></param>
+        </member>
+        <member name="T:Logistics.Services.Template.API.IntegrationEvents.EventHandling.TemplateAddedEventHandler">
+            <summary>
+            class Template Added Event Handler
+            </summary>
+        </member>
+        <member name="M:Logistics.Services.Template.API.IntegrationEvents.EventHandling.TemplateAddedEventHandler.#ctor">
+            <summary>
+            default constructor
+            </summary>
+        </member>
+        <member name="M:Logistics.Services.Template.API.IntegrationEvents.EventHandling.TemplateAddedEventHandler.#ctor(Microsoft.AspNetCore.Http.IHttpContextAccessor,BD.Template.API.Infrastructure.Repository.Interfaces.IKafkaResponseRepository,Microsoft.Extensions.Logging.ILogger{BD.Template.API.Controllers.TemplateController})">
+            <summary>
+            parameterized constructor to inject dependencies
+            </summary>
+            <param name="httpContextAccessor"></param>
+            <param name="kafkaResponseRepository"></param>
+            <param name="logger"></param>
+        </member>
+        <member name="M:Logistics.Services.Template.API.IntegrationEvents.EventHandling.TemplateAddedEventHandler.Handle(BD.Template.API.IntegrationEvents.Events.TemplateAddedIntegrationEvent)">
+            <summary>
+            
+            </summary>
+            <param name="event"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

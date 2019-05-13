@@ -1,0 +1,89 @@
+# Build Docker image for this app using Azure Pipelines
+# Created by : Sawan Sharma
+pool:
+  name: Hosted Ubuntu 1604
+
+variables:
+  buildConfiguration: 'Release'
+  imageName: 'devicecom:$(Build.BuildId)'
+  dockerId: 'dockerbd'
+  dockerPassword: 'iRsdmZO2/3aEeYT82PVb16CXXgVf932d'  
+  # define two more variables dockerId and dockerPassword in the build pipeline in UI
+  
+steps:
+
+#- script: |
+#    cd bd-logistics-template
+#    dotnet restore src/Template/Template.API.csproj --configfile NuGet.config --configuration $(buildConfiguration)
+#    dotnet build --configuration $(buildConfiguration)
+#    dotnet publish --configuration $(buildConfiguration) --output out
+#    ls -LR
+
+#    docker build -f Dockerfile -t $(dockerId).azurecr.io/$(imageName) .
+#    docker login -u $(dockerId) -p $pswd $(dockerid).azurecr.io
+#    docker push $(dockerId).azurecr.io/$(imageName) 
+#    echo "kubectl set image deployment/template-deployment template=dockerbd.azurecr.io/$(imageName)" > image.sh
+
+#    docker build -f Dockerfile_tq -t $(dockerId).azurecr.io/$(imageName) .
+#    docker login -u $(dockerId) -p $pswd $(dockerid).azurecr.io
+#    docker push $(dockerId).azurecr.io/$(imageName)
+#    echo " build directory" $(build.artifactstagingdirectory)
+#    cd $(build.artifactstagingdirectory)
+#    ls -ltrg 
+   # echo "kubectl set image deployment/dotnet-deployment dotnetcore=dockerbd.azurecr.io/$(imageName)" > image.sh
+#  env:
+#    pswd: $(dockerPassword)
+
+#steps:
+- task: DotNetCoreCLI@2
+  displayName: Restore
+  inputs:
+    command: restore
+    feedsToUse: config
+    nugetConfigPath: 'bd-logistics-devicecommunication/NuGet.config'
+    workingDirectory: 'bd-logistics-devicecommunication'
+
+#
+#- task: SonarSource.sonarqube.15B84CA1-B62F-4A2A-A403-89B77A063157.SonarQubePrepare@4
+#  displayName: 'Prepare analysis on SonarQube'
+#  inputs:
+#    SonarQube: 'plx-sonarqube'
+#    projectKey: PLX
+#
+
+- task: DotNetCoreCLI@2
+  displayName: Build
+  inputs:
+    arguments: '--configuration $(BuildConfiguration)'
+    workingDirectory: 'bd-logistics-devicecommunication'
+
+- task: DotNetCoreCLI@2
+  displayName: Publishing
+  inputs:
+    command: publish
+    zipAfterPublish: false
+    publishWebProjects: false
+    projects: 'bd-logistics-devicecommunication/src/DeviceCommunication/DeviceCommunication.API.csproj'
+    arguments: '--output out'
+    configuration: $(BuildConfiguration) 
+    workingDirectory: 'bd-logistics-devicecommunication/src/DeviceCommunication'
+
+- script: |
+    ls bd-logistics-devicecommunication -LR 
+    echo "scp -r bd-logistics-devicecommunication/src/DeviceCommunication/out winserver16@40.112.171.67" > scp.sh
+
+- task: CopyFiles@2
+  inputs:
+    sourceFolder: 'bd-logistics-devicecommunication/src/DeviceCommunication/out'
+    targetFolder: $(Build.ArtifactStagingDirectory)
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    pathtoPublish: $(Build.ArtifactStagingDirectory)
+    artifactName: devicecommcode
+
+#- task: PublishTestResults@2
+#  condition: succeededOrFailed()
+#  inputs:
+#    testRunner: VSTest
+#    testResultsFiles: '**/*.trx'

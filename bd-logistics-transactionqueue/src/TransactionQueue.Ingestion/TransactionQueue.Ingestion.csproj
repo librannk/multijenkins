@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Infrastructure\ActionResults\**" />
+    <Compile Remove="Infrastructure\Middlewares\**" />
+    <EmbeddedResource Remove="Infrastructure\ActionResults\**" />
+    <EmbeddedResource Remove="Infrastructure\Middlewares\**" />
+    <None Remove="Infrastructure\ActionResults\**" />
+    <None Remove="Infrastructure\Middlewares\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BD.Core.EventBus" Version="1.0.0" />
+    <PackageReference Include="BD.Core.EventBusKafka" Version="1.0.0" />
+    <PackageReference Include="BD.Core.Extension" Version="1.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TransactionQueue.ExternalDependencies\TransactionQueue.ExternalDependencies.csproj" />
+    <ProjectReference Include="..\TransactionQueue.Shared\TransactionQueue.Shared.csproj" />
+  </ItemGroup>
+
+</Project>

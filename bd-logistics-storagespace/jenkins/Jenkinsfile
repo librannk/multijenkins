@@ -1,0 +1,106 @@
+node('vanguard1') {
+
+  def version = "1.0.0"
+  def image
+  def buildConfiguration = "Release"     
+  def imageName = "formularyloc:j${env.BUILD_ID}"
+  def dockerId = "dockerbd"
+  
+  script {
+         if(currentBuild.rawBuild.project.displayName != 'logistics-storagespace') {
+         currentBuild.rawBuild.project.description = 'logistics-storagespace'
+         currentBuild.rawBuild.project.setDisplayName('logistics-storagespace')
+         }
+        else {
+            echo 'Name change not required'
+            echo "${buildConfiguration} ${imageName} "
+             }
+        properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '5', daysToKeepStr: '', numToKeepStr: '5'))])
+  }
+
+  try {
+
+   // notifyStarted()
+    
+    stage('Checkout') {
+        cleanWs()
+        checkout scm
+    }
+
+    stage ('Restore') {
+      sh("dotnet restore bd-logistics-storagespace --configfile bd-logistics-storagespace/NuGet.config")
+    }
+
+    stage ('Build') {
+      sh("dotnet build  bd-logistics-storagespace --configuration ${buildConfiguration}")
+    }
+
+    stage ('Publish') {
+      sh("dotnet publish bd-logistics-storagespace --configuration ${buildConfiguration} --output out")
+      sh ("ls -LR")
+    }
+
+   stage ('Package') {
+     image = docker.build("${dockerId}.azurecr.io/${imageName}", "${env.WORKSPACE}/bd-logistics-storagespace")
+     sh ("docker image ls")
+    }
+
+    stage('Push Image') {
+      docker.withRegistry('https://dockerbd.azurecr.io', 'acr-credentials') {
+      image.push("j${env.BUILD_ID}")
+      }
+    }
+
+    stage('Deploy') {
+      withCredentials([azureServicePrincipal('sp-jenkins-vanguard')]) {
+      sh ("az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET -t $AZURE_TENANT_ID")
+      sh ("az account set -s $AZURE_SUBSCRIPTION_ID")
+      sh ("az aks get-credentials --resource-group bddev-rbac-resources --name bddev-rbac --overwrite-existing")
+//      sh ("kubectl set image deployment/floc-deployment formularyloc=dockerbd.azurecr.io/$(imageName)")
+      }
+    }
+
+//    stage('Package') {
+//      image = docker.build("vanguard-service:${version}")
+//    }
+
+//    stage('Publish') {
+//     docker.withRegistry('https://docker-vanguard.docker-reg.bddevops.io', 'artifactory-credentials') {
+//        image.push()
+//        image.push('latest')
+//      }
+//    }
+    
+//    stage('Deploy') {
+      //kubectl/helm deploy here
+//    }
+
+ //   notifySuccessful()
+
+  } catch (e) {
+    // If there was an exception thrown, the build failed
+    currentBuild.result = "FAILED"
+  //  notifyFailed()
+    throw e
+  } 
+  finally {
+    if (image != null) {
+      sh "docker rmi ${image.id}"
+   }
+  }
+
+}
+//Optional slack notifications
+/*
+def notifyStarted() {
+  slackSend (color: '#FFFF00', message: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
+}
+
+def notifySuccessful() {
+  slackSend (color: '#00FF00', message: "SUCCESSFUL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
+}
+
+def notifyFailed() {
+  slackSend (color: '#FF0000', message: "FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
+}
+*/

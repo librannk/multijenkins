@@ -1,0 +1,585 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TransactionQueue.API</name>
+    </assembly>
+    <members>
+        <member name="T:TransactionQueue.API.Application.Entities.TransactionData">
+            <summary>
+            This class is used for publishing the data to the device communication service
+            </summary>
+        </member>
+        <member name="P:TransactionQueue.API.Application.Entities.TransactionData.Type">
+            <summary>
+            To hold value for Type
+            </summary>
+        </member>
+        <member name="P:TransactionQueue.API.Application.Entities.TransactionData.Quantity">
+            <summary>
+            To hold value for Quantity
+            </summary>
+        </member>
+        <member name="P:TransactionQueue.API.Application.Entities.TransactionData.Devices">
+            <summary>
+            To hold value for Devices
+            </summary>
+        </member>
+        <member name="T:TransactionQueue.API.Application.Models.Enums.StorageSpaceItemType">
+            <summary>
+            StorageSpace Item Type Enums
+            </summary>
+        </member>
+        <member name="F:TransactionQueue.API.Application.Models.Enums.StorageSpaceItemType.None">
+            <summary> None </summary>
+        </member>
+        <member name="F:TransactionQueue.API.Application.Models.Enums.StorageSpaceItemType.Rack">
+            <summary> Rack </summary>
+        </member>
+        <member name="F:TransactionQueue.API.Application.Models.Enums.StorageSpaceItemType.Shelf">
+            <summary> Shelf </summary>
+        </member>
+        <member name="F:TransactionQueue.API.Application.Models.Enums.StorageSpaceItemType.Bin">
+            <summary> Bin </summary>
+        </member>
+        <member name="F:TransactionQueue.API.Application.Models.Enums.StorageSpaceItemType.Slot">
+            <summary> Slot </summary>
+        </member>
+        <member name="T:TransactionQueue.API.Application.Models.Enums.StorageSpaceType">
+            <summary> StorageSpaceType </summary>
+        </member>
+        <member name="F:TransactionQueue.API.Application.Models.Enums.StorageSpaceType.None">
+            <summary> None </summary>
+        </member>
+        <member name="F:TransactionQueue.API.Application.Models.Enums.StorageSpaceType.Carousel">
+            <summary> Carousel </summary>
+        </member>
+        <member name="F:TransactionQueue.API.Application.Models.Enums.StorageSpaceType.Display">
+            <summary> Display </summary>
+        </member>
+        <member name="T:TransactionQueue.API.Application.Models.Transaction">
+            <summary>
+            It contains information of the transaction
+            </summary>
+        </member>
+        <member name="P:TransactionQueue.API.Application.Models.Transaction.Status">
+            <summary>
+            To store value of Status
+            </summary>
+        </member>
+        <member name="T:TransactionQueue.API.Application.BussinessLayer.Abstraction.ITransactionQueueManager">
+            <summary> This interface is reponsible for handling the Transaction Queue operations </summary>
+        </member>
+        <member name="M:TransactionQueue.API.Application.BussinessLayer.Abstraction.ITransactionQueueManager.UpdateTransactionStatus(System.String,TransactionQueue.Ingestion.BusinessLayer.Models.Enums.TransactionStatus,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary> This method is used to update the transaction </summary>
+            <param name="transactionQueueId">update transaction status against transactionQueueId </param>
+            <param name="status">status updated against transaction </param>
+            <param name="headers"> headers</param>
+            <returns></returns>
+        </member>
+        <member name="T:TransactionQueue.API.Application.BussinessLayer.Concrete.TransactionQueueManager">
+            <summary> This class is responsible for handling the Transaction Queue operations </summary>
+        </member>
+        <member name="M:TransactionQueue.API.Application.BussinessLayer.Concrete.TransactionQueueManager.#ctor(BD.Core.EventBus.Abstractions.IEventBus,Microsoft.Extensions.Options.IOptions{TransactionQueue.Shared.Configuration.Configuration},Microsoft.Extensions.Logging.ILogger{TransactionQueue.API.Application.BussinessLayer.Concrete.TransactionQueueManager},AutoMapper.IMapper,TransactionQueue.API.Infrastructure.Repository.Interfaces.ITransactionQueueMongoRepository,TransactionQueue.Ingestion.BusinessLayer.Abstraction.ITransactionManager)">
+            <summary> Initialize the private fields </summary>
+        </member>
+        <member name="M:TransactionQueue.API.Application.BussinessLayer.Concrete.TransactionQueueManager.UpdateTransactionStatus(System.String,TransactionQueue.Ingestion.BusinessLayer.Models.Enums.TransactionStatus,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary> This method is used to update the transaction </summary>
+            <param name="transactionQueueId">update transaction status against transactionQueueId </param>
+            <param name="status">status updated against transaction </param>
+            <param name="headers"> headers</param>
+        </member>
+        <member name="T:TransactionQueue.API.AutofacModule.ApplicationModule">
+            <summary>
+            This class is used for registering event hanlder dependecies
+            </summary>
+        </member>
+        <member name="M:TransactionQueue.API.AutofacModule.ApplicationModule.Load(Autofac.ContainerBuilder)">
+            <summary>
+            Register dependencies
+            </summary>
+            <param name="builder"></param>
+        </member>
+        <member name="T:TransactionQueue.API.AutoMapper.MapProfile">
+            <summary>
+            This class contains mappings.
+            </summary>
+        </member>
+        <member name="M:TransactionQueue.API.AutoMapper.MapProfile.#ctor">
+            <summary>
+            Public contructor.
+            </summary>
+        </member>
+        <member name="T:TransactionQueue.API.Common.Constants.Constants">
+            <summary>
+            This class contains messages
+            </summary>
+        </member>
+        <member name="T:TransactionQueue.API.Common.Constants.Constants.LoggingMessage">
+            <summary>
+            This class contains Logging Messages
+            </summary>
+        </member>
+        <member name="F:TransactionQueue.API.Common.Constants.Constants.LoggingMessage.ActivateTransactionStarted">
+            <summary>
+            constant for ActivateTransactionStarted
+            </summary>
+        </member>
+        <member name="F:TransactionQueue.API.Common.Constants.Constants.LoggingMessage.InvalidRequestForTransaction">
+            <summary>
+            constant for InvalidRequest
+            </summary>
+        </member>
+        <member name="F:TransactionQueue.API.Common.Constants.Constants.LoggingMessage.UpdateTransactionStatusMesage">
+            <summary>
+            constant for ActivatedTransactionMesage
+            </summary>
+        </member>
+        <member name="F:TransactionQueue.API.Common.Constants.Constants.LoggingMessage.InvalidStatus">
+            <summary>
+            constant for InvalidStatus
+            </summary>
+        </member>
+        <member name="F:TransactionQueue.API.Common.Constants.Constants.LoggingMessage.TransactionIdOrStatusNull">
+            <summary>
+            constant for TransactionIdOrStatusNull
+            </summary>
+        </member>
+        <member name="F:TransactionQueue.API.Common.Constants.Constants.LoggingMessage.DataPublishedDeviceCommunication">
+            <summary>
+            constant for DataPublishedDeviceCommunication
+            </summary>
+        </member>
+        <member name="F:TransactionQueue.API.Common.Constants.Constants.LoggingMessage.InvalidRequestForF10Override">
+            <summary>
+            constant for F10Override request parameter is empty
+            </summary>
+        </member>
+        <member name="T:TransactionQueue.API.Common.Constants.Constants.MessageBus">
+            <summary>
+            This class contains for MessageBus
+            </summary>
+        </member>
+        <member name="F:TransactionQueue.API.Common.Constants.Constants.MessageBus.Topic">
+            <summary>
+            constant for Topic
+            </summary>
+        </member>
+        <member name="F:TransactionQueue.API.Common.Constants.Constants.MessageBus.Groups">
+            <summary>
+            constant for Groups
+            </summary>
+        </member>
+        <member name="T:TransactionQueue.API.Common.Constants.Constants.SwaggerMessage">
+            <summary>
+            This class contains Swagger Messages
+            </summary>
+        </member>
+        <member name="F:TransactionQueue.API.Common.Constants.Constants.SwaggerMessage.SwaggerEndpointUrl">
+            <summary> Url for swagger endpoint </summary>
+        </member>
+        <member name="F:TransactionQueue.API.Common.Constants.Constants.SwaggerMessage.RoutePrefix">
+            <summary> RoutePrefix </summary>
+        </member>
+        <member name="F:TransactionQueue.API.Common.Constants.Constants.SwaggerMessage.RouteTemplate">
+            <summary> RouteTemplate </summary>
+        </member>
+        <member name="T:TransactionQueue.API.Common.Helpers.StringHelper">
+            <summary>
+            Helper methods for string
+            </summary>
+        </member>
+        <member name="M:TransactionQueue.API.Common.Helpers.StringHelper.IsEqual(System.String,System.String)">
+            <summary>
+            compare two string values
+            </summary>
+            <param name="value1"></param>
+            <param name="value2"></param>
+            <returns></returns>
+        </member>
+        <member name="T:TransactionQueue.API.Configuration.SwaggerDefaultValues">
+            <summary>  
+            Represents the Swagger/Swashbuckle operation filter used to document the implicit API version parameter.  
+            </summary>  
+            <remarks>This <see cref="T:Swashbuckle.AspNetCore.SwaggerGen.IOperationFilter"/> is only required due to bugs in the <see cref="T:Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator"/>.  
+            Once they are fixed and published, this class can be removed.</remarks>  
+        </member>
+        <member name="M:TransactionQueue.API.Configuration.SwaggerDefaultValues.Apply(Swashbuckle.AspNetCore.Swagger.Operation,Swashbuckle.AspNetCore.SwaggerGen.OperationFilterContext)">
+            <summary>  
+            Applies the filter to the specified operation using the given context.  
+            </summary>  
+            <param name="operation">The operation to apply the filter to.</param>  
+            <param name="context">The current operation filter context.</param>  
+        </member>
+        <member name="T:TransactionQueue.API.Controllers.TransactionQueueController">
+            <summary> It contains the TransactionQueue related action methods</summary>
+        </member>
+        <member name="M:TransactionQueue.API.Controllers.TransactionQueueController.#ctor(Microsoft.Extensions.Logging.ILogger{TransactionQueue.API.Controllers.TransactionQueueController},TransactionQueue.API.Application.BussinessLayer.Abstraction.ITransactionQueueManager,TransactionQueue.ManageQueues.Business.Abstraction.ITransactionQueueBussiness,TransactionQueue.ManageQueues.Business.Abstraction.IQueueFilter)">
+            <summary>
+            
+            </summary>
+            <param name="logger"></param>
+            <param name="transactionQueueManager"></param>
+            <param name="transactionQueueBussiness"></param>
+            <param name="queueFilter"></param>
+        </member>
+        <member name="M:TransactionQueue.API.Controllers.TransactionQueueController.GetTransactions(System.Int32,System.String,System.String,System.Int32,System.String,System.Int32,System.Int32)">
+            <summary>
+            Get All sorted Transaction (Active, Pending and Hold)
+            </summary>
+            <param name="actorKey"></param>
+            <param name="activeTQId"></param>
+            <param name="sortColumn"></param>
+            <param name="sortDirection"></param>
+            <param name="transactionType"></param>
+            <param name="page"></param>
+            <param name="pageSize"></param>
+            <returns>returns All sorted Transaction (Active, Pending and Hold)</returns>
+        </member>
+        <member name="M:TransactionQueue.API.Controllers.TransactionQueueController.PickNow(System.String,System.Int32,TransactionQueue.ManageQueues.Business.Models.PickNow)">
+            <summary>
+            Pick Now to make tarnsaction active
+            </summary>
+            <param name="activeTransactionQueueKey">Transaction key which is active</param>
+            <param name="actorKey"> actorkey</param>
+            <param name="pickNow">PickNow object to activate</param>
+            <returns></returns>
+        </member>
+        <member name="M:TransactionQueue.API.Controllers.TransactionQueueController.MarkCompleteTransaction(TransactionQueue.Shared.Models.TQRequestObjectForComplete)">
+            <summary>
+             Mark Active transaction to Complete
+             </summary>
+             <param name="activeTransactionQueueKey">Transaction key which is active</param>
+             <param name="actorKey">Login User actorKey</param>
+             <param name="tQRequestObjectForComplete">Request obejct</param>
+        </member>
+        <member name="T:TransactionQueue.API.Infrastructure.Exceptions.ExceptionConfig">
+            <summary> ExceptionConfig </summary>
+        </member>
+        <member name="T:TransactionQueue.API.Infrastructure.Exceptions.ExceptionConfig.Exceptions">
+            <summary> Different types of exceptions. </summary> 
+        </member>
+        <member name="F:TransactionQueue.API.Infrastructure.Exceptions.ExceptionConfig.Exceptions.NullReferenceException">
+            <summary>
+            NullReferenceException
+            </summary>
+        </member>
+        <member name="F:TransactionQueue.API.Infrastructure.Exceptions.ExceptionConfig.Exceptions.FileNotFoundException">
+            <summary>
+            FileNotFoundException
+            </summary>
+        </member>
+        <member name="F:TransactionQueue.API.Infrastructure.Exceptions.ExceptionConfig.Exceptions.OverflowException">
+            <summary>
+            OverflowException
+            </summary>
+        </member>
+        <member name="F:TransactionQueue.API.Infrastructure.Exceptions.ExceptionConfig.Exceptions.OutOfMemoryException">
+            <summary>
+            OutOfMemoryException
+            </summary>
+        </member>
+        <member name="F:TransactionQueue.API.Infrastructure.Exceptions.ExceptionConfig.Exceptions.InvalidCastException">
+            <summary>
+            InvalidCastException
+            </summary>
+        </member>
+        <member name="F:TransactionQueue.API.Infrastructure.Exceptions.ExceptionConfig.Exceptions.ObjectDisposedException">
+            <summary>
+            ObjectDisposedException
+            </summary>
+        </member>
+        <member name="F:TransactionQueue.API.Infrastructure.Exceptions.ExceptionConfig.Exceptions.UnauthorizedAccessException">
+            <summary>
+            UnauthorizedAccessException
+            </summary>
+        </member>
+        <member name="F:TransactionQueue.API.Infrastructure.Exceptions.ExceptionConfig.Exceptions.NotImplementedException">
+            <summary>
+            NotImplementedException
+            </summary>
+        </member>
+        <member name="F:TransactionQueue.API.Infrastructure.Exceptions.ExceptionConfig.Exceptions.NotSupportedException">
+            <summary>
+            NotSupportedException
+            </summary>
+        </member>
+        <member name="F:TransactionQueue.API.Infrastructure.Exceptions.ExceptionConfig.Exceptions.InvalidOperationException">
+            <summary>
+            InvalidOperationException
+            </summary>
+        </member>
+        <member name="F:TransactionQueue.API.Infrastructure.Exceptions.ExceptionConfig.Exceptions.TimeoutException">
+            <summary>
+            TimeoutException
+            </summary>
+        </member>
+        <member name="F:TransactionQueue.API.Infrastructure.Exceptions.ExceptionConfig.Exceptions.ArgumentException">
+            <summary>
+            ArgumentException
+            </summary>
+        </member>
+        <member name="F:TransactionQueue.API.Infrastructure.Exceptions.ExceptionConfig.Exceptions.FormatException">
+            <summary>
+            FormatException
+            </summary>
+        </member>
+        <member name="F:TransactionQueue.API.Infrastructure.Exceptions.ExceptionConfig.Exceptions.StackOverflowException">
+            <summary>
+            StackOverflowException
+            </summary>
+        </member>
+        <member name="F:TransactionQueue.API.Infrastructure.Exceptions.ExceptionConfig.Exceptions.SqlException">
+            <summary>
+            SqlException
+            </summary>
+        </member>
+        <member name="F:TransactionQueue.API.Infrastructure.Exceptions.ExceptionConfig.Exceptions.IndexOutOfRangeException">
+            <summary>
+            IndexOutOfRangeException
+            </summary>
+        </member>
+        <member name="F:TransactionQueue.API.Infrastructure.Exceptions.ExceptionConfig.Exceptions.IOException">
+            <summary>
+            IOException
+            </summary>
+        </member>
+        <member name="M:TransactionQueue.API.Infrastructure.Exceptions.ExceptionConfig.GetErrorCode(System.Type)">
+            <summary> This method will return the status code based on the exception type. </summary>  
+            <param name="exceptionType"></param>  
+            <returns>HttpStatusCode</returns>  
+        </member>
+        <member name="T:TransactionQueue.API.Infrastructure.Filters.CustomExceptionFilter">
+            <summary> Custom  Exception filter </summary>
+        </member>
+        <member name="M:TransactionQueue.API.Infrastructure.Filters.CustomExceptionFilter.#ctor(TransactionQueue.API.Infrastructure.Exceptions.ExceptionConfig)">
+            <summary>  </summary>
+            <param name="exceptionConfig"></param>
+        </member>
+        <member name="M:TransactionQueue.API.Infrastructure.Filters.CustomExceptionFilter.OnException(Microsoft.AspNetCore.Mvc.Filters.ExceptionContext)">
+            <summary> OnException </summary>
+            <param name="context"></param>
+        </member>
+        <member name="T:TransactionQueue.API.Infrastructure.Repository.Interfaces.ITransactionQueueMongoRepository">
+            <summary>
+            This interface handles the transactionqueue mongo db operations
+            </summary>
+        </member>
+        <member name="M:TransactionQueue.API.Infrastructure.Repository.Interfaces.ITransactionQueueMongoRepository.UpdateTransactionStatus(System.String,TransactionQueue.Ingestion.BusinessLayer.Models.Enums.TransactionStatus)">
+            <summary> Activates a transaction and status against the TransactionId. </summary>
+            <param name="transactionQueueId">TransactionQueueId </param>
+            <param name="status"> status </param>
+        </member>
+        <member name="T:TransactionQueue.API.Infrastructure.Repository.TransactionQueueMongoRepository">
+            <summary>
+            This class handles the transactionqueue mongo db operations
+            </summary>
+        </member>
+        <member name="M:TransactionQueue.API.Infrastructure.Repository.TransactionQueueMongoRepository.#ctor(TransactionQueue.Shared.DataAccess.Mongo.Clients.MongoDbClient)">
+            <summary> Initializes instances </summary>
+            <param name="dataContext"></param>
+        </member>
+        <member name="M:TransactionQueue.API.Infrastructure.Repository.TransactionQueueMongoRepository.UpdateTransactionStatus(System.String,TransactionQueue.Ingestion.BusinessLayer.Models.Enums.TransactionStatus)">
+            <summary> Activates a transaction and status against the TransactionId. </summary>
+            <param name="transactionQueueId">TransactionQueueId </param>
+            <param name="status"> status </param>
+        </member>
+        <member name="T:TransactionQueue.API.Infrastructure.Services.IdentityService">
+            <summary> IdentityService </summary>
+        </member>
+        <member name="P:TransactionQueue.API.Infrastructure.Services.IdentityService.Client">
+            <summary> Client </summary>
+        </member>
+        <member name="M:TransactionQueue.API.Infrastructure.Services.IdentityService.#ctor(System.Net.Http.HttpClient)">
+            <summary> Initializes instances </summary>
+            <param name="client"></param>
+        </member>
+        <member name="T:TransactionQueue.API.Infrastructure.Services.IIdentityService">
+            <summary> IIdentityService </summary>
+        </member>
+        <member name="T:TransactionQueue.API.IntegrationEvents.Events.ProcessTransactionQueueIntegrationEvent">
+            <summary>
+            This class is used for publishing the data to the device communication service
+            </summary>
+        </member>
+        <member name="P:TransactionQueue.API.IntegrationEvents.Events.ProcessTransactionQueueIntegrationEvent.TransactionData">
+            <summary> TransactionsQueueData </summary>
+        </member>
+        <member name="T:TransactionQueue.API.Program">
+            <summary> Program </summary>
+        </member>
+        <member name="M:TransactionQueue.API.Program.Main(System.String[])">
+            <summary> Main method </summary>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TransactionQueue.API.Program.CreateWebHostBuilder(System.String[])">
+            <summary>  </summary>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="T:TransactionQueue.API.Registration.RegistrationExtension">
+            <summary> Partial extension class for registration. </summary>
+            NOTE: Please refer all RegistrationExtension classes to get the broader picture
+            <summary> Partial extension class for registration. </summary>
+            NOTE: Please refer all RegistrationExtension classes to get the broader picture
+        </member>
+        <member name="M:TransactionQueue.API.Registration.RegistrationExtension.RegisterHandler(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary> Register all the handlers </summary>
+            <param name="services"> Instance of IServiceCollection </param>
+            <returns> services (Instance of IServiceCollection) </returns>
+        </member>
+        <member name="M:TransactionQueue.API.Registration.RegistrationExtension.RegisterSwagger(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary> Register all Swagger dependencies </summary>
+            <param name="services"> Instance of IServiceCollection </param>
+            <returns> services (Instance of IServiceCollection) </returns>
+        </member>
+        <member name="T:TransactionQueue.API.ServiceDependencies">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:TransactionQueue.API.ServiceDependencies.AddServices(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration,Microsoft.AspNetCore.Hosting.IHostingEnvironment,Microsoft.Extensions.Logging.ILogger)">
+            <summary>
+            
+            </summary>
+            <param name="services"></param>
+            <param name="configuration"></param>
+            <param name="env"></param>
+            <param name="logger"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TransactionQueue.API.ServiceDependencies.UseServices(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.Extensions.Configuration.IConfiguration,Microsoft.AspNetCore.Hosting.IHostingEnvironment,Microsoft.Extensions.Logging.ILogger)">
+            <summary>
+            
+            </summary>
+            <param name="app"></param>
+            <param name="configuration"></param>
+            <param name="env"></param>
+            <param name="logger"></param>
+            <returns></returns>
+        </member>
+        <member name="T:TransactionQueue.API.Startup">
+            <summary> Startup class </summary>
+        </member>
+        <member name="P:TransactionQueue.API.Startup.Configuration">
+            <summary> Configuration of type IConfiguration </summary>
+        </member>
+        <member name="P:TransactionQueue.API.Startup.Environment">
+            <summary> IHostingEnvironment </summary>
+        </member>
+        <member name="P:TransactionQueue.API.Startup.Logger">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:TransactionQueue.API.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration,Microsoft.AspNetCore.Hosting.IHostingEnvironment,Microsoft.Extensions.Logging.ILogger{TransactionQueue.API.Startup})">
+            <summary> Startup Constructor </summary>
+            <param name="configuration"></param>
+        </member>
+        <member name="M:TransactionQueue.API.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>  </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:TransactionQueue.API.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IHostingEnvironment,System.IServiceProvider,Microsoft.AspNetCore.Mvc.ApiExplorer.IApiVersionDescriptionProvider)">
+            <summary>  </summary>
+            <param name="app"></param>
+            <param name="env"></param>
+            <param name="serviceProvider"></param>
+        </member>
+        <member name="T:Logistics.Services.TransactionQueue.API.BussinessLayer.Models.SmartSort">
+            <summary>
+            To fetch SmartSort columns
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.TransactionQueue.API.BussinessLayer.Models.SmartSort.TranPriorityId">
+            <summary>
+            TranPriorityId
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.TransactionQueue.API.BussinessLayer.Models.SmartSort.SmartSortColumnId">
+            <summary>
+            SmartSortColumnId
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.TransactionQueue.API.BussinessLayer.Models.SmartSort.SmartSortOrder">
+            <summary>
+            SmartSortOrder
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.TransactionQueue.API.BussinessLayer.Models.SmartSort.LastModifiedBy">
+            <summary>
+            LastModifiedBy
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.TransactionQueue.API.BussinessLayer.Models.SmartSort.LastModifiedDate">
+            <summary>
+            LastModifiedDate
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.TransactionQueue.API.BussinessLayer.Models.SmartSort.LastModifiedBinaryValue">
+            <summary>
+            LastModifiedBinaryValue
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.TransactionQueue.API.BussinessLayer.Models.SmartSort.LastModifiedUTCDateTime">
+            <summary>
+            LastModifiedUTCDateTime
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.TransactionQueue.API.BussinessLayer.Models.SmartSort.SmartSortColumn">
+            <summary>
+            SmartSortColumn
+            </summary>
+        </member>
+        <member name="T:Logistics.Services.TransactionQueue.API.BussinessLayer.Models.SmartSortColumn">
+            <summary>
+            Class name SmartSortColumn
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.TransactionQueue.API.BussinessLayer.Models.SmartSortColumn.ColumnName">
+            <summary>
+            ColumnName
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.TransactionQueue.API.BussinessLayer.Models.SmartSortColumn.FriendlyName">
+            <summary>
+            FriendlyName
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.TransactionQueue.API.BussinessLayer.Models.SmartSortColumn.CreatedBy">
+            <summary>
+            CreatedBy
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.TransactionQueue.API.BussinessLayer.Models.SmartSortColumn.LastModifiedBy">
+            <summary>
+            LastModifiedBy
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.TransactionQueue.API.BussinessLayer.Models.SmartSortColumn.LastModifiedDate">
+            <summary>
+            LastModifiedDate
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.TransactionQueue.API.BussinessLayer.Models.SmartSortColumn.Active">
+            <summary>
+            Active
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.TransactionQueue.API.BussinessLayer.Models.SmartSortColumn.LastModifiedBinaryValue">
+            <summary>
+            LastModifiedBinaryValue
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.TransactionQueue.API.BussinessLayer.Models.SmartSortColumn.LastModifiedUTCDateTime">
+            <summary>
+            LastModifiedUTCDateTime
+            </summary>
+        </member>
+        <member name="P:Logistics.Services.TransactionQueue.API.BussinessLayer.Models.SmartSortColumn.CreateUTCDateTime">
+            <summary>
+            CreateUTCDateTime
+            </summary>
+        </member>
+    </members>
+</doc>

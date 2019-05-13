@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <IsPackable>true</IsPackable>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>GlobalLogic</Authors>
+    <Company>GlobalLogic</Company>
+    <Product>BD</Product>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <Copyright>GlobalLogic</Copyright>
+    <Version>1.0.3</Version>
+    <AssemblyVersion>1.0.3.0</AssemblyVersion>
+    <FileVersion>1.0.3.0</FileVersion>
+    <PackageReleaseNotes>Added distributed tracing and monitoring extension.</PackageReleaseNotes>
+    <Description>Added distributed tracing and monitoring extension.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.HealthChecks" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="3.1.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer" Version="3.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ExceptionHandling\BD.Core.ExceptionHandling.csproj" />
+    <ProjectReference Include="..\ExecutionContext\Http\BD.Core.Context.Http.csproj" />
+    <ProjectReference Include="..\Logging\BD.Core.Logging.csproj" />
+    <ProjectReference Include="..\ResiliencePolicy\BD.Core.ResiliencePolicy.csproj" />
+    <ProjectReference Include="..\Security\BD.Core.Security.csproj" />
+  </ItemGroup>
+
+</Project>

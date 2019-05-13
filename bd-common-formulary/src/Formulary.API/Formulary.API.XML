@@ -1,0 +1,3372 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Formulary.API</name>
+    </assembly>
+    <members>
+        <member name="T:Formulary.API.AutofacModule.ApplicationModule">
+            <summary>
+            ApplicationModule class is used to register dependencies 
+            </summary>
+        </member>
+        <member name="M:Formulary.API.AutofacModule.ApplicationModule.Load(Autofac.ContainerBuilder)">
+            <summary>
+            Register dependencies
+            </summary>
+            <param name="builder"></param>
+        </member>
+        <member name="M:Formulary.API.AutoMapper.AutomapperRegistrations.ConfigureFacilityMapping">
+            <summary>
+            Configures the facility mapping.
+            </summary>
+        </member>
+        <member name="T:Formulary.API.AutoMapper.MapProfile">
+            <summary>
+            This class contains mappings.
+            </summary>
+        </member>
+        <member name="M:Formulary.API.AutoMapper.MapProfile.#ctor">
+            <summary>
+            Public contructor.
+            </summary>
+        </member>
+        <member name="T:Formulary.API.AutoMapper.SystemItemSetUpMapProfile">
+            <summary>
+            This class contains system item set up mappings.
+            Implements the <see cref="T:AutoMapper.Profile" />
+            </summary>
+            <seealso cref="T:AutoMapper.Profile" />
+        </member>
+        <member name="M:Formulary.API.AutoMapper.SystemItemSetUpMapProfile.#ctor">
+            <summary>
+            FormularyMapProfile contructor.
+            </summary>
+        </member>
+        <member name="T:Formulary.API.BusinessLayer.Concrete.FormularyManager">
+            <summary>
+            Business logic of Formulary Service
+            </summary>
+        </member>
+        <member name="M:Formulary.API.BusinessLayer.Concrete.FormularyManager.#ctor(Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.EntityRepositoryContracts.IFormularyRepository,Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.EntityRepositoryContracts.IFacilityRepository,Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.EntityRepositoryContracts.INDCRepository,Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.EntityRepositoryContracts.IFacilityNDCAssocRepository,Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.EntityRepositoryContracts.IItemRepository,Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.EntityRepositoryContracts.IMedicationItemRepository,Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.UnitOfWork.IUnitOfWork,AutoMapper.IMapper)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="formularyRepository"></param>
+            <param name="facilityRepository"></param>
+            <param name="nDCRepository"></param>
+            <param name="facilityNDCAssocRepository"></param>
+            <param name="unitOfWork"></param>
+            <param name="mapper"></param>
+            <param name="itemReository"></param>
+            <param name="medicationItemRepository"></param>
+        </member>
+        <member name="M:Formulary.API.BusinessLayer.Concrete.FormularyManager.SaveFormulary(Formulary.API.Model.FormularyRequest)">
+            <summary>
+            Save formulary
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Formulary.API.BusinessLayer.Concrete.FormularyManager.SaveFacility(Formulary.API.Model.FacilityRequest)">
+            <summary>
+            
+            </summary>
+            <param name="request"></param>
+        </member>
+        <member name="M:Formulary.API.BusinessLayer.Concrete.FormularyManager.SaveNDC(Formulary.API.Model.NDCRequest)">
+            <summary>
+            Save NDC
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Formulary.API.BusinessLayer.Concrete.FormularyManager.SaveFacilityNDCAssoc(Formulary.API.Model.FacilityNDCAssociationRequest)">
+            <summary>
+            facilityNDCDetails
+            </summary>
+            <param name="facilityNDCDetails"></param>
+        </member>
+        <member name="M:Formulary.API.BusinessLayer.Concrete.FormularyManager.UpdateFormulary(System.Int32,Formulary.API.Model.FormularyRequest)">
+            <summary>
+            Update Formulary in SQL
+            </summary>
+            <param name="Id"></param>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Formulary.API.BusinessLayer.Concrete.FormularyManager.AddSystemItem(Formulary.API.Model.SystemItemSetupRequest)">
+            <summary>
+            To add system Formulary
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Formulary.API.BusinessLayer.Concrete.ItemSetupManager">
+            <summary>
+            ItemSetup Manager class
+            </summary>
+        </member>
+        <member name="M:Formulary.API.BusinessLayer.Concrete.ItemSetupManager.GetMedicationItems">
+            <summary>
+            Function to get System ItemSetup List
+            </summary>
+            <returns>MedicationItemList</returns>
+            
+        </member>
+        <member name="T:Formulary.API.BusinessLayer.Concrete.SystemItemSetUpManager">
+            <summary>
+            ItemSetUpManager.
+            </summary>
+        </member>
+        <member name="M:Formulary.API.BusinessLayer.Concrete.SystemItemSetUpManager.#ctor(Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.EntityRepositoryContracts.IItemRepository,AutoMapper.IMapper)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Formulary.API.BusinessLayer.Concrete.SystemItemSetUpManager"/> class.
+            </summary>
+            <param name="itemRepository">The item repository.</param>
+            <param name="mapper">The mapper.</param>
+        </member>
+        <member name="M:Formulary.API.BusinessLayer.Concrete.SystemItemSetUpManager.UpdateSystemItemSetUp(System.Guid,Formulary.API.Model.SystemItemSetupRequest)">
+            <summary>
+            Updates the system item set up.
+            </summary>
+            <param name="itemkey">The itemkey.</param>
+            <param name="medicationItem">The medication item.</param>
+            <returns>Task&lt;BusinessResult&lt;Model.MedicationItem&gt;&gt;.</returns>
+        </member>
+        <member name="T:Formulary.API.BusinessLayer.Contract.IFormularyManager">
+            <summary>
+            Formulary Manager class
+            </summary>
+        </member>
+        <member name="M:Formulary.API.BusinessLayer.Contract.IFormularyManager.AddSystemItem(Formulary.API.Model.SystemItemSetupRequest)">
+            <summary>
+            Add system formulary
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Formulary.API.BusinessLayer.Contract.IFormularyManager.SaveFormulary(Formulary.API.Model.FormularyRequest)">
+            <summary>
+            Save formulary to the database
+            </summary>
+            <param name="request"></param>
+        </member>
+        <member name="M:Formulary.API.BusinessLayer.Contract.IFormularyManager.UpdateFormulary(System.Int32,Formulary.API.Model.FormularyRequest)">
+            <summary>
+            Update Formulary in the database
+            </summary>
+            <param name="Id"></param>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Formulary.API.BusinessLayer.Contract.IFormularyManager.SaveFacility(Formulary.API.Model.FacilityRequest)">
+            <summary>
+            Save Facility to the database
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Formulary.API.BusinessLayer.Contract.IFormularyManager.SaveNDC(Formulary.API.Model.NDCRequest)">
+            <summary>
+            Save NDC details to the database
+            </summary>
+            <param name="nDCDetails"></param>
+        </member>
+        <member name="M:Formulary.API.BusinessLayer.Contract.IFormularyManager.SaveFacilityNDCAssoc(Formulary.API.Model.FacilityNDCAssociationRequest)">
+            <summary>
+            Save FacilityNDCAssociation Details to the database
+            </summary>
+            <param name="facilityNDCAssoc"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Formulary.API.BusinessLayer.Contract.IItemSetupManager">
+            <summary>
+            ItemSetup Manager Interface
+            </summary>
+        </member>
+        <member name="M:Formulary.API.BusinessLayer.Contract.IItemSetupManager.GetMedicationItems">
+            <summary>
+            Get SystemItemList
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Formulary.API.BusinessLayer.Contract.ISystemItemSetUpManager">
+            <summary>
+            IItemSetUpManager
+            </summary>
+        </member>
+        <member name="M:Formulary.API.BusinessLayer.Contract.ISystemItemSetUpManager.UpdateSystemItemSetUp(System.Guid,Formulary.API.Model.SystemItemSetupRequest)">
+            <summary>
+            Updates the system item set up.
+            </summary>
+            <param name="itemkey">The itemkey.</param>
+            <param name="medicationItem">The medication item.</param>
+            <returns>Task&lt;BusinessResult&lt;Model.MedicationItem&gt;&gt;.</returns>
+        </member>
+        <member name="T:Formulary.API.Common.Constants">
+            <summary>
+            Contains all api's constants
+            </summary>
+        </member>
+        <member name="F:Formulary.API.Common.Constants.EVENT_BUS_CONFIGURATION_IS_EVENT_HUB">
+            <summary> EVENT_BUS_CONFIGURATION_IS_EVENT_HUB </summary>
+        </member>
+        <member name="F:Formulary.API.Common.Constants.EVENT_BUS_CONFIGURATION_VALIDATE_TOKEN">
+            <summary> EVENT_BUS_CONFIGURATION_VALIDATE_TOKEN </summary>
+        </member>
+        <member name="F:Formulary.API.Common.Constants.EVENT_BUS_CONFIGURATION_TOKEN_SERVER_URL">
+            <summary> EVENT_BUS_CONFIGURATION_TOKEN_SERVER_URL </summary>
+        </member>
+        <member name="F:Formulary.API.Common.Constants.EVENT_BUS_CONFIGURATION_ENABLE_AUTO_COMMIT">
+            <summary> EVENT_BUS_CONFIGURATION_ENABLE_AUTO_COMMIT </summary>
+        </member>
+        <member name="F:Formulary.API.Common.Constants.EVENT_BUS_KAFKA_CONFIGURATION_ENDPOINT">
+            <summary> EVENT_BUS_KAFKA_CONFIGURATION_ENDPOINT </summary>
+        </member>
+        <member name="F:Formulary.API.Common.Constants.EVENT_BUS_HUB_CONFIGURATION_ENDPOINT">
+            <summary> EVENT_BUS_HUB_CONFIGURATION_ENDPOINT </summary>
+        </member>
+        <member name="F:Formulary.API.Common.Constants.EVENT_BUS_HUB_CONFIGURATION_USERNAME">
+            <summary> EVENT_BUS_HUB_CONFIGURATION_USERNAME </summary>
+        </member>
+        <member name="F:Formulary.API.Common.Constants.EVENT_BUS_HUB_CONFIGURATION_PASSWORD">
+            <summary> EVENT_BUS_HUB_CONFIGURATION_PASSWORD </summary>
+        </member>
+        <member name="F:Formulary.API.Common.Constants.EVENT_BUS_HUB_CONFIGURATION_BROKER_VERSION_FALLBACK">
+            <summary> EVENT_BUS_HUB_CONFIGURATION_BROKER_VERSION_FALLBACK </summary>
+        </member>
+        <member name="F:Formulary.API.Common.Constants.KAFKA_CONFIGURATION">
+            <summary>
+            Kafka configuration
+            </summary>
+        </member>
+        <member name="F:Formulary.API.Common.Constants.KAFKA_ENDPOINT">
+            <summary>
+            Kafka End point
+            </summary>
+        </member>
+        <member name="F:Formulary.API.Common.Constants.VALIDATE_TOKEN">
+            <summary>
+            Validate token
+            </summary>
+        </member>
+        <member name="F:Formulary.API.Common.Constants.TOKEN_SERVER_URL">
+            <summary>
+            Token Server URL
+            </summary>
+        </member>
+        <member name="F:Formulary.API.Common.Constants.SERI_LOG_TRACE_END_POINTS">
+            <summary>
+            Trace Endpoints
+            </summary>
+        </member>
+        <member name="F:Formulary.API.Common.Constants.SERILOG_TRACE">
+            <summary>
+            SERILOG Trace 
+            </summary>
+        </member>
+        <member name="F:Formulary.API.Common.Constants.Topic_Publish_Formulary_Update">
+            <summary>
+            This key has topic that is used to publish formulary detials to CCEProxy service
+            </summary>
+        </member>
+        <member name="F:Formulary.API.Common.Constants.TOPIC_PUBLISH_FACILITY_UPDATE">
+            <summary>
+            This key has topic that is used to publish Facility detials to CCEProxy service
+            </summary>
+        </member>
+        <member name="F:Formulary.API.Common.Constants.TOPIC_PUBLISH_NDC_UPDATE">
+            <summary>
+            This key has topic that is used to publish NDC detials to CCEProxy service
+            </summary>
+        </member>
+        <member name="F:Formulary.API.Common.Constants.TOPIC_PUBLISH_TRANSACTIONDETAILS_TO_CCEProxy_SERVICE">
+            <summary>
+            This key has topic that is used to publish transaction details to CCEProxy service
+            </summary>
+        </member>
+        <member name="F:Formulary.API.Common.Constants.Entity_Saved">
+            <summary>
+            Message to save data into the database
+            </summary>
+        </member>
+        <member name="F:Formulary.API.Common.Constants.Data_Published">
+            <summary>
+            Message to publish data on event bus
+            </summary>
+        </member>
+        <member name="F:Formulary.API.Common.Constants.Formulary_Error_Msg">
+            <summary>
+            Formulary error message
+            </summary>
+        </member>
+        <member name="F:Formulary.API.Common.Constants.NDC_ERROR_MSG">
+            <summary>
+            NDC error message
+            </summary>
+        </member>
+        <member name="F:Formulary.API.Common.Constants.FACILITY_ERROR_MSG">
+            <summary>
+            NDC error message
+            </summary>
+        </member>
+        <member name="F:Formulary.API.Common.Constants.ROUTE_TEMPLATE">
+            <summary>
+            Swagger route template
+            </summary>
+        </member>
+        <member name="F:Formulary.API.Common.Constants.SWAGGER_ENDPOINT">
+            <summary>
+            Swagger End Point
+            </summary>
+        </member>
+        <member name="F:Formulary.API.Common.Constants.API_NAME">
+            <summary>
+            Api name
+            </summary>
+        </member>
+        <member name="F:Formulary.API.Common.Constants.API_VERSION">
+            <summary>
+            Api version
+            </summary>
+        </member>
+        <member name="F:Formulary.API.Common.Constants.HEALTH_CHECK">
+            <summary>
+            Helth check api integration
+            </summary>
+        </member>
+        <member name="F:Formulary.API.Common.Constants.FORMULARY_API_LISTENING">
+            <summary>
+            Facility.API is listening
+            </summary>
+        </member>
+        <member name="F:Formulary.API.Common.Constants.IncomingRequest">
+            <summary>
+            IncomingRequest
+            </summary>
+        </member>
+        <member name="T:Formulary.API.Common.DBConstants">
+            <summary>
+            Class have all db's constants
+            </summary>
+        </member>
+        <member name="F:Formulary.API.Common.DBConstants.SCHEMA">
+            <summary>
+            Schema detials
+            </summary>
+        </member>
+        <member name="T:Formulary.API.Common.DBConstants.Tables">
+            <summary>
+            Db table Collection name
+            </summary>
+        </member>
+        <member name="F:Formulary.API.Common.DBConstants.Tables.FACILITY_NDC_ASSOC">
+            <summary>
+            Table is used to save facility, NDC association details
+            </summary>
+        </member>
+        <member name="F:Formulary.API.Common.Admin.LastUpdatedBy">
+            <summary>
+            LastUpdated
+            </summary>
+        </member>
+        <member name="F:Formulary.API.Common.Admin.CreatedBy">
+            <summary>
+            Created
+            </summary>
+        </member>
+        <member name="F:Formulary.API.Common.NotSuccess.RequestNotValid">
+            <summary>
+            RequestNotValid
+            </summary>
+        </member>
+        <member name="F:Formulary.API.Common.NotSuccess.RecordNotInserted">
+            <summary>
+            RecordNotInserted
+            </summary>
+        </member>
+        <member name="F:Formulary.API.Common.NotSuccess.DbInsertionIssue">
+            <summary>
+            DbInsertionIssue
+            </summary>
+        </member>
+        <member name="F:Formulary.API.Common.NotSuccess.UpdateDbIssue">
+            <summary>
+            UpdateDbIssue
+            </summary>
+        </member>
+        <member name="T:Formulary.API.Common.DbConstants">
+            <summary>
+            Constants pertaining to Database
+            </summary>
+        </member>
+        <member name="F:Formulary.API.Common.DbConstants.DefaultDboSchema">
+            <summary>
+            Constant for default Schema Name
+            </summary>
+        </member>
+        <member name="T:Formulary.API.Common.DbConstants.TableNames">
+            <summary>
+            Constants for Table Names
+            </summary>
+        </member>
+        <member name="F:Formulary.API.Common.DbConstants.TableNames.Item">
+            <summary>
+            Item Table
+            </summary>
+        </member>
+        <member name="F:Formulary.API.Common.DbConstants.TableNames.FormularyStandard">
+            <summary>
+            FormularyStandard table
+            </summary>
+        </member>
+        <member name="F:Formulary.API.Common.DbConstants.TableNames.ProductID">
+            <summary>
+            ProductID mapping table
+            </summary>
+        </member>
+        <member name="F:Formulary.API.Common.DbConstants.TableNames.DispenseForm">
+            <summary>
+             Table used to save DispenseForm details
+            </summary>
+        </member>
+        <member name="F:Formulary.API.Common.DbConstants.TableNames.DispenseUnit">
+            <summary>
+            Table used to save DispenseUnit details
+            </summary>
+        </member>
+        <member name="F:Formulary.API.Common.DbConstants.TableNames.Facility">
+            <summary>
+            Table is used to save formulary's facility details
+            </summary>
+        </member>
+        <member name="F:Formulary.API.Common.DbConstants.TableNames.Ndc">
+            <summary>
+            Table used to save NDC details 
+            </summary>
+        </member>
+        <member name="F:Formulary.API.Common.DbConstants.TableNames.Formulary">
+            <summary>
+            Table is used to save formulary details
+            </summary>
+        </member>
+        <member name="F:Formulary.API.Common.DbConstants.TableNames.Gla">
+            <summary>
+             Table used to save GLA details 
+            </summary>
+        </member>
+        <member name="F:Formulary.API.Common.DbConstants.TableNames.PreferredOrdering">
+            <summary>
+             Table used to save GLA details 
+            </summary>
+        </member>
+        <member name="T:Formulary.API.Common.CreateUpdateResultEnum">
+            <summary>
+            Enum for Data Creation
+            </summary>
+        </member>
+        <member name="F:Formulary.API.Common.CreateUpdateResultEnum.None">
+            <summary>
+            None (Default)
+            </summary>
+        </member>
+        <member name="F:Formulary.API.Common.CreateUpdateResultEnum.Success">
+            <summary>
+            Success Result.
+            </summary>
+        </member>
+        <member name="F:Formulary.API.Common.CreateUpdateResultEnum.ErrorAlreadyExists">
+            <summary>
+            Object Already exists.
+            </summary>
+        </member>
+        <member name="F:Formulary.API.Common.CreateUpdateResultEnum.ValidationFailed">
+            <summary>
+            Not created due to validation failure.
+            </summary>
+        </member>
+        <member name="F:Formulary.API.Common.CreateUpdateResultEnum.UnknownError">
+            <summary>
+            Unknown Error
+            </summary>
+        </member>
+        <member name="F:Formulary.API.Common.CreateUpdateResultEnum.NotFound">
+            <summary>
+            Object not found
+            </summary>
+        </member>
+        <member name="T:Formulary.API.Configuration.Configuration">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Formulary.API.Controllers.FormularyController">
+            <summary>
+             Formulary controller is used to save formulary detials in the database and for pushing these detials to event bus
+            </summary>
+        </member>
+        <member name="M:Formulary.API.Controllers.FormularyController.#ctor(Microsoft.Extensions.Configuration.IConfiguration,Microsoft.Extensions.Logging.ILogger{Formulary.API.Controllers.FormularyController},Formulary.API.BusinessLayer.Contract.IFormularyManager,BD.Core.EventBus.Abstractions.IEventBus,Formulary.API.BusinessLayer.Contract.ISystemItemSetUpManager,Formulary.API.BusinessLayer.Contract.IItemSetupManager,Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Formulary.API.Controllers.FormularyController"/> class.
+            </summary>
+            <param name="configuration">The configuration.</param>
+            <param name="logger">The logger.</param>
+            <param name="formularyManager">The formulary manager.</param>
+            <param name="eventBus">The event bus.</param>
+            <param name="systemItemSetUpManager">The system item set up manager.</param>
+            <param name="itemSetupManager">The item setup manager.</param>
+            <param name="httpContextAccessor">Http context Accessor</param>
+        </member>
+        <member name="M:Formulary.API.Controllers.FormularyController.GetItems">
+            <summary>
+            Method to get Items List 
+            </summary>
+            <response code="200">OK</response>
+            <response code="400">Bad Request</response>
+            <response code="401">Unauthorized</response>
+            <response code="500">Internal Server Error</response>
+            <returns>List of System Items</returns>
+        </member>
+        <member name="M:Formulary.API.Controllers.FormularyController.AddSystemItem(Formulary.API.Model.SystemItemSetupRequest)">
+            <summary>
+            Add System Item
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Formulary.API.Controllers.FormularyController.UpdateItemSetUpById(System.Guid,Formulary.API.Model.SystemItemSetupRequest)">
+            <summary>
+            Update an existing system item setup
+            </summary>
+            <param name="itemkey">itemkey</param>
+            <param name="medicationItem">To update medicationItem</param>
+            <response code="200">OK</response>
+            <response code="400">Bad Request</response>
+            <response code="401">Unauthorized</response>
+            <response code="500">Internal Server Error</response>
+        </member>
+        <member name="T:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.ApplicationDBContext">
+            <summary>
+            ApplicationDBContext is class  which represent DB in memory.
+            </summary>
+        </member>
+        <member name="M:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.ApplicationDBContext.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.ApplicationDBContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions{Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.ApplicationDBContext})">
+            <summary>
+            Constructor with db context parameters
+            </summary>
+            <param name="options"></param>
+        </member>
+        <member name="M:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.ApplicationDBContext.OnConfiguring(Microsoft.EntityFrameworkCore.DbContextOptionsBuilder)">
+            <summary>
+            Method that called on configuring 
+            </summary>
+            <param name="optionsBuilder"></param>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.ApplicationDBContext.FormualryEntities">
+            <summary>
+            Formualry entities
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.ApplicationDBContext.FacilityEntities">
+            <summary>
+            Facility entities
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.ApplicationDBContext.NDCEntities">
+            <summary>
+            NDC entities
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.ApplicationDBContext.FacilityNDCAssocEntities">
+            <summary>
+            NDC entities
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.ApplicationDBContext.ProductIdentificationEntities">
+            <summary>
+            ProductIdentificationEntity
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.ApplicationDBContext.ProductIDRecommendedItems">
+            <summary>
+            ProductIDRecommendedItems
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.ApplicationDBContext.RecommendedItemResults">
+            <summary>
+            RecommendedItemResults
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.ApplicationDBContext.MedicationItems">
+            <summary>
+            MedicationItems
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.ApplicationDBContext.Items">
+            <summary>
+            Items
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.ApplicationDBContext.DispensingFormLookups">
+            <summary>
+            DispensingFormLookups
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.ApplicationDBContext.DispensingUnitLookups">
+            <summary>
+            DispensingUnitLookups
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.ApplicationDBContext.GLAccounts">
+            <summary>
+            GLAccounts
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.ApplicationDBContext.FormularyStandards">
+            <summary>
+            Gets or sets the formulary standards.
+            </summary>
+            <value>The formulary standards.</value>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.ApplicationDBContext.PreferredOrdering">
+            <summary>
+            Preferred Ordering
+            </summary>
+            <value>The preferred ordering.</value>
+        </member>
+        <member name="M:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.ApplicationDBContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <summary>
+            OnModelCreating Method
+            </summary>
+            <param name="modelBuilder"></param>
+        </member>
+        <member name="T:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Configuration.ExternalUomEntityConfiguration">
+            <summary>
+            ExternalUomEntity configuration
+            </summary>
+        </member>
+        <member name="M:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Configuration.ExternalUomEntityConfiguration.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.ExternalUomEntity})">
+            <summary>
+            Configure method
+            </summary>
+            <param name="builder"></param>
+        </member>
+        <member name="T:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Configuration.FacilityItemEntityConfiguration">
+            <summary>
+            Relationship configuration with FacilityItemEntity
+            </summary>
+        </member>
+        <member name="M:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Configuration.FacilityItemEntityConfiguration.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.FacilityItemEntity})">
+            <summary>
+            configure method
+            </summary>
+            <param name="builder"></param>
+        </member>
+        <member name="T:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Configuration.ItemEntityConfiguration">
+            <summary>
+            ItemEntityConfiguration Configuration
+            </summary>
+        </member>
+        <member name="M:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Configuration.ItemEntityConfiguration.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.ItemEntity})">
+            <summary>
+            Configure Method
+            </summary>
+            <param name="builder"></param>
+        </member>
+        <member name="T:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Configuration.MedicationItemEntityConfiguration">
+            <summary>
+            RecommendedItemResultEntity Configuration
+            </summary>
+        </member>
+        <member name="M:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Configuration.MedicationItemEntityConfiguration.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.MedicationItemEntity})">
+            <summary>
+            Configure Method
+            </summary>
+            <param name="builder"></param>
+        </member>
+        <member name="T:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Configuration.ProductIdentificationEntityConfiguration">
+            <summary>
+            ProductIdentificationEntity Configuration
+            </summary>
+        </member>
+        <member name="M:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Configuration.ProductIdentificationEntityConfiguration.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.ProductIdentificationEntity})">
+            <summary>
+            Configuration between Entities
+            </summary>
+            <param name="builder"></param>
+        </member>
+        <member name="T:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Configuration.ProductIDRecommendedItemEntityConfiguration">
+            <summary>
+            FormularyEntity Configuration
+            </summary>
+        </member>
+        <member name="M:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Configuration.ProductIDRecommendedItemEntityConfiguration.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.ProductIDRecommendedItemEntity})">
+            <summary>
+            Configure
+            </summary>
+            <param name="builder"></param>
+        </member>
+        <member name="T:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Configuration.RecommendedItemResultEntityConfiguration">
+            <summary>
+            RecommendedItemResultEntity Configuration
+            </summary>
+        </member>
+        <member name="M:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Configuration.RecommendedItemResultEntityConfiguration.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.RecommendedItemResultEntity})">
+            <summary>
+            Configure RecommendedItemResultEntity
+            </summary>
+            <param name="builder"></param>
+        </member>
+        <member name="T:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Configuration.UomEntityConfiguration">
+            <summary>
+            UomEntity Configuration.
+            Implements the <see cref="!:Microsoft.EntityFrameworkCore.IEntityTypeConfiguration&lt;Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.UomEntity&gt;" />
+            </summary>
+            <seealso cref="!:Microsoft.EntityFrameworkCore.IEntityTypeConfiguration&lt;Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.UomEntity&gt;" />
+        </member>
+        <member name="M:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Configuration.UomEntityConfiguration.Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder{Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.UomEntity})">
+            <summary>
+            Configures the entity of type <typeparamref name="TEntity" />.
+            </summary>
+            <param name="builder">The builder to be used to configure the entity type.</param>
+        </member>
+        <member name="T:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.DispensingFormLookupEntity">
+            <summary>
+            DispensingFormEntity class
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.DispensingFormLookupEntity.DispenseFormLookupKey">
+            <summary>Gets or sets the dispense form lookup key.</summary>
+            <value>The dispense form lookup key.</value>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.DispensingFormLookupEntity.TenantKey">
+            <summary>Gets or sets the Tenant key.</summary>
+            <value>The Tenant key.</value>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.DispensingFormLookupEntity.DispenseForm">
+            <summary>Gets or sets the dispense form.</summary>
+            <value>The dispense form.</value>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.DispensingFormLookupEntity.ActiveFlag">
+            <summary>Gets or sets the dispense form Active flag.</summary>
+            <value>The dispense form Active flag.</value>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.DispensingFormLookupEntity.MedicationItems">
+            <summary>
+            MedicationItems navigation property
+            </summary>
+        </member>
+        <member name="T:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.DispensingUnitLookupEntity">
+            <summary>
+            Dispensing Unit Entity
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.DispensingUnitLookupEntity.DispenseUnitLookupKey">
+            <summary>Gets or sets the dispense unit lookup key.</summary>
+            <value>The dispense unit lookup key.</value>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.DispensingUnitLookupEntity.TenantKey">
+            <summary>Gets or sets the Tenant key.</summary>
+            <value>The Tenant key.</value>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.DispensingUnitLookupEntity.DispenseUnit">
+            <summary>Gets or sets the dispense unit.</summary>
+            <value>The dispense unit.</value>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.DispensingUnitLookupEntity.ActiveFlag">
+            <summary>Gets or sets the dispense unit Active flag.</summary>
+            <value>The dispense unit Active flag.</value>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.DispensingUnitLookupEntity.MedicationItems">
+            <summary>
+            MedicationItems navigation property
+            </summary>
+        </member>
+        <member name="T:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.ExternalUomEntity">
+            <summary>
+            ExternalUom Table
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.ExternalUomEntity.ExternalUOMKey">
+            <summary>
+            ExternalUOMKey primary key
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.ExternalUomEntity.ExternalSystemKey">
+            <summary>
+            ExternalSystemKey
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.ExternalUomEntity.TenantKey">
+            <summary>
+            TenantKey
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.ExternalUomEntity.UOMKey">
+            <summary>
+            UOMKey FK
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.ExternalUomEntity.UOMCode">
+            <summary>
+            UOMCode
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.ExternalUomEntity.SortValue">
+            <summary>
+            SortValue
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.ExternalUomEntity.UseOnOutboundFlag">
+            <summary>
+            UseOnOutboundFlag
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.ExternalUomEntity.ActiveFlag">
+            <summary>
+            ActiveFlag
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.ExternalUomEntity.UomEntity">
+            <summary>
+            UomEntity relationship
+            </summary>
+        </member>
+        <member name="T:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.FacilityEntity">
+            <summary>
+            It's an entity,which is going to manipulate in DB with its properties as fields.
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.FacilityEntity.FormularyId">
+            <summary>
+            Formulary identifier
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.FacilityEntity.Active">
+            <summary>
+            Whether formulary is active or not for this perticular facility
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.FacilityEntity.Approved">
+            <summary>
+            Approved 
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.FacilityEntity.ADUQtyRounding">
+            <summary>
+            ADU quantity rounding
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.FacilityEntity.ADUIgnoreStockOut">
+            <summary>
+            ADU Ignore stok out
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.FacilityEntity.ADUIgnoreCritLow">
+            <summary>
+            ADU ignore critical low
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.FacilityEntity.FacilityId">
+            <summary>
+            Facility
+            </summary>
+        </member>
+        <member name="T:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.FacilityItemEntity">
+            <summary>
+            FacilityItemEntity table
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.FacilityItemEntity.FacilityItemKey">
+            <summary>
+            FacilityItemKey Key
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.FacilityItemEntity.TenantKey">
+            <summary>
+            TenantKey 
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.FacilityItemEntity.FacilityKey">
+            <summary>
+            FacilityKey
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.FacilityItemEntity.ItemKey">
+            <summary>
+            ItemKey FK
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.FacilityItemEntity.UOMKey">
+            <summary>
+            UOMKey FK
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.FacilityItemEntity.RestockRoundingFactor">
+            <summary>
+            RestockRoundingFactor
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.FacilityItemEntity.PrepackFlag">
+            <summary>
+            PrepackFlag
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.FacilityItemEntity.FastmoverFlag">
+            <summary>
+            FastmoverFlag
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.FacilityItemEntity.ForPackagerFlag">
+            <summary>
+            ForPackagerFlag
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.FacilityItemEntity.ADMQuantityRoundingFlag">
+            <summary>
+            ADMQuantityRoundingFlag
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.FacilityItemEntity.ADMIgnoreStockOutFlag">
+            <summary>
+            ADMIgnoreStockOutFlag
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.FacilityItemEntity.ADMIgnoreCritLowFlag">
+            <summary>
+            ADMIgnoreCritLowFlag
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.FacilityItemEntity.ActiveFlag">
+            <summary>
+            ActiveFlag
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.FacilityItemEntity.EnableOldestExpirationDateFlag">
+            <summary>
+            EnableOldestExpirationDateFlag
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.FacilityItemEntity.PackageShareQuantityRoundingFlag">
+            <summary>
+            PackageShareQuantityRoundingFlag
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.FacilityItemEntity.RequestRestockLotInfoFlag">
+            <summary>
+            RequestRestockLotInfoFlag
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.FacilityItemEntity.RequiresSetupFlag">
+            <summary>
+            RequiresSetupFlag
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.FacilityItemEntity.NeedReviewFlag">
+            <summary>
+            NeedReviewFlag
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.FacilityItemEntity.ConsignmentFlag">
+            <summary>
+            ConsignmentFlag
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.FacilityItemEntity.ExcludeFromInventoryReportFlag">
+            <summary>
+            ExcludeFromInventoryReportFlag
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.FacilityItemEntity.CostAmount">
+            <summary>
+            CostAmount
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.FacilityItemEntity.AverageWholesalePriceAmount">
+            <summary>
+            AverageWholesalePriceAmount
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.FacilityItemEntity.AverageSalesPriceAmount">
+            <summary>
+            AverageSalesPriceAmount
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.FacilityItemEntity.CycleCountIntervalDay">
+            <summary>
+            CycleCountIntervalDay
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.FacilityItemEntity.BulkItemKey">
+            <summary>
+            BulkItemKey
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.FacilityItemEntity.OldestExpirationDateTime">
+            <summary>
+            OldestExpirationDateTime
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.FacilityItemEntity.ConversionBarCodeValue">
+            <summary>
+            ConversionBarCodeValue
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.FacilityItemEntity.PrepackConversionFactor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.FacilityItemEntity.SpecialInstruction">
+            <summary>
+            SpecialInstruction
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.FacilityItemEntity.UomEntity">
+            <summary>
+            UomEntity relationship
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.FacilityItemEntity.ItemEntity">
+            <summary>
+            ItemEntity relationship
+            </summary>
+        </member>
+        <member name="T:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.FacilityMedClassStandardEntity">
+            <summary>
+            Model Class for Facility Medication Class Standard
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.FacilityMedClassStandardEntity.FacilityMedClassStandardKey">
+            <summary>Gets or sets the Facility medication class standard key.</summary>
+            <value>The Facility medication class standard account key.</value>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.FacilityMedClassStandardEntity.TenantKey">
+             <summary>Gets or sets the tenant key.</summary>
+             <value>The tenant key.</value>
+            TODO.
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.FacilityMedClassStandardEntity.FacilityKey">
+            <summary>Gets or sets the facility key.</summary>
+            <value>The facility key.</value>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.FacilityMedClassStandardEntity.FormularyStandardKey">
+            <summary>Gets or sets the formulary standard key.</summary>
+            <value>The formulary standard key.</value>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.FacilityMedClassStandardEntity.MedClassKey">
+            <summary>Gets or sets the medication class key.</summary>
+            <value>The medication class key.</value>
+        </member>
+        <member name="T:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.FacilityNDCAssocEntity">
+            <summary>
+            It's an facility NDC association entity,which is going to manipulate in DB with its properties as fields.
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.FacilityNDCAssocEntity.FacilityId">
+            <summary>
+            Facility Id
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.FacilityNDCAssocEntity.NDCId">
+            <summary>
+            NDC Identifier
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.FacilityNDCAssocEntity.IsPreferred">
+            <summary>
+            Whether it is prefered or not 
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.FacilityNDCAssocEntity.Cost">
+            <summary>
+            Cost
+            </summary>
+        </member>
+        <member name="T:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.FormularyEntity">
+            <summary>
+            It's an Formualry Entity,which is going to manipulate in DB with its properties as fields.
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.FormularyEntity.ItemId">
+            <summary>
+            Item Id would be the Medicine identifier
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.FormularyEntity.Description">
+            <summary>
+            Formulary description
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.FormularyEntity.Active">
+            <summary>
+            Whether formulary is active or in-active 
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.FormularyEntity.ItemName">
+            <summary>
+            Item Name
+            </summary>
+        </member>
+        <member name="T:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.FormularyStandard">
+            <summary>
+            Model Class for Formulary Standard
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.FormularyStandard.FormularyStandardKey">
+            <summary>Gets or sets the formulary standard key.</summary>
+            <value>The formulary standard key.</value>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.FormularyStandard.TenantKey">
+            <summary>Gets or sets the tenant key.</summary>
+            <value>The tenant key.</value>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.FormularyStandard.FormularyStandardName">
+            <summary>Gets or sets the formulary standard name.</summary>
+            <value>The formulary standard name.</value>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.FormularyStandard.FormularyStandardDescription">
+            <summary>Gets or sets the formulary standard description.</summary>
+            <value>The formulary standard description.</value>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.FormularyStandard.ADMQuantityRoundingFlag">
+            <summary>Gets or sets the formulary standard ADM quantity rounding flag.</summary>
+            <value>The formulary standard ADM quantity rounding flag.</value>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.FormularyStandard.ADMIgnoreStockoutFlag">
+            <summary>Gets or sets the formulary standard ADM Ignore Stockout flag.</summary>
+            <value>The formulary standard ADM Ignore Stockout flag.</value>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.FormularyStandard.ADMIgnoreCriticalLowFlag">
+            <summary>Gets or sets the formulary standard ADM Ignore Critical low flag.</summary>
+            <value>The formulary standard ADM Ignore Critical low flag.</value>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.FormularyStandard.RequireLotExpirationDuringRestockFlag">
+            <summary>Gets or sets the formulary standard Require Lot Expiration During Restock flag.</summary>
+            <value>The formulary standard Require Lot Expiration During Restock flag.</value>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.FormularyStandard.ExcludeFromInventoryReportFlag">
+            <summary>Gets or sets the formulary standard Exclude From Inventory Report flag.</summary>
+            <value>The formulary standard Exclude From Inventory Report flag.</value>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.FormularyStandard.EnableEarliestExpirationDateFlag">
+            <summary>Gets or sets the formulary standard Enable Earliest Expiration Date flag.</summary>
+            <value>The formulary standard Enable Earliest Expiration Date flag.</value>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.FormularyStandard.SendToPackagerFlag">
+            <summary>Gets or sets the formulary standard Send To Packager flag.</summary>
+            <value>The formulary standard Send To Packager flag.</value>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.FormularyStandard.ActiveFlag">
+            <summary>Gets or sets the formulary standard Active flag.</summary>
+            <value>The formulary standard Active flag.</value>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.FormularyStandard.CycleCountIntervalDay">
+            <summary>Gets or sets the formulary standard Cycle Count Interval Day.</summary>
+            <value>The formulary standard Cycle Count Interval Day.</value>
+        </member>
+        <member name="T:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.GLAccountEntity">
+            <summary>
+            Entity Class for GL Account
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.GLAccountEntity.GLAccountKey">
+            <summary>Gets or sets the gl account key.</summary>
+            <value>The gl account key.</value>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.GLAccountEntity.TenantKey">
+            <summary>Gets or sets the tenant key.</summary>
+            <value>The tenant key.</value>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.GLAccountEntity.AccountCode">
+            <summary>Gets or sets the GL account code.</summary>
+            <value>The GL account code.</value>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.GLAccountEntity.Description">
+            <summary>Gets or sets the GL account description.</summary>
+            <value>The GL account description.</value>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.GLAccountEntity.ActiveFlag">
+            <summary>Gets or sets the GL account active flag.</summary>
+            <value>The GL account active flag.</value>
+        </member>
+        <member name="T:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.ItemEntity">
+            <summary>
+            Item Setup
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.ItemEntity.ItemKey">
+            <summary>
+            Item Key
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.ItemEntity.TenantKey">
+            <summary>
+            Tenant Key
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.ItemEntity.ExternalSystemKey">
+            <summary>
+            External System Key
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.ItemEntity.FacilityKey">
+            <summary>
+            Facility Key
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.ItemEntity.ItemID">
+            <summary>
+            Item ID
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.ItemEntity.AlternateItemID">
+            <summary>
+            Alternate Item ID
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.ItemEntity.ExternalSystemDeleteUTCDatetime">
+            <summary>
+            External System Delete UTC Datetime
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.ItemEntity.CustomField1Text">
+            <summary>
+            Custom Field1 Text
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.ItemEntity.CustomField2Text">
+            <summary>
+            Custom Field2 Text
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.ItemEntity.CustomField3Text">
+            <summary>
+            Custom Field3 Text
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.ItemEntity.EnterpriseItemID">
+            <summary>
+            Custom Enterprise Item ID
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.ItemEntity.MedicationItemFlag">
+            <summary>
+            Custom Medication Item Flag 
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.ItemEntity.ProductIDRecommendedItems">
+            <summary>
+            productIDRecommendedItems Navigation Property
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.ItemEntity.ProductIdentifications">
+            <summary>
+            productIdentifications navigation property
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.ItemEntity.MedicationItem">
+            <summary>
+            MedicationItems navigation property
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.ItemEntity.FacilityItems">
+            <summary>
+            FacilityItems navigation property
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.ItemEntity.PreferredOrderings">
+            <summary>
+            PreferredOrderingS navigation property
+            </summary>
+        </member>
+        <member name="T:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.MedClassEntity">
+            <summary>
+            Model Class for Medication Class 
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.MedClassEntity.MedClassKey">
+            <summary>Gets or sets the Facility medication class standard key.</summary>
+            <value>The medication class key.</value>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.MedClassEntity.TenantKey">
+            <summary>Gets or sets the tenant key.</summary>
+            <value>The tenant key.</value>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.MedClassEntity.ExternalSystemKey">
+            <summary>Gets or sets the External system key.</summary>
+            <value>The External system key.</value>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.MedClassEntity.MedClassCode">
+            <summary>Gets or sets the medication class code.</summary>
+            <value>The medication class code.</value>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.MedClassEntity.DescriptionText">
+            <summary>Gets or sets the description text.</summary>
+            <value>The medication class code.</value>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.MedClassEntity.ActiveFlag">
+            <summary>Gets or sets the medication class active flag.</summary>
+            <value>The medication class active flag.</value>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.MedClassEntity.SystemFlag">
+            <summary>Gets or sets the medication class system flag.</summary>
+            <value>The medication class system flag.</value>
+        </member>
+        <member name="T:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.MedicationItemEntity">
+            <summary>
+            Medication Item
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.MedicationItemEntity.MedicationItemKey">
+            <summary>
+            Medication Item Key
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.MedicationItemEntity.TenantKey">
+            <summary>
+            Tenant Key
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.MedicationItemEntity.MedicationItemTypeInternalCode">
+            <summary>
+            Medication Item Type Internal Code
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.MedicationItemEntity.MedicationClassKey">
+            <summary>
+            Medication Class Key
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.MedicationItemEntity.TotalVolumeUnitOfMeasureKey">
+            <summary>
+            Total Volume Unit Of Measure Key
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.MedicationItemEntity.ConcentrationVolumeUnitOfMeasureKey">
+            <summary>
+            Concentration Volume Unit Of Measure Key
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.MedicationItemEntity.StrengthUnitOfMeasureKey">
+            <summary>
+            Strength Unit Of Measure Key
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.MedicationItemEntity.DispenseFormLookupKey">
+            <summary>
+            Dispense Form Lookup Key
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.MedicationItemEntity.DispenseUnitLookupKey">
+            <summary>
+            Dispense Unit Lookup Key
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.MedicationItemEntity.TotalVolumeExternalUnitOfMeasureKey">
+            <summary>
+            Total Volume External Unit Of Measure Key
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.MedicationItemEntity.StrengthExternalUnitOfMeasureKey">
+            <summary>
+            Strength External Unit Of Measure Key
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.MedicationItemEntity.ConcentrationVolumeExternalUnitOfMeasureKey">
+            <summary>
+            Concentration Volume External Unit Of Measure Key
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.MedicationItemEntity.GLAccountKey">
+            <summary>
+            GL Account Key
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.MedicationItemEntity.Description">
+            <summary>
+            Medication Item Description
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.MedicationItemEntity.GenericName">
+            <summary>
+            Medication Item Generic Name
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.MedicationItemEntity.ChargeCode">
+            <summary>
+            Charge Code
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.MedicationItemEntity.HighRiskFlag">
+            <summary>
+            High Risk Flag
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.MedicationItemEntity.ChemotherapyFlag">
+            <summary>
+            Chemotherapy Flag
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.MedicationItemEntity.NonFormularyFlag">
+            <summary>
+            Non Formulary Flag
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.MedicationItemEntity.LASAFlag">
+            <summary>
+            LASA Flag
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.MedicationItemEntity.ActiveFlag">
+            <summary>
+            Active Flag
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.MedicationItemEntity.RefrigeratedFlag">
+            <summary>
+            Refrigerated Flag
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.MedicationItemEntity.DrugFlag">
+            <summary>
+            Drug Flag
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.MedicationItemEntity.ChemoAgentFlag">
+            <summary>
+            Chemo Agent Flag
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.MedicationItemEntity.BioHazFlag">
+            <summary>
+            BioHaz Flag
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.MedicationItemEntity.HazAerosolFlag">
+            <summary>
+            HazAerosol Flag
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.MedicationItemEntity.HazBaseFlag">
+            <summary>
+            HazBase Flag
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.MedicationItemEntity.HazAcidFlag">
+            <summary>
+            HazAcid Flag
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.MedicationItemEntity.HazChemicalFlag">
+            <summary>
+            Haz Chemical Flag
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.MedicationItemEntity.HazOxidizerFlag">
+            <summary>
+            Haz Oxidizer
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.MedicationItemEntity.HazToxicFlag">
+            <summary>
+            Haz Toxic Flag
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.MedicationItemEntity.FreezerFlag">
+            <summary>
+            Freezer Flag
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.MedicationItemEntity.RequiresSetupFlag">
+            <summary>
+            Requires Setup Flag
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.MedicationItemEntity.DeletedFlag">
+            <summary>
+            Deleted Flag
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.MedicationItemEntity.PrepHazFlag">
+            <summary>
+            Deleted Flag
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.MedicationItemEntity.StrengthAmount">
+            <summary>
+            Strength Amount
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.MedicationItemEntity.StrengthText">
+            <summary>
+            Strength Text
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.MedicationItemEntity.ConcentrationVolumeAmount">
+            <summary>
+            Concentration Volume Amount
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.MedicationItemEntity.TotalVolumeAmount">
+            <summary>
+            Total Volume Amount
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.MedicationItemEntity.ProductIdentifications">
+            <summary>
+            Created productIdentifications navigations
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.MedicationItemEntity.ProductIDRecommendedItems">
+            <summary>
+            productIDRecommendedItems Navigation Property
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.MedicationItemEntity.Item">
+            <summary>
+            Item navigation property
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.MedicationItemEntity.dispensingFormLookup">
+            <summary>
+            dispensingFormLookup navigation property
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.MedicationItemEntity.dispensingUnitLookup">
+            <summary>
+            dispensingUnitLookup navigation property
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.MedicationItemEntity.GLAccount">
+            <summary>
+            GLAccount navigation property
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.MedicationItemEntity.MedClassEntity">
+            <summary>
+            Gets or sets the med class.
+            </summary>
+            <value>The med class.</value>
+        </member>
+        <member name="T:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.MedItemTypeEntity">
+            <summary>
+            Model Class for Medication item type
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.MedItemTypeEntity.MedItemTypeInternalCode">
+            <summary>Gets or sets the medication item type internal code.</summary>
+            <value>The medication item type internal code.</value>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.MedItemTypeEntity.TenantKey">
+            <summary>Gets or sets the tenant key.</summary>
+            <value>The tenant key.</value>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.MedItemTypeEntity.DescriptionText">
+            <summary>Gets or sets the description text.</summary>
+            <value>The description text.</value>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.MedItemTypeEntity.SortValue">
+            <summary>Gets or sets the sort value.</summary>
+            <value>The sort value.</value>
+        </member>
+        <member name="T:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.NDCEntity">
+            <summary>
+             It's an NDC entity,which is going to manipulate in DB with its properties as fields.
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.NDCEntity.FormularyId">
+            <summary>
+            Formulary Identifier
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.NDCEntity.Active">
+            <summary>
+            Whether it is active or not
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.NDCEntity.TradeName">
+            <summary>
+            trade name
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.NDCEntity.GenericName">
+            <summary>
+            Generic Name
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.NDCEntity.NDC">
+            <summary>
+            National Drug Code
+            </summary>
+        </member>
+        <member name="T:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.PreferredOrderingEntity">
+            <summary>
+            Preferred Ordering table
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.PreferredOrderingEntity.PreferredOrderingKey">
+            <summary>Gets or sets the Preferred Ordering key.</summary>
+            <value>The Preferred Ordering key.</value>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.PreferredOrderingEntity.VendorKey">
+            <summary>Gets or sets the Vendor key.</summary>
+            <value>The Vendor key.</value>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.PreferredOrderingEntity.ProductIDKey">
+            <summary>Gets or sets the Product Identification key.</summary>
+            <value>The Product Identification key.</value>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.PreferredOrderingEntity.ItemKey">
+            <summary>Gets or sets the Item key.</summary>
+            <value>The Item key.</value>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.PreferredOrderingEntity.VendorItemCode">
+            <summary>Gets or sets the Vendor item code.</summary>
+            <value>The Vendor item code.</value>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.PreferredOrderingEntity.IsPreferred">
+            <summary>Gets or sets the IsPreferred flag.</summary>
+            <value>The IsPreferred flag.</value>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.PreferredOrderingEntity.Item">
+            <summary>
+            Gets or sets the item.
+            </summary>
+            <value>The item.</value>
+        </member>
+        <member name="T:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.ProductIdentificationEntity">
+            <summary>
+            ProductIdentification
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.ProductIdentificationEntity.ProductIDKey">
+            <summary>
+            ProductIdentificationKey
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.ProductIdentificationEntity.TenantKey">
+            <summary>
+            TenantKey
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.ProductIdentificationEntity.ItemKey">
+            <summary>
+            ItemKey
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.ProductIdentificationEntity.ManufacturerID">
+            <summary>
+            Manufacturer Key
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.ProductIdentificationEntity.MedClassKey">
+            <summary>
+            MedClass Key
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.ProductIdentificationEntity.ProductID">
+            <summary>
+            Product ID
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.ProductIdentificationEntity.AltCode">
+            <summary>
+            Alt Code
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.ProductIdentificationEntity.GenericName">
+            <summary>
+            Generic Name
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.ProductIdentificationEntity.TradeName">
+            <summary>
+            Trade Name
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.ProductIdentificationEntity.PackageSize">
+            <summary>
+            Package Size
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.ProductIdentificationEntity.DrugFlag">
+            <summary>
+            Drug Flag
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.ProductIdentificationEntity.ActiveFlag">
+            <summary>
+            Active Flag
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.ProductIdentificationEntity.FromExternalSystemFlag">
+            <summary>
+            From ExternalSystem Flag
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.ProductIdentificationEntity.LinkedByUserAccountKey">
+            <summary>
+            Linked By User AccountKey
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.ProductIdentificationEntity.VerifiedByUserAccountKey">
+            <summary>
+            Verified By User AccountKey
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.ProductIdentificationEntity.LinkedDateTime">
+            <summary>
+            Linked DateTime
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.ProductIdentificationEntity.VerifiedDateTime">
+            <summary>
+            Verified DateTime
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.ProductIdentificationEntity.CreatedByExternalSystemName">
+            <summary>
+            Created By External System Name
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.ProductIdentificationEntity.DeletedByExternalSystemName">
+            <summary>
+            Deleted By External System Name
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.ProductIdentificationEntity.Strength">
+            <summary>
+            Strength
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.ProductIdentificationEntity.Volume">
+            <summary>
+            Volume
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.ProductIdentificationEntity.TotalVolume">
+            <summary>
+            Total Volume
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.ProductIdentificationEntity.ProductIDRecommendedItems">
+            <summary>
+            productIDRecommendedItems navigation property
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.ProductIdentificationEntity.MedicationItem">
+            <summary>
+            medicationItem navigation property
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.ProductIdentificationEntity.Item">
+            <summary>
+            itemEntity navigation property
+            </summary>
+        </member>
+        <member name="T:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.ProductIDRecommendedItemEntity">
+            <summary>
+            ProductIDRecommendedItemEntity
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.ProductIDRecommendedItemEntity.ProductIDRecommendedItemKey">
+            <summary>
+            Primary Key ProductIDRecommendedItemKey
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.ProductIDRecommendedItemEntity.ResultingProductIdentificationKey">
+            <summary>
+            Resulting ProductIdentification Key
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.ProductIDRecommendedItemEntity.RecommendedItemKey">
+            <summary>
+            Recommended ItemKey
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.ProductIDRecommendedItemEntity.RecommendedMedicationItemKey">
+            <summary>
+            Recommended Medication ItemKey
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.ProductIDRecommendedItemEntity.RecommendedItemResultInternalCode">
+            <summary>
+            Recommended ItemResult InternalCode
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.ProductIDRecommendedItemEntity.UserAccountKey">
+            <summary>
+            User AccountKey
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.ProductIDRecommendedItemEntity.SequenceNumber">
+            <summary>
+            Sequence Number
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.ProductIDRecommendedItemEntity.ProductID">
+            <summary>
+            ProductID
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.ProductIDRecommendedItemEntity.RecommandationFollowedFlag">
+            <summary>
+            Recommandation Followed Flag
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.ProductIDRecommendedItemEntity.ProductIdentification">
+            <summary>
+            ProductIdentification
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.ProductIDRecommendedItemEntity.RecommendedItemResult">
+            <summary>
+            RecommendedItemResult
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.ProductIDRecommendedItemEntity.Item">
+            <summary>
+            Item
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.ProductIDRecommendedItemEntity.MedicationItem">
+            <summary>
+            MedicationItem
+            </summary>
+        </member>
+        <member name="T:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.RecommendedItemResultEntity">
+            <summary>
+            RecommendedItemResultEntity
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.RecommendedItemResultEntity.RecommendedItemResultInternalCode">
+            <summary>
+            Primary Key RecommendedItemResultInternalCode
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.RecommendedItemResultEntity.TenantKey">
+            <summary>
+            TenantKey
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.RecommendedItemResultEntity.DescriptionText">
+            <summary>
+            DescriptionText
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.RecommendedItemResultEntity.SortValue">
+            <summary>
+            SortValue
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.RecommendedItemResultEntity.ProductIDRecommendedItems">
+            <summary>
+            ProductIDRecommendedItems
+            </summary>
+        </member>
+        <member name="T:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.UomEntity">
+            <summary>
+            Unit of measure entity
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.UomEntity.UomKey">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.UomEntity.BaseUomKey">
+            <summary>
+            Base Uom
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.UomEntity.TenantKey">
+            <summary>
+            Tenant Key
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.UomEntity.DisplayCode">
+            <summary>
+            Display code
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.UomEntity.InternalCode">
+            <summary>
+            Internal code
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.UomEntity.DescriptionText">
+            <summary>
+            Description code
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.UomEntity.ConversionAmount">
+            <summary>
+            Conversion Amount
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.UomEntity.StrengthFlag">
+            <summary>
+            Streangth flag
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.UomEntity.VolumeFlag">
+            <summary>
+            Volume flag
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.UomEntity.PredefinedFlag">
+            <summary>
+            Predefined flag
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.UomEntity.ActiveFlag">
+            <summary>
+            Active flag
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.UomEntity.FacilityItems">
+            <summary>
+            FacilityItemEntities relationship
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.UomEntity.ExternalUoms">
+            <summary>
+            ExternalUomEntity relationship
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.UomEntity.Uoms">
+            <summary>
+            Uom self relationship
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.UomEntity.Uom">
+            <summary>
+            Uom self relationship
+            </summary>
+        </member>
+        <member name="T:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.BaseEntityFormulary">
+            <summary>
+            Model Class Base Entity Formulary contains common attributes for tables
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.BaseEntityFormulary.CreatedByActorKey">
+            <summary>Gets or sets the Created by actor key.</summary>
+            <value>The Created by actor key.</value>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.BaseEntityFormulary.CreatedDateTime">
+            <summary>Gets or sets the Created date.</summary>
+            <value>The Created by actor key.</value>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.BaseEntityFormulary.LastModifiedByActorKey">
+            <summary>Gets or sets the last modified by actor key.</summary>
+            <value>The last modified by actor key.</value>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.BaseEntityFormulary.LastModifiedDateTime">
+             <summary>Gets or sets the last modified datetime</summary>
+            <value>The last modified datetime.</value>
+        </member>
+        <member name="T:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.EntityRepositoryContracts.IDispensingFormLookupRepository">
+            <summary>
+            IDispensingFormLookupRepository
+            </summary>
+        </member>
+        <member name="T:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.EntityRepositoryContracts.IDispensingUnitLookupRepository">
+            <summary>
+            IDispensingUnitLookupRepository
+            </summary>
+        </member>
+        <member name="T:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.EntityRepositoryContracts.IExternalUomRepository">
+            <summary>
+            IExternalUomRepository
+            </summary>
+        </member>
+        <member name="T:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.EntityRepositoryContracts.IFacilityItemRepository">
+            <summary>
+            IFacilityItemRepository
+            </summary>
+        </member>
+        <member name="T:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.EntityRepositoryContracts.IFacilityNDCAssocRepository">
+            <summary>
+            IFacilityNDCAssocRepository interface represent the all member of IRepository of type Customer.
+            IFacilityNDCAssocRepository provide the extensibility for new operation other than IRepository.
+            </summary> 
+        </member>
+        <member name="T:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.EntityRepositoryContracts.IFacilityRepository">
+            <summary>
+            IFacilityRepository interface represent the all member of IRepository of type Customer.
+            IFacilityRepository provide the extensibility for new operation other than IRepository.
+            </summary> 
+        </member>
+        <member name="T:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.EntityRepositoryContracts.IFormularyRepository">
+            <summary>
+            IFormularyRepository interface represent the all member of IRepository of type Customer.
+            IFormularyRepository provide the extensibility for new operation other than IRepository.
+            </summary> 
+        </member>
+        <member name="T:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.EntityRepositoryContracts.IItemRepository">
+            <summary>
+            IItemRepository interface represent the all member of IRepository of type Item.
+            IItemRepository provide the extensibility for new operation other than IRepository.
+            </summary> 
+        </member>
+        <member name="M:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.EntityRepositoryContracts.IItemRepository.GetAllMedicationItemsForList">
+            <summary>
+            Gets all medication items for list.
+            </summary>
+            <returns>Task&lt;List&lt;ItemEntity&gt;&gt;.</returns>
+        </member>
+        <member name="M:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.EntityRepositoryContracts.IItemRepository.GetItemById(System.Guid)">
+            <summary>
+            Gets the item by identifier.
+            </summary>
+            <param name="ItemKey">The item key.</param>
+            <returns>Task&lt;ItemEntity&gt;.</returns>
+        </member>
+        <member name="M:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.EntityRepositoryContracts.IItemRepository.UpdateSystemItemSetUp(Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.ItemEntity)">
+            <summary>
+            Updates the system item set up.
+            </summary>
+            <param name="itemEntity">The item entity.</param>
+            <returns>Task&lt;System.Boolean&gt;.</returns>
+        </member>
+        <member name="M:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.EntityRepositoryContracts.IItemRepository.GetItemByCode(System.String)">
+            <summary>
+            Get Exist ItemID
+            </summary>
+            <param name="ItemId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.EntityRepositoryContracts.IItemRepository.AddSystemItem(Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.ItemEntity)">
+            <summary>
+            AddSystemItem
+            </summary>
+            <param name="itemEntity"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.EntityRepositoryContracts.IMedicationItemRepository">
+            <summary>
+            IMedicationItemRepository
+            </summary>
+        </member>
+        <member name="M:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.EntityRepositoryContracts.IMedicationItemRepository.AddMedicationItem(Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.MedicationItemEntity)">
+            <summary>
+            Add System Item
+            </summary>
+            <param name="medicationItemEntity"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.EntityRepositoryContracts.INDCRepository">
+            <summary>
+            INDCRepository interface represent the all member of IRepository of type Customer.
+            INDCRepository provide the extensibility for new operation other than IRepository.
+            </summary> 
+        </member>
+        <member name="T:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.EntityRepositoryContracts.IProductIdentificationRepository">
+            <summary>
+            Interface IProductIdentificationRepository
+            Implements the <see cref="T:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.ProductIdentificationEntity" />
+            </summary>
+            <seealso cref="T:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.ProductIdentificationEntity" />
+        </member>
+        <member name="T:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.EntityRepositoryContracts.IProductIDRecommendedItemRepository">
+            <summary>
+            IProductIDRecommendedItemRepository
+            </summary>
+        </member>
+        <member name="T:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.EntityRepositoryContracts.IRecommendedItemResultRepository">
+            <summary>
+            IRecommendedItemResultRepository
+            </summary>
+        </member>
+        <member name="T:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.EntityRepositoryContracts.IUomRepository">
+            <summary>
+            IUomRepository
+            </summary>
+        </member>
+        <member name="M:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.EntityRepositoryImplementation.FacilityNDCAssocRepository.#ctor(Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.ApplicationDBContext)">
+            <summary>
+            Constructor is used to initialize this class
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="M:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.EntityRepositoryImplementation.FacilityRepository.#ctor(Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.ApplicationDBContext)">
+            <summary>
+            Constructor is used to initialize this class
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="T:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.EntityRepositoryImplementation.FormularyRepository">
+            <summary>
+            FormularyRepository class implements the all member of IFormularyRepository of type Formulary.
+            </summary> 
+        </member>
+        <member name="M:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.EntityRepositoryImplementation.FormularyRepository.#ctor(Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.ApplicationDBContext)">
+            <summary>
+            Constructor is used to initialize this class
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="T:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.EntityRepositoryImplementation.ItemRepository">
+            <summary>
+            ItemRepository class implements the all member of IItemRepository of type Item.
+            </summary> 
+        </member>
+        <member name="M:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.EntityRepositoryImplementation.ItemRepository.#ctor(Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.ApplicationDBContext,Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.UnitOfWork.IUnitOfWork)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.EntityRepositoryImplementation.ItemRepository" /> class.
+            </summary>
+            <param name="context"></param>
+            <param name="unitOfWork"></param>
+        </member>
+        <member name="M:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.EntityRepositoryImplementation.ItemRepository.GetAllMedicationItemsForList">
+            <summary>
+            Gets all system items for list.
+            </summary>
+            <returns>Task&lt;List&lt;ItemEntity&gt;&gt;.</returns>
+        </member>
+        <member name="M:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.EntityRepositoryImplementation.ItemRepository.GetItemById(System.Guid)">
+            <summary>
+            Gets the item by identifier.
+            </summary>
+            <param name="ItemKey">The item key.</param>
+            <returns>Task&lt;ItemEntity&gt;.</returns>
+        </member>
+        <member name="M:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.EntityRepositoryImplementation.ItemRepository.UpdateSystemItemSetUp(Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.ItemEntity)">
+            <summary>
+            Updates the system item set up.
+            </summary>
+            <param name="itemEntity">The item entity.</param>
+            <returns>Task&lt;System.Boolean&gt;.</returns>
+        </member>
+        <member name="M:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.EntityRepositoryImplementation.ItemRepository.GetItemByCode(System.String)">
+            <summary>
+            GetItemByCode
+            </summary>
+            <param name="ItemId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.EntityRepositoryImplementation.ItemRepository.AddSystemItem(Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.ItemEntity)">
+            <summary>
+            add ItemEntity to database
+            </summary>
+            <param name="itemEntity"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.EntityRepositoryImplementation.MedicationItemRepository">
+            <summary>
+            Class MedicationItemRepository.
+            Implements the <see cref="T:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.MedicationItemEntity" />
+            Implements the <see cref="T:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.EntityRepositoryContracts.IMedicationItemRepository" />
+            </summary>
+            <seealso cref="T:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.MedicationItemEntity" />
+            <seealso cref="T:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.EntityRepositoryContracts.IMedicationItemRepository" />
+        </member>
+        <member name="M:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.EntityRepositoryImplementation.MedicationItemRepository.#ctor(Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.ApplicationDBContext,Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.UnitOfWork.IUnitOfWork)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.EntityRepositoryImplementation.MedicationItemRepository"/> class.
+            </summary>
+            <param name="context">The context.</param>
+        </member>
+        <member name="M:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.EntityRepositoryImplementation.MedicationItemRepository.AddMedicationItem(Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.MedicationItemEntity)">
+            <summary>
+            add medicationItemEntity to database
+            </summary>
+            <param name="medicationItemEntity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.EntityRepositoryImplementation.NDCRepository.#ctor(Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.ApplicationDBContext)">
+            <summary>
+            Constructor is used to initialize this class
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="T:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.EntityRepositoryImplementation.PreferredOrderingRepository">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.EntityRepositoryImplementation.ProductIdentificationRepository">
+            <summary>
+            Class ProductIdentificationRepository.
+            Implements the <see cref="T:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.ProductIdentificationEntity" />
+            Implements the <see cref="T:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.EntityRepositoryContracts.IProductIdentificationRepository" />
+            </summary>
+            <seealso cref="T:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.Entities.ProductIdentificationEntity" />
+            <seealso cref="T:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.EntityRepositoryContracts.IProductIdentificationRepository" />
+        </member>
+        <member name="M:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.EntityRepositoryImplementation.ProductIdentificationRepository.#ctor(Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.ApplicationDBContext)">
+            <summary>
+            Constructor is used to initialize this class
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="T:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.UnitOfWork.IUnitOfWork">
+            <summary>
+            IUnitOfWork is an interface.Provide a abstract method to perform multiple operation in single unit.
+            </summary>
+        </member>
+        <member name="M:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.UnitOfWork.IUnitOfWork.CommitChanges">
+            <summary>
+            An abstract method to perform multiple operation in single commit.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.UnitOfWork.UnitOfWork">
+            <summary>
+            UnitOfWork is class has functionality to commit the changes to DB.
+            </summary>
+        </member>
+        <member name="M:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.UnitOfWork.UnitOfWork.#ctor(Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.ApplicationDBContext)">
+            <summary>
+            Constructor is used to initialize this class
+            </summary>
+            <param name="appDBContext"></param>
+        </member>
+        <member name="M:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.UnitOfWork.UnitOfWork.CommitChanges">
+            <summary>
+            Implementation to perform multiple operation in single commit.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.UnitOfWork.UnitOfWork.Dispose(System.Boolean)">
+            <summary>
+            Method to dispose this class
+            </summary>
+            <param name="disposing"></param>
+        </member>
+        <member name="M:Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.UnitOfWork.UnitOfWork.Dispose">
+            <summary>
+            Dispose the ApplicationDBContext object.
+            </summary>
+        </member>
+        <member name="T:Formulary.API.Infrastructure.DataAccess.SQL.EFRepository.BaseEntity">
+            <summary>
+            Base Entity is a class has Id property for all Entities.All Entities class has are inherited from BaseEntity 
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.EFRepository.BaseEntity.Id">
+            <summary>
+            Id property is used by all entities to create Id field in DB as primary key.
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.EFRepository.BaseEntity.CreatedBy">
+            <summary>
+            Record created by
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.EFRepository.BaseEntity.CreatedDate">
+            <summary>
+            Record created date
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.EFRepository.BaseEntity.LastModifiedBy">
+            <summary>
+            Record modified by
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.EFRepository.BaseEntity.LastModifiedDate">
+            <summary>
+            Record modified date
+            </summary>
+        </member>
+        <member name="T:Formulary.API.Infrastructure.DataAccess.SQL.EFRepository.BaseRepository`1">
+            <summary>
+            It's  abstract class which implements all the methods of IRepository
+            </summary>
+            <typeparam name="TEntity"> For any type of class which is inherited from BaseEntity</typeparam>
+        </member>
+        <member name="P:Formulary.API.Infrastructure.DataAccess.SQL.EFRepository.BaseRepository`1.Context">
+            <summary>
+            Database context
+            </summary>
+        </member>
+        <member name="M:Formulary.API.Infrastructure.DataAccess.SQL.EFRepository.BaseRepository`1.#ctor(Formulary.API.Infrastructure.DataAccess.SQL.DBContextEntities.ApplicationDBContext)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="M:Formulary.API.Infrastructure.DataAccess.SQL.EFRepository.BaseRepository`1.Add(`0)">
+            <summary>
+            Add new entity to DB.
+            </summary>
+            <param name="entity">Entity to Add in DB</param>
+        </member>
+        <member name="M:Formulary.API.Infrastructure.DataAccess.SQL.EFRepository.BaseRepository`1.Get(System.Int32)">
+            <summary>
+            Get Entity by the Id of Entity which is previously stored on DB.
+            </summary>
+            <param name="Id">Id field of any Entity</param>
+            <returns></returns>
+        </member>
+        <member name="M:Formulary.API.Infrastructure.DataAccess.SQL.EFRepository.BaseRepository`1.Get(System.Guid)">
+            <summary>
+            Get Entity by the Id of Entity which is previously stored on DB.
+            </summary>
+            <param name="MedicationItemKey">Id field of any Entity</param>
+            <returns></returns>
+        </member>
+        <member name="M:Formulary.API.Infrastructure.DataAccess.SQL.EFRepository.BaseRepository`1.Delete(`0)">
+            <summary>
+            To delete a particular entity on DB.
+            </summary>
+            <param name="entity">Entity to Delete</param>
+        </member>
+        <member name="M:Formulary.API.Infrastructure.DataAccess.SQL.EFRepository.BaseRepository`1.GetAll">
+            <summary>
+            Get all entity from DB
+            </summary>
+            <returns>Retruns List of Entities.</returns>
+        </member>
+        <member name="M:Formulary.API.Infrastructure.DataAccess.SQL.EFRepository.BaseRepository`1.Update(`0)">
+            <summary>
+            Update Entity to DB 
+            </summary>
+            <param name="entity">Entity to Update</param>
+        </member>
+        <member name="T:Formulary.API.Infrastructure.DataAccess.SQL.EFRepository.IRepository`1">
+            <summary>
+            Interface creating contract between different Entities.
+            </summary>
+            <typeparam name="TEntity"> For any type of Class</typeparam>
+        </member>
+        <member name="M:Formulary.API.Infrastructure.DataAccess.SQL.EFRepository.IRepository`1.Get(System.Int32)">
+            <summary>
+            Get Entity by the Id of Entity which is previously stored on DB.
+            </summary>
+            <param name="Id">Id field of any Entity</param>
+            <returns></returns>
+        </member>
+        <member name="M:Formulary.API.Infrastructure.DataAccess.SQL.EFRepository.IRepository`1.Get(System.Guid)">
+            <summary>
+            Get Entity by the Id of Entity which is previously stored on DB.
+            </summary>
+            <param name="MedicationItemKey">Id field of any Entity</param>
+            <returns></returns>
+        </member>
+        <member name="M:Formulary.API.Infrastructure.DataAccess.SQL.EFRepository.IRepository`1.Add(`0)">
+            <summary>
+            Add new entity to DB.
+            </summary>
+            <param name="entity">Entity to Add in DB</param>
+        </member>
+        <member name="M:Formulary.API.Infrastructure.DataAccess.SQL.EFRepository.IRepository`1.Update(`0)">
+            <summary>
+            Update Entity to DB 
+            </summary>
+            <param name="entity">Entity to Update</param>
+        </member>
+        <member name="M:Formulary.API.Infrastructure.DataAccess.SQL.EFRepository.IRepository`1.Delete(`0)">
+            <summary>
+            To delete a particular entity on DB.
+            </summary>
+            <param name="entity">Entity to Delete</param>
+        </member>
+        <member name="M:Formulary.API.Infrastructure.DataAccess.SQL.EFRepository.IRepository`1.GetAll">
+            <summary>
+            Get all entity from DB
+            </summary>
+            <returns>Retruns List of Entities.</returns>
+        </member>
+        <member name="P:Formulary.API.IntegrationEvents.Events.FormularyFacilityUpdatedIntegrationEvent.FormularyId">
+            <summary>
+            FormularyId
+            </summary>
+        </member>
+        <member name="P:Formulary.API.IntegrationEvents.Events.FormularyFacilityUpdatedIntegrationEvent.FacilityId">
+            <summary>
+            FacilityId
+            </summary>
+        </member>
+        <member name="P:Formulary.API.IntegrationEvents.Events.FormularyFacilityUpdatedIntegrationEvent.Active">
+            <summary>
+            Active
+            </summary>
+        </member>
+        <member name="P:Formulary.API.IntegrationEvents.Events.FormularyFacilityUpdatedIntegrationEvent.Approved">
+            <summary>
+            Approved
+            </summary>
+        </member>
+        <member name="P:Formulary.API.IntegrationEvents.Events.FormularyFacilityUpdatedIntegrationEvent.AduIgnoreCritLow">
+            <summary>
+            To store the value for AduIgnoreCritLow
+            </summary>
+        </member>
+        <member name="P:Formulary.API.IntegrationEvents.Events.FormularyFacilityUpdatedIntegrationEvent.AduIgnoreStockout">
+            <summary>
+            To store the value for AduIgnoreStockout
+            </summary>
+        </member>
+        <member name="P:Formulary.API.IntegrationEvents.Events.FormularyUpdatedIntegrationEvent.ItemId">
+            <summary>
+            Medicine Identifier
+            </summary>
+        </member>
+        <member name="P:Formulary.API.IntegrationEvents.Events.FormularyUpdatedIntegrationEvent.IsActive">
+            <summary>
+            Formulary IsActive
+            </summary>
+        </member>
+        <member name="P:Formulary.API.IntegrationEvents.Events.FormularyUpdatedIntegrationEvent.FormularyId">
+            <summary>
+            Formulary Identifier
+            </summary>
+        </member>
+        <member name="P:Formulary.API.IntegrationEvents.Events.FormularyUpdatedIntegrationEvent.Description">
+            <summary>
+            Description
+            </summary>
+        </member>
+        <member name="T:Formulary.API.IntegrationEvents.Events.NDCUpdatedIntegrationEvent">
+            <summary>
+            NDCUpdatedIntegrationEvent
+            </summary>
+        </member>
+        <member name="P:Formulary.API.IntegrationEvents.Events.NDCUpdatedIntegrationEvent.NDCId">
+            <summary>
+            NDC Identifier
+            </summary>
+        </member>
+        <member name="P:Formulary.API.IntegrationEvents.Events.NDCUpdatedIntegrationEvent.Cost">
+            <summary>
+            NDC Cost
+            </summary>
+        </member>
+        <member name="P:Formulary.API.IntegrationEvents.Events.NDCUpdatedIntegrationEvent.GenericName">
+            <summary>
+            NDC Generic Name
+            </summary>
+        </member>
+        <member name="P:Formulary.API.IntegrationEvents.Events.NDCUpdatedIntegrationEvent.TradName">
+            <summary>
+            NDC Trade Name
+            </summary>
+        </member>
+        <member name="T:Formulary.API.Model.FacilityNDCAssociationRequest">
+            <summary>
+            It's an facility NDC association entity,which is going to manipulate in DB with its properties as fields.
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Model.FacilityNDCAssociationRequest.FacilityId">
+            <summary>
+            Facility Id
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Model.FacilityNDCAssociationRequest.NDCId">
+            <summary>
+            NDC Identifier
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Model.FacilityNDCAssociationRequest.IsPreferred">
+            <summary>
+            Whether it is prefered or not 
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Model.FacilityNDCAssociationRequest.Cost">
+            <summary>
+            Cost
+            </summary>
+        </member>
+        <member name="T:Formulary.API.Model.FacilityRequest">
+            <summary>
+            Facility details
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Model.FacilityRequest.FormularyId">
+            <summary>
+            Formulary identifier
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Model.FacilityRequest.Active">
+            <summary>
+            Whether formulary is active or not for this perticular facility
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Model.FacilityRequest.Approved">
+            <summary>
+            Is accepted 
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Model.FacilityRequest.ADUQtyRounding">
+            <summary>
+            ADU quantity rounding
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Model.FacilityRequest.ADUIgnoreStockOut">
+            <summary>
+            ADU Ignore stok out
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Model.FacilityRequest.ADUIgnoreCritLow">
+            <summary>
+            ADU ignore critical low
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Model.FacilityRequest.FacilityId">
+            <summary>
+            Facility Id
+            </summary>
+        </member>
+        <member name="T:Formulary.API.Model.FormularyRequest">
+            <summary>
+            Formulary deatils
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Model.FormularyRequest.ItemId">
+            <summary>
+            Medicine id
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Model.FormularyRequest.Description">
+            <summary>
+            Formulary Description
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Model.FormularyRequest.Active">
+            <summary>
+            Formular Status
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Model.FormularyRequest.ItemName">
+            <summary>
+            Item Name
+            </summary>
+        </member>
+        <member name="T:Formulary.API.Model.InternalModel.BusinessResult`1">
+            <summary>
+            Wrapper class for creation result with creation result and created object.
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:Formulary.API.Model.InternalModel.BusinessResult`1.Object">
+            <summary>
+            Gets or sets the created object.
+            </summary>
+            <value>The object.</value>
+        </member>
+        <member name="P:Formulary.API.Model.InternalModel.BusinessResult`1.OperationResult">
+            <summary>
+            Gets or sets the creation result.
+            </summary>
+            <value>The creation result.</value>
+        </member>
+        <member name="P:Formulary.API.Model.InternalModel.BusinessResult`1.ResultCount">
+            <summary>
+            Gets the result count.
+            </summary>
+            <value>The result count.</value>
+        </member>
+        <member name="P:Formulary.API.Model.InternalModel.BusinessResult`1.ErrorMessage">
+            <summary>
+            Gets or sets the error message if any.
+            </summary>
+            <value>The error message.</value>
+        </member>
+        <member name="M:Formulary.API.Model.InternalModel.BusinessResult`1.#ctor(`0,Formulary.API.Common.CreateUpdateResultEnum,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Formulary.API.Model.InternalModel.BusinessResult`1"/> class.
+            </summary>
+            <param name="obj">The created object.</param>
+            <param name="operationResult">The creation result.</param>
+            <param name="errorMessage">The error message.</param>
+        </member>
+        <member name="M:Formulary.API.Model.InternalModel.BusinessResult`1.#ctor(`0,Formulary.API.Common.CreateUpdateResultEnum,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Formulary.API.Model.InternalModel.BusinessResult`1"/> class.
+            </summary>
+            <param name="obj">The created object.</param>
+            <param name="operationResult">The creation result.</param>
+            <param name="resultCount">Number of total results in result-set.</param>
+        </member>
+        <member name="T:Formulary.API.Model.ModelBase">
+            <summary>
+            Data transfer base object with common properties
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Model.ModelBase.Id">
+            <summary>
+            Object identifier
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Model.ModelBase.CreatedBy">
+            <summary>
+            Object creation Date
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Model.ModelBase.CreatedDate">
+            <summary>
+            Object created date
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Model.ModelBase.LastModifiedBy">
+            <summary>
+            Object last modified by 
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Model.ModelBase.LastModifiedDate">
+            <summary>
+            Object last modified date
+            </summary>
+        </member>
+        <member name="T:Formulary.API.Model.NDCRequest">
+            <summary>
+            NDC Details
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Model.NDCRequest.FormularyId">
+            <summary>
+            Formulary Identifier
+            </summary>  
+        </member>
+        <member name="P:Formulary.API.Model.NDCRequest.Active">
+            <summary>
+            Whether it is active or not
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Model.NDCRequest.TradeName">
+            <summary>
+            trade name
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Model.NDCRequest.GenericName">
+            <summary>
+            Generic Name
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Model.NDCRequest.NDC">
+            <summary>
+            National Drug Code
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Model.NDCRequest.FacilityNDCDetails">
+            <summary>
+            Facility NDC Association Details
+            </summary>
+        </member>
+        <member name="T:Formulary.API.Model.PreferredOrdering">
+            <summary>
+            PreferredOrdering.
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Model.PreferredOrdering.PreferredOrderingKey">
+            <summary>
+            Gets or sets the preferred ordering key.
+            </summary>
+            <value>The preferred ordering key.</value>
+        </member>
+        <member name="P:Formulary.API.Model.PreferredOrdering.VendorKey">
+            <summary>
+            Gets or sets the vendor key.
+            </summary>
+            <value>The vendor key.</value>
+        </member>
+        <member name="P:Formulary.API.Model.PreferredOrdering.ProductIDKey">
+            <summary>
+            Gets or sets the product identifier key.
+            </summary>
+            <value>The product identifier key.</value>
+        </member>
+        <member name="P:Formulary.API.Model.PreferredOrdering.ItemKey">
+            <summary>
+            Gets or sets the item key.
+            </summary>
+            <value>The item key.</value>
+        </member>
+        <member name="P:Formulary.API.Model.PreferredOrdering.VendorItemCode">
+            <summary>
+            Gets or sets the vendor item code.
+            </summary>
+            <value>The vendor item code.</value>
+        </member>
+        <member name="P:Formulary.API.Model.PreferredOrdering.IsPreferred">
+            <summary>
+            Gets or sets a value indicating whether this instance is preferred.
+            </summary>
+            <value><c>true</c> if this instance is preferred; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="T:Formulary.API.Model.ProductIdentification">
+            <summary>
+            It consist of NDC details.
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Model.ProductIdentification.ProductIDKey">
+            <summary>
+            Gets or Sets ProductIdentificationKey
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Model.ProductIdentification.ProductID">
+            <summary>
+            Gets or Sets ProductID
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Model.ProductIdentification.AltCode">
+            <summary>
+            Gets or Sets AltCode
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Model.ProductIdentification.ManufacturerID">
+            <summary>
+            Gets or Sets ManufacturerID
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Model.ProductIdentification.GenericName">
+            <summary>
+            Gets or Sets GenericName
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Model.ProductIdentification.DrugFlag">
+            <summary>
+            Gets or Sets DrugFlag
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Model.ProductIdentification.TradeName">
+            <summary>
+            Gets or Sets TradeName
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Model.ProductIdentification.PackageSize">
+            <summary>
+            Gets or Sets PackageSize
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Model.ProductIdentification.Strength">
+            <summary>
+            Gets or Sets Strength
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Model.ProductIdentification.Volume">
+            <summary>
+            Gets or Sets Volume
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Model.ProductIdentification.TotalVolume">
+            <summary>
+            Gets or Sets TotalVolume
+            </summary>
+        </member>
+        <member name="T:Formulary.API.Model.RequestModel.DrugClass">
+            <summary>
+            Drug Class
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Model.RequestModel.DrugClass.MedicationClassKey">
+            <summary>
+            MedicationClassKey
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Model.RequestModel.DrugClass.MedicationClassCode">
+            <summary>
+            MedicationClassCode
+            </summary>
+        </member>
+        <member name="T:Formulary.API.Model.SystemItemSetupRequest">
+            <summary>
+            Incoming Request Model for System Item Set up
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Model.SystemItemSetupRequest.ItemId">
+            <summary>
+            Gets or sets the item identifier.
+            </summary>
+            <value>The item identifier.</value>
+        </member>
+        <member name="P:Formulary.API.Model.SystemItemSetupRequest.ActiveFlag">
+            <summary>
+            Gets or sets a value indicating whether [active flag].
+            </summary>
+            <value><c>true</c> if [active flag]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Formulary.API.Model.SystemItemSetupRequest.AlternateItemID">
+            <summary>
+            Gets or sets the alternate item identifier.
+            </summary>
+            <value>The alternate item identifier.</value>
+        </member>
+        <member name="P:Formulary.API.Model.SystemItemSetupRequest.MedicationClassKey">
+            <summary>
+            Gets or sets the medication class key.
+            </summary>
+            <value>The medication class key.</value>
+            [Required(ErrorMessage = "Pls enter MedicationClassKey")]
+        </member>
+        <member name="P:Formulary.API.Model.SystemItemSetupRequest.Description">
+            <summary>
+            Gets or sets the description.
+            </summary>
+            <value>The description.</value>
+        </member>
+        <member name="P:Formulary.API.Model.SystemItemSetupRequest.GenralLedgerAccountKey">
+            <summary>
+            Gets or sets the genral ledger account key.
+            </summary>
+            <value>The genral ledger account key.</value>
+            [Required(ErrorMessage = "Pls enter GenralLedgerAccountKey")]
+        </member>
+        <member name="P:Formulary.API.Model.SystemItemSetupRequest.DispensingFormKey">
+            <summary>
+            Gets or sets the dispensing form key.
+            </summary>
+            <value>The dispensing form key.</value>
+            [Required(ErrorMessage = "Pls enter DispensingFormKey")]
+        </member>
+        <member name="P:Formulary.API.Model.SystemItemSetupRequest.DispensingUnitKey">
+            <summary>
+            Gets or sets the dispensing unit key.
+            </summary>
+            <value>The dispensing unit key.</value>
+            [Required(ErrorMessage = "Pls enter DispensingUnitKey")]
+        </member>
+        <member name="P:Formulary.API.Model.SystemItemSetupRequest.StrengthAmount">
+            <summary>
+            Gets or sets the strength amount.
+            </summary>
+            <value>The strength amount.</value>
+        </member>
+        <member name="P:Formulary.API.Model.SystemItemSetupRequest.ConcentrationVolumeAmount">
+            <summary>
+            Gets or sets the concentration volume amount.
+            </summary>
+            <value>The concentration volume amount.</value>
+        </member>
+        <member name="P:Formulary.API.Model.SystemItemSetupRequest.TotalVolumeAmount">
+            <summary>
+            Gets or sets the total volume amount.
+            </summary>
+            <value>The total volume amount.</value>
+        </member>
+        <member name="P:Formulary.API.Model.SystemItemSetupRequest.TotalVolumeUnitOfMessureKey">
+            <summary>
+            Gets or sets the total volume unit of messure key.
+            </summary>
+            <value>The total volume unit of messure key.</value>
+            [Required(ErrorMessage = "Pls enter TotalVolumeUnitOfMessureKey")]
+        </member>
+        <member name="P:Formulary.API.Model.SystemItemSetupRequest.StrengthUnitOfMessureKey">
+            <summary>
+            Gets or sets the strength unit of messure key.
+            </summary>
+            <value>The strength unit of messure key.</value>
+            [Required(ErrorMessage = "Pls enter StrengthUnitOfMessureKey")]
+        </member>
+        <member name="P:Formulary.API.Model.SystemItemSetupRequest.ConcentrationVolumeUnitOfMessureKey">
+            <summary>
+            Gets or sets the concentration volume unit of messure key.
+            </summary>
+            <value>The concentration volume unit of messure key.</value>
+            [Required(ErrorMessage = "Pls enter ConcentrationVolumeUnitOfMessureKey")]
+        </member>
+        <member name="P:Formulary.API.Model.SystemItemSetupRequest.ChargeCode">
+            <summary>
+            Gets or sets the charge code.
+            </summary>
+            <value>The charge code.</value>
+        </member>
+        <member name="P:Formulary.API.Model.SystemItemSetupRequest.HighRiskFlag">
+            <summary>
+            Gets or sets a value indicating whether [high risk flag].
+            </summary>
+            <value><c>true</c> if [high risk flag]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Formulary.API.Model.SystemItemSetupRequest.ChemotherapyFlag">
+            <summary>
+            Gets or sets a value indicating whether [chemotherapy flag].
+            </summary>
+            <value><c>true</c> if [chemotherapy flag]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Formulary.API.Model.SystemItemSetupRequest.NonFormularyFlag">
+            <summary>
+            Gets or sets a value indicating whether [non formulary flag].
+            </summary>
+            <value><c>true</c> if [non formulary flag]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Formulary.API.Model.SystemItemSetupRequest.LASAFlag">
+            <summary>
+            Gets or sets a value indicating whether [lasa flag].
+            </summary>
+            <value><c>true</c> if [lasa flag]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Formulary.API.Model.SystemItemSetupRequest.RefrigeratedFlag">
+            <summary>
+            Gets or sets a value indicating whether [refrigerated flag].
+            </summary>
+            <value><c>true</c> if [refrigerated flag]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Formulary.API.Model.SystemItemSetupRequest.DrugFlag">
+            <summary>
+            Gets or sets a value indicating whether [drug flag].
+            </summary>
+            <value><c>true</c> if [drug flag]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Formulary.API.Model.SystemItemSetupRequest.ChemoAgentFlag">
+            <summary>
+            Gets or sets a value indicating whether [chemo agent flag].
+            </summary>
+            <value><c>true</c> if [chemo agent flag]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Formulary.API.Model.SystemItemSetupRequest.BioHazFlag">
+            <summary>
+            Gets or sets a value indicating whether [bio haz flag].
+            </summary>
+            <value><c>true</c> if [bio haz flag]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Formulary.API.Model.SystemItemSetupRequest.HazAerosolFlag">
+            <summary>
+            Gets or sets a value indicating whether [haz aerosol flag].
+            </summary>
+            <value><c>true</c> if [haz aerosol flag]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Formulary.API.Model.SystemItemSetupRequest.HazBaseFlag">
+            <summary>
+            Gets or sets a value indicating whether [haz base flag].
+            </summary>
+            <value><c>true</c> if [haz base flag]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Formulary.API.Model.SystemItemSetupRequest.HazAcidFlag">
+            <summary>
+            Gets or sets a value indicating whether [haz acid flag].
+            </summary>
+            <value><c>true</c> if [haz acid flag]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Formulary.API.Model.SystemItemSetupRequest.HazChemicalFlag">
+            <summary>
+            Gets or sets a value indicating whether [haz chemical flag].
+            </summary>
+            <value><c>true</c> if [haz chemical flag]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Formulary.API.Model.SystemItemSetupRequest.HazOxidizerFlag">
+            <summary>
+            Gets or sets a value indicating whether [haz oxidizer flag].
+            </summary>
+            <value><c>true</c> if [haz oxidizer flag]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Formulary.API.Model.SystemItemSetupRequest.HazToxicFlag">
+            <summary>
+            Gets or sets a value indicating whether [haz toxic flag].
+            </summary>
+            <value><c>true</c> if [haz toxic flag]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Formulary.API.Model.SystemItemSetupRequest.FreezerFlag">
+            <summary>
+            Gets or sets a value indicating whether [freezer flag].
+            </summary>
+            <value><c>true</c> if [freezer flag]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="T:Formulary.API.Model.ViewModel.ItemRequest">
+            <summary>
+            Item Setup 
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Model.ViewModel.ItemRequest.ItemKey">
+            <summary>
+            Item identification
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Model.ViewModel.ItemRequest.Description">
+            <summary>
+            Item Description
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Model.ViewModel.ItemRequest.TradeName">
+            <summary>
+            Item TradeName
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Model.ViewModel.ItemRequest.PreferredProductID">
+            <summary>
+            Item PreferredNDC
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Model.ViewModel.ItemRequest.AltCode">
+            <summary>
+            Item AltCode
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Model.ViewModel.ItemRequest.AliasItemID">
+            <summary>
+            Item AliasItemID
+            </summary>
+        </member>
+        <member name="T:Formulary.API.Model.ViewModel.MedicationItemDisplay">
+            <summary>
+            Medication Item Display class
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Model.ViewModel.MedicationItemDisplay.ItemKey">
+            <summary>
+            Item identification
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Model.ViewModel.MedicationItemDisplay.ItemID">
+            <summary>
+            Item Id
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Model.ViewModel.MedicationItemDisplay.ActiveFlag">
+            <summary>
+            Active Flag
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Model.ViewModel.MedicationItemDisplay.IgnoreFlag">
+            <summary>
+            Ignore Flag
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Model.ViewModel.MedicationItemDisplay.AliasItemKey">
+            <summary>
+            Alias Item Key
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Model.ViewModel.MedicationItemDisplay.MedicationClassKey">
+            <summary>
+            Medication Class Key
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Model.ViewModel.MedicationItemDisplay.Description">
+            <summary>
+            Item Description
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Model.ViewModel.MedicationItemDisplay.GLAccountKey">
+            <summary>
+            GL Account Key
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Model.ViewModel.MedicationItemDisplay.DispenseFormLookupKey">
+            <summary>
+            DispenseForm Lookup Key
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Model.ViewModel.MedicationItemDisplay.DispensingUnitLookupKey">
+            <summary>
+            Item Dispensing Unit Key
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Model.ViewModel.MedicationItemDisplay.Strength">
+            <summary>
+            Item Strength
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Model.ViewModel.MedicationItemDisplay.Concentration">
+            <summary>
+            Item Concentration
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Model.ViewModel.MedicationItemDisplay.Volume">
+            <summary>
+            Item Volume
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Model.ViewModel.MedicationItemDisplay.TotalVolume">
+            <summary>
+            Item Total Volume
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Model.ViewModel.MedicationItemDisplay.StrentgthUOM">
+            <summary>
+            Item Strentgth UOM
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Model.ViewModel.MedicationItemDisplay.ConcentrationVolumeUOM">
+            <summary>
+            Item Concentration Volume UOM
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Model.ViewModel.MedicationItemDisplay.TotalVolumeUOM">
+            <summary>
+            Item Total Volume UOM
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Model.ViewModel.MedicationItemDisplay.ChargeCode">
+            <summary>
+            Item Charge Code
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Model.ViewModel.MedicationItemDisplay.HighRisk">
+            <summary>
+            Item HighRisk
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Model.ViewModel.MedicationItemDisplay.LASA">
+            <summary>
+            Item LASA
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Model.ViewModel.MedicationItemDisplay.IsDrugItem">
+            <summary>
+            Item Is Drug Item
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Model.ViewModel.MedicationItemDisplay.StoreInFreezer">
+            <summary>
+            Item Store In Freezer
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Model.ViewModel.MedicationItemDisplay.UsedForChemotherapy">
+            <summary>
+            Used For Chemotherapy
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Model.ViewModel.MedicationItemDisplay.Refrigerate">
+            <summary>
+            Refrigerate
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Model.ViewModel.MedicationItemDisplay.NonFormulary">
+            <summary>
+            NonFormulary
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Model.ViewModel.MedicationItemDisplay.HazardousToxic">
+            <summary>
+            Item Hazardous Toxic
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Model.ViewModel.MedicationItemDisplay.HazardousAerosol">
+            <summary>
+            Item Hazardous Aerosol
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Model.ViewModel.MedicationItemDisplay.HazardousOxidizer">
+            <summary>
+            Hazardous Oxidizer
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Model.ViewModel.MedicationItemDisplay.HazardousBulkChemical">
+            <summary>
+            Item Hazardous Bulk Chemical
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Model.ViewModel.MedicationItemDisplay.HazardousAcid">
+            <summary>
+            Item Hazardous Acid
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Model.ViewModel.MedicationItemDisplay.HazardousBase">
+            <summary>
+            Item Hazardous Base
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Model.ViewModel.MedicationItemDisplay.ChemotherapeuticAgent">
+            <summary>
+            Item Chemotherapeutic Agent
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Model.ViewModel.MedicationItemDisplay.BioHazardsOrSharps">
+            <summary>
+            Item BioHazards/Sharps
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Model.ViewModel.MedicationItemDisplay.ProductIdentificationKey">
+            <summary>
+            Gets or Sets ProductIdentificationKey
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Model.ViewModel.MedicationItemDisplay.RecommendationFollowedFlag">
+            <summary>
+            Gets or Sets RecommendationFollowedFlag
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Model.ViewModel.MedicationItemDisplay.ProductID">
+            <summary>
+            Gets or Sets ProductID
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Model.ViewModel.MedicationItemDisplay.AlternateCode">
+            <summary>
+            Gets or Sets AlternateCode
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Model.ViewModel.MedicationItemDisplay.Manufacturer">
+            <summary>
+            Gets or Sets Manufacturer
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Model.ViewModel.MedicationItemDisplay.GenericName">
+            <summary>
+            Gets or Sets GenericName
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Model.ViewModel.MedicationItemDisplay.TradeName">
+            <summary>
+            Gets or Sets TradeName
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Model.ViewModel.MedicationItemDisplay.PackageSize">
+            <summary>
+            Gets or Sets PackageSize
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Model.ViewModel.MedicationItemDisplay.Distributer">
+            <summary>
+            Gets or Sets Distributer
+            </summary>
+        </member>
+        <member name="T:Formulary.API.Model.ViewModel.MedicationItemList">
+            <summary>
+            Item Setup 
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Model.ViewModel.MedicationItemList.ItemKey">
+            <summary>
+            Item identification
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Model.ViewModel.MedicationItemList.Description">
+            <summary>
+            Item Description
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Model.ViewModel.MedicationItemList.TradeName">
+            <summary>
+            Item TradeName
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Model.ViewModel.MedicationItemList.PreferredProductID">
+            <summary>
+            Item PreferredNDC
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Model.ViewModel.MedicationItemList.AltCode">
+            <summary>
+            Item AltCode
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Model.ViewModel.MedicationItemList.AliasItemID">
+            <summary>
+            Item AliasItemID
+            </summary>
+        </member>
+        <member name="T:Formulary.API.Model.ViewModel.SystemFormulary">
+            <summary>
+            System formulary view model
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Model.ViewModel.SystemFormulary.ItemKey">
+            <summary>
+            Item Key
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Model.ViewModel.SystemFormulary.MedicationItemKey">
+            <summary>
+            MedicationItemKey
+            </summary>
+        </member>
+        <member name="M:Formulary.API.Program.CreateWebHostBuilder(System.String[])">
+            <summary>
+            CreateWebHostBuilder
+            </summary>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Formulary.API.Registration.RegistrationExtension">
+            <summary> Partial extension class for registration. </summary>
+            NOTE: Please refer all RegistrationExtension classes to get the broader picture
+            <summary>
+            To Register all entity for DI for SQL EF repository
+            </summary>
+            <summary> Partial extension class for registration. </summary>
+            NOTE: Please refer all RegistrationExtension classes to get the broader picture
+        </member>
+        <member name="M:Formulary.API.Registration.RegistrationExtension.RegisterManager(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary> Register all the handlers </summary>
+            <param name="services"> Instance of IServiceCollection </param>
+            <returns> services (Instance of IServiceCollection) </returns>
+        </member>
+        <member name="M:Formulary.API.Registration.RegistrationExtension.RegisterSqlRepository(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Register all entity for DI.
+            Register DB Context and pass connection string.
+            </summary>
+            <param name="services"></param>
+            <param name="configuration"> To get the all configured data appsettings.json file </param>
+            <returns></returns>
+        </member>
+        <member name="M:Formulary.API.Registration.RegistrationExtension.RegisterSwagger(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary> Register all Swagger dependencies </summary>
+            <param name="services"> Instance of IServiceCollection </param>
+            <returns> services (Instance of IServiceCollection) </returns>
+        </member>
+        <member name="M:Formulary.API.ServiceDependencies.AddServices(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration,Microsoft.AspNetCore.Hosting.IHostingEnvironment,Microsoft.Extensions.Logging.ILogger)">
+            <summary> Add services to the IServiceCollection instance </summary>
+            <param name="services">IServiceCollection</param>
+            <param name="configuration">IConfiguration</param>
+            <param name="env">IHostingEnvironment</param>
+            <param name="logger">ILogger</param>
+            <returns>IServiceCollection</returns>
+        </member>
+        <member name="M:Formulary.API.ServiceDependencies.UseServices(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.Extensions.Configuration.IConfiguration,Microsoft.AspNetCore.Hosting.IHostingEnvironment,Microsoft.Extensions.Logging.ILogger)">
+            <summary> Configures services </summary>
+            <param name="app">IApplicationBuilder</param>
+            <param name="configuration">IConfiguration</param>
+            <param name="env">IHostingEnvironment</param>
+            <param name="logger">ILogger</param>
+            <returns>IApplicationBuilder</returns>
+        </member>
+        <member name="M:Formulary.API.ServiceDependencies.RegisterAutoMapperProfiles(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Registers the automatic mapper profiles.
+            </summary>
+            <param name="services">Registraion Service Collection</param>
+        </member>
+        <member name="T:Formulary.API.Startup">
+            <summary>
+            Startup file for template
+            </summary>
+        </member>
+        <member name="P:Formulary.API.Startup.Configuration">
+            <summary> Configuration of type IConfiguration </summary>
+        </member>
+        <member name="P:Formulary.API.Startup.Environment">
+            <summary> IHostingEnvironment </summary>
+        </member>
+        <member name="P:Formulary.API.Startup.Logger">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Formulary.API.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration,Microsoft.AspNetCore.Hosting.IHostingEnvironment,Microsoft.Extensions.Logging.ILogger{Formulary.API.Startup})">
+            <summary>
+            
+            </summary>
+            <param name="configuration"></param>
+            <param name="env"></param>
+            <param name="logger"></param>
+        </member>
+        <member name="M:Formulary.API.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            this method is used 
+            </summary>
+            <param name="services"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Formulary.API.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IHostingEnvironment,Microsoft.AspNetCore.Mvc.ApiExplorer.IApiVersionDescriptionProvider)">
+            <summary>
+            This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+            </summary>
+            <param name="app">IApplicationBuilder</param>
+            <param name="env">IHostingEnvironment</param>
+            <param name="provider">IApiVersionDescriptionProvider</param>
+        </member>
+        <member name="T:BD.Template.API.Configuration.SwaggerDefaultValues">
+            <summary>  
+            Represents the Swagger/Swashbuckle operation filter used to document the implicit API version parameter.  
+            </summary>  
+            <remarks>This <see cref="T:Swashbuckle.AspNetCore.SwaggerGen.IOperationFilter"/> is only required due to bugs in the <see cref="T:Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator"/>.  
+            Once they are fixed and published, this class can be removed.</remarks>  
+        </member>
+        <member name="M:BD.Template.API.Configuration.SwaggerDefaultValues.Apply(Swashbuckle.AspNetCore.Swagger.Operation,Swashbuckle.AspNetCore.SwaggerGen.OperationFilterContext)">
+            <summary>  
+            Applies the filter to the specified operation using the given context.  
+            </summary>  
+            <param name="operation">The operation to apply the filter to.</param>  
+            <param name="context">The current operation filter context.</param>  
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,1448 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>StorageSpace.API</name>
+    </assembly>
+    <members>
+        <member name="T:StorageSpace.API.AutofacModule.ApplicationModule">
+            <summary> ApplicationModule inherits Autofac.Module class </summary>
+        </member>
+        <member name="M:StorageSpace.API.AutofacModule.ApplicationModule.#ctor">
+            <summary> ApplicationModule constructor </summary>
+        </member>
+        <member name="M:StorageSpace.API.AutofacModule.ApplicationModule.Load(Autofac.ContainerBuilder)">
+            <summary> Overrides Load method </summary>
+            <param name="builder"></param>
+        </member>
+        <member name="T:StorageSpace.API.AutoMapper.MapProfile">
+            <summary>
+            This class contains mappings
+            </summary>
+        </member>
+        <member name="M:StorageSpace.API.AutoMapper.MapProfile.#ctor">
+            <summary>
+            Initializes a new instance of the MapProfile class.
+            </summary>
+        </member>
+        <member name="T:StorageSpace.API.BusinessLayer.Concrete.ISAManager">
+            <summary>
+            ISAManager
+            </summary>
+        </member>
+        <member name="F:StorageSpace.API.BusinessLayer.Concrete.ISAManager._isaDetailRepository">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:StorageSpace.API.BusinessLayer.Concrete.ISAManager._mapper">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:StorageSpace.API.BusinessLayer.Concrete.ISAManager._logger">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:StorageSpace.API.BusinessLayer.Concrete.ISAManager.#ctor(StorageSpace.API.Infrastructure.Repository.Contracts.IISADetailRepository,AutoMapper.IMapper,Microsoft.Extensions.Logging.ILogger{StorageSpace.API.BusinessLayer.Concrete.ISAManager})">
+            <summary>
+            
+            </summary>
+            <param name="isaDetailRepository"></param>
+            <param name="mapper"></param>
+            <param name="logger"></param>
+        </member>
+        <member name="M:StorageSpace.API.BusinessLayer.Concrete.ISAManager.GetISA(System.Guid)">
+            <summary>
+            to get all isa by facility id 
+            </summary>
+            <param name="facilityId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StorageSpace.API.BusinessLayer.Concrete.ISAManager.GetISAById(System.String,System.Guid)">
+            <summary>
+            to get ISA by isa id and facility id
+            </summary>
+            <param name="isaId"></param>
+            <param name="facilityId"></param>
+            <returns></returns>
+        </member>
+        <member name="T:StorageSpace.API.BusinessLayer.Concrete.StorageSpaceManager">
+            <summary> StorageSpaceManager </summary>
+        </member>
+        <member name="M:StorageSpace.API.BusinessLayer.Concrete.StorageSpaceManager.#ctor(StorageSpace.API.Infrastructure.Repository.Contracts.IStorageSpaceDetailMongoRepository,Microsoft.Extensions.Logging.ILogger{StorageSpace.API.BusinessLayer.Concrete.StorageSpaceManager},BD.Core.EventBus.Abstractions.IEventBus,Microsoft.Extensions.Options.IOptions{StorageSpace.API.Configuration.Configuration})">
+            <summary> StorageSpaceManager constructor </summary>
+            <param name="StorageSpaceDetailMongoRepository">IStorageSpaceDetailMongoRepository</param>
+            <param name="logger">ILogger</param>
+            <param name="eventBus">IEventBus</param>
+            <param name="options">IOptions</param>
+        </member>
+        <member name="M:StorageSpace.API.BusinessLayer.Concrete.StorageSpaceManager.GetStorageSpaces(StorageSpace.API.IntegrationEvents.Events.StorageSpaceRequestEvent)">
+            <summary>  </summary>
+            <param name="requestEvent">StorageSpaceRequestEvent</param>
+            <returns></returns>
+        </member>
+        <member name="T:StorageSpace.API.BusinessLayer.Contracts.IISAManager">
+            <summary>
+             IISAManager
+            </summary>
+        </member>
+        <member name="M:StorageSpace.API.BusinessLayer.Contracts.IISAManager.GetISA(System.Guid)">
+            <summary>
+            Returns list of ISA by facilityId
+            </summary>
+            <param name="facilityId">facility Id</param>
+            <returns></returns>
+        </member>
+        <member name="M:StorageSpace.API.BusinessLayer.Contracts.IISAManager.GetISAById(System.String,System.Guid)">
+            <summary>
+            Returns ISA by isa Id and facility Id
+            </summary>
+            <param name="isaId">isa Id</param>
+            <param name="facilityId">facility Id</param>
+            <returns></returns>
+        </member>
+        <member name="T:StorageSpace.API.BusinessLayer.Contracts.IStorageSpaceManager">
+            <summary> IStorageSpaceManager </summary>
+        </member>
+        <member name="M:StorageSpace.API.BusinessLayer.Contracts.IStorageSpaceManager.GetStorageSpaces(StorageSpace.API.IntegrationEvents.Events.StorageSpaceRequestEvent)">
+            <summary> GetStorageSpaces </summary>
+            <param name="request">GetStorageSpaceRequest</param>
+            <returns></returns>
+        </member>
+        <member name="T:StorageSpace.API.BusinessLayer.IRuleValidation">
+            <summary> Contract to implement rule validations </summary>
+        </member>
+        <member name="P:StorageSpace.API.BusinessLayer.IRuleValidation.IsValid">
+            <summary> IsValid </summary>
+        </member>
+        <member name="M:StorageSpace.API.BusinessLayer.IRuleValidation.OnValidate">
+            <summary> Throws an exception if instance of implementing class is invalid </summary>
+        </member>
+        <member name="M:StorageSpace.API.BusinessLayer.IRuleValidation.GetRuleViolations">
+            <summary> Collection of rule violations </summary>
+        </member>
+        <member name="T:StorageSpace.API.BusinessLayer.RuleViolation">
+            <summary> Helper class, that allows us to provide more details about a rule violation </summary>
+        </member>
+        <member name="P:StorageSpace.API.BusinessLayer.RuleViolation.ErrorMessage">
+            <summary> ErrorMessage </summary>
+        </member>
+        <member name="P:StorageSpace.API.BusinessLayer.RuleViolation.PropertyName">
+            <summary> PropertyName </summary>
+        </member>
+        <member name="M:StorageSpace.API.BusinessLayer.RuleViolation.#ctor(System.String,System.String)">
+            <summary> Initialises RuleViolation instances </summary>
+            <param name="propertyName"></param>
+            <param name="errorMessage"></param>
+        </member>
+        <member name="T:StorageSpace.API.Common.Constant">
+            <summary> Constants </summary>
+        </member>
+        <member name="F:StorageSpace.API.Common.Constant.EventBusConfiguration">
+            <summary> EVENT_BUS_CONFIGURATION </summary>
+        </member>
+        <member name="F:StorageSpace.API.Common.Constant.EventHubConfiguration">
+            <summary> EVENT_HUB_CONFIGURATION </summary>
+        </member>
+        <member name="F:StorageSpace.API.Common.Constant.BrokerVersionFallback">
+            <summary> BROKER_VERSION_FALLBACK </summary>
+        </member>
+        <member name="F:StorageSpace.API.Common.Constant.Endpoint">
+            <summary> ENDPOINT </summary>
+        </member>
+        <member name="F:StorageSpace.API.Common.Constant.Username">
+            <summary> USERNAME </summary>
+        </member>
+        <member name="F:StorageSpace.API.Common.Constant.Password">
+            <summary> PASSWORD </summary>
+        </member>
+        <member name="F:StorageSpace.API.Common.Constant.EventBusConfigurationIsEventHub">
+            <summary> EVENT_BUS_CONFIGURATION_IS_EVENT_HUB </summary>
+        </member>
+        <member name="F:StorageSpace.API.Common.Constant.EventBusConfigurationValidateToken">
+            <summary> EVENT_BUS_CONFIGURATION_VALIDATE_TOKEN </summary>
+        </member>
+        <member name="F:StorageSpace.API.Common.Constant.EventBusConfigurationTokenServerUrl">
+            <summary> EVENT_BUS_CONFIGURATION_TOKEN_SERVER_URL </summary>
+        </member>
+        <member name="F:StorageSpace.API.Common.Constant.EventBusConfigurationEnableAutoCommit">
+            <summary> EVENT_BUS_CONFIGURATION_ENABLE_AUTO_COMMIT </summary>
+        </member>
+        <member name="F:StorageSpace.API.Common.Constant.EventBusConfigurationKafkaConfigurationEndpoint">
+            <summary> EVENT_BUS_KAFKA_CONFIGURATION_ENDPOINT </summary>
+        </member>
+        <member name="F:StorageSpace.API.Common.Constant.EventBusHubConfigurationEndpoint">
+            <summary> EVENT_BUS_HUB_CONFIGURATION_ENDPOINT </summary>
+        </member>
+        <member name="F:StorageSpace.API.Common.Constant.EventBusHubConfigurationUsername">
+            <summary> EVENT_BUS_HUB_CONFIGURATION_USERNAME </summary>
+        </member>
+        <member name="F:StorageSpace.API.Common.Constant.EventBusHubConfigurationPassword">
+            <summary> EVENT_BUS_HUB_CONFIGURATION_PASSWORD </summary>
+        </member>
+        <member name="F:StorageSpace.API.Common.Constant.EventBusHubConfigurationBrokerVersionFallback">
+            <summary> EVENT_BUS_HUB_CONFIGURATION_BROKER_VERSION_FALLBACK </summary>
+        </member>
+        <member name="F:StorageSpace.API.Common.Constant.SerilogTraceEndpoints">
+            <summary> Key to get TraceEndpoints from Serilog section of appSetting.json </summary>
+        </member>
+        <member name="F:StorageSpace.API.Common.Constant.KafkaConfiguration">
+            <summary> Key to get KafkaConfiguration of appSetting.json </summary>
+        </member>
+        <member name="F:StorageSpace.API.Common.Constant.KafkaConfigurationKafkaEndpoint">
+            <summary> Key to get the KafkaEndpoint from KafkaConfiguration section of appSetting.json </summary>
+        </member>
+        <member name="F:StorageSpace.API.Common.Constant.KafkaRequestTopic">
+            <summary> Key to get the TOPIC from appSetting.json to subscribe to TQ service </summary>
+        </member>
+        <member name="F:StorageSpace.API.Common.Constant.KafkaResponseTopic">
+            <summary> Key to get the TOPIC from appSetting.json to publish to TQ service </summary>
+        </member>
+        <member name="F:StorageSpace.API.Common.Constant.MessageBusTopics">
+            <summary> MESSAGE_BUS_TOPICS </summary>
+        </member>
+        <member name="F:StorageSpace.API.Common.Constant.MessageBusTopicsKafkaRequestTopic">
+            <summary> Topic that subscribes to EventBus for TQ's request </summary>
+        </member>
+        <member name="F:StorageSpace.API.Common.Constant.MessageBusTopicsKafkaResponseTopic">
+            <summary> Topic that publishes to EventBus after TQ's request has been processed </summary>
+        </member>
+        <member name="F:StorageSpace.API.Common.Constant.MongoDbDatabase">
+            <summary> MONGO_DB_DATABASE </summary>
+        </member>
+        <member name="F:StorageSpace.API.Common.Constant.MongoDbConnectionString">
+            <summary> MONGO_DB_CONNECTION_STRING </summary>
+        </member>
+        <member name="F:StorageSpace.API.Common.Constant.CONFIGURATION">
+            <summary> CONFIGURATION </summary>
+        </member>
+        <member name="F:StorageSpace.API.Common.Constant.Appsettings">
+            <summary> APP_SETTINGS </summary>
+        </member>
+        <member name="F:StorageSpace.API.Common.Constant.AspNetCoreEnvironment">
+            <summary> ASPNETCORE_ENVIRONMENT </summary>
+        </member>
+        <member name="F:StorageSpace.API.Common.Constant.Production">
+            <summary> PRODUCTION </summary>
+        </member>
+        <member name="F:StorageSpace.API.Common.Constant.Bearer">
+            <summary> BEARER </summary>
+        </member>
+        <member name="F:StorageSpace.API.Common.Constant.Header">
+            <summary> HEADER </summary>
+        </member>
+        <member name="F:StorageSpace.API.Common.Constant.InfoWhenJwtNotPresent">
+            <summary> INFO_WHEN_NO_JWT_PRESENT </summary>
+        </member>
+        <member name="F:StorageSpace.API.Common.Constant.Authorization">
+            <summary> AUTHORIZATION </summary>
+        </member>
+        <member name="F:StorageSpace.API.Common.Constant.ApiKey">
+            <summary> API_KEY </summary>
+        </member>
+        <member name="F:StorageSpace.API.Common.Constant.IdentityServerAudience">
+            <summary> IDENTITY_SERVER_AUDIENCE </summary>
+        </member>
+        <member name="F:StorageSpace.API.Common.Constant.IdentityServerEndpoint">
+            <summary> IDENTITY_SERVER_ENDPOINT </summary>
+        </member>
+        <member name="F:StorageSpace.API.Common.Constant.InternalError">
+            <summary> INTERNAL_ERROR </summary>
+        </member>
+        <member name="F:StorageSpace.API.Common.Constant.InvalidValue">
+            <summary> INVALID_VALUE </summary>
+        </member>
+        <member name="F:StorageSpace.API.Common.Constant.RulesExceptionMessage">
+            <summary> EXCEPTION_MESSAGE </summary>
+        </member>
+        <member name="F:StorageSpace.API.Common.Constant.CorrelationParentId">
+            <summary> CORRELATION_PARENT_ID received in header </summary>
+        </member>
+        <member name="F:StorageSpace.API.Common.Constant.ReceivedOnStorageSpaceRequestEventHandler">
+            <summary>
+            RECEIVED_ON_FORMULARY_LOCATION_REQUEST_EVENT_HANDLER:
+            when event is received on subscribing to a topic
+            </summary>
+        </member>
+        <member name="F:StorageSpace.API.Common.Constant.PublishEventType">
+            <summary>
+            PUBLISHED_BY_FORMULARY_LOCATION_REQUEST_EVENT_HANDLER: 
+            when event is successfully processed and is ready to be published in the event-bus
+            </summary>
+        </member>
+        <member name="F:StorageSpace.API.Common.Constant.FollowingDataSuccessfullyPublishedToEventBus">
+            <summary>
+            PUBLISHED_DATA_SUCCESSFULLY_TO_EVENT_BUS:
+            when event is successfully published
+            </summary>
+        </member>
+        <member name="F:StorageSpace.API.Common.Constant.XmlUpper">
+            <summary> For xml </summary>
+        </member>
+        <member name="F:StorageSpace.API.Common.Constant.JsonLower">
+            <summary> For json </summary>
+        </member>
+        <member name="F:StorageSpace.API.Common.Constant.ClientNotInitiated">
+            <summary> CLIENT_NOT_INSTANTIATED </summary>
+        </member>
+        <member name="F:StorageSpace.API.Common.Constant.Dot">
+            <summary> DOT/Period </summary>
+        </member>
+        <member name="F:StorageSpace.API.Common.Constant.Colon">
+            <summary> COLON </summary>
+        </member>
+        <member name="F:StorageSpace.API.Common.Constant.Title">
+            <summary> TITLE </summary>
+        </member>
+        <member name="F:StorageSpace.API.Common.Constant.Version">
+            <summary> VERSION </summary>
+        </member>
+        <member name="F:StorageSpace.API.Common.Constant.SwaggerEndpointUrl">
+            <summary> Url for swagger endpoint </summary>
+        </member>
+        <member name="F:StorageSpace.API.Common.Constant.RoutePrefix">
+            <summary> ROUTE_PREFIX </summary>
+        </member>
+        <member name="F:StorageSpace.API.Common.Constant.RouteTemplate">
+            <summary> ROUTE_TEMPLATE </summary>
+        </member>
+        <member name="F:StorageSpace.API.Common.Constant.ISAType">
+            <summary> ISA Type </summary>
+        </member>
+        <member name="F:StorageSpace.API.Common.Constant.CarousalType">
+            <summary> Carousal Type </summary>
+        </member>
+        <member name="T:StorageSpace.API.Common.StorageSpaceItemType">
+            <summary> Storage space item type enum </summary>
+        </member>
+        <member name="F:StorageSpace.API.Common.StorageSpaceItemType.None">
+            <summary> None </summary>
+        </member>
+        <member name="F:StorageSpace.API.Common.StorageSpaceItemType.Rack">
+            <summary> Rack </summary>
+        </member>
+        <member name="F:StorageSpace.API.Common.StorageSpaceItemType.Shelf">
+            <summary> Shelf </summary>
+        </member>
+        <member name="F:StorageSpace.API.Common.StorageSpaceItemType.Bin">
+            <summary> Bin </summary>
+        </member>
+        <member name="F:StorageSpace.API.Common.StorageSpaceItemType.Slot">
+            <summary> Slot </summary>
+        </member>
+        <member name="T:StorageSpace.API.Common.StorageSpaceType">
+            <summary> StorageSpaceType </summary>
+        </member>
+        <member name="F:StorageSpace.API.Common.StorageSpaceType.None">
+            <summary> None </summary>
+        </member>
+        <member name="F:StorageSpace.API.Common.StorageSpaceType.Carousel">
+            <summary> Carousel </summary>
+        </member>
+        <member name="F:StorageSpace.API.Common.StorageSpaceType.Display">
+            <summary> Display </summary>
+        </member>
+        <member name="T:StorageSpace.API.Common.Helpers.ObjectIdValidator">
+            <summary>
+            Helper class to Validate objectIds
+            </summary>
+        </member>
+        <member name="M:StorageSpace.API.Common.Helpers.ObjectIdValidator.Validate(System.String)">
+            <summary>
+            Validates the specified object identifier.
+            </summary>
+            <param name="objId">The object identifier.</param>
+            <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+        </member>
+        <member name="T:StorageSpace.API.Common.LoggingConstants">
+            <summary>
+            Logging Constants Detail
+            </summary>
+        </member>
+        <member name="F:StorageSpace.API.Common.LoggingConstants.StartingWebHost">
+            <summary> STARTING_WEB_HOST </summary>
+        </member>
+        <member name="F:StorageSpace.API.Common.LoggingConstants.HostTerminatedUnexpectedly">
+            <summary> HOST_TERMINATED_UNEXPECTEDLY </summary>
+        </member>
+        <member name="F:StorageSpace.API.Common.LoggingConstants.Empty_List">
+            <summary>
+            Constant for empty list.
+            </summary>
+        </member>
+        <member name="F:StorageSpace.API.Common.LoggingConstants.GetISA">
+            <summary>
+            Logging constant for GetIsa
+            </summary>
+        </member>
+        <member name="F:StorageSpace.API.Common.LoggingConstants.GetISAById">
+            <summary>
+            Logging constant for getting ISA by Id.
+            </summary>
+        </member>
+        <member name="T:StorageSpace.API.Configuration.Configuration">
+            <summary> Configuration </summary>
+        </member>
+        <member name="P:StorageSpace.API.Configuration.Configuration.KafkaRequestTopic">
+            <summary> KafkaRequestTopic </summary>
+        </member>
+        <member name="P:StorageSpace.API.Configuration.Configuration.KafkaResponseTopic">
+            <summary> KafkaResponseTopic </summary>
+        </member>
+        <member name="T:StorageSpace.API.Configuration.SwaggerDefaultValues">
+            <summary> Represents the Swagger/Swashbuckle operation filter used to document the implicit API version parameter. </summary>  
+            <remarks>This <see cref="T:Swashbuckle.AspNetCore.SwaggerGen.IOperationFilter"/> is only required due to bugs in the <see cref="T:Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator"/>
+            Once they are fixed and published, this class can be removed.</remarks>
+        </member>
+        <member name="M:StorageSpace.API.Configuration.SwaggerDefaultValues.Apply(Swashbuckle.AspNetCore.Swagger.Operation,Swashbuckle.AspNetCore.SwaggerGen.OperationFilterContext)">
+            <summary> Applies the filter to the specified operation using the given context. </summary>
+            <param name="operation">The operation to apply the filter to.</param>
+            <param name="context">The current operation filter context.</param>
+        </member>
+        <member name="T:StorageSpace.API.Controllers.ISAController">
+            <summary>
+            Class ISAController.
+            Implements the <see cref="T:Microsoft.AspNetCore.Mvc.Controller" />
+            </summary>
+            <seealso cref="T:Microsoft.AspNetCore.Mvc.Controller" />
+        </member>
+        <member name="M:StorageSpace.API.Controllers.ISAController.#ctor(StorageSpace.API.BusinessLayer.Contracts.IISAManager,Microsoft.Extensions.Logging.ILogger{StorageSpace.API.Controllers.ISAController},BD.Core.Context.IExecutionContextAccessor)">
+            <summary>
+            Initializes a new instance of the <see cref="T:StorageSpace.API.Controllers.ISAController"/> class.
+            </summary>
+            <param name="isaManager">The isa manager.</param>
+            <param name="logger">The logger.</param>
+            <param name="executionContextAccessor">Context accessor</param>
+        </member>
+        <member name="M:StorageSpace.API.Controllers.ISAController.GetISA">
+            <summary>
+            Gets the isa.
+            </summary>
+            <returns>Task&lt;IActionResult&gt;.</returns>
+        </member>
+        <member name="M:StorageSpace.API.Controllers.ISAController.GetISAById(System.String)">
+            <summary>
+            To get isa Data by Id
+            </summary>
+            <param name="isaId"></param>
+            <returns></returns>
+        </member>
+        <member name="T:StorageSpace.API.Infrastructure.DataAccess.Mongo.BaseRepository`1">
+            <summary> Base repository for CRUD operations </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="F:StorageSpace.API.Infrastructure.DataAccess.Mongo.BaseRepository`1._context">
+            <summary> Context variable </summary>
+        </member>
+        <member name="M:StorageSpace.API.Infrastructure.DataAccess.Mongo.BaseRepository`1.#ctor(StorageSpace.API.Infrastructure.DataAccess.Mongo.Clients.MongoDbClient)">
+            <summary>  </summary>
+            <param name="mongoClient"></param>
+        </member>
+        <member name="M:StorageSpace.API.Infrastructure.DataAccess.Mongo.BaseRepository`1.CollectionName``1">
+            <summary> Gets the collection name </summary>
+            <typeparam name="TDoc"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:StorageSpace.API.Infrastructure.DataAccess.Mongo.BaseRepository`1.StorageSpace#API#Infrastructure#DataAccess#Mongo#Contracts#IBaseRepository{T}#GetById(System.String)">
+            <summary> To get the document by id </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StorageSpace.API.Infrastructure.DataAccess.Mongo.BaseRepository`1.StorageSpace#API#Infrastructure#DataAccess#Mongo#Contracts#IBaseRepository{T}#GetAll">
+            <summary> To get all the documents from a collection </summary>
+            <returns></returns>
+        </member>
+        <member name="M:StorageSpace.API.Infrastructure.DataAccess.Mongo.BaseRepository`1.StorageSpace#API#Infrastructure#DataAccess#Mongo#Contracts#IBaseRepository{T}#Insert(`0)">
+            <summary> To insert the document in a specific collection </summary>
+            <param name="entity"></param>
+        </member>
+        <member name="M:StorageSpace.API.Infrastructure.DataAccess.Mongo.BaseRepository`1.StorageSpace#API#Infrastructure#DataAccess#Mongo#Contracts#IBaseRepository{T}#Update(`0)">
+            <summary> To update the document </summary>
+            <param name="entity"></param>
+        </member>
+        <member name="M:StorageSpace.API.Infrastructure.DataAccess.Mongo.BaseRepository`1.StorageSpace#API#Infrastructure#DataAccess#Mongo#Contracts#IBaseRepository{T}#Delete(`0)">
+            <summary> To delete the document </summary>
+            <param name="entity"></param>
+        </member>
+        <member name="M:StorageSpace.API.Infrastructure.DataAccess.Mongo.BaseRepository`1.StorageSpace#API#Infrastructure#DataAccess#Mongo#Contracts#IBaseRepository{T}#DeleteAll">
+            <summary> To delete the document </summary>
+        </member>
+        <member name="M:StorageSpace.API.Infrastructure.DataAccess.Mongo.BaseRepository`1.StorageSpace#API#Infrastructure#DataAccess#Mongo#Contracts#IBaseRepository{T}#GetAllAsync">
+            <summary> Async method to get all the document from a collection </summary>
+            <returns></returns>
+        </member>
+        <member name="M:StorageSpace.API.Infrastructure.DataAccess.Mongo.BaseRepository`1.StorageSpace#API#Infrastructure#DataAccess#Mongo#Contracts#IBaseRepository{T}#GetAsync(System.String)">
+            <summary>
+            Gets the entity by Id asynchronously.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:StorageSpace.API.Infrastructure.DataAccess.Mongo.BaseRepository`1.StorageSpace#API#Infrastructure#DataAccess#Mongo#Contracts#IBaseRepository{T}#InsertAsync(`0)">
+            <summary> To async insert the document </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StorageSpace.API.Infrastructure.DataAccess.Mongo.BaseRepository`1.StorageSpace#API#Infrastructure#DataAccess#Mongo#Contracts#IBaseRepository{T}#UpdateAsync(`0)">
+            <summary> To async update the document </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StorageSpace.API.Infrastructure.DataAccess.Mongo.BaseRepository`1.StorageSpace#API#Infrastructure#DataAccess#Mongo#Contracts#IBaseRepository{T}#DeleteAsync(`0)">
+            <summary> To async delete the document from a collection </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StorageSpace.API.Infrastructure.DataAccess.Mongo.BaseRepository`1.StorageSpace#API#Infrastructure#DataAccess#Mongo#Contracts#IBaseRepository{T}#DeleteAllAsync">
+            <summary> To async delete all the document from a collection </summary>
+            <returns></returns>
+        </member>
+        <member name="T:StorageSpace.API.Infrastructure.DataAccess.Mongo.Clients.MongoDbClient">
+            <summary> Wrapper class for the MongoClient </summary>
+        </member>
+        <member name="F:StorageSpace.API.Infrastructure.DataAccess.Mongo.Clients.MongoDbClient.DatabaseName">
+            <summary> Name of the Database we want data from </summary>
+        </member>
+        <member name="F:StorageSpace.API.Infrastructure.DataAccess.Mongo.Clients.MongoDbClient.ConnectionString">
+            <summary> The connection string (IP-Adress + Port) </summary>
+        </member>
+        <member name="F:StorageSpace.API.Infrastructure.DataAccess.Mongo.Clients.MongoDbClient.Client">
+            <summary> Threadsafe (According to the documentation) </summary>
+        </member>
+        <member name="M:StorageSpace.API.Infrastructure.DataAccess.Mongo.Clients.MongoDbClient.#ctor(System.String,System.String)">
+            <summary>  </summary>
+            <param name="databaseName"></param>
+            <param name="connectionString"></param>
+        </member>
+        <member name="M:StorageSpace.API.Infrastructure.DataAccess.Mongo.Clients.MongoDbClient.CreateClient">
+            <summary> Wrapper for creating client, so in the future when we want to make a more complex client, we just edit here. </summary>
+            <returns></returns>
+        </member>
+        <member name="M:StorageSpace.API.Infrastructure.DataAccess.Mongo.Clients.MongoDbClient.GetContext">
+            <summary>
+            Returns the Database with the given name in the configuration.
+            </summary>
+            <returns>IMongoDatabase instance</returns>
+        </member>
+        <member name="M:StorageSpace.API.Infrastructure.DataAccess.Mongo.Clients.MongoDbClient.DropContext">
+            <summary>
+            To drop the database
+            </summary>
+        </member>
+        <member name="T:StorageSpace.API.Infrastructure.DataAccess.Mongo.Contracts.IBaseRepository`1">
+            <summary> Base repository for CRUD operations </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:StorageSpace.API.Infrastructure.DataAccess.Mongo.Contracts.IBaseRepository`1.GetById(System.String)">
+            <summary> To get the document with id </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StorageSpace.API.Infrastructure.DataAccess.Mongo.Contracts.IBaseRepository`1.GetAll">
+            <summary>
+            To get all the documents
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:StorageSpace.API.Infrastructure.DataAccess.Mongo.Contracts.IBaseRepository`1.Insert(`0)">
+            <summary>
+            To insert the new document
+            </summary>
+            <param name="entity"></param>
+        </member>
+        <member name="M:StorageSpace.API.Infrastructure.DataAccess.Mongo.Contracts.IBaseRepository`1.Update(`0)">
+            <summary>
+            To update the document
+            </summary>
+            <param name="entity"></param>
+        </member>
+        <member name="M:StorageSpace.API.Infrastructure.DataAccess.Mongo.Contracts.IBaseRepository`1.Delete(`0)">
+            <summary>
+            To delete the document
+            </summary>
+            <param name="entity"></param>
+        </member>
+        <member name="M:StorageSpace.API.Infrastructure.DataAccess.Mongo.Contracts.IBaseRepository`1.DeleteAll">
+            <summary>
+            To delete all the documents
+            </summary>
+        </member>
+        <member name="M:StorageSpace.API.Infrastructure.DataAccess.Mongo.Contracts.IBaseRepository`1.GetAllAsync">
+            <summary>
+            Async method to get all the documents from a collection
+            </summary>
+            <returns></returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:StorageSpace.API.Infrastructure.DataAccess.Mongo.Contracts.IBaseRepository`1.GetAsync(System.String)" -->
+        <member name="M:StorageSpace.API.Infrastructure.DataAccess.Mongo.Contracts.IBaseRepository`1.InsertAsync(`0)">
+            <summary>
+            Async method to insert the documents
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StorageSpace.API.Infrastructure.DataAccess.Mongo.Contracts.IBaseRepository`1.UpdateAsync(`0)">
+            <summary>
+            Async method to update the document
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StorageSpace.API.Infrastructure.DataAccess.Mongo.Contracts.IBaseRepository`1.DeleteAsync(`0)">
+            <summary>
+            To delete a single document from a collection
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StorageSpace.API.Infrastructure.DataAccess.Mongo.Contracts.IBaseRepository`1.DeleteAllAsync">
+            <summary>
+            To async delete all the documents from a collection
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:StorageSpace.API.Infrastructure.DataAccess.Mongo.Entities.Entity">
+            <summary>  </summary>
+        </member>
+        <member name="P:StorageSpace.API.Infrastructure.DataAccess.Mongo.Entities.Entity.Id">
+            <summary> To hold the Bson Id </summary>
+        </member>
+        <member name="P:StorageSpace.API.Infrastructure.DataAccess.Mongo.Entities.Entity.CreatedByActorKey">
+            <summary>
+            To hold the created by
+            </summary>
+        </member>
+        <member name="P:StorageSpace.API.Infrastructure.DataAccess.Mongo.Entities.Entity.CreatedDateUTCDateTime">
+            <summary>
+            To hold the created date
+            </summary>
+        </member>
+        <member name="P:StorageSpace.API.Infrastructure.DataAccess.Mongo.Entities.Entity.LastModifiedByActorKey">
+            <summary> To hold the modified by </summary>
+        </member>
+        <member name="P:StorageSpace.API.Infrastructure.DataAccess.Mongo.Entities.Entity.LastModifiedUTCDateTime">
+            <summary> To hold modified date </summary>
+        </member>
+        <member name="T:StorageSpace.API.Infrastructure.Repository.Concrete.ISADetailRepository">
+            <summary>
+            ISADetailRepository
+            </summary>
+        </member>
+        <member name="M:StorageSpace.API.Infrastructure.Repository.Concrete.ISADetailRepository.GetISA(System.Guid)">
+            <summary>
+            
+            </summary>
+            <param name="facilityId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StorageSpace.API.Infrastructure.Repository.Concrete.ISADetailRepository.GetISAById(System.String,System.Guid)">
+            <summary>
+            
+            </summary>
+            <param name="isaId"></param>
+            <param name="facilityId"></param>
+            <returns></returns>
+        </member>
+        <member name="T:StorageSpace.API.Infrastructure.Repository.Concrete.StorageSpaceDetailMongoRepository">
+            <summary> StorageSpaceMongoRepository </summary>
+        </member>
+        <member name="T:StorageSpace.API.Infrastructure.Repository.Contracts.IISADetailRepository">
+            <summary>
+            IISADetailRepository
+            </summary>
+        </member>
+        <member name="M:StorageSpace.API.Infrastructure.Repository.Contracts.IISADetailRepository.GetISA(System.Guid)">
+            <summary>
+            Get ISA List
+            </summary>
+            <param name="facilityId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:StorageSpace.API.Infrastructure.Repository.Contracts.IISADetailRepository.GetISAById(System.String,System.Guid)">
+            <summary>
+            Get ISA Data
+            </summary>
+            <param name="isaId"></param>
+            <param name="facilityId"></param>
+            <returns></returns>
+        </member>
+        <member name="T:StorageSpace.API.Infrastructure.Repository.Contracts.IStorageSpaceDetailMongoRepository">
+            <summary> IStorageSpaceDetailMongoRepository </summary>
+        </member>
+        <member name="M:StorageSpace.API.Infrastructure.Repository.Contracts.IStorageSpaceDetailMongoRepository.GetStorageSpaces(StorageSpace.API.Model.Request.GetStorageSpaceRequest)">
+            <summary> Gets formulary locations based on the request </summary>
+            <param name="request">GetStorageSpaceRequest</param>
+            <returns></returns>
+        </member>
+        <member name="T:StorageSpace.API.IntegrationEvents.EventHandling.StorageSpaceRequestEventHandler">
+            <summary> StorageSpaceRequestEventHandler will handle StorageSpaceRequestEvents </summary>
+        </member>
+        <member name="M:StorageSpace.API.IntegrationEvents.EventHandling.StorageSpaceRequestEventHandler.#ctor(Microsoft.Extensions.Logging.ILogger{StorageSpace.API.IntegrationEvents.EventHandling.StorageSpaceRequestEventHandler},StorageSpace.API.BusinessLayer.Contracts.IStorageSpaceManager)">
+            <summary> StorageSpaceRequestEventHandler constructor </summary>
+            <param name="logger"></param>
+            <param name="StorageSpaceManager"></param>
+        </member>
+        <member name="M:StorageSpace.API.IntegrationEvents.EventHandling.StorageSpaceRequestEventHandler.Handle(StorageSpace.API.IntegrationEvents.Events.StorageSpaceRequestEvent)">
+            <summary> Subscribes to a specific topic </summary>
+            <param name="event"></param>
+            <returns></returns>
+        </member>
+        <member name="T:StorageSpace.API.IntegrationEvents.Events.StorageSpaceRequestEvent">
+            <summary> Partial StorageSpaceRequestEvent, contains only properties </summary>
+            <summary> Implements IRuleValidation </summary>
+        </member>
+        <member name="P:StorageSpace.API.IntegrationEvents.Events.StorageSpaceRequestEvent.TransactionQueueId">
+            <summary> TransactionQueueId </summary>
+        </member>
+        <member name="P:StorageSpace.API.IntegrationEvents.Events.StorageSpaceRequestEvent.FormularyId">
+            <summary> FormularyId </summary>
+        </member>
+        <member name="P:StorageSpace.API.IntegrationEvents.Events.StorageSpaceRequestEvent.FacilityId">
+            <summary> FacilityId </summary>
+        </member>
+        <member name="P:StorageSpace.API.IntegrationEvents.Events.StorageSpaceRequestEvent.ISAId">
+            <summary> ISAId </summary>
+        </member>
+        <member name="P:StorageSpace.API.IntegrationEvents.Events.StorageSpaceRequestEvent.IsValid">
+            <summary> Whether instance is valid or not </summary>
+        </member>
+        <member name="M:StorageSpace.API.IntegrationEvents.Events.StorageSpaceRequestEvent.OnValidate">
+            <summary> Throws an exception when instance is invalid </summary>
+        </member>
+        <member name="M:StorageSpace.API.IntegrationEvents.Events.StorageSpaceRequestEvent.GetRuleViolations">
+            <summary> Gets collection of rule violations </summary>
+        </member>
+        <member name="T:StorageSpace.API.IntegrationEvents.Events.StorageSpaceResponseEvent">
+            <summary> StorageSpaceResponseEvent </summary>
+        </member>
+        <member name="M:StorageSpace.API.IntegrationEvents.Events.StorageSpaceResponseEvent.#ctor">
+            <summary> StorageSpaceResponseEvent constructor </summary>
+        </member>
+        <member name="M:StorageSpace.API.IntegrationEvents.Events.StorageSpaceResponseEvent.#ctor(System.Guid,System.DateTime)">
+            <summary> StorageSpaceResponseEvent constructor </summary>
+            <param name="id">Guid</param>
+            <param name="createDate">DateTime</param>
+        </member>
+        <member name="P:StorageSpace.API.IntegrationEvents.Events.StorageSpaceResponseEvent.TransactionQueueId">
+            <summary> TransactionQueueId </summary>
+        </member>
+        <member name="P:StorageSpace.API.IntegrationEvents.Events.StorageSpaceResponseEvent.FormularyId">
+            <summary> FormularyId </summary>
+        </member>
+        <member name="P:StorageSpace.API.IntegrationEvents.Events.StorageSpaceResponseEvent.MedId">
+            <summary> MedId </summary>
+        </member>
+        <member name="P:StorageSpace.API.IntegrationEvents.Events.StorageSpaceResponseEvent.Devices">
+            <summary> StorageSpaces </summary>
+        </member>
+        <member name="T:StorageSpace.API.Model.Comp">
+            <summary>
+            Comp.
+            </summary>
+        </member>
+        <member name="P:StorageSpace.API.Model.Comp.IsOutsideComputer">
+            <summary>
+            Gets or sets a value indicating whether this instance is outside computer.
+            </summary>
+            <value><c>true</c> if this instance is outside computer; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:StorageSpace.API.Model.Comp.ComputerKey">
+            <summary>
+            Gets or sets the computer key.
+            </summary>
+            <value>The computer key.</value>
+        </member>
+        <member name="P:StorageSpace.API.Model.Comp.PrinterKey">
+            <summary>
+            Gets or sets the printer key.
+            </summary>
+            <value>The printer key.</value>
+        </member>
+        <member name="P:StorageSpace.API.Model.Comp.DeviceNumber">
+            <summary>
+            Gets or sets the device number.
+            </summary>
+            <value>The device number.</value>
+        </member>
+        <member name="P:StorageSpace.API.Model.Comp.DisplayBaseLeftOffset">
+            <summary>
+            Gets or sets the display base left offset.
+            </summary>
+            <value>The display base left offset.</value>
+        </member>
+        <member name="T:StorageSpace.API.Model.Computer">
+            <summary> Computer </summary>
+        </member>
+        <member name="P:StorageSpace.API.Model.Computer.ComputerId">
+            <summary> ComputerId </summary>
+        </member>
+        <member name="P:StorageSpace.API.Model.Computer.PrinterId">
+            <summary> PrinterId </summary>
+        </member>
+        <member name="P:StorageSpace.API.Model.Computer.IsOutsideComputer">
+            <summary> IsOutsideComputer </summary>
+        </member>
+        <member name="T:StorageSpace.API.Model.Device">
+            <summary> Storage space details </summary>
+        </member>
+        <member name="P:StorageSpace.API.Model.Device.Type">
+            <summary> Storage space type </summary>
+        </member>
+        <member name="P:StorageSpace.API.Model.Device.DeviceId">
+            <summary> Storage space identifier </summary>
+        </member>
+        <member name="P:StorageSpace.API.Model.Device.IsDefault">
+            <summary> Flag to identify whether it is default or not </summary>
+        </member>
+        <member name="P:StorageSpace.API.Model.Device.IsStatic">
+            <summary> IsStatic </summary>
+        </member>
+        <member name="P:StorageSpace.API.Model.Device.ShortDescription">
+            <summary> ShortDescription </summary>
+        </member>
+        <member name="P:StorageSpace.API.Model.Device.ConnectionResetMinutes">
+            <summary> ConnectionResetMinutes </summary>
+        </member>
+        <member name="P:StorageSpace.API.Model.Device.Attribute">
+            <summary> Storage space attribute details </summary>
+        </member>
+        <member name="P:StorageSpace.API.Model.Device.StorageSpaces">
+            <summary> Storage space items </summary>
+        </member>
+        <member name="P:StorageSpace.API.Model.Device.Computers">
+            <summary> Computers </summary>
+        </member>
+        <member name="T:StorageSpace.API.Model.DeviceAttribute">
+            <summary> StorageSpaceAttribute </summary>
+        </member>
+        <member name="P:StorageSpace.API.Model.DeviceAttribute.IPAddress">
+            <summary> IP Address </summary>
+        </member>
+        <member name="P:StorageSpace.API.Model.DeviceAttribute.Port">
+            <summary> Port </summary>
+        </member>
+        <member name="P:StorageSpace.API.Model.DeviceAttribute.DeviceClass">
+            <summary> Device class </summary>
+        </member>
+        <member name="P:StorageSpace.API.Model.DeviceAttribute.DeviceNumber">
+            <summary> Device number </summary>
+        </member>
+        <member name="P:StorageSpace.API.Model.DeviceAttribute.IsDualAccess">
+            <summary> Is dual access </summary>
+        </member>
+        <member name="P:StorageSpace.API.Model.DeviceAttribute.RestrictControl">
+            <summary> Restrict Control </summary>
+        </member>
+        <member name="P:StorageSpace.API.Model.DeviceAttribute.MaxRack">
+            <summary> Max Rack </summary>
+        </member>
+        <member name="P:StorageSpace.API.Model.DeviceAttribute.IsDisplayAttached">
+            <summary> IsDisplayAttached </summary>
+        </member>
+        <member name="P:StorageSpace.API.Model.DeviceAttribute.ReturnStatus">
+            <summary> ReturnStatus </summary>
+        </member>
+        <member name="P:StorageSpace.API.Model.DeviceAttribute.BaseLeftOffset">
+            <summary> BaseLeftOffset </summary>
+        </member>
+        <member name="T:StorageSpace.API.Model.FormularyLocationDetail">
+            <summary> Formulary location details </summary>
+        </member>
+        <member name="P:StorageSpace.API.Model.FormularyLocationDetail.FormularyId">
+            <summary> Formulary Identifier </summary>
+        </member>
+        <member name="P:StorageSpace.API.Model.FormularyLocationDetail.ItemId">
+            <summary> Medicine identifier </summary>
+        </member>
+        <member name="P:StorageSpace.API.Model.FormularyLocationDetail.Devices">
+            <summary> Storage spaces </summary>
+        </member>
+        <member name="T:StorageSpace.API.Model.ISA">
+            <summary>
+            ISA.
+            </summary>
+        </member>
+        <member name="P:StorageSpace.API.Model.ISA.IsaId">
+            <summary>
+            Gets or sets the isa identifier.
+            </summary>
+            <value>The isa identifier.</value>
+        </member>
+        <member name="P:StorageSpace.API.Model.ISA.Description">
+            <summary>
+            Gets or sets the description.
+            </summary>
+            <value>The description.</value>
+        </member>
+        <member name="P:StorageSpace.API.Model.ISA.ActiveFlag">
+            <summary>
+            Gets or sets a value indicating whether [active flag].
+            </summary>
+            <value><c>true</c> if [active flag]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:StorageSpace.API.Model.ISA.ShortDescription">
+            <summary>
+            Gets or sets the short description.
+            </summary>
+            <value>The short description.</value>
+        </member>
+        <member name="P:StorageSpace.API.Model.ISA.TransactionQueueLockExpiration">
+            <summary>
+            Gets or sets the transaction queue lock expiration.
+            </summary>
+            <value>The transaction queue lock expiration.</value>
+        </member>
+        <member name="P:StorageSpace.API.Model.ISA.ReqRestockLotInfoFlag">
+            <summary>
+            Gets or sets a value indicating whether [req restock lot information flag].
+            </summary>
+            <value><c>true</c> if [req restock lot information flag]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:StorageSpace.API.Model.ISA.StaticFlag">
+            <summary>
+            Gets or sets a value indicating whether [static flag].
+            </summary>
+            <value><c>true</c> if [static flag]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:StorageSpace.API.Model.ISA.ReturnStatusFlag">
+            <summary>
+            Gets or sets a value indicating whether [return status flag].
+            </summary>
+            <value><c>true</c> if [return status flag]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:StorageSpace.API.Model.ISA.Carousel">
+            <summary>
+            Gets or sets the carousel.
+            </summary>
+            <value>The carousel.</value>
+        </member>
+        <member name="P:StorageSpace.API.Model.ISA.DisconnectOnIdleFlag">
+            <summary>
+            Gets or sets a value indicating whether [disconnect on idle flag].
+            </summary>
+            <value><c>true</c> if [disconnect on idle flag]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:StorageSpace.API.Model.ISA.DeviceNumber">
+            <summary>
+            Gets or sets the device number.
+            </summary>
+            <value>The device number.</value>
+        </member>
+        <member name="P:StorageSpace.API.Model.ISA.IPAddress">
+            <summary>
+            Gets or sets the ip address.
+            </summary>
+            <value>The ip address.</value>
+        </member>
+        <member name="P:StorageSpace.API.Model.ISA.Port">
+            <summary>
+            Gets or sets the port.
+            </summary>
+            <value>The port.</value>
+        </member>
+        <member name="P:StorageSpace.API.Model.ISA.ConnectionResetMinutes">
+            <summary>
+            Gets or sets the connection reset minutes.
+            </summary>
+            <value>The connection reset minutes.</value>
+        </member>
+        <member name="P:StorageSpace.API.Model.ISA.MaxRack">
+            <summary>
+            Gets or sets the maximum rack.
+            </summary>
+            <value>The maximum rack.</value>
+        </member>
+        <member name="P:StorageSpace.API.Model.ISA.MaxBin">
+            <summary>
+            Gets or sets the maximum bin.
+            </summary>
+            <value>The maximum bin.</value>
+        </member>
+        <member name="P:StorageSpace.API.Model.ISA.DefaultBinWidth">
+            <summary>
+            Gets or sets the default width of the bin.
+            </summary>
+            <value>The default width of the bin.</value>
+        </member>
+        <member name="P:StorageSpace.API.Model.ISA.MaxShelves">
+            <summary>
+            Gets or sets the maximum shelves.
+            </summary>
+            <value>The maximum shelves.</value>
+        </member>
+        <member name="P:StorageSpace.API.Model.ISA.ShelfWidth">
+            <summary>
+            Gets or sets the width of the shelf.
+            </summary>
+            <value>The width of the shelf.</value>
+        </member>
+        <member name="P:StorageSpace.API.Model.ISA.DefaultBinDividersH">
+            <summary>
+            Gets or sets the default bin dividers h.
+            </summary>
+            <value>The default bin dividers h.</value>
+        </member>
+        <member name="P:StorageSpace.API.Model.ISA.DefaultBinDividersV">
+            <summary>
+            Gets or sets the default bin dividers v.
+            </summary>
+            <value>The default bin dividers v.</value>
+        </member>
+        <member name="P:StorageSpace.API.Model.ISA.MaxDisplayColumns">
+            <summary>
+            Gets or sets the maximum display columns.
+            </summary>
+            <value>The maximum display columns.</value>
+        </member>
+        <member name="P:StorageSpace.API.Model.ISA.DisplayColumnsPerInch">
+            <summary>
+            Gets or sets the display columns per inch.
+            </summary>
+            <value>The display columns per inch.</value>
+        </member>
+        <member name="P:StorageSpace.API.Model.ISA.DisplayArrowDirection">
+            <summary>
+            Gets or sets the display arrow direction.
+            </summary>
+            <value>The display arrow direction.</value>
+        </member>
+        <member name="P:StorageSpace.API.Model.ISA.DisplayAttachedFlag">
+            <summary>
+            Gets or sets a value indicating whether [display attached flag].
+            </summary>
+            <value><c>true</c> if [display attached flag]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:StorageSpace.API.Model.ISA.DisplayTypeKey">
+            <summary>
+            Gets or sets the display type key.
+            </summary>
+            <value>The display type key.</value>
+        </member>
+        <member name="P:StorageSpace.API.Model.ISA.DisplayIPAddress">
+            <summary>
+            Gets or sets the display ip address.
+            </summary>
+            <value>The display ip address.</value>
+        </member>
+        <member name="P:StorageSpace.API.Model.ISA.DisplayPort">
+            <summary>
+            Gets or sets the display port.
+            </summary>
+            <value>The display port.</value>
+        </member>
+        <member name="P:StorageSpace.API.Model.ISA.RestrictControlFlag">
+            <summary>
+            Gets or sets a value indicating whether [restrict control flag].
+            </summary>
+            <value><c>true</c> if [restrict control flag]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:StorageSpace.API.Model.ISA.Computers">
+            <summary>
+            Gets or sets the computers.
+            </summary>
+            <value>The computers.</value>
+        </member>
+        <member name="T:StorageSpace.API.Model.ISARequest">
+            <summary>
+            ISARequest
+            </summary>
+        </member>
+        <member name="P:StorageSpace.API.Model.ISARequest.IsaId">
+            <summary>
+            Gets or sets the isa Id.
+            </summary>
+            <value>The isa Id.</value>
+        </member>
+        <member name="P:StorageSpace.API.Model.ISARequest.Description">
+            <summary>
+            Gets or sets the description.
+            </summary>
+            <value>The description.</value>
+        </member>
+        <member name="P:StorageSpace.API.Model.ISARequest.IsaType">
+            <summary>
+            Gets or sets the type of the isa.
+            </summary>
+            <value>The type of the isa.</value>
+        </member>
+        <member name="P:StorageSpace.API.Model.ISARequest.Active">
+            <summary>
+            Gets or sets a value indicating whether this <see cref="T:StorageSpace.API.Model.ISARequest"/> is active.
+            </summary>
+            <value><c>true</c> if active; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="T:StorageSpace.API.Model.ItemStorageSpace">
+            <summary>
+            Class ItemStorageSpace.
+            Implements the <see cref="T:StorageSpace.API.Infrastructure.DataAccess.Mongo.Entities.Entity" />
+            </summary>
+            <seealso cref="T:StorageSpace.API.Infrastructure.DataAccess.Mongo.Entities.Entity" />
+        </member>
+        <member name="P:StorageSpace.API.Model.ItemStorageSpace.DocType">
+            <summary>
+            Gets or sets the type of the document.
+            </summary>
+            <value>The type of the document.</value>
+        </member>
+        <member name="P:StorageSpace.API.Model.ItemStorageSpace.MedicationItemKey">
+            <summary>
+            Gets or sets the medication item key.
+            </summary>
+            <value>The medication item key.</value>
+        </member>
+        <member name="P:StorageSpace.API.Model.ItemStorageSpace.Description">
+            <summary>
+            Gets or sets the description.
+            </summary>
+            <value>The description.</value>
+        </member>
+        <member name="P:StorageSpace.API.Model.ItemStorageSpace.ActiveFlag">
+            <summary>
+            Gets or sets a value indicating whether [active flag].
+            </summary>
+            <value><c>true</c> if [active flag]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:StorageSpace.API.Model.ItemStorageSpace.ShortDescription">
+            <summary>
+            Gets or sets the short description.
+            </summary>
+            <value>The short description.</value>
+        </member>
+        <member name="P:StorageSpace.API.Model.ItemStorageSpace.TransactionQueueLockExpiration">
+            <summary>
+            Gets or sets the transaction queue lock expiration.
+            </summary>
+            <value>The transaction queue lock expiration.</value>
+        </member>
+        <member name="P:StorageSpace.API.Model.ItemStorageSpace.ReqRestockLotInfoFlag">
+            <summary>
+            Gets or sets a value indicating whether [req restock lot information flag].
+            </summary>
+            <value><c>true</c> if [req restock lot information flag]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:StorageSpace.API.Model.ItemStorageSpace.StaticFlag">
+            <summary>
+            Gets or sets a value indicating whether [static flag].
+            </summary>
+            <value><c>true</c> if [static flag]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:StorageSpace.API.Model.ItemStorageSpace.ReturnStatusFlag">
+            <summary>
+            Gets or sets a value indicating whether [return status flag].
+            </summary>
+            <value><c>true</c> if [return status flag]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:StorageSpace.API.Model.ItemStorageSpace.Carousel">
+            <summary>
+            Gets or sets the carousel.
+            </summary>
+            <value>The carousel.</value>
+        </member>
+        <member name="P:StorageSpace.API.Model.ItemStorageSpace.DisconnectOnIdleFlag">
+            <summary>
+            Gets or sets a value indicating whether [disconnect on idle flag].
+            </summary>
+            <value><c>true</c> if [disconnect on idle flag]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:StorageSpace.API.Model.ItemStorageSpace.DeviceNumber">
+            <summary>
+            Gets or sets the device number.
+            </summary>
+            <value>The device number.</value>
+        </member>
+        <member name="P:StorageSpace.API.Model.ItemStorageSpace.IPAddress">
+            <summary>
+            Gets or sets the ip address.
+            </summary>
+            <value>The ip address.</value>
+        </member>
+        <member name="P:StorageSpace.API.Model.ItemStorageSpace.Port">
+            <summary>
+            Gets or sets the port.
+            </summary>
+            <value>The port.</value>
+        </member>
+        <member name="P:StorageSpace.API.Model.ItemStorageSpace.ConnectionResetMinutes">
+            <summary>
+            Gets or sets the connection reset minutes.
+            </summary>
+            <value>The connection reset minutes.</value>
+        </member>
+        <member name="P:StorageSpace.API.Model.ItemStorageSpace.MaxRack">
+            <summary>
+            Gets or sets the maximum rack.
+            </summary>
+            <value>The maximum rack.</value>
+        </member>
+        <member name="P:StorageSpace.API.Model.ItemStorageSpace.MaxBin">
+            <summary>
+            Gets or sets the maximum bin.
+            </summary>
+            <value>The maximum bin.</value>
+        </member>
+        <member name="P:StorageSpace.API.Model.ItemStorageSpace.DefaultBinWidth">
+            <summary>
+            Gets or sets the default width of the bin.
+            </summary>
+            <value>The default width of the bin.</value>
+        </member>
+        <member name="P:StorageSpace.API.Model.ItemStorageSpace.MaxShelves">
+            <summary>
+            Gets or sets the maximum shelves.
+            </summary>
+            <value>The maximum shelves.</value>
+        </member>
+        <member name="P:StorageSpace.API.Model.ItemStorageSpace.ShelfWidth">
+            <summary>
+            Gets or sets the width of the shelf.
+            </summary>
+            <value>The width of the shelf.</value>
+        </member>
+        <member name="P:StorageSpace.API.Model.ItemStorageSpace.DefaultBinDividersH">
+            <summary>
+            Gets or sets the default bin dividers h.
+            </summary>
+            <value>The default bin dividers h.</value>
+        </member>
+        <member name="P:StorageSpace.API.Model.ItemStorageSpace.DefaultBinDividersV">
+            <summary>
+            Gets or sets the default bin dividers v.
+            </summary>
+            <value>The default bin dividers v.</value>
+        </member>
+        <member name="P:StorageSpace.API.Model.ItemStorageSpace.MaxDisplayColumns">
+            <summary>
+            Gets or sets the maximum display columns.
+            </summary>
+            <value>The maximum display columns.</value>
+        </member>
+        <member name="P:StorageSpace.API.Model.ItemStorageSpace.DisplayColumnsPerInch">
+            <summary>
+            Gets or sets the display columns per inch.
+            </summary>
+            <value>The display columns per inch.</value>
+        </member>
+        <member name="P:StorageSpace.API.Model.ItemStorageSpace.DisplayArrowDirection">
+            <summary>
+            Gets or sets the display arrow direction.
+            </summary>
+            <value>The display arrow direction.</value>
+        </member>
+        <member name="P:StorageSpace.API.Model.ItemStorageSpace.DisplayAttachedFlag">
+            <summary>
+            Gets or sets a value indicating whether [display attached flag].
+            </summary>
+            <value><c>true</c> if [display attached flag]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:StorageSpace.API.Model.ItemStorageSpace.DisplayTypeKey">
+            <summary>
+            Gets or sets the display type key.
+            </summary>
+            <value>The display type key.</value>
+        </member>
+        <member name="P:StorageSpace.API.Model.ItemStorageSpace.DisplayIPAddress">
+            <summary>
+            Gets or sets the display ip address.
+            </summary>
+            <value>The display ip address.</value>
+        </member>
+        <member name="P:StorageSpace.API.Model.ItemStorageSpace.DisplayPort">
+            <summary>
+            Gets or sets the display port.
+            </summary>
+            <value>The display port.</value>
+        </member>
+        <member name="P:StorageSpace.API.Model.ItemStorageSpace.RestrictControlFlag">
+            <summary>
+            Gets or sets a value indicating whether [restrict control flag].
+            </summary>
+            <value><c>true</c> if [restrict control flag]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:StorageSpace.API.Model.ItemStorageSpace.Computers">
+            <summary>
+            Gets or sets the computers.
+            </summary>
+            <value>The computers.</value>
+        </member>
+        <member name="P:StorageSpace.API.Model.ItemStorageSpace.FacilityKey">
+            <summary>
+            Gets or sets the facility key.
+            </summary>
+            <value>The facility key.</value>
+        </member>
+        <member name="P:StorageSpace.API.Model.ItemStorageSpace.SystemFlag">
+            <summary>
+            Gets or sets a value indicating whether [system flag].
+            </summary>
+            <value><c>true</c> if [system flag]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:StorageSpace.API.Model.ItemStorageSpace.FiniteOffsetFlag">
+            <summary>
+            Gets or sets a value indicating whether [finite offset flag].
+            </summary>
+            <value><c>true</c> if [finite offset flag]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:StorageSpace.API.Model.ItemStorageSpace.PharmoPackFlag">
+            <summary>
+            Gets or sets a value indicating whether [pharmo pack flag].
+            </summary>
+            <value><c>true</c> if [pharmo pack flag]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:StorageSpace.API.Model.ItemStorageSpace.MaxSlot">
+            <summary>
+            Gets or sets the maximum slot.
+            </summary>
+            <value>The maximum slot.</value>
+        </member>
+        <member name="P:StorageSpace.API.Model.ItemStorageSpace.MinDisplayColumns">
+            <summary>
+            Gets or sets the minimum display columns.
+            </summary>
+            <value>The minimum display columns.</value>
+        </member>
+        <member name="P:StorageSpace.API.Model.ItemStorageSpace.Model">
+            <summary>
+            Gets or sets the model.
+            </summary>
+            <value>The model.</value>
+        </member>
+        <member name="P:StorageSpace.API.Model.ItemStorageSpace.DeviceClass">
+            <summary>
+            Gets or sets the device class.
+            </summary>
+            <value>The device class.</value>
+        </member>
+        <member name="P:StorageSpace.API.Model.ItemStorageSpace.MaxRacks">
+            <summary>
+            Gets or sets the maximum racks.
+            </summary>
+            <value>The maximum racks.</value>
+        </member>
+        <member name="P:StorageSpace.API.Model.ItemStorageSpace.ShelfDepth">
+            <summary>
+            Gets or sets the shelf depth.
+            </summary>
+            <value>The shelf depth.</value>
+        </member>
+        <member name="P:StorageSpace.API.Model.ItemStorageSpace.Active">
+            <summary>
+            Gets or sets a value indicating whether this <see cref="T:StorageSpace.API.Model.ItemStorageSpace"/> is active.
+            </summary>
+            <value><c>true</c> if active; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:StorageSpace.API.Model.ItemStorageSpace.IsDualAccess">
+            <summary>
+            Gets or sets a value indicating whether this instance is dual access.
+            </summary>
+            <value><c>true</c> if this instance is dual access; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:StorageSpace.API.Model.ItemStorageSpace.CanSyncWithTicbar">
+            <summary>
+            Gets or sets a value indicating whether this instance can synchronize with ticbar.
+            </summary>
+            <value><c>true</c> if this instance can synchronize with ticbar; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="T:StorageSpace.API.Model.Request.GetStorageSpaceRequest">
+            <summary> GetStorageSpaceRequest </summary>
+        </member>
+        <member name="P:StorageSpace.API.Model.Request.GetStorageSpaceRequest.FormularyId">
+            <summary> FormularyId </summary>
+        </member>
+        <member name="P:StorageSpace.API.Model.Request.GetStorageSpaceRequest.FacilityId">
+            <summary> FacilityId </summary>
+        </member>
+        <member name="P:StorageSpace.API.Model.Request.GetStorageSpaceRequest.ISAId">
+            <summary> ISAId </summary>
+        </member>
+        <member name="T:StorageSpace.API.Model.StorageSpace">
+            <summary> Storage space item details </summary>
+        </member>
+        <member name="P:StorageSpace.API.Model.StorageSpace.ItemType">
+            <summary> Storage space type like Rack, Shelf, Shelf, Bin, Slot </summary>
+        </member>
+        <member name="P:StorageSpace.API.Model.StorageSpace.Number">
+            <summary> Storage space item number like Rack Number </summary>
+        </member>
+        <member name="P:StorageSpace.API.Model.StorageSpace.Attribute">
+            <summary> Storage space item attribute </summary>
+        </member>
+        <member name="T:StorageSpace.API.Program">
+            <summary> Program class </summary>
+        </member>
+        <member name="M:StorageSpace.API.Program.Main(System.String[])">
+            <summary> Main method, also the entry point of the application </summary>
+            <param name="args"></param>
+        </member>
+        <member name="M:StorageSpace.API.Program.CreateWebHostBuilder(System.String[])">
+            <summary> CreateWebHostBuilder </summary>
+            <param name="args">array of string</param>
+            <returns>of type IWebHostBuilder</returns>
+        </member>
+        <member name="T:StorageSpace.API.ServiceDependencies">
+            <summary> Adds and Configure all Services for the Startup.cs file </summary>
+        </member>
+        <member name="M:StorageSpace.API.ServiceDependencies.AddServices(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration,Microsoft.AspNetCore.Hosting.IHostingEnvironment,Microsoft.Extensions.Logging.ILogger)">
+            <summary> Adds services required in the Startup.cs file by the API </summary>
+            <param name="services">IServiceCollection</param>
+            <param name="configuration">IConfiguration</param>
+            <param name="env">IHostingEnvironment</param>
+            <param name="logger">ILogger</param>
+            <returns></returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:StorageSpace.API.ServiceDependencies.UseServices(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.Extensions.Configuration.IConfiguration,Microsoft.AspNetCore.Hosting.IHostingEnvironment,Microsoft.Extensions.Logging.ILogger,Microsoft.AspNetCore.Mvc.ApiExplorer.IApiVersionDescriptionProvider)" -->
+        <member name="M:StorageSpace.API.ServiceDependencies.AddSwaggerServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary> Adds swagger to the service collection </summary>
+            <param name="services">IServiceCollection</param>
+            <returns>IServiceCollection</returns>
+        </member>
+        <member name="M:StorageSpace.API.ServiceDependencies.UseEventBusServices(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary> Adds event bus subscriptions </summary>
+            <param name="app">IApplicationBuilder</param>
+            <param name="configuration">IConfiguration</param>
+            <returns>Instance of type IApplicationBuilder</returns>
+        </member>
+        <member name="T:StorageSpace.API.Startup">
+            <summary> Startup class </summary>
+        </member>
+        <member name="P:StorageSpace.API.Startup.Configuration">
+            <summary> Configuration of type IConfiguration </summary>
+        </member>
+        <member name="P:StorageSpace.API.Startup.Environment">
+            <summary> IHostingEnvironment </summary>
+        </member>
+        <member name="P:StorageSpace.API.Startup.Logger">
+            <summary> ILogger </summary>
+        </member>
+        <member name="M:StorageSpace.API.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration,Microsoft.AspNetCore.Hosting.IHostingEnvironment,Microsoft.Extensions.Logging.ILogger{StorageSpace.API.Startup})">
+            <summary> Startup constructor </summary>
+            <param name="configuration">IConfiguration</param>
+            <param name="env">IHostingEnvironment</param>
+            <param name="logger">ILogger</param>
+        </member>
+        <member name="M:StorageSpace.API.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            This method gets called by the runtime. Use this method to add services to the container.
+            For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
+            </summary>
+            <param name="services">IServiceCollection</param>
+            <returns></returns>
+        </member>
+        <member name="M:StorageSpace.API.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Mvc.ApiExplorer.IApiVersionDescriptionProvider)">
+            <summary> This method gets called by the runtime. Use this method to configure the HTTP request pipeline. </summary>
+            <param name="app">IApplicationBuilder</param>
+            <param name="provider">IApiVersionDescriptionProvider</param>
+        </member>
+        <member name="T:Location.API.Dto.StorageSpaceItemAttribute">
+            <summary> StorageSpaceItemAttribute </summary>
+        </member>
+        <member name="P:Location.API.Dto.StorageSpaceItemAttribute.DispenseForm">
+            <summary> DispenseForm </summary>
+        </member>
+        <member name="P:Location.API.Dto.StorageSpaceItemAttribute.LeftOffset">
+            <summary> LeftOffset </summary>
+        </member>
+        <member name="P:Location.API.Dto.StorageSpaceItemAttribute.OverideBaseAddress">
+            <summary> OverideBaseAddr </summary>
+        </member>
+    </members>
+</doc>
