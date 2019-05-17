@@ -9,4 +9,3 @@ COPY src/Facility.API/out .
 
 #Enterypoint
 ENTRYPOINT ["dotnet", "Facility.API.dll"]
-
