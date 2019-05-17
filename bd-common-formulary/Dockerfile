@@ -8,4 +8,3 @@ COPY src/Formulary.API/out .
 #COPY /src/Template/out .
 
 ENTRYPOINT ["dotnet", "Formulary.API.dll"]
-
