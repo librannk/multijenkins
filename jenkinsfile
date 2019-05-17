@@ -1,59 +1,7 @@
-node('vanguard') {
-
-  def version = "1.0.0"
-  def image
-  
-
-  try {
-
-    notifyStarted()
-
-    stage('Checkout') {
-      checkout scm
-    }
-
-    stage ('Build') {
-      sh('dotnet restore')
-      sh('dotnet build')
-    }
-
-    stage('Package') {
-      image = docker.build("vanguard-service:${version}")
-    }
-
-    stage('Publish') {
-      docker.withRegistry('https://docker-vanguard.docker-reg.bddevops.io', 'artifactory-credentials') {
-        image.push()
-        image.push('latest')
-      }
-    }
+node('master'){
     
-    stage('Deploy') {
-      //kubectl/helm deploy here
+    stage('Clone sources') {
+        git url: 'https://github.com/sawansharma005/multijenkins.git'
+        sh label: '', script: 'echo "test"'
     }
-
-    notifySuccessful()
-
-  } catch (e) {
-    // If there was an exception thrown, the build failed
-    currentBuild.result = "FAILED"
-    notifyFailed()
-    throw e
-  } finally {
-    if (image != null) {
-      sh "docker rmi ${image.id}"
-    }
-  }
-
-}
-//Optional slack notifications
-def notifyStarted() {
-  slackSend (color: '#FFFF00', message: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
-}
-
-def notifySuccessful() {
-  slackSend (color: '#00FF00', message: "SUCCESSFUL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
-}
-def notifyFailed() {
-  slackSend (color: '#FF0000', message: "FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
 }
