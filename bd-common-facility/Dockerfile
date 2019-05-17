@@ -8,4 +8,3 @@ COPY src/Facility.API/out .
 #COPY /src/Template/out .
 
 ENTRYPOINT ["dotnet", "Facility.API.dll"]
-
