@@ -7,4 +7,5 @@ WORKDIR /app
 COPY src/Facility.API/out .
 #COPY /src/Template/out .
 
+#Enterypoint
 ENTRYPOINT ["dotnet", "Facility.API.dll"]
